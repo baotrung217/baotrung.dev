@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/wasserstein-earth-mover-distance" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Earth mover’s distance
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Earth mover’s distance" />
+  
+
+  
+    <meta property="og:description" content="What (general)? What (math way)? Example of metric Coding References What (general)? In statistics, the earth mover’s distance (EMD) is a measure of the distance between two probability distributions over a region D.[ref] In stats or computer science, it’s “Earth mover’s distance”. In maths, it’s “Wasserstein metric” The Wasserstein distance...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/wasserstein-earth-mover-distance" />
+    <link rel="canonical" href="http://localhost:4000/wasserstein-earth-mover-distance" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" async >
+  <script>
+    $("script[type='math/tex']").replaceWith(function() {
+        var tex = $(this).text();
+        return katex.renderToString(tex, {displayMode: false});
+    });
+
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        var tex = $(this).html();
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    });
+  </script>
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #daff9f;">
+              <i class="far fa-chart-bar"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Earth mover’s distance<sup>•</sup>
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#distance">
+                    distance
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#distribution">
+                    distribution
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              02 Jun 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#what-general" id="markdown-toc-what-general">What (general)?</a></li>
+  <li><a href="#what-math-way" id="markdown-toc-what-math-way">What (math way)?</a></li>
+  <li><a href="#example-of-metric" id="markdown-toc-example-of-metric">Example of metric</a></li>
+  <li><a href="#coding" id="markdown-toc-coding">Coding</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="what-general">What (general)?</h2>
+
+<ul>
+  <li>
+    <p>In statistics, the earth mover’s distance (EMD) is a <mark>measure of the distance between two probability distributions</mark> over a region D.<sup><a href="https://en.wikipedia.org/wiki/Earth_mover%27s_distance " target="_blank">[ref]</a></sup></p>
+  </li>
+  <li>In stats or computer science, it’s “<em>Earth mover’s distance</em>”.</li>
+  <li>In maths, it’s “<em>Wasserstein metric</em>”</li>
+  <li><mark>The Wasserstein distance is the minimum cost of transporting mass in converting the data distribution q to the data distribution p.</mark></li>
+</ul>
+
+<h2 id="what-math-way">What (math way)?</h2>
+
+<p>The idea borrowed from <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html">this</a>. The first Wasserstein distance between the distributions <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> is:</p>
+
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo><mi>inf</mi><mo>⁡</mo></mo><mrow><mi>π</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></munder><msub><mo>∫</mo><mrow><mi mathvariant="double-struck">R</mi><mo>×</mo><mi mathvariant="double-struck">R</mi></mrow></msub><mi mathvariant="normal">∣</mi><mi>x</mi><mo>−</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">d</mi><mi>π</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+l_1 (u, v) = \inf_{\pi \in \Gamma (u, v)} \int_{\mathbb{R} \times
+        \mathbb{R}} |x-y| \mathrm{d} \pi (x, y)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.3302810000000003em;vertical-align:-0.970281em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.3089999999999997em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">π</span><span class="mrel mtight">∈</span><span class="mord mtight">Γ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">in<span style="margin-right:0.07778em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.966em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011249999999999316em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.42972699999999997em;"><span style="top:-1.7880500000000001em;margin-left:-0.44445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathbb mtight">R</span></span><span class="mbin mtight">×</span><span class="mord mtight"><span class="mord mathbb mtight">R</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.970281em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord"><span class="mord mathrm">d</span></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span></p>
+
+<p>where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Gamma(u,v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Γ</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span> is the set of (probability) distributions on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">R</mi><mo>×</mo><mi mathvariant="double-struck">R</mi></mrow><annotation encoding="application/x-tex">\mathbb{R}\times \mathbb{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77222em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathbb">R</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span></span></span></span></span> whose marginals are  and  on the first and second factors respectively.</p>
+
+<p>If <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span> are the respective CDFs of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>, this distance also equals to:</p>
+
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></msubsup><mi mathvariant="normal">∣</mi><mi>U</mi><mo>−</mo><mi>V</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">
+l_1(u, v) = \int_{-\infty}^{+\infty} |U-V|
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.491512em;vertical-align:-0.970281em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011249999999999316em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5212310000000002em;"><span style="top:-1.7880500000000001em;margin-left:-0.44445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.970281em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord">∣</span></span></span></span></span></p>
+
+<h2 id="example-of-metric">Example of metric</h2>
+
+<p>Suppose we wanna move the blocks on the left to dotted-blocks on the right, we wanna find the “energy” (or metric) to do that.</p>
+
+<p class="text-center"><em>Energy = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span> weight of block x distance to move that block</em>.</p>
+
+<p>Suppose that weight of each block is 1. All below figures are copied from <a href="https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490">this</a>.</p>
+
+<p class="img-50"><img src="/img/post/stats/emd_1.png" alt="EMD example" /></p>
+
+<p>There are 2 ways to do that,</p>
+
+<p class="img-50"><img src="/img/post/stats/emd_2.jpeg" alt="EMD example" />
+<em>2 ways of moving blocks from left to right.</em></p>
+
+<p>Above example gives the same energies (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>42</mn></mrow><annotation encoding="application/x-tex">42</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">2</span></span></span></span>) but there are usually different as below example,</p>
+
+<p class="img-50"><img src="/img/post/stats/emd_3.png" alt="EMD example" /></p>
+
+<h2 id="coding">Coding</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">wasserstein_distance</span>
+</code></pre></div></div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">wasserstein_distance</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<span class="c"># they are exactly the same!</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="columns-2">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">wasserstein_distance</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
+<span class="c1"># 3.0000000000000004
+</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">hist_kws</span><span class="o">=</span><span class="p">{</span><span class="s">"histtype"</span><span class="p">:</span> <span class="s">"step"</span><span class="p">,</span> <span class="s">"linewidth"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"alpha"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"color"</span><span class="p">:</span> <span class="s">"b"</span><span class="p">})</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">hist_kws</span><span class="o">=</span><span class="p">{</span><span class="s">"histtype"</span><span class="p">:</span> <span class="s">"step"</span><span class="p">,</span> <span class="s">"linewidth"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"alpha"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"color"</span><span class="p">:</span> <span class="s">"r"</span><span class="p">})</span>
+</code></pre></div>  </div>
+
+  <p class="img-100"><img src="/img/post/stats/emd_4.jpg" alt="EMD example" /></p>
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://www.quora.com/What-is-an-intuitive-explanation-of-the-Wasserstein-distance">What is an intuitive explanation of the Wasserstein distance?</a></li>
+  <li><a href="https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490">GAN — Wasserstein GAN &amp; WGAN-GP</a></li>
+  <li><a href="https://www.youtube.com/watch?v=U7xdiGc7IRU">An example</a> of why we need to use EMD instead of <a href="/KS-test">Kolmogorov–Smirnov distance</a> (video).</li>
+</ul>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/stats/2020-06-02-wasserstein-earth-mover-distance.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Earth mover’s distance'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+    <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 1rem;">
+      <sup style="color: #bbb">•</sup>Notes with this notation aren't good enough. They are being updated. <span style="color: white;">If you can see this, you are so smart. ;)</span>
+    </p>
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

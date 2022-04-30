@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/deeplearning-ai-course-3" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | DL 3 - Structuring ML Projects
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="DL 3 - Structuring ML Projects" />
+  
+
+  
+    <meta property="og:description" content="Introduction to ML Strategy Why ML strategy? Orthogonalization Setting up your goal Single number evaluation metric Satisfying and Optimizing metric Train/dev/test distributions Size of the dev and test sets When to change dev/test sets and metrics Comparing to human-level performance Why human-level performance? Avoidable bias Understanding human-level performance Surpassing human-level...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/deeplearning-ai-course-3" />
+    <link rel="canonical" href="http://localhost:4000/deeplearning-ai-course-3" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" async >
+  <script>
+    $("script[type='math/tex']").replaceWith(function() {
+        var tex = $(this).text();
+        return katex.renderToString(tex, {displayMode: false});
+    });
+
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        var tex = $(this).html();
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    });
+  </script>
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/deeplearning-ai.png">
+            </div>
+          
+          <h1 class="post-title">
+            DL 3 - Structuring ML Projects
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#coursera">
+                    coursera
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#deeplearning-ai">
+                    deeplearning.ai
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#mooc">
+                    mooc
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              16 May 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#introduction-to-ml-strategy" id="markdown-toc-introduction-to-ml-strategy">Introduction to ML Strategy</a>    <ul>
+      <li><a href="#why-ml-strategy" id="markdown-toc-why-ml-strategy">Why ML strategy?</a></li>
+      <li><a href="#orthogonalization" id="markdown-toc-orthogonalization">Orthogonalization</a></li>
+    </ul>
+  </li>
+  <li><a href="#setting-up-your-goal" id="markdown-toc-setting-up-your-goal">Setting up your goal</a>    <ul>
+      <li><a href="#single-number-evaluation-metric" id="markdown-toc-single-number-evaluation-metric">Single number evaluation metric</a></li>
+      <li><a href="#satisfying-and-optimizing-metric" id="markdown-toc-satisfying-and-optimizing-metric">Satisfying and Optimizing metric</a></li>
+      <li><a href="#traindevtest-distributions" id="markdown-toc-traindevtest-distributions">Train/dev/test distributions</a></li>
+      <li><a href="#size-of-the-dev-and-test-sets" id="markdown-toc-size-of-the-dev-and-test-sets">Size of the dev and test sets</a></li>
+      <li><a href="#when-to-change-devtest-sets-and-metrics" id="markdown-toc-when-to-change-devtest-sets-and-metrics">When to change dev/test sets and metrics</a></li>
+    </ul>
+  </li>
+  <li><a href="#comparing-to-human-level-performance" id="markdown-toc-comparing-to-human-level-performance">Comparing to human-level performance</a>    <ul>
+      <li><a href="#why-human-level-performance" id="markdown-toc-why-human-level-performance">Why human-level performance?</a></li>
+      <li><a href="#avoidable-bias" id="markdown-toc-avoidable-bias">Avoidable bias</a></li>
+      <li><a href="#understanding-human-level-performance" id="markdown-toc-understanding-human-level-performance">Understanding human-level performance</a></li>
+      <li><a href="#surpassing-human-level-performance" id="markdown-toc-surpassing-human-level-performance">Surpassing human-level performance</a></li>
+      <li><a href="#improving-your-model-performance" id="markdown-toc-improving-your-model-performance">Improving your model performance</a></li>
+    </ul>
+  </li>
+  <li><a href="#error-analysis" id="markdown-toc-error-analysis">Error Analysis</a>    <ul>
+      <li><a href="#carrying-out-error-analysis" id="markdown-toc-carrying-out-error-analysis">Carrying out error analysis</a></li>
+      <li><a href="#cleaning-up-incorrectly-labaled-data" id="markdown-toc-cleaning-up-incorrectly-labaled-data">Cleaning up incorrectly labaled data</a></li>
+      <li><a href="#when-starting-a-new-project" id="markdown-toc-when-starting-a-new-project">When starting a new project?</a></li>
+    </ul>
+  </li>
+  <li><a href="#mismatched-training-and-devtest-set" id="markdown-toc-mismatched-training-and-devtest-set">Mismatched training and dev/test set</a>    <ul>
+      <li><a href="#training--testing-on-different-distribution" id="markdown-toc-training--testing-on-different-distribution">Training &amp; testing on different distribution</a></li>
+      <li><a href="#bias-and-variance-with-mismatched-data-dist" id="markdown-toc-bias-and-variance-with-mismatched-data-dist">Bias and Variance with mismatched data dist</a></li>
+      <li><a href="#addressing-data-mismatch" id="markdown-toc-addressing-data-mismatch">Addressing data mismatch</a></li>
+    </ul>
+  </li>
+  <li><a href="#learning-from-multiple-tasks" id="markdown-toc-learning-from-multiple-tasks">Learning from multiple tasks</a>    <ul>
+      <li><a href="#transfer-learning" id="markdown-toc-transfer-learning">Transfer learning</a></li>
+      <li><a href="#multi-task-learning" id="markdown-toc-multi-task-learning">Multi-task learning</a></li>
+    </ul>
+  </li>
+  <li><a href="#end-to-end-deep-learning" id="markdown-toc-end-to-end-deep-learning">End-to-end deep learning</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>This is my note for the course (<a href="https://www.coursera.org/learn/machine-learning-projects">Structuring Machine Learning Projects</a>). The codes in this note are rewritten to be more clear and concise.</p>
+
+<p>🎯 <a href="/deeplearning-ai">Overview of all 5 courses.</a></p>
+
+<p>👉 <strong>Course 1</strong> – <a href="/deeplearning-ai-course-1">Neural Networks and Deep Learning</a>.<br />
+👉 <strong>Course 2</strong> – <a href="/deeplearning-ai-course-2">Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization</a>.<br />
+👉 <strong>Course 3</strong> – <a href="/deeplearning-ai-course-3">Structuring Machine Learning Projects</a>. <br />
+👉 <strong>Course 4</strong> – <a href="https://www.notion.so/dinhanhthi/CNN-by-deeplearning-ai-a081d253fc2c4c0b99edd2757c759b9e">Convolutional Neural Networks</a>. <br />
+👉 <strong>Course 5</strong> – <a href="https://www.notion.so/dinhanhthi/CNN-by-deeplearning-ai-a081d253fc2c4c0b99edd2757c759b9e">Sequence Models</a>.</p>
+
+<p>⭐ <strong>Case study</strong> (should read): <a href="/deeplearning-ai-course-3-bird-recognition-peacetopia">Bird recognition in the city of Peacetopia</a>.<br />
+⭐ <strong>Case study</strong> (should read): <a href="/deeplearning-ai-course-3-autonomous-driving">Autonomous driving</a> (I copied it from <a href="https://github.com/Kulbear/deep-learning-coursera/blob/master/Structuring%20Machine%20Learning%20Projects/Week%202%20Quiz%20-%20Autonomous%20driving%20(case%20study).md">this</a>).</p>
+
+<p>This course will give you some strategies to help analyze your problem to go in a direction that will help you get better results.</p>
+
+<h2 id="introduction-to-ml-strategy">Introduction to ML Strategy</h2>
+
+<h3 id="why-ml-strategy">Why ML strategy?</h3>
+
+<ul>
+  <li>“<em>ML strategy</em>” = How to structure your ML project?</li>
+  <li>
+    <p><mark><strong>Ideas to improve your ML systems</strong></mark>:</p>
+
+    <div class="two-columns-list mb-0">
+
+      <ol>
+        <li>Collect more data.</li>
+        <li>Collect more diverse training set.</li>
+        <li>Train algorithm longer with gradient descent.</li>
+        <li>Try different optimization algorithm (e.g. Adam).</li>
+        <li>Try bigger network.</li>
+        <li>Try smaller network.</li>
+        <li>Try dropout.</li>
+        <li>Add L2 regularization.</li>
+        <li>Change network architecture (activation functions, # of hidden units, etc.)</li>
+      </ol>
+
+    </div>
+  </li>
+  <li>However, don’t spend too much time to do one of above things, <mark>we need to go right direction!</mark></li>
+</ul>
+
+<h3 id="orthogonalization">Orthogonalization</h3>
+
+<ul>
+  <li>In <strong>orthogonalization</strong>, you have some controls, but each control does a specific task and doesn’t affect other controls.</li>
+  <li><mark><strong>Chain of assumptions in ML</strong></mark>:
+    <ol>
+      <li>You’ll have to fit training set well on cost function (near human level performance if possible).
+        <ul>
+          <li>If it’s not achieved you could try bigger network, another optimization algorithm (like Adam)…</li>
+        </ul>
+      </li>
+      <li>Fit dev set well on cost function.
+        <ul>
+          <li>If its not achieved you could try regularization, bigger training set…</li>
+        </ul>
+      </li>
+      <li>Fit test set well on cost function.
+        <ul>
+          <li>If its not achieved you could try bigger dev. set…</li>
+        </ul>
+      </li>
+      <li>Performs well in real world.
+        <ul>
+          <li>If its not achieved you could try change dev. set, change cost function…</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="setting-up-your-goal">Setting up your goal</h2>
+
+<h3 id="single-number-evaluation-metric">Single number evaluation metric</h3>
+
+<ul>
+  <li><mark><strong>Advice</strong></mark> : It’s better and faster to set a single number evaluation metric for your project before you start it.</li>
+  <li><strong>Example</strong>: instead of using both precision and recall, just use f1. Check <a href="/confusion-matrix-and-f1-score">this note</a>.</li>
+  <li>Dev set + single row number evaluation metric <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> enough to make a choice!</li>
+</ul>
+
+<h3 id="satisfying-and-optimizing-metric">Satisfying and Optimizing metric</h3>
+
+<ul>
+  <li>It’s difficult to set all parameters to a single row number evaluation metric <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> set up (many) <strong>satisfying</strong> + (one) <strong>optimizing</strong> matrix.
+    <ul>
+      <li><strong>Satisfying</strong> (use threshold): satisfying this is enough.</li>
+      <li><strong>Optimizing</strong>: more important, it’s accuracy!</li>
+    </ul>
+  </li>
+  <li><strong>Example</strong>: call “Hi Siri”,
+    <ul>
+      <li>Accuracy: is it awoken? <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> <strong>optimizing</strong></li>
+      <li>False positive: it’s awoken but we don’t call it! <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> set the <strong>satisfying</strong> as less then 1 false positive per day!</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="traindevtest-distributions">Train/dev/test distributions</h3>
+
+<ul>
+  <li>The way we set the distribution of train / dev / test sets can impact much on the running time.</li>
+  <li>Dev set = developement set / hold out cross validation set.</li>
+  <li><mark><strong>Advice</strong></mark>: Make dev set and test set come from the same distribution!</li>
+</ul>
+
+<h3 id="size-of-the-dev-and-test-sets">Size of the dev and test sets</h3>
+
+<ul>
+  <li><strong>Old</strong> (less data, &lt;100000): 70% train - 30% test or something like that.</li>
+  <li><strong>Now</strong> (big data): 98% - 1% - 1%.</li>
+  <li><strong>Test set</strong>: set your <mark>test set to be big enough</mark> to give high confiance in the overall performance of your system.</li>
+</ul>
+
+<h3 id="when-to-change-devtest-sets-and-metrics">When to change dev/test sets and metrics</h3>
+
+<ul>
+  <li>Sometimes, we put our target a wrong place <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> should <mark>change metric!</mark></li>
+  <li><strong>Example</strong>: cat classification,
+    <ul>
+      <li>
+        <p><em>Algo A</em>: 3% error but contains porn <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> train / test error like this!</p>
+
+        <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Err (old metric)</mtext><mo>=</mo><mfrac><mn>1</mn><msub><mi>m</mi><mtext>dev</mtext></msub></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>m</mi><mtext>dev</mtext></msub></munderover><mi mathvariant="script">L</mi><mo stretchy="false">{</mo><msubsup><mi>y</mi><mtext>pred</mtext><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msubsup><mo mathvariant="normal">≠</mo><msup><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">
+\text{Err (old metric)} = \dfrac{1}{m_{\text{dev}}} \sum_{i=1}^{m_{\text{dev}}} \mathcal{L} \{ y^{(i)}_{\text{pred}} \ne y^{(i)} \}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Err (old metric)</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.945926em;vertical-align:-1.277669em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">dev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6682570000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.316865em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">dev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathcal">L</span></span><span class="mopen">{</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3986920000000005em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">pred</span></span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4374159999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.188em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span></span></p>
+      </li>
+      <li>
+        <p><em>Algo B</em>: 5% error but no porn <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> human like this!</p>
+
+        <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>Err (adapted metric)</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><msub><mi mathvariant="normal">Σ</mi><mi>i</mi></msub><msup><mi>W</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>m</mi><mtext>dev</mtext></msub></munderover><msup><mi>W</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mi mathvariant="script">L</mi><mo stretchy="false">{</mo><msubsup><mi>y</mi><mtext>pred</mtext><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msubsup><mo mathvariant="normal">≠</mo><msup><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo stretchy="false">}</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msup><mi>W</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mtext> if </mtext><msup><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mtext> contains non-porn</mtext><mo separator="true">,</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>10</mn><mtext> if </mtext><msup><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mtext> contains porn</mtext><mi mathvariant="normal">.</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\text{Err (adapted metric)} &amp;= \dfrac{1}{\Sigma_i W^{(i)}} \sum_{i=1}^{m_{\text{dev}}} W^{(i)} \mathcal{L} \{ y^{(i)}_{\text{pred}} \ne y^{(i)} \} \\
+W^{(i)} &amp;= \begin{cases}
+    1 \text{ if } X^{(i)} \text{ contains non-porn}, \\
+    10 \text{ if } X^{(i)} \text{ contains porn}.
+\end{cases}
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6.545956em;vertical-align:-3.022978em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.522978em;"><span style="top:-5.604721em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="mord text"><span class="mord">Err (adapted metric)</span></span></span></span><span style="top:-2.277052em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.022978em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.522978em;"><span style="top:-5.604721em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.296em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.814em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.854em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6682570000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.316865em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">dev</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathcal">L</span></span><span class="mopen">{</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3986920000000005em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">pred</span></span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4374159999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose">}</span></span></span><span style="top:-2.277052em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">1</span><span class="mord text"><span class="mord"> if </span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> contains non-porn</span></span><span class="mpunct">,</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">1</span><span class="mord">0</span><span class="mord text"><span class="mord"> if </span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> contains porn</span></span><span class="mord">.</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.022978em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+      </li>
+    </ul>
+  </li>
+  <li>This is actually an example of an orthogonalization where you should take a machine learning problem and break it into distinct steps:
+    <ol>
+      <li>Figure out how to define a metric that captures what you want to do (place the target).</li>
+      <li>Worry about how to actually do well on this metric (how to aim/shoot accurately at the target).</li>
+    </ol>
+  </li>
+  <li><strong>Conclusion</strong>: if doing well on your metric + dev/test set doesn’t correspond to doing well in your application, change your metric and/or dev/test set.</li>
+</ul>
+
+<h2 id="comparing-to-human-level-performance">Comparing to human-level performance</h2>
+
+<h3 id="why-human-level-performance">Why human-level performance?</h3>
+
+<ul>
+  <li><strong>Reasons</strong>:
+    <ol>
+      <li>ML algos are now work better &amp; easier (than the past) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> only them is not enough <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> need human-level performance (HLP).</li>
+      <li>Workflow of building ML system <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> wanna more efficient? <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> try to do something that human can also do.</li>
+    </ol>
+  </li>
+  <li><strong>Bayes error</strong> = best possible error (theory).</li>
+  <li>After surpassing HLP, <em>it’s slow down</em>, why?
+    <ol>
+      <li>HLP is very closed to Bayes optimal error. Ex: we can recognize things in blur.</li>
+      <li>Whenever under HLP, there are certain tools to use to improve the performance but there is no tool to do after surpassing HLP.</li>
+    </ol>
+  </li>
+  <li><mark>So long as ML is worse than HLP, you can:</mark>
+    <ul>
+      <li>Get labeled data from human.</li>
+      <li>Gain insight from manual error analysis: why did a person get this right?</li>
+      <li>Better analysis of bias / variance.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="avoidable-bias">Avoidable bias</h3>
+
+<ul>
+  <li>Sometimes we don’t want algo works TOO WELL on the training set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> use HLP.</li>
+  <li><strong>Example</strong>: cat recognition gives 2 different results (but the same gap between train &amp; test)
+    <ol>
+      <li>
+        <p><strong>Big gap</strong> between train and human. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> focus on <mark>reducing bias</mark> (bigger NN, run training longer,…) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> <strong>Underfitting</strong>!</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Humans</th>
+              <th>1%</th>
+              <th>1%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Training error</strong></td>
+              <td>8%</td>
+              <td>8%</td>
+            </tr>
+            <tr>
+              <td><strong>Dev Error</strong></td>
+              <td>10%</td>
+              <td>10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p><strong>Small gap</strong> between train and human. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> focus on <mark>reducing variance</mark> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> <strong>Overfitting</strong>!</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Humans</th>
+              <th>1%</th>
+              <th>7.5%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Training error</strong></td>
+              <td>8%</td>
+              <td>8%</td>
+            </tr>
+            <tr>
+              <td><strong>Dev Error</strong></td>
+              <td>10%</td>
+              <td>10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ol>
+  </li>
+  <li>Based on the human error <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> decide whether high/low error <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> bias / variance reduction!</li>
+  <li>Gap between human &amp; training <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> <strong>Avoidable bias</strong>.</li>
+  <li>Gap between training &amp; test <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> <strong>Variance</strong>!</li>
+</ul>
+
+<h3 id="understanding-human-level-performance">Understanding human-level performance</h3>
+
+<ul>
+  <li>Use the nearest value to Bayes error as a human level error! (the smallest)</li>
+  <li>The way we choose HL error sometimes can impact the way we improve our algo (bias or variance reduction)</li>
+  <li><mark>Use human level error as a <strong>proxy</strong> of Bayes error!</mark></li>
+</ul>
+
+<h3 id="surpassing-human-level-performance">Surpassing human-level performance</h3>
+
+<ul>
+  <li>When training error <strong>less than</strong> human error, it’s difficile to decide what’s avoidable bias!</li>
+  <li>In some problems, deep learning has surpassed human-level performance. Example: Online advertising, Product recommendation, Loan approval. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> <strong>Structured data</strong>.</li>
+  <li>In <strong>natural perception tasks</strong> (speech recognition, NLP,…): ML surpasses human!</li>
+  <li><mark><strong>In short</strong></mark>:
+    <ul>
+      <li>Machine &gt; human <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> structured data.</li>
+      <li>Machine &gt; <strong>One</strong> person <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> some natural perception tasks.</li>
+      <li>Machine &gt; human <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> natural perception tasks.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="improving-your-model-performance">Improving your model performance</h3>
+
+<ul>
+  <li><mark>The two fundamental asssumptions of supervised learning</mark>:
+    <ol>
+      <li>You can fit the training set pretty well. This is roughly saying that you can achieve low <strong>avoidable bias</strong>.</li>
+      <li>The training set performance generalizes pretty well to the dev/test set. This is roughly saying that <strong>variance</strong> is not too bad.</li>
+    </ol>
+  </li>
+  <li><mark>To improve your deep learning supervised system</mark> follow these guidelines:
+    <ol>
+      <li>Look at the difference between human level error and the training error - <strong>avoidable bias</strong>.</li>
+      <li>Look at the difference between the dev/test set and training set error - <strong>Variance</strong>.</li>
+      <li>If <strong>avoidable bias</strong> is large you have these options:
+        <ul>
+          <li>Train bigger model.</li>
+          <li>Train longer/better optimization algorithm (like Momentum, RMSprop, Adam).</li>
+          <li>Find better NN architecture/hyperparameters search.</li>
+        </ul>
+      </li>
+      <li>If <strong>variance</strong> is large you have these options:
+        <ul>
+          <li>Get more training data.</li>
+          <li>Regularization (L2, Dropout, data augmentation).</li>
+          <li>Find better NN architecture/hyperparameters search.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="error-analysis">Error Analysis</h2>
+
+<h3 id="carrying-out-error-analysis">Carrying out error analysis</h3>
+
+<ul>
+  <li><mark><strong>Error Analysis</strong></mark> = manually examining mistakes that your algorithm is making can give you insight what to do next.</li>
+  <li>
+    <p><strong>Example</strong>: in cat recognition, there are some factors affecting <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> Consider a <mark>table <strong>ERROR ANALYSIS</strong></mark> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> Evaluate multiple ideas in parallel,</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Dog</th>
+          <th>Great Cats</th>
+          <th>blurry</th>
+          <th>Instagram filters</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>✓</td>
+          <td> </td>
+          <td> </td>
+          <td>✓</td>
+          <td>Pitbull</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>✓</td>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td>Rainy day at zoo</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td> </td>
+          <td>✓</td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>….</td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><strong>% totals</strong></td>
+          <td><strong>8%</strong></td>
+          <td><strong>43%</strong></td>
+          <td><strong>61%</strong></td>
+          <td><strong>12%</strong></td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>We focus on <em>Great Cats</em> and <em>blurry</em> (have much influence).</li>
+    </ul>
+  </li>
+  <li><mark>To carry out error analysis</mark> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> you should find a set of mislabeled examples in dev set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> look at mislabeled: False Positive or False Negative (number of errors) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> decide if to create a new category?</li>
+</ul>
+
+<h3 id="cleaning-up-incorrectly-labaled-data">Cleaning up incorrectly labaled data</h3>
+
+<ul>
+  <li><strong>In training</strong>: DL algo is robust to random errors <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> we can ignore them!
+    <ul>
+      <li>However, DL algo is LESS robust to systematic errors.</li>
+    </ul>
+  </li>
+  <li><strong>Solutions</strong>: Using table Error Analysis to decide what types of error to focus in the next step (base of their fraction of errors in the total of errors).</li>
+  <li>(Recall) <mark>The purpose of <strong>dev set</strong> is to help you select between 2 classifier A and B</mark>.</li>
+  <li><strong>If you decide to fix labels</strong>:
+    <ol>
+      <li>Apply the <mark>same process to dev and test sets</mark> and make sure they come from the same distribution!</li>
+      <li>Examine <strong>also</strong> on examples got <strong>right</strong> (not only on the ones got wrong) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> otherwise, we have overfitting problem!</li>
+      <li>Train vs dev/test may have different distribution <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> <strong>No need</strong> to be corrected mislabeled on training set!</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="when-starting-a-new-project">When starting a new project?</h3>
+
+<p><mark><strong>Advice</strong></mark>: Build your first system <strong>quickly</strong> and then iterate!!</p>
+
+<ol>
+  <li>Quickly set up dev/test sets + metric.</li>
+  <li>Build initial system quickly.</li>
+  <li>Check bias analysis and Error analysis <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> Priopritize the next step!</li>
+</ol>
+
+<h2 id="mismatched-training-and-devtest-set">Mismatched training and dev/test set</h2>
+
+<h3 id="training--testing-on-different-distribution">Training &amp; testing on different distribution</h3>
+
+<ul>
+  <li>Example: <strong>training</strong> (photos from internet, 200K), <strong>dev &amp; test</strong> (photos from phone, 4K).</li>
+  <li><strong>Shouldn’t</strong>: Shufflt all 204K and split into train/dev/test!</li>
+  <li><mark><strong>Should</strong></mark>:
+    <ul>
+      <li>Train - 200K (web) + 2K (mobile).</li>
+      <li>Dev = Test = 0.5K (mobile).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="bias-and-variance-with-mismatched-data-dist">Bias and Variance with mismatched data dist</h3>
+
+<ul>
+  <li>Sometimes, <mark>dev err &gt; training err</mark> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> (possibly) the data in dev is <strong>more difficult</strong> to predict than the data in training.</li>
+  <li>When comming from training err to dev err:
+    <ol>
+      <li>The algo saw data in training set but not in dev set.</li>
+      <li>The distribution of data in dev set is different!</li>
+    </ol>
+  </li>
+  <li><strong>IDEA</strong>: create a new <mark>"train-dev" set</mark> which has the same distribution as training data but not used for training.</li>
+  <li><mark><strong>Keys to be considered</strong></mark>: Human error, Train error, Train-dev error, Dev error, Test error:
+    <ul>
+      <li><a href="#avoidable-bias"><strong>Avoidable bias</strong></a> = <em>train</em> - <em>human</em>.</li>
+      <li><strong>Variance problem</strong> = <em>train-dev</em> - <em>train</em></li>
+      <li><strong>Data mismatch</strong> = <em>dev</em> - <em>train-dev</em></li>
+      <li><strong>Overfitting to dev set</strong> = <em>test</em> - <em>dev</em></li>
+    </ul>
+  </li>
+  <li>If there is a <strong>huge gap between dev &amp; test err</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> overtune to the dev set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> may need to find a bigger dev set!</li>
+  <li><strong>Example 1</strong>: A high <em>variance problem</em>! (train/train-dev <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> big, train-dev/dev <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> small)
+    <ul>
+      <li>Human error: 0%</li>
+      <li>Train error: <strong>1%</strong></li>
+      <li>Train-dev error: <strong>9%</strong></li>
+      <li>Dev error: 10%</li>
+    </ul>
+  </li>
+  <li><strong>Example 2</strong>: <em>data mismatch problem</em> (train/train-dev <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> small, train-dev/dev <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> big)
+    <ul>
+      <li>Human error: 0%</li>
+      <li>Train error: <strong>1%</strong></li>
+      <li>Train-dev error: <strong>1.5%</strong></li>
+      <li>Dev error: <strong>10%</strong></li>
+    </ul>
+  </li>
+  <li><strong>Example 3</strong>: <em>avoidable bias problem</em> (because training err is much worse than human level, others are small)
+    <ul>
+      <li>Human error: <strong>0%</strong></li>
+      <li>Train error: <strong>10%</strong></li>
+      <li>Train-dev error: 11%</li>
+      <li>Dev error: 12%</li>
+    </ul>
+  </li>
+  <li><strong>Example 4</strong>: <em>Avoidable bias problem</em> and <em>mismatch problem</em>. (human/train <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> big, train-dev/dev <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> big)
+    <ul>
+      <li>Human error: <strong>0%</strong></li>
+      <li>Train error: <strong>1%</strong></li>
+      <li>Train-dev error: <strong>1.5%</strong></li>
+      <li>Dev error: <strong>10%</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Remark</strong>: most of the time, the errs are decreasing from <em>human</em> to <em>test</em>. However if (sometimes) <em>dev</em> &gt; <em>train-dev</em>, we rewrite all above errors in to a new table like this,</p>
+
+    <p class="img-80 pop"><img src="/img/post/mooc/dl/mismatch.jpg" alt="Error table" />
+<em>Error table. Image from the course.</em></p>
+
+    <ul>
+      <li>We find <strong>by hand</strong> 2 6% errors to consider the quality of dev/test err. In the figure, your figure is infact GOOD!</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="addressing-data-mismatch">Addressing data mismatch</h3>
+
+<ul>
+  <li>Addressing data mismatch (<em>don’t garantee it will work but you can try</em>):
+    <ul>
+      <li>Carry out manually error analysis <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> try to understand difference between training and dev/test errors.</li>
+      <li>Make the training data more similar or collect more data similar to dev/test set.</li>
+    </ul>
+  </li>
+  <li><mark><strong>Artificial data synthesis</strong></mark>:
+    <ul>
+      <li>“<em>the quick brown fox jumps over the lazy dog</em>” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> shortest sentence contains all A-Z letters in English.</li>
+      <li>Create manually data (combine 2 different types of data). However, BE CAREFUL if one of 2 data is much smaller to the other. It may be overfitting to the smaller!</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="learning-from-multiple-tasks">Learning from multiple tasks</h2>
+
+<h3 id="transfer-learning">Transfer learning</h3>
+
+<ul>
+  <li><strong>IDEA</strong>: already trained on 1 task (<em>Task A</em>) + don’t have enough data on the current task (<em>Task B</em>) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> we can apply the trained network on the current one.</li>
+</ul>
+
+<p class="img-90 pop"><img src="/img/post/mooc/dl/transfer-learning.jpg" alt="Transfer learning" />
+<em>Transfer learning. Image from the course.</em></p>
+
+<ul>
+  <li>To do transfer learning, delete the last layer of NN and it’s weights and:
+    <ol>
+      <li>Option 1: if you <strong>have a small data set</strong> - keep all the other weights as a fixed weights. Add a new last layer(-s) and initialize the new layer weights and feed the new data to the NN and learn the new weights.</li>
+      <li>Option 2: if you <strong>have enough data</strong> you can retrain all the weights.</li>
+    </ol>
+  </li>
+  <li><strong>Pretraining</strong> = training on task A.</li>
+  <li><strong>Fine-tuning</strong> = using pretrained weights + use new data to train task B.</li>
+  <li>This idea is useful because some of layers of trained NN contain helpful information for the new problem.</li>
+  <li><mark><strong>Transfer learning makes sense when</strong></mark> (e.g. from A to B):
+    <ol>
+      <li>Task A and B have the same input X.</li>
+      <li>You have a lot more data for task A than task B.</li>
+      <li>Low level features from A could be helpful for learning B.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="multi-task-learning">Multi-task learning</h3>
+
+<ul>
+  <li>1 NN do several things at the same time and each of these tasks helps hopefully all of the other tasks!</li>
+  <li><strong>Example</strong>: Autonomous driving example <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> Detect several things (not only 1) at the same time like: pedestrians, other cars, stop signs, traffic lights,…</li>
+</ul>
+
+<p class="img-80 pop"><img src="/img/post/mooc/dl/multi-task.jpg" alt="Multi-task learning" />
+<em>Multi-task learning. Image from the course.</em></p>
+
+<ul>
+  <li>We use <strong>Logistic Regression</strong> for the last layer. It’s DIFFERENT from <strong>softmax regression</strong> because in this case, we need to determine more than 2 labels!</li>
+  <li>If there are some infos unclear in Y (e.g. don’t know if there is a traffic light or not?), we consider only the rest and just ignore the unclear!</li>
+  <li><mark><strong>Multi-task makes sense when</strong></mark> (e.g. from A to B):
+    <ol>
+      <li>Training on a set of tasks that could benefit from having shred lover-level features.</li>
+      <li>Usually: amount of data you have for each task is quite similar.</li>
+      <li>Can train a big enough NN to do well on all the task.</li>
+    </ol>
+  </li>
+  <li>In general (have ENOUGH DATA), multi-task gives better performances!</li>
+  <li><strong>Other remarks</strong>:
+    <ul>
+      <li>Multi-task learning (usually) works good in <strong>object detection</strong>.</li>
+      <li>(Usually) transfer learning is USED MORE OFTEN (an better) than multi task learning!</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="end-to-end-deep-learning">End-to-end deep learning</h2>
+
+<ul>
+  <li>There have been some data processing system require multiple stages of processing. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> <mark>End-to-end does take all of them into 1 NN</mark>.</li>
+  <li>
+    <p><strong>Example</strong>: speech recognition from English to French: this case, end-to-end works better than separated problems because it has enough data!</p>
+
+    <p class="img-90 pop"><img src="/img/post/mooc/dl/end-to-end.jpg" alt="End to end learning" />
+<em>End-to-end learning. Image from the course.</em></p>
+  </li>
+  <li><strong>Example</strong>: auto open gate system: in this case, separated task is better end-to-end.
+    <ol>
+      <li>Determine the head.</li>
+      <li>Determine the name.</li>
+    </ol>
+  </li>
+  <li><mark>When end-to-end works, it works very well!</mark></li>
+  <li><strong>Pros &amp; Cons</strong>:
+    <ul>
+      <li><strong>Pros</strong>:
+        <ul>
+          <li>Let the data speaks.</li>
+          <li>Let hand-designing of components needed.</li>
+        </ul>
+      </li>
+      <li><strong>Cons</strong>:
+        <ul>
+          <li>May need a lot of data.</li>
+          <li>Excludes potentially useful hand-designing components.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>If having enough data <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> can think of using end-to-end!</li>
+  <li><mark><strong>Advice</strong></mark>: carefully choose what type of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X \to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> mapping <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇐</mo></mrow><annotation encoding="application/x-tex">\Leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇐</span></span></span></span> depends on what tasks you can get data for!</li>
+</ul>
+
+<p>👉 <strong>Course 4</strong> – <a href="/deeplearning-ai-course-4">Structuring Machine Learning Projects</a>.</p>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/mooc/2020-05-16-deeplearning-ai-course-3.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'DL 3 - Structuring ML Projects'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

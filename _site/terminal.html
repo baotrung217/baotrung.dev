@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/terminal" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Terminals
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Terminals" />
+  
+
+  
+    <meta property="og:description" content="Windows Linux Guake terminal MacOS Zsh Zsh (Linux) Install Zsh + oh-my-zsh Plugins spaceship-prompt theme Fonts A collection of console terminals in serveral operation systems. For bash command lines, check this note. 👉 Bash Command Lines. Windows I use Windows Terminal: my setting file, read this tut for more. #...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/terminal" />
+    <link rel="canonical" href="http://localhost:4000/terminal" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/terminal.svg">
+            </div>
+          
+          <h1 class="post-title">
+            Terminals
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              01 May 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#windows" id="markdown-toc-windows">Windows</a></li>
+  <li><a href="#linux" id="markdown-toc-linux">Linux</a>    <ul>
+      <li><a href="#guake-terminal" id="markdown-toc-guake-terminal">Guake terminal</a></li>
+    </ul>
+  </li>
+  <li><a href="#macos" id="markdown-toc-macos">MacOS</a>    <ul>
+      <li><a href="#zsh" id="markdown-toc-zsh">Zsh</a></li>
+    </ul>
+  </li>
+  <li><a href="#zsh-linux" id="markdown-toc-zsh-linux">Zsh (Linux)</a>    <ul>
+      <li><a href="#install-zsh--oh-my-zsh" id="markdown-toc-install-zsh--oh-my-zsh">Install Zsh + oh-my-zsh</a></li>
+      <li><a href="#plugins" id="markdown-toc-plugins">Plugins</a></li>
+      <li><a href="#spaceship-prompt-theme" id="markdown-toc-spaceship-prompt-theme">spaceship-prompt theme</a></li>
+      <li><a href="#fonts" id="markdown-toc-fonts">Fonts</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<p>A collection of console terminals in serveral operation systems. For <strong>bash command lines</strong>, check <a href="/bash-command-line">this note</a>.</p>
+
+<p>👉 <a href="/bash-command-line">Bash Command Lines</a>.</p>
+
+<h2 id="windows">Windows</h2>
+
+<p>I use <a href="https://github.com/microsoft/terminal">Windows Terminal</a>: <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/windows/windows_terminal/settings.json">my setting file</a>, read <a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/profile-settings">this tut</a> for more.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># where windows terminal setting file locates?</span>
+C/Users/dinha/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+</code></pre></div></div>
+
+<p>Dracular theme? Follow <a href="https://draculatheme.com/windows-terminal">this tut</a>.</p>
+
+<p>Drop-down (quake style) whenever <kbd>Ctrl</kbd> + <kbd>~</kbd>? Using <a href="https://github.com/flyingpie/windows-terminal-quake">this app</a> + this <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/windows/windows_terminal/windows-terminal-quake.json">setting file</a>. Don’t forget to put it in a fixed location and make it starting with your windows</p>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#uFnKKZFrTKsacOaQozQj">
+    Old options 
+  </button>
+  <div id="uFnKKZFrTKsacOaQozQj" class="collapse multi-collapse box-content ">
+    <div>
+      <p><a href="https://cmder.net">cmder</a> (drop-down): <a href="https://github.com/dinhanhthi/scripts/tree/master/settings/windows/cmder">my setting files</a>.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="linux">Linux</h2>
+
+<h3 id="guake-terminal">Guake terminal</h3>
+
+<ul>
+  <li><a href="http://guake-project.org">Download guake terminal</a></li>
+  <li>Install <a href="https://ohmyz.sh/">Zsh</a>, follow <a href="#zsh">this note</a>.</li>
+  <li>
+    <p>Save/Restore settings:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># save settings</span>
+guake <span class="nt">--save-preferences</span> ~/Downloads/guake_prefs
+<span class="c"># load settings</span>
+guake <span class="nt">--restore-preferences</span> ~/Downloads/guake_prefs
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="macos">MacOS</h2>
+
+<p>Using <a href="https://www.iterm2.com/"><strong>iTerms2</strong></a>. Download its settings. Below is the guide of making iTerms2 working like Guake.</p>
+
+<ol>
+  <li><em>Preferences</em> &gt; Tab <em>Keys</em> &gt; <em>Hotkey</em> &gt; tick on <em>Show/ hide all windows with a system-wide hotkey</em> &gt; choose key combination (<kbd>Cmd</kbd> + <kbd>~</kbd>).</li>
+  <li><em>Preferences</em> &gt; <em>Profiles</em> &gt; <em>Default</em> &gt; tab <em>Windows</em> &gt; set <em>Style</em> to <em>Full-Width Top of Screen</em> and <em>Screen</em> to <em>Screen with Cursor</em>.</li>
+  <li><em>Preferences</em> &gt; <em>Appearance</em> &gt; check <em>Exclude from Dock and ⌘-Tab Switcher</em></li>
+  <li>Run on startup: <em>System Preferences</em> &gt; <em>Users and Groups</em> &gt; <em>Login Items</em> &gt; <em>[+]</em> &gt; choose <em>iTerm</em>.</li>
+</ol>
+
+<h3 id="zsh">Zsh</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CLI tools for Xcode</span>
+xcode-select <span class="nt">-r</span>
+xcode-select —-install
+
+<span class="c"># install hombrew</span>
+/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h2 id="zsh-linux">Zsh (Linux)</h2>
+
+<p>👉 Check <a href="/docker-wsl2-windows">WSL2 + Windows + Windows Terminal</a></p>
+
+<h3 id="install-zsh--oh-my-zsh">Install Zsh + oh-my-zsh</h3>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check is installed</span>
+zsh <span class="nt">--version</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install (linux)</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>zsh
+
+<span class="c"># install (macos - integrated)</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># make zsh default bash</span>
+chsh <span class="nt">-s</span> <span class="si">$(</span>which zsh<span class="si">)</span> <span class="c"># log out &amp; log in</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check</span>
+<span class="nb">echo</span> <span class="nv">$SHELL</span> <span class="c"># /bin/zsh  or similar</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install oh-my-zsh</span>
+sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h3 id="plugins">Plugins</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># PLUGINS</span>
+<span class="c"># zsh-autosuggestions</span>
+git clone https://github.com/zsh-users/zsh-autosuggestions <span class="k">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="k">}</span>/plugins/zsh-autosuggestions
+
+<span class="c"># zsh-syntax-highlighting</span>
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="k">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="k">}</span>/plugins/zsh-syntax-highlighting
+</code></pre></div></div>
+
+<p>After installing <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">plugins</a>, put them in <code class="language-plaintext highlighter-rouge">~/.zshrc</code>,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">plugins</span><span class="o">=(</span>git docker docker-compose zsh-syntax-highlighting dnf npm<span class="o">)</span>
+<span class="c"># for me</span>
+<span class="c"># plugins=(git docker docker-compose npm ruby python emoji)</span>
+</code></pre></div></div>
+
+<h3 id="spaceship-prompt-theme">spaceship-prompt theme</h3>
+
+<p>This is <mark><strong>my choice</strong></mark>. <a href="https://github.com/denysdovhan/spaceship-prompt">Source code</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># need to install oh-my-zsh first</span>
+git clone https://github.com/denysdovhan/spaceship-prompt.git <span class="s2">"</span><span class="nv">$ZSH_CUSTOM</span><span class="s2">/themes/spaceship-prompt"</span>
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$ZSH_CUSTOM</span><span class="s2">/themes/spaceship-prompt/spaceship.zsh-theme"</span> <span class="s2">"</span><span class="nv">$ZSH_CUSTOM</span><span class="s2">/themes/spaceship.zsh-theme"</span>
+</code></pre></div></div>
+
+<p>Set <code class="language-plaintext highlighter-rouge">ZSH_THEME="spaceship"</code> in your <code class="language-plaintext highlighter-rouge">.zshrc</code>.</p>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#tvUJXlpjwddEcCOHBzBi">
+    powerlevel10k (I don’t use it) 
+  </button>
+  <div id="tvUJXlpjwddEcCOHBzBi" class="collapse multi-collapse box-content ">
+    <div>
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># theme powerlevel10k</span>
+git clone https://github.com/romkatv/powerlevel10k.git <span class="k">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="k">}</span>/themes/powerlevel10k
+<span class="c"># after installing</span>
+p10k configure
+</code></pre></div>      </div>
+    </div>
+  </div>
+</div>
+
+<h3 id="fonts">Fonts</h3>
+
+<p>Install font <strong>Source Code Pro</strong>:</p>
+
+<div class="hide-show-box">
+<button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#box1ct">
+Show the code
+</button>
+<div id="box1ct" class="collapse multi-collapse box-content">
+    <ol class="mb-3 pl-3">
+      <li>Follow instruction <a href="https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation">here</a>. If some folders don’t exist, create them!
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+<span class="nb">mv </span>PowerlineSymbols.otf ~/.local/share/fonts/
+fc-cache <span class="nt">-vf</span> ~/.local/share/fonts/
+<span class="nb">mv </span>10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+</code></pre></div>        </div>
+      </li>
+      <li>Download <a href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro</a> and move all downloaded otf fonts to
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>SourceCode-<span class="k">*</span> ~/.local/share/fonts/
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<p>Powerline font,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install fonts-powerline
+</code></pre></div></div>
+
+<p>In terminal, choose the corresponding installed fonts.</p>
+
+<p>Add <strong>alias</strong> to <code class="language-plaintext highlighter-rouge">~/.zshrc</code> (search “alias” to find the place to put).</p>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2020-05-01-terminal.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Terminals'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

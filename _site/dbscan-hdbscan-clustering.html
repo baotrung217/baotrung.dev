@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/dbscan-hdbscan-clustering" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | DBSCAN / HDBSCAN Clustering
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="DBSCAN / HDBSCAN Clustering" />
+  
+
+  
+    <meta property="og:description" content="What? DBSCAN HDBSCAN When? In Code DBSCAN with Scikit-learn HDBSCAN HDBSCAN and scikit-learn Reference What? The key idea is that for each point of a cluster, the neighborhood of a given radius has to contain at least a minimum number of points. DBSCAN “DBSCAN” = Density-based-spatial clustering of application with...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/dbscan-hdbscan-clustering" />
+    <link rel="canonical" href="http://localhost:4000/dbscan-hdbscan-clustering" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" async >
+  <script>
+    $("script[type='math/tex']").replaceWith(function() {
+        var tex = $(this).text();
+        return katex.renderToString(tex, {displayMode: false});
+    });
+
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        var tex = $(this).html();
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    });
+  </script>
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/clustering.png">
+            </div>
+          
+          <h1 class="post-title">
+            DBSCAN / HDBSCAN Clustering
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#clustering">
+                    clustering
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#density-based-clustering">
+                    density based clustering
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              05 Mar 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#what" id="markdown-toc-what">What?</a>    <ul>
+      <li><a href="#dbscan" id="markdown-toc-dbscan">DBSCAN</a></li>
+      <li><a href="#hdbscan" id="markdown-toc-hdbscan">HDBSCAN</a></li>
+    </ul>
+  </li>
+  <li><a href="#when" id="markdown-toc-when">When?</a></li>
+  <li><a href="#in-code" id="markdown-toc-in-code">In Code</a>    <ul>
+      <li><a href="#dbscan-with-scikit-learn" id="markdown-toc-dbscan-with-scikit-learn">DBSCAN with Scikit-learn</a></li>
+      <li><a href="#hdbscan-1" id="markdown-toc-hdbscan-1">HDBSCAN</a>        <ul>
+          <li><a href="#hdbscan-and-scikit-learn" id="markdown-toc-hdbscan-and-scikit-learn">HDBSCAN and scikit-learn</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="what">What?</h2>
+
+<p>The key idea is that for each point of a cluster, the neighborhood of a given radius has to contain at least a minimum number of points.</p>
+
+<h3 id="dbscan">DBSCAN</h3>
+
+<ul>
+  <li>“DBSCAN” = Density-based-spatial clustering of application with noise.</li>
+  <li>Separate clusters of <mark>high density from ones of low density</mark>.</li>
+  <li>Can sort data into clusters of varying shapes.</li>
+  <li><strong>Input</strong>: set of points &amp; neighborhood N &amp; minpts (density)</li>
+  <li><strong>Output</strong>: clusters with density (+ noises)</li>
+  <li>Each point is either:
+    <ul>
+      <li>core point: has at least minpts points in its neighborhood.</li>
+      <li>border point: not a core but has at least 1 core point in its neighborhoods.</li>
+      <li>noise point: not a core or border point.</li>
+    </ul>
+  </li>
+  <li><strong>Phase</strong>:
+    <ol>
+      <li>Choose a point → it’s a core point?
+        <ol>
+          <li>If yes → expand → check core / check border</li>
+          <li>If no → form a cluster</li>
+        </ol>
+      </li>
+      <li>Repeat to form other clusters</li>
+      <li>Eliminate noise points.</li>
+    </ol>
+  </li>
+  <li><strong>Pros</strong>:
+    <ul>
+      <li>Discover any number of clusters (different from <a href="/k-means-clustering">K-Means</a> which need an input of number of clusters).</li>
+      <li>Cluster of varying sizes and shapes.</li>
+      <li>Detect and ignore outliers.</li>
+    </ul>
+  </li>
+  <li><strong>Cons</strong>:
+    <ul>
+      <li>Sensitive → choice of neighborhood parameters (eg. If minpts is too small → wrong noises)</li>
+      <li>Produce noise: unclear → how to calculate metric indexes when there is noise.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="hdbscan">HDBSCAN</h3>
+
+<p>High DBSCAN.</p>
+
+<h2 id="when">When?</h2>
+
+<ul>
+  <li>We are not sure the number of clusters (like in <a href="/k-means-clustering">KMeans</a>)</li>
+  <li>There are outliers or noises in data.</li>
+  <li>Arbitrary cluster’s shape.</li>
+</ul>
+
+<h2 id="in-code">In Code</h2>
+
+<h3 id="dbscan-with-scikit-learn">DBSCAN with Scikit-learn</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+<span class="n">clr</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="flex-auto-equal-2">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clr</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">clr</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># or
+</span><span class="n">clr</span><span class="p">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>  </div>
+</div>
+
+<p><strong>Parameters</strong> (<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html">others</a>):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">min_samples</code>: min number of samples to be called “dense”</li>
+  <li><code class="language-plaintext highlighter-rouge">eps</code>: max distance between 2 samples to be in the same cluster. Its unit/value based on the unit of data.</li>
+  <li>Higher <code class="language-plaintext highlighter-rouge">min_samples</code> + lower <code class="language-plaintext highlighter-rouge">eps</code> indicates higher density necessary to form a cluster.</li>
+</ul>
+
+<p><strong>Attributes</strong>:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">clr.labels_</code>: clusters’ labels.</li>
+</ul>
+
+<h3 id="hdbscan-1">HDBSCAN</h3>
+
+<p>For a ref of paramaters, check <a href="https://hdbscan.readthedocs.io/en/latest/api.html">the API</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">hdbscan</span> <span class="kn">import</span> <span class="n">HDBSCAN</span>
+<span class="n">clr</span> <span class="o">=</span> <span class="n">HDBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_cluster_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">'euclidean'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">min_cluster_size</code>: <sup><a href="https://hdbscan.readthedocs.io/en/latest/parameter_selection.html#selecting-min-cluster-size " target="_blank">[ref]</a></sup>
+ the smallest size grouping that you wish to consider a cluster.</li>
+  <li><code class="language-plaintext highlighter-rouge">min_samples</code>: <sup><a href="https://hdbscan.readthedocs.io/en/latest/parameter_selection.html#selecting-min-samples " target="_blank">[ref]</a></sup>
+ The number of samples in a neighbourhood for a point to be considered a core point. The larger value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> the more points will be declared as noise &amp; clusters will be restricted to progressively more dense areas.</li>
+  <li>
+    <p>Working with DTW (Dynamic Time Warping) (<a href="https://dtaidistance.readthedocs.io/en/latest/usage/dtw.html#dtw-between-set-of-series">more</a>): <code class="language-plaintext highlighter-rouge">metric='precomputed'</code> <sup><a href="https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html?highlight=precomputed " target="_blank">[ref]</a></sup></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dtaidistance</span> <span class="kn">import</span> <span class="n">dtw</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">.</span><span class="n">distance_matrix_fast</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="c1"># something likes that
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">HDBSCAN</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s">'precomputed'</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#gQpAetnEswYvCUUYaGfM">
+    Examples to understand <code class="language-plaintext highlighter-rouge">min_cluster_size</code> and <code class="language-plaintext highlighter-rouge">min_samples</code> 
+  </button>
+  <div id="gQpAetnEswYvCUUYaGfM" class="collapse multi-collapse box-content ">
+    <div>
+
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">min_cluster_size=12</code> &amp; <code class="language-plaintext highlighter-rouge">min_samples=2</code> gives less noises than <code class="language-plaintext highlighter-rouge">min_cluster_size=12</code> &amp; <code class="language-plaintext highlighter-rouge">min_samples=3</code>: It’s because we need at least <code class="language-plaintext highlighter-rouge">min_samples</code> points to determine a core points. That’s why the bigger <code class="language-plaintext highlighter-rouge">min_samples</code>, the harder to form a cluster, or the more chances we have more noises.</li>
+        <li><code class="language-plaintext highlighter-rouge">min_cluster_size=7</code> &amp; <code class="language-plaintext highlighter-rouge">min_sampls=3</code> gives less noises than <code class="language-plaintext highlighter-rouge">min_cluster_size=12</code> &amp; <code class="language-plaintext highlighter-rouge">min_samples=3</code>: It’s because we need at least <code class="language-plaintext highlighter-rouge">min_cluster_size</code> points to determine a cluster. That’s why the bigger <code class="language-plaintext highlighter-rouge">min_cluster_size</code>, the harder the form a cluster, or the more chances we have more noise.</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<p><strong>Attributes</strong>:</p>
+
+<ul>
+  <li>Label <code class="language-plaintext highlighter-rouge">-1</code> means that this sample is not assigned to any cluster, or noise!</li>
+  <li><code class="language-plaintext highlighter-rouge">clt.labels_</code>: labels of clusters (including <code class="language-plaintext highlighter-rouge">-1</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">clt.probabilities_</code>: scores (between 0 and 1). <code class="language-plaintext highlighter-rouge">0</code> means sample is not in cluster at all (noise), <code class="language-plaintext highlighter-rouge">1</code> means the heart of cluster.</li>
+</ul>
+
+<h4 id="hdbscan-and-scikit-learn">HDBSCAN and scikit-learn</h4>
+
+<p>Note that, HDBSCAN <a href="https://github.com/scikit-learn-contrib/hdbscan/blob/master/hdbscan/hdbscan_.py#L642">is built based on scikit-learn</a> but it doesn’t have an <code class="language-plaintext highlighter-rouge">.predict()</code> method as other clustering methods does on scikit-learn. Below code gives you a new version of HDBSCAN (<code class="language-plaintext highlighter-rouge">WrapperHDBSCAN</code>) which has an additional <code class="language-plaintext highlighter-rouge">.predict()</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">hdbscan</span> <span class="kn">import</span> <span class="n">HDBSCAN</span>
+
+<span class="k">class</span> <span class="nc">WrapperHDBSCAN</span><span class="p">(</span><span class="n">HDBSCAN</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">labels_</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><strong>Official doc</strong> – <a href="https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html">How HDBSCAN works?</a></li>
+</ul>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/ml/clustering/2020-03-05-dbscan-hdbscan-clustering.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'DBSCAN / HDBSCAN Clustering'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/python-installation" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Python Installation
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Python Installation" />
+  
+
+  
+    <meta property="og:description" content="Windows Jupyer Notebook MacOS Linux (Ubuntu) Make right version Check GPU pip Update pip Install packages with pip pip vs conda? Python virtual environnement Conda Install / Update conda Install packages with conda Environment Kernel 2 &amp;amp; 3 for Jupyter Notebook Conda Revisions Error? Windows Update 11/Sep/20: Install python on...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/python-installation" />
+    <link rel="canonical" href="http://localhost:4000/python-installation" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #a0ffa0;">
+              <i class="fab fa-python"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Python Installation
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#101">
+                    101
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#installation">
+                    installation
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python">
+                    python
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#windows" id="markdown-toc-windows">Windows</a>    <ul>
+      <li><a href="#jupyer-notebook" id="markdown-toc-jupyer-notebook">Jupyer Notebook</a></li>
+    </ul>
+  </li>
+  <li><a href="#macos" id="markdown-toc-macos">MacOS</a></li>
+  <li><a href="#linux-ubuntu" id="markdown-toc-linux-ubuntu">Linux (Ubuntu)</a>    <ul>
+      <li><a href="#make-right-version" id="markdown-toc-make-right-version">Make right version</a></li>
+    </ul>
+  </li>
+  <li><a href="#check-gpu" id="markdown-toc-check-gpu">Check GPU</a></li>
+  <li><a href="#pip" id="markdown-toc-pip">pip</a>    <ul>
+      <li><a href="#update-pip" id="markdown-toc-update-pip">Update pip</a></li>
+      <li><a href="#install-packages-with-pip" id="markdown-toc-install-packages-with-pip">Install packages with pip</a></li>
+    </ul>
+  </li>
+  <li><a href="#pip-vs-conda" id="markdown-toc-pip-vs-conda"><code class="language-plaintext highlighter-rouge">pip</code> vs <code class="language-plaintext highlighter-rouge">conda</code>?</a></li>
+  <li><a href="#python-virtual-environnement" id="markdown-toc-python-virtual-environnement">Python virtual environnement</a></li>
+  <li><a href="#conda" id="markdown-toc-conda">Conda</a>    <ul>
+      <li><a href="#install--update-conda" id="markdown-toc-install--update-conda">Install / Update conda</a></li>
+      <li><a href="#install-packages-with-conda" id="markdown-toc-install-packages-with-conda">Install packages with conda</a></li>
+      <li><a href="#environment" id="markdown-toc-environment">Environment</a></li>
+      <li><a href="#kernel-2--3-for-jupyter-notebook" id="markdown-toc-kernel-2--3-for-jupyter-notebook">Kernel 2 &amp; 3 for Jupyter Notebook</a></li>
+      <li><a href="#conda-revisions" id="markdown-toc-conda-revisions">Conda Revisions</a></li>
+    </ul>
+  </li>
+  <li><a href="#error" id="markdown-toc-error">Error?</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="windows">Windows</h2>
+
+<p><strong>Update 11/Sep/20</strong>: Install python <a href="/docker-wsl2-windows">on WSL2</a> using <a href="#linux-ubuntu"><strong>Miniconda</strong></a>.</p>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#JokwSbxAgvKedyuMaosl">
+    Other options (directly install) 
+  </button>
+  <div id="JokwSbxAgvKedyuMaosl" class="collapse multi-collapse box-content ">
+    <div>
+      <p>Download and install <a href="https://www.anaconda.com/distribution/">Anaconda</a> or smaller version <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>.</p>
+
+      <div class="language-plaintext bg-gray highlighter-rouge"><div class="highlight"><pre class="highlight"><code># default installed dir
+C:\ProgramData\Anaconda3
+</code></pre></div>      </div>
+
+      <p>Add to <em>System Environment Variables</em>:</p>
+
+      <div class="language-plaintext bg-gray highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\ProgramData\Anaconda3
+C:\ProgramData\Anaconda3\Scripts
+</code></pre></div>      </div>
+
+      <p>If you don’t wanna use Anaconda and <a href="https://www.python.org/downloads/">install it by yourself</a>, add this:</p>
+
+      <div class="language-plaintext bg-gray highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Users\&lt;user&gt;\AppData\Roaming\Python\Python36\Scripts
+</code></pre></div>      </div>
+
+      <p>(<em>You can find <code class="language-plaintext highlighter-rouge">C:\...\Roaming</code> by typing <code class="language-plaintext highlighter-rouge">%appdata%</code> in the Windows Explorer’s navigation bar</em>)</p>
+
+      <p>App to run: <a href="https://cmder.net/">cmder</a> (use <a href="http://localhost:4000/files/cmderSetting.xml">this setting</a> file).</p>
+    </div>
+  </div>
+</div>
+
+<h3 id="jupyer-notebook">Jupyer Notebook</h3>
+
+<p>👉 <a href="/jupyter-notebook">Jupyter notebook note</a>.</p>
+
+<p>Anaconda contains JN in it, no need to install it again. <code class="language-plaintext highlighter-rouge">cd</code> to the folder you wanna work on and run</p>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RUN (after installing Anaconda)</span>
+python <span class="nt">-m</span> notebook
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If `ImportError: DLL load failed`</span>
+active base <span class="c"># active env "base" in anaconda</span>
+jupyter notebook
+</code></pre></div>  </div>
+</div>
+
+<p>The <code class="language-plaintext highlighter-rouge">-m</code> option allows you to execute a module or package as a script<sup><a href="https://www.quora.com/What-does-m-mean-in-the-terminal-command-Python-m-pip-install-openpyxl " target="_blank">[ref]</a></sup>
+.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If `import _ssl`, `ImportError`</span>
+<span class="nb">set </span><span class="nv">CONDA_DLL_SEARCH_MODIFICATION_ENABLE</span><span class="o">=</span>1
+python <span class="nt">-m</span> notebook
+</code></pre></div></div>
+
+<h2 id="macos">MacOS</h2>
+
+<p>By default, Python 2 is already installed on MacOS, you can check this by</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">--version</span>
+<span class="c"># to be sure, check if python3 is installed?</span>
+python3 <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h2 id="linux-ubuntu">Linux (Ubuntu)</h2>
+
+<p>Python is already installed on Ubuntu. You would like to install Anaconda, <a href="https://www.anaconda.com/distribution/">download and install</a> it.</p>
+
+<p>Wanna install <strong>Miniconda</strong> instead? 👉 Download<a href="https://docs.conda.io/en/latest/miniconda.html#linux-installers"> <code class="language-plaintext highlighter-rouge">.sh</code> file</a> and install inside Linux environement (including <a href="/docker-wsl2-windows">WSL2</a>).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ADD CONDA TO $PATH</span>
+
+nano ~/.profile
+<span class="c"># find where conda is installed and then</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/home/&lt;user&gt;/anaconda3/bin:<span class="nv">$PATH</span>
+<span class="nb">source</span> ~/.profile
+
+<span class="c"># check</span>
+which python
+<span class="c"># should return: /home/&lt;user&gt;/anaconda3/bin/python</span>
+
+<span class="c"># check version</span>
+conda <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="make-right-version">Make right version</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">python</span><span class="o">=</span>python3
+<span class="nb">alias </span><span class="nv">pip</span><span class="o">=</span>pip3
+<span class="c"># for ubuntu &gt;=20.04</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>python-is-python3
+<span class="c"># prevent Python 2 from being installed as a dependency of something</span>
+<span class="nb">sudo </span>apt-mark hold python2 python2-minimal python2.7 python2.7-minimal libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib
+</code></pre></div></div>
+
+<h2 id="check-gpu">Check GPU</h2>
+
+<p>👉 Read more on <a href="/pytorch#problem-with-cuda-version">note of pytorch</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># with pytorch
+</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'cuda is available? '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'device_count: '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">device_count</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'current device: '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">current_device</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'device name: '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># with tensorflow
+</span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Num GPUs Available: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)))</span>
+
+</code></pre></div></div>
+
+<h2 id="pip">pip</h2>
+
+<h3 id="update-pip">Update pip</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check pip version</span>
+pip <span class="nt">-V</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># update pip</span>
+easy_install <span class="nt">-U</span> pip
+</code></pre></div>  </div>
+</div>
+
+<ul>
+  <li>If you meet <code class="language-plaintext highlighter-rouge">AttributeError: 'NoneType' object has no attribute 'bytes'</code> when updating <code class="language-plaintext highlighter-rouge">pip</code>, check the version and make sure that there is only 1 pip on your computer and then use <code class="language-plaintext highlighter-rouge">easy_install -U pip</code> (don’t forget to <code class="language-plaintext highlighter-rouge">activate </code>)</li>
+  <li>If there is a problem with <code class="language-plaintext highlighter-rouge">python -m pip install --upgrade pip</code>, use <code class="language-plaintext highlighter-rouge">easy_install</code>!</li>
+</ul>
+
+<h3 id="install-packages-with-pip">Install packages with pip</h3>
+
+<p>Install <a href="https://pypi.org/project/pip/">pip</a> (It’s actually installed with Anaconda). If you wanna upgrade it to the latest version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--upgrade</span> pip <span class="c"># install for current user only</span>
+python <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip <span class="c"># need to run cmder as administrator</span>
+</code></pre></div></div>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#ARgUtKKuaYldcZAiKkAh">
+    AttributeError: ‘NoneType’ object 
+  </button>
+  <div id="ARgUtKKuaYldcZAiKkAh" class="collapse multi-collapse box-content ">
+    <div>
+
+      <p>First, <code class="language-plaintext highlighter-rouge">activate &lt;env&gt;</code> and then using <code class="language-plaintext highlighter-rouge">easy_install -U pip</code>. You can check the version of pip by <code class="language-plaintext highlighter-rouge">pip -V</code>.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LIST ALL INSTALLED PACKAGES</span>
+pip freeze
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># INSTALL A PACKAGE</span>
+pip <span class="nb">install</span> &lt;package&gt; <span class="c"># admin &lt;-- SHOULDN'T!!!</span>
+pip <span class="nb">install</span> <span class="nt">--user</span> &lt;package&gt; <span class="c"># current user only</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># REMOVE</span>
+pip uninstall &lt;package&gt;
+pip uninstall <span class="nt">--user</span> &lt;package&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CHECK VERSION OF A PACKAGE</span>
+pip show &lt;package&gt;
+</code></pre></div>  </div>
+</div>
+
+<p>If install packages with <code class="language-plaintext highlighter-rouge">pip</code>, they are installed in which environment of conda? Where <code class="language-plaintext highlighter-rouge">pip</code> is executed from.</p>
+
+<div class="d-md-flex">
+  <div class="language-bash flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code>which python
+which pip
+
+conda info <span class="nt">--envs</span>
+<span class="c"># or</span>
+<span class="c"># conda env list</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/c/ProgramData/Anaconda3/python
+/c/ProgramData/Anaconda3/Scripts/pip
+
+# conda environments:
+base                  *  C:\ProgramData\Anaconda3
+fastai                   C:\Users\thi\.conda\envs\fastai
+</code></pre></div>  </div>
+</div>
+
+<p>Install packages with requirement file,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div>
+
+<p>An example of requirement file,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">geopandas</span><span class="o">==</span>0.4.1
+<span class="nv">grpcio</span><span class="o">==</span>1.27.1
+grpcio-tools<span class="o">==</span>1.27.1
+<span class="nv">h5py</span><span class="o">==</span>2.10.0
+<span class="nv">isodate</span><span class="o">==</span>0.6.0
+<span class="nv">PyYAML</span><span class="o">==</span>5.3.1
+</code></pre></div></div>
+
+<p>Install a package from a git repository,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>git+https://github.com/TimeSynth/TimeSynth.git
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># version &lt;=</span>
+pip3 <span class="nb">install</span> <span class="nt">-U</span> <span class="s2">"pillow&lt;7"</span>
+</code></pre></div></div>
+
+<h2 id="pip-vs-conda"><code class="language-plaintext highlighter-rouge">pip</code> vs <code class="language-plaintext highlighter-rouge">conda</code>?</h2>
+
+<p>Differences:<sup><a href="https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/">[ref]</a></sup></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pip</code> installs <strong>python packages</strong> in <strong>any environment</strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">conda</code> installs <strong>any package</strong> in <strong>conda environments</strong>.</li>
+</ul>
+
+<p>Which one to be used?<sup><a href="https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/">[ref]</a></sup></p>
+
+<ul>
+  <li>If you installed Python using Anaconda or Miniconda, then use <code class="language-plaintext highlighter-rouge">conda</code> to install Python packages. If <code class="language-plaintext highlighter-rouge">conda</code> tells you the package you want doesn’t exist, then use <code class="language-plaintext highlighter-rouge">pip</code> (or try <code class="language-plaintext highlighter-rouge">conda-forge</code>, which has more packages available than the default conda channel).</li>
+  <li>If you installed Python any other way (from source, using <code class="language-plaintext highlighter-rouge">pyenv</code>, <code class="language-plaintext highlighter-rouge">virtualenv</code>, etc.), then use <code class="language-plaintext highlighter-rouge">pip</code> to install Python packages</li>
+</ul>
+
+<h2 id="python-virtual-environnement">Python virtual environnement</h2>
+
+<p>Main guide is <a href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments">here</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>python3-venv
+
+<span class="c"># cd to &lt;DIR&gt; where python venv stored</span>
+python3 <span class="nt">-m</span> venv &lt;DIR&gt;
+
+<span class="c"># activate</span>
+tutorial-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat <span class="c"># windows</span>
+<span class="nb">source</span> &lt;DIR&gt;/bin/activate <span class="c"># linux</span>
+
+<span class="c"># deactivate</span>
+deactivate
+</code></pre></div></div>
+
+<p>To detele, just remove the corresponding folder, i.e., <code class="language-plaintext highlighter-rouge">&lt;DIR&gt;</code>.</p>
+
+<h2 id="conda">Conda</h2>
+
+<h3 id="install--update-conda">Install / Update conda</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># INSTALL CONDA BY PIP (without Anaconda)</span>
+pip <span class="nb">install </span>conda
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UPDATE CONDA</span>
+conda update <span class="nt">-n</span> base <span class="nt">-c</span> defaults conda
+</code></pre></div></div>
+
+<p>If there is an error <code class="language-plaintext highlighter-rouge">TypeError: LoadLibrary() argument 1 must be str, not None</code> at the end of the log, try to activate the environment <code class="language-plaintext highlighter-rouge">base</code> before running above line.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>activate base <span class="c"># on Windows</span>
+<span class="nb">source </span>activate base <span class="c"># on MacOS</span>
+</code></pre></div></div>
+
+<h3 id="install-packages-with-conda">Install packages with conda</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># INSTALL</span>
+activate &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="c"># you need to activate an environment first</span>
+conda <span class="nb">install</span> &lt;package&gt; <span class="c"># install for &lt;env&gt; only</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UPDATE</span>
+acctivate &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="c"># choose an env first</span>
+conda update &lt;package&gt; <span class="c"># ud package in that env</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LIST ALL INSTALLED PACKAGES</span>
+conda list
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update packages listed in an env file to current env,</span>
+conda <span class="nb">env </span>update <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">-f</span> /path/to/&lt;file&gt;.yml
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># example of yml file</span>
+name: stats
+dependencies:
+    - <span class="nv">python</span><span class="o">=</span>3.6
+    - <span class="nv">geopandas</span><span class="o">==</span>0.4.1
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install packages with requirements.txt</span>
+conda <span class="nb">install</span> <span class="nt">--file</span> requirements.txt
+</code></pre></div></div>
+
+<h3 id="environment">Environment</h3>
+
+<p>Check an official doc <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">here</a> or <a href="https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533">this useful post</a>.</p>
+
+<p>Create a new environment with python version 3.7:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> &lt;env-name&gt; <span class="nv">python</span><span class="o">=</span>3.7 anaconda
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The same python version with current shell's Python interpreter</span>
+conda create <span class="nt">-n</span> &lt;env-name&gt; python
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># with addtional packages (python will be automatically installed)</span>
+conda create <span class="nt">-n</span> &lt;env-name&gt; &lt;package1&gt; &lt;package2&gt;
+<span class="c"># with version</span>
+conda create <span class="nt">-n</span> &lt;env-name&gt; &lt;package1&gt;<span class="o">=</span>1.16 &lt;package2&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># in different directory</span>
+conda create <span class="nt">--prefix</span> /path/to/&lt;env-name&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create from file &lt;file&gt;.yml</span>
+conda <span class="nb">env </span>create <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">-f</span> /path/to/&lt;file&gt;.yml
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone from another env</span>
+conda create <span class="nt">--name</span> &lt;cloned-env&gt; <span class="nt">--clone</span> &lt;<span class="nb">env</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<div class="alert alert-warning">
+
+  <p class="mb-3">Most of below commands are assumed to be run in an environment named <code class="language-plaintext highlighter-rouge">env</code> which is already activated. If you don’t activate any environment before, use an alternative instead. For example,</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda update pandas             <span class="c"># &lt;env&gt; activated</span>
+conda update <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> pandas    <span class="c"># &lt;env&gt; isn't activated</span>
+conda update <span class="nt">-p</span> /path/to/&lt;<span class="nb">env</span><span class="o">&gt;</span>  <span class="c"># &lt;env&gt; isn't in the default directory of conda</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">env export</span> <span class="nt">-f</span> &lt;file&gt;.yml                       <span class="c"># &lt;env&gt; activated &amp; current folder</span>
+conda <span class="nb">env export</span> <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">-f</span> /path/to/&lt;file&gt;.yml      <span class="c"># &lt;env&gt; isn't activated &amp; different folder</span>
+conda update <span class="nt">-p</span> /path/to/&lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">-f</span> /path/to/&lt;file&gt;.yml <span class="c"># &lt;env&gt; isn't in the default directory of conda &amp; different folder</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Activate an env</span>
+activate &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="c"># windows</span>
+<span class="nb">source </span>activate &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="c"># linux / macos</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DEACTIVE AN ENV</span>
+conda deactivate <span class="c"># Linux</span>
+deactivate <span class="c"># Windows</span>
+<span class="nb">source </span>deactivate <span class="c"># MacOS</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># REMOVE AN ENV</span>
+conda remove <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">--all</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SHOW LIST OF CURRENT ENV</span>
+conda info <span class="nt">--envs</span>
+<span class="c"># or</span>
+conda <span class="nb">env </span>list
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># EXPORT TO A ENV FILE</span>
+conda <span class="nb">env export</span> <span class="nt">-f</span> &lt;file&gt;.yml
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Update packages listed in an env file to current env,</span>
+conda <span class="nb">env </span>update <span class="nt">-n</span> &lt;<span class="nb">env</span><span class="o">&gt;</span> <span class="nt">-f</span> /path/to/&lt;file&gt;.yml <span class="nt">--prune</span>
+</code></pre></div></div>
+
+<h3 id="kernel-2--3-for-jupyter-notebook">Kernel 2 &amp; 3 for Jupyter Notebook</h3>
+
+<p>Check if <code class="language-plaintext highlighter-rouge">nb_conda_kernels</code> is installed by <code class="language-plaintext highlighter-rouge">conda list</code>. If not, install it by:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>nb_conda_kernels
+</code></pre></div></div>
+
+<p>If you are using <strong>Python 2</strong> and you wanna separate <strong>Python 3</strong>,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> py37 <span class="nv">python</span><span class="o">=</span>3.7 ipykernel <span class="c"># "py37" is a custom name</span>
+</code></pre></div></div>
+
+<p>If you are using <strong>Python 3</strong> and you wanna separate <strong>Python 2</strong>,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> py27 <span class="nv">python</span><span class="o">=</span>2.7 ipykernel <span class="c"># "py37" is a custom name</span>
+</code></pre></div></div>
+
+<p>Restart the Jupyter Notebook, the list of kernels is available under <strong>New</strong>.</p>
+
+<h3 id="conda-revisions">Conda Revisions</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check revisions</span>
+conda list <span class="nt">--revisions</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Go back to revision `1`,</span>
+conda <span class="nb">install</span> <span class="nt">--revision</span> 1
+</code></pre></div>  </div>
+</div>
+
+<h2 id="error">Error?</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 975: ordinal not</span>
+<span class="c"># solution: instead of</span>
+pip3 <span class="nb">install </span>sesd
+<span class="c"># use</span>
+<span class="nv">LC_ALL</span><span class="o">=</span>C.UTF-8 pip3 <span class="nb">install </span>sesd
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># conda: The following packages are not available from current channels:</span>
+<span class="c"># Solution 1: One can use pip in this case (the same env with conda)</span>
+<span class="c"># Solution 2:</span>
+conda <span class="nb">install</span> <span class="nt">-c</span> anaconda &lt;package&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The following required packages can not be built: * freetype (from matplotlib)</span>
+<span class="c"># try to use conda to install matplotlib</span>
+conda <span class="nb">install </span>matplotlib
+<span class="c"># it actually install the same thing as pip does on the same env</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dtaidistance: C-library is not available</span>
+pip <span class="nb">install</span> <span class="nt">-vvv</span> <span class="nt">--upgrade</span> <span class="nt">--force-reinstall</span> dtaidistance
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># zsh: command not found: conda</span>
+<span class="c"># Make sure your installation folder is already</span>
+<span class="c"># in the $PATH</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/home/thi/miniconda3/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div></div>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/python/2019-09-03-python-installation.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Python Installation'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

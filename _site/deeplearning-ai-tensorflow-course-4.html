@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/deeplearning-ai-tensorflow-course-4" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | TF 4 - Sequences, Time Series and Prediction
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="TF 4 - Sequences, Time Series and Prediction" />
+  
+
+  
+    <meta property="og:description" content="Sequences and prediction Time Series Train / Validation / Test Metrics Moving average and differencing Deep NN for Time Series Preparing features and labels Sequence bias Feeding windowed datasets into NN RNN for TS Shape of input to RNN Sequence to vector RNN Lambda layer Simple RNN LSTM Real-world time...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/deeplearning-ai-tensorflow-course-4" />
+    <link rel="canonical" href="http://localhost:4000/deeplearning-ai-tensorflow-course-4" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" async >
+  <script>
+    $("script[type='math/tex']").replaceWith(function() {
+        var tex = $(this).text();
+        return katex.renderToString(tex, {displayMode: false});
+    });
+
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        var tex = $(this).html();
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    });
+  </script>
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/tensorflow.svg">
+            </div>
+          
+          <h1 class="post-title">
+            TF 4 - Sequences, Time Series and Prediction
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#coursera">
+                    coursera
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#deeplearning-ai">
+                    deeplearning.ai
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#mooc">
+                    mooc
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#tensorflow">
+                    tensorflow
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              14 Oct 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#sequences-and-prediction" id="markdown-toc-sequences-and-prediction">Sequences and prediction</a>    <ul>
+      <li><a href="#time-series" id="markdown-toc-time-series">Time Series</a></li>
+      <li><a href="#train--validation--test" id="markdown-toc-train--validation--test">Train / Validation / Test</a></li>
+      <li><a href="#metrics" id="markdown-toc-metrics">Metrics</a></li>
+      <li><a href="#moving-average-and-differencing" id="markdown-toc-moving-average-and-differencing">Moving average and differencing</a></li>
+    </ul>
+  </li>
+  <li><a href="#deep-nn-for-time-series" id="markdown-toc-deep-nn-for-time-series">Deep NN for Time Series</a>    <ul>
+      <li><a href="#preparing-features-and-labels" id="markdown-toc-preparing-features-and-labels">Preparing features and labels</a></li>
+    </ul>
+  </li>
+  <li><a href="#sequence-bias" id="markdown-toc-sequence-bias">Sequence bias</a></li>
+  <li><a href="#feeding-windowed-datasets-into-nn" id="markdown-toc-feeding-windowed-datasets-into-nn">Feeding windowed datasets into NN</a></li>
+  <li><a href="#rnn-for-ts" id="markdown-toc-rnn-for-ts">RNN for TS</a>    <ul>
+      <li><a href="#shape-of-input-to-rnn" id="markdown-toc-shape-of-input-to-rnn">Shape of input to RNN</a></li>
+      <li><a href="#sequence-to-vector-rnn" id="markdown-toc-sequence-to-vector-rnn">Sequence to vector RNN</a></li>
+      <li><a href="#lambda-layer" id="markdown-toc-lambda-layer">Lambda layer</a></li>
+      <li><a href="#simple-rnn" id="markdown-toc-simple-rnn">Simple RNN</a></li>
+      <li><a href="#lstm" id="markdown-toc-lstm">LSTM</a></li>
+    </ul>
+  </li>
+  <li><a href="#real-world-time-series-data" id="markdown-toc-real-world-time-series-data">Real-world time series data</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>This is my note for the <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/">4th course</a> of <a href="https://www.coursera.org/specializations/tensorflow-in-practice">TensorFlow in Practice Specialization</a> given by <a href="http://deeplearning.ai/">deeplearning.ai</a> and taught by Laurence Moroney on Coursera.</p>
+
+<p>👉 Check the codes <a href="https://github.com/dinhanhthi/deeplearning.ai-courses/tree/master/TensorFlow%20in%20Practice">on my Github</a>.<br />
+👉 Official <a href="https://github.com/lmoroney/dlaicourse">notebooks</a> on Github.</p>
+
+<p>👉 Go to <a href="/deeplearning-ai-tensorflow-course-1">course 1 - Intro to TensorFlow for AI, ML, DL</a>.<br />
+👉 Go to <a href="/deeplearning-ai-tensorflow-course-2">course 2 - CNN in TensorFlow</a>.<br />
+👉 Go to <a href="/deeplearning-ai-tensorflow-course-3">course 3 - NLP in Tensorflow</a>.</p>
+
+<ul class="noindent">
+  <li><strong>Sequence models</strong>: focus on <em>time series</em> (there are others) – stock, weather,…</li>
+  <li>At the end, we wanna model <strong>sunspot actitivity cycles</strong> which is important to NASA and other space agencies.</li>
+  <li>Using RNN on time series data.</li>
+</ul>
+
+<h2 id="sequences-and-prediction">Sequences and prediction</h2>
+
+<h3 id="time-series">Time Series</h3>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-1/notebook_1_introduction_to_time_series.html">introduction to time series</a>. + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/Pzp5K/introduction-to-time-series">explaining video</a>. =&gt; How to create synthetic time series data + plot them.</p>
+
+<ul class="noindent">
+  <li>Time series is everywhere: stock prices, weather focasts, historical trends (Moore’s law),…</li>
+  <li><strong>Univariate</strong> TS and <strong>Miltivariate</strong> TS.</li>
+  <li>Type of things can we do with ML over TS:
+    <ul>
+      <li>Any thing has a time factor can be analysed using TS.</li>
+      <li>Predicting a focasting (eg. birth &amp; death in Japan -&gt; predict future for retirement, immigration, impacts…).</li>
+      <li><strong>Imputation</strong>: project back into the past.</li>
+      <li>Fill holes in the data.</li>
+      <li>Nomalies detecction (website attacks).</li>
+      <li>Spot patterns (eg. speed recognition).</li>
+    </ul>
+  </li>
+  <li>Common patterns in TS:
+    <ul>
+      <li>
+        <p><strong>Trend</strong>: a specific direcion that they’re moving in.</p>
+
+        <p class="img-50"><img src="/img/post/mooc/tf/trend.png" alt="Trend" /></p>
+      </li>
+      <li>
+        <p><strong>Seasonality</strong>: patterns repeat at predictable intervals (eg. active users for a website).</p>
+
+        <p class="img-100"><img src="/img/post/mooc/tf/seasonality.png" alt="seasonality" /></p>
+      </li>
+      <li>
+        <p>Combinition of both <strong>trend</strong> and <strong>seasonality</strong>.</p>
+
+        <p class="img-50"><img src="/img/post/mooc/tf/trend_seasonality.png" alt="trend+seasonality" /></p>
+      </li>
+      <li>
+        <p><strong>Stationary</strong> TS.</p>
+
+        <p class="img-50"><img src="/img/post/mooc/tf/stationality.png" alt="stationality" /></p>
+      </li>
+      <li>
+        <p><strong>Autocorrelated</strong> TS: a time series is linearly related to a <em>lagged</em> version of itself.. There is no trend, no seasonality.</p>
+
+        <p class="img-60"><img src="/img/post/mooc/tf/autocorrelation.png" alt="autocorrelation" /></p>
+      </li>
+      <li>
+        <p><strong>Multiple auto correlation</strong>.</p>
+
+        <p class="img-60"><img src="/img/post/mooc/tf/multiple_autocorrelation.png" alt="multiple_autocorrelation" /></p>
+      </li>
+      <li>
+        <p>May be <strong>trend</strong> + <strong>seasonality</strong> + <strong>autorrelation</strong> + <strong>noise</strong>.</p>
+
+        <p class="img-60"><img src="/img/post/mooc/tf/trend_seasonality_autocorrelation_noise.png" alt="trend_seasonality_autocorrelation_noise" /></p>
+      </li>
+      <li>
+        <p><strong>Non-stationary</strong> TS:</p>
+
+        <p class="img-60"><img src="/img/post/mooc/tf/non_stationary.png" alt="non_stationary" />
+<em>In this case, we base just on the later data to predict the future (not on the whole data).</em></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="train--validation--test">Train / Validation / Test</h3>
+
+<ul>
+  <li><strong>Fixed partitioning</strong> (this course focuses on) =  splitting TS data into <strong>training period</strong>, <strong>validation period</strong> and <strong>test period</strong>.
+    <ul>
+      <li>
+        <p>If TS is seasonal, we want each period contains the whole number of seasons.</p>
+
+        <p class="img-70"><img src="/img/post/mooc/tf/fixed_partitioning.png" alt="Fixed partitioning" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>We can split + train + test to get a model and then <strong>re-train</strong> with the data <strong>containing also the test period</strong> so that the model is optimized! In that case, the test set comes from the future.</p>
+
+    <p class="img-70"><img src="/img/post/mooc/tf/fixed_partitioning_future_test.png" alt="Fixed partitioning with test period comes from the future" /></p>
+  </li>
+  <li>
+    <p><strong>Roll-forward partitioning</strong>: we start with a short training period and we gradually increase it (1 day at a time or 1 week at a time). At each iteration, we train the model on training period, use it to focast the following day/week in the validation period. = Fixed partitioning in a number of times!</p>
+
+    <p class="img-70"><img src="/img/post/mooc/tf/roll_forward_partitioning.png" alt="Roll-forward partitioning" /></p>
+  </li>
+</ul>
+
+<h3 id="metrics">Metrics</h3>
+
+<p>For evaluating models:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">errors</span> <span class="o">=</span> <span class="n">forecasts</span> <span class="o">-</span> <span class="n">actual</span>
+
+<span class="c1"># Mean squared error (square to get rid of negative values)
+# Eg. Used if large errors are potentially dangerous
+</span><span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">errors</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># Get back to the same scale to error
+</span><span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+
+<span class="c1"># Mean absolute error (his favorite)
+# this doesn't penalize large errs as much as mse does,
+# used if loss is proportional to the size of err
+</span><span class="n">mae</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">errors</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Mean abs percentage err
+# idea of the size of err compared to the values
+</span><span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">errors</span> <span class="o">/</span> <span class="n">x_valid</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># MAE with TF
+</span><span class="n">keras</span><span class="p">.</span><span class="n">metrics</span><span class="p">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">x_valid</span><span class="p">,</span> <span class="n">naive_forecast</span><span class="p">).</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="moving-average-and-differencing">Moving average and differencing</h3>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-1/notebook_2_forecasting.html">Forecasting</a>. + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/KVWrR/forecasting">explaining video</a>.</p>
+
+<p><strong>Moving average</strong>: a simple forecasting method. Calculate the average of blue lines within a fixed “averaging windows”.</p>
+
+<ul>
+  <li>This can eliminate noises and doesn’t anticipate trend or seasonality.</li>
+  <li>Depend on the “averaging window”, it can give worse result than naive forecast.</li>
+</ul>
+
+<p class="img-70"><img src="/img/post/mooc/tf/moving_average.png" alt="Moving average" />
+<em>Take the average on each yellow window. MAE=7.14 (optimal is 4).</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">moving_average_forecast</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+    <span class="s">"""Forecasts the mean of the last few values.
+        If window_size=1, then this is equivalent to naive forecast"""</span>
+    <span class="n">forecast</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">):</span>
+    <span class="n">forecast</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">time</span><span class="p">:</span><span class="n">time</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">].</span><span class="n">mean</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">forecast</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Differencing</strong>: remove the trend and seasonality from the TS. We study on the differences between points and their previous neighbor in period.</p>
+
+<p class="img-100"><img src="/img/post/mooc/tf/moving_avg_on_differenced_ts.jpg" alt="Moving average on differenced time series" />
+<em>Left image: we find the differencing of original values, then we find the average (orange line). Right image: restore the trend and seasonality. MAE=5.8 (optimal is 4).</em></p>
+
+<p>Above method still get the noises (because we add the differencing to the previous noise). If we remove past noise using moving average on that.</p>
+
+<p class="img-70"><img src="/img/post/mooc/tf/smoothing_both_past_present_values.png" alt="Smoothing both past and present values" />
+<em>Smoothing both past and present values. MAE=4.5 (optimal is 4).</em></p>
+
+<p>Keep in mind before using Deep Learning, <mark>sometimes simple approaches just work fine!</mark></p>
+
+<h2 id="deep-nn-for-time-series">Deep NN for Time Series</h2>
+
+<h3 id="preparing-features-and-labels">Preparing features and labels</h3>
+
+<ul>
+  <li>We need to split our TS data into features and labels so that we can use them in ML algos.</li>
+  <li>In this case: features=#values in TS, label=next_value.
+    <ul>
+      <li>Feature: window size and train to predict next value.</li>
+      <li>Ex: 30 days of values as features and next value as label.</li>
+      <li>Overtime, train ML to match 30 features to match a single label.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-2/notebook_1_preparing_features_and_labels.html">Preparing features and labels</a>.<br />
+👉 <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/TYErD/preparing-features-and-labels">Video explains how to split to features and labels from dataset</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">windowed_dataset</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle_buffer</span><span class="p">):</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="n">from_tensor_slices</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">window</span><span class="p">(</span><span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">shift</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">drop_remainder</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">window</span><span class="p">:</span> <span class="n">window</span><span class="p">.</span><span class="n">batch</span><span class="p">(</span><span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffle_buffer</span><span class="p">).</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">window</span><span class="p">:</span> <span class="p">(</span><span class="n">window</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">).</span><span class="n">prefetch</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</code></pre></div></div>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#iQqVrwZutjqbaeuIdEye">
+    Explaine the codes 
+  </button>
+  <div id="iQqVrwZutjqbaeuIdEye" class="collapse multi-collapse box-content ">
+    <div>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># create a very simple dataset
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="c1"># [0, 1, 2, 3, 4, 5]
+</span></code></pre></div>      </div>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># make equal (drop_remaninder) windows
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">window</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">shift</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">drop_remainder</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">window</span><span class="p">:</span> <span class="n">window</span><span class="p">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="c1"># instead of val.numpy for each val in each window
+</span><span class="k">for</span> <span class="n">window</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">window</span><span class="p">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="c1"># [0 1 2 3 4]
+# [1 2 3 4 5]
+</span></code></pre></div>      </div>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># split the last value to be label
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">window</span><span class="p">:</span> <span class="p">(</span><span class="n">window</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="c1"># [0 1 2 3] [4]
+# [1 2 3 4] [5]
+</span></code></pre></div>      </div>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># shuffle
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># construct batch of 2
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">prefetch</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># x =  [[1 2 3 4], [0 1 2 3]]
+# y =  [[5], [4]]
+</span></code></pre></div>      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="sequence-bias">Sequence bias</h2>
+
+<p>Sequence bias is when the order of things can impact the selection of things. <mark>It's ok to shuffle!</mark></p>
+
+<h2 id="feeding-windowed-datasets-into-nn">Feeding windowed datasets into NN</h2>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-2/notebook_2_1layer_NN_linear_reg.html">Single layer NN</a> + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/YERBd/more-on-single-layer-neural-network">video explains it</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simple linear regression (1 layer NN)
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">windowed_dataset</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle_buffer_size</span><span class="p">)</span>
+<span class="n">l0</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="n">window_size</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">l0</span><span class="p">])</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">"mse"</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Layer weights {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">l0</span><span class="p">.</span><span class="n">get_weights</span><span class="p">()))</span>
+
+<span class="n">forecast</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">):</span>
+    <span class="n">forecast</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">time</span><span class="p">:</span><span class="n">time</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">][</span><span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]))</span>
+    <span class="c1"># np.newaxis: reshape X to input dimension that used by the model
+</span>
+<span class="n">forecast</span> <span class="o">=</span> <span class="n">forecast</span><span class="p">[</span><span class="n">split_time</span><span class="o">-</span><span class="n">window_size</span><span class="p">:]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">forecast</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-2/notebook_3_DNN_TS.html">DNN with TS</a> + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/HecKT/deep-neural-network-training-tuning-and-prediction">video explains it</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A way to choose an optimal learning rate
+</span><span class="n">lr_schedule</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">epoch</span><span class="p">:</span> <span class="mf">1e-8</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">epoch</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">"mse"</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lr_schedule</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-even d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lrs</span> <span class="o">=</span> <span class="mf">1e-8</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">lrs</span><span class="p">,</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">"loss"</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+</code></pre></div>  </div>
+
+  <div class="output flex-even d-flex">
+    <p class="img-100"><img src="/img/post/mooc/tf/c4_w2_lr.png" alt="Loss w.r.t different learning rates." />
+<em>Loss w.r.t different learning rates. We choose the lowest one, around 8e-6.</em></p>
+  </div>
+</div>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-2/notebook_4_DNN_synthetic_data.html">DNN with synthetic TS</a>.</p>
+
+<h2 id="rnn-for-ts">RNN for TS</h2>
+
+<ul class="noindent">
+  <li>RRN is a NN containing Recurrent layer.</li>
+  <li>The different from DNN is the input shape is <strong>3 dimensional</strong> (<code class="language-plaintext highlighter-rouge">batch_size x #time_step x dims_input_at each_timestep</code>).</li>
+  <li>Re-use 1 cell multiple times in different layers (in this course).</li>
+</ul>
+
+<p class="img-100"><img src="/img/post/mooc/tf/rnn_ts_idea.png" alt="Idea of how RNN works with TS data." />
+<em>Idea of how RNN works with TS data. The current location can be impacted more by the nearby locations.</em></p>
+
+<h3 id="shape-of-input-to-rnn">Shape of input to RNN</h3>
+
+<p>👉 <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/fP3ND/shape-of-the-inputs-to-the-rnn">Video explains the dimensional and sequence-to-vector RNN</a>.</p>
+
+<ul class="noindent">
+  <li>Suppose: <em>window size</em> of 30 time steps, <em>batch size</em> of 4: Shape will be 4x30x1 and the <em>memory cell</em> input will be 4x1 matrix.</li>
+  <li>If the memory cell comprises 3 neurons then the <em>output matrix</em> will be 4x3. Therefore, the full output of the layer will be 4x30x3.</li>
+  <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">H_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is just a copy of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+  <li>Below figure: input and also output a sequence.</li>
+</ul>
+
+<p class="img-100"><img src="/img/post/mooc/tf/rnn_ts_dim.png" alt="Dimension of input to RNN." />
+<em>Dimension of input to RNN.</em></p>
+
+<h3 id="sequence-to-vector-rnn">Sequence to vector RNN</h3>
+
+<ul class="noindent">
+  <li>Sometimes, we want only input a sequence but not output. This called <strong>sequence-to-vector RNN</strong>. I.E., <mark>ignore all of the outputs except the last one!</mark>. In <code class="language-plaintext highlighter-rouge">tf.keras</code>, it’s default setting!</li>
+</ul>
+
+<p class="img-100"><img src="/img/post/mooc/tf/rnn_ts_sequence_to_vector.png" alt="Sequence to vector RNN." />
+<em>Sequence to vector RNN.</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check the figure below as an illustration
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+<span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+    <span class="c1"># input_shape:
+</span>    <span class="c1">#   TF assumes that 1st dim is batch size -&gt; any size at all -&gt; no need to define
+</span>    <span class="c1">#   None -&gt; number of time steps, None means RNN can handle sequence of any length
+</span>    <span class="c1">#   1 -&gt; univariate TS
+</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+    <span class="c1"># if there is `return_sequences=True` -&gt; sequence-to-sequence RNN
+</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">])</span>
+</code></pre></div></div>
+
+<p class="img-80"><img src="/img/post/mooc/tf/rnn_ts_illustraction_with_keras.png" alt="Illustration with keras." />
+<em>Illustration with keras.</em></p>
+
+<h3 id="lambda-layer">Lambda layer</h3>
+
+<p>👉 <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/I0K6b/lambda-layers">Video explains the use of lambda layer in RNN.</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="c1"># expand to 1 dim (from 2) so that we have 3 dims: batch size x #timesteps x series dim
+</span>                        <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">]),</span> <span class="c1"># can use any size of sequences
+</span>    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span>
+        <span class="c1"># default activation in RNN is tanh -&gt; (-1, 1) -&gt; scale to -100, 100
+</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="simple-rnn">Simple RNN</h3>
+
+<ul class="noindent">
+  <li>Loss function <strong>Huber</strong> (<a href="https://en.wikipedia.org/wiki/Huber_loss">wiki</a>): less sensitive to outliers. =&gt; we use this because our data in this case get a little bit noisy!</li>
+</ul>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-3/notebook_1_simple_RNN_with_TS.html">Simple RNN with a TS data</a> + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/5W1Rw/rnn">videos explains it</a>.</p>
+
+<h3 id="lstm">LSTM</h3>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-3/notebook_2_LSTM_with_TS.html">LSTM with a TS data</a> + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/IqcpX/more-on-lstm">videos explains it</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># clear internal variables
+</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">backend</span><span class="p">.</span><span class="n">clear_session</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">windowed_dataset</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle_buffer_size</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+                        <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">]),</span>
+    <span class="c1"># LSTM here
+</span>    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">)),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">)),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">)),</span>
+    <span class="c1">#
+</span>    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="p">])</span>
+</code></pre></div></div>
+
+<p>👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-3/notebook_3_LSTM_synthetic_data.html">LSTM with synthetic TS</a>.</p>
+
+<h2 id="real-world-time-series-data">Real-world time series data</h2>
+
+<ul class="noindent">
+  <li>We are going to predict the <strong>sunspot actitivity cycles</strong> (<a href="https://www.kaggle.com/robervalt/sunspots">download dataset</a>).</li>
+  <li>Combine CNN + LSTM.</li>
+</ul>
+
+<p>👉 Andrew’s <a href="https://www.youtube.com/watch?v=4qJaSmvhxi8">video on Optimization Algo: Mini-batch gradient descent</a>. <br />
+👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-4/notebook_1_sunspot_cnn_lstm.html">Sunspot dataset with CNN+LSTM</a>. + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/zAaeD/combining-our-tools-for-analysis">video explains it</a>.<br />
+👉 Notebook: <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/deeplearning.ai-courses/blob/master/TensorFlow%20in%20Practice/course-4/week-4/notebook_2_sunspot_DNN_only.html">Sunspot dataset with DNN only</a> + <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/EPaeW/sunspots">explaining video</a>.</p>
+
+<p>👉 <a href="https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction/lecture/LYbcx/train-and-tune-the-model">Video explains train &amp; tune the model</a> (how to choose suitable values for sizes)</p>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/mooc/2020-10-14-deeplearning-ai-tensorflow-course-4.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'TF 4 - Sequences, Time Series and Prediction'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

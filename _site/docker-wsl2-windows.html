@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/docker-wsl2-windows" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | WSL 2 on Windows
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="WSL 2 on Windows" />
+  
+
+  
+    <meta property="og:description" content="WSL on Windows Location Dependencies Windows Terminal &amp;amp; Zsh Jekyll on WSL2 VSCode + WSL2 + jekyll WSL with cmder WSL on Windows 👉 Main tutorial. # Eanble Windows Subsystem for Linux # PowerShell as Admin dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart # Enable Virtual Machine Platform (for WSL2) dism.exe...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/docker-wsl2-windows" />
+    <link rel="canonical" href="http://localhost:4000/docker-wsl2-windows" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/docker.svg">
+            </div>
+          
+          <h1 class="post-title">
+            WSL 2 on Windows
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#deploy-run">
+                    deploy & run
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#docker">
+                    docker
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#linux">
+                    linux
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              15 Oct 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#wsl-on-windows" id="markdown-toc-wsl-on-windows">WSL on Windows</a></li>
+  <li><a href="#location" id="markdown-toc-location">Location</a>    <ul>
+      <li><a href="#dependencies" id="markdown-toc-dependencies">Dependencies</a></li>
+      <li><a href="#windows-terminal--zsh" id="markdown-toc-windows-terminal--zsh">Windows Terminal &amp; Zsh</a></li>
+    </ul>
+  </li>
+  <li><a href="#jekyll-on-wsl2" id="markdown-toc-jekyll-on-wsl2">Jekyll on WSL2</a>    <ul>
+      <li><a href="#vscode--wsl2--jekyll" id="markdown-toc-vscode--wsl2--jekyll">VSCode + WSL2 + jekyll</a></li>
+    </ul>
+  </li>
+  <li><a href="#wsl-with-cmder" id="markdown-toc-wsl-with-cmder">WSL with cmder</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="wsl-on-windows">WSL on Windows</h2>
+
+<p>👉 <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Main tutorial</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Eanble Windows Subsystem for Linux</span>
+<span class="c"># PowerShell as Admin</span>
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+<span class="c"># Enable Virtual Machine Platform (for WSL2)</span>
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+<span class="c"># restart required</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Download and install WSL2 Linux kernel update package for x64 machines</span>
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set WSL2 as default version</span>
+<span class="c"># PowerShell as Admin</span>
+wsl <span class="nt">--set-default-version</span> 2
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Go to Windows Store</span>
+<span class="c"># Choose a Linux Distro and install it</span>
+</code></pre></div></div>
+
+<h2 id="location">Location</h2>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">C</code> drive is located in <code class="language-plaintext highlighter-rouge">/mnt/c/</code>.</li>
+  <li>The Download folder is located in <code class="language-plaintext highlighter-rouge">/mnt/c/Users/dinha/Downloads/</code>.</li>
+  <li>Open current folder (in WSL2) with Windows Explorer: <code class="language-plaintext highlighter-rouge">explorer.exe .</code>.</li>
+</ul>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>git-core curl wget fontconfig zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+</code></pre></div></div>
+
+<h3 id="windows-terminal--zsh">Windows Terminal &amp; Zsh</h3>
+
+<p>👉 Install <a href="https://docs.microsoft.com/en-us/windows/terminal/get-started">Windows Terminal</a> + some things with <a href="/terminal#windows">this note</a>.</p>
+
+<p>Change default setting theme to Linux Distro!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Zsh</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>zsh
+zsh <span class="nt">--version</span>
+
+<span class="c"># make default</span>
+sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
+<span class="c"># exit all windows and reopen</span>
+
+<span class="c"># check version</span>
+<span class="nb">echo</span> <span class="nv">$SHELL</span> <span class="c"># /usr/bin/zsh  or similar</span>
+</code></pre></div></div>
+
+<p>Continue to <a href="/terminal#zsh-linux">this note</a> with following remarks:</p>
+
+<ul>
+  <li>You have to install all the fonts suggested in that note (just for sure).</li>
+  <li>You have to install MS’s <a href="https://github.com/microsoft/cascadia-code/releases">cascadia-code font</a> (download zip and install all files there manually). Then you choose from Windows Terminal or cmder the font face is <code class="language-plaintext highlighter-rouge">Cascadia Code PL</code>.</li>
+  <li><a href="https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup">This article</a> may be interesting also.</li>
+</ul>
+
+<h2 id="jekyll-on-wsl2">Jekyll on WSL2</h2>
+
+<p><strong>Remark</strong>: We should clone a new version from Github to the local (inside wsl) machine.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> ruby-full build-essential zlib1g-dev
+which ruby
+
+<span class="c"># Make sure we don't use gem on Windows system</span>
+which gem <span class="c"># /usr/bin/ruby</span>
+
+<span class="nb">source</span> ~/.zshrc
+<span class="c"># restart Windows Terminal</span>
+
+<span class="nb">sudo </span>gem <span class="nb">install </span>bundler
+
+<span class="c"># cd to jekyll theme folder</span>
+bundle <span class="nb">install</span>
+
+<span class="c"># continue as usual</span>
+bundle <span class="nb">exec </span>jekyll build <span class="c"># 1st time after installing</span>
+bundle <span class="nb">exec </span>jekyll serve
+bundle <span class="nb">exec </span>jekyll serve <span class="nt">-I</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Troubleshoot: Could not find a JavaScript runtime</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libv8-dev
+bundle update
+<span class="c"># install nodejs</span>
+curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_14.x | bash -
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nodejs
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Troubleshoot: wsl2 jekyll auto generation windows</span>
+<span class="c"># Clone a repo to wsl local, not clone by git on Windows!</span>
+</code></pre></div></div>
+
+<h3 id="vscode--wsl2--jekyll">VSCode + WSL2 + jekyll</h3>
+
+<ol>
+  <li>Install extension <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote-WSL</a></li>
+  <li>Connect via Debian instead! (<code class="language-plaintext highlighter-rouge">&gt;&lt;SWL: Debian</code>)</li>
+</ol>
+
+<h2 id="wsl-with-cmder">WSL with cmder</h2>
+
+<p><strong>Settings</strong> &gt; <strong>Startup</strong> &gt; <strong>Tasks</strong> &gt; <strong>+</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># for debian</span>
+<span class="nb">set </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"%ConEmuBaseDirShort%</span><span class="se">\w</span><span class="s2">sl"</span><span class="p">;</span>%PATH% &amp; wsl <span class="nt">-d</span> debian
+<span class="c"># for ubuntu</span>
+<span class="nb">set </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"%ConEmuBaseDirShort%</span><span class="se">\w</span><span class="s2">sl"</span><span class="p">;</span>%PATH% &amp; wsl <span class="nt">-d</span> ubuntu
+</code></pre></div></div>
+
+<p>Choose font <em>Cascadia Code</em> in General &gt; Fonts.</p>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/deploy-run/2020-10-15-docker-wsl2-windows.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'WSL 2 on Windows'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

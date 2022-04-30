@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/visual-studio-code" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | VSCode
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="VSCode" />
+  
+
+  
+    <meta property="og:description" content="Install Extensions reStructuredText Add extra path to auto complete Fix Pylint unable to import Appearances Change font for internal terminal Enable font ligatures Regular Expression Exlude files/folders in file search Visual Studio Code (VSC) Connect ssh folders in VSC Error? Settings Pylint Hot keys Install Download and install here. Extensions...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/visual-studio-code" />
+    <link rel="canonical" href="http://localhost:4000/visual-studio-code" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/vsc.svg">
+            </div>
+          
+          <h1 class="post-title">
+            VSCode
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#ide">
+                    ide
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#installation">
+                    installation
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              15 Mar 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#install" id="markdown-toc-install">Install</a></li>
+  <li><a href="#extensions" id="markdown-toc-extensions">Extensions</a>    <ul>
+      <li><a href="#restructuredtext" id="markdown-toc-restructuredtext">reStructuredText</a></li>
+    </ul>
+  </li>
+  <li><a href="#add-extra-path-to-auto-complete" id="markdown-toc-add-extra-path-to-auto-complete">Add extra path to auto complete</a>    <ul>
+      <li><a href="#fix-pylint-unable-to-import" id="markdown-toc-fix-pylint-unable-to-import">Fix Pylint unable to import</a></li>
+    </ul>
+  </li>
+  <li><a href="#appearances" id="markdown-toc-appearances">Appearances</a>    <ul>
+      <li><a href="#change-font-for-internal-terminal" id="markdown-toc-change-font-for-internal-terminal">Change font for internal terminal</a></li>
+      <li><a href="#enable-font-ligatures" id="markdown-toc-enable-font-ligatures">Enable font ligatures</a></li>
+    </ul>
+  </li>
+  <li><a href="#regular-expression" id="markdown-toc-regular-expression">Regular Expression</a></li>
+  <li><a href="#exlude-filesfolders-in-file-search-visual-studio-code-vsc" id="markdown-toc-exlude-filesfolders-in-file-search-visual-studio-code-vsc">Exlude files/folders in file search Visual Studio Code (VSC)</a></li>
+  <li><a href="#connect-ssh-folders-in-vsc" id="markdown-toc-connect-ssh-folders-in-vsc">Connect <code class="language-plaintext highlighter-rouge">ssh</code> folders in VSC</a>    <ul>
+      <li><a href="#error" id="markdown-toc-error">Error?</a></li>
+    </ul>
+  </li>
+  <li><a href="#settings" id="markdown-toc-settings">Settings</a></li>
+  <li><a href="#pylint" id="markdown-toc-pylint">Pylint</a></li>
+  <li><a href="#hot-keys" id="markdown-toc-hot-keys">Hot keys</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="install">Install</h2>
+
+<p>Download and install <a href="https://code.visualstudio.com/">here</a>.</p>
+
+<h2 id="extensions">Extensions</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list the installed extensions</span>
+<span class="c"># unix</span>
+code <span class="nt">--list-extensions</span> | xargs <span class="nt">-L</span> 1 <span class="nb">echo </span>code <span class="nt">--install-extension</span>
+<span class="c"># windows</span>
+code <span class="nt">--list-extensions</span> | % <span class="o">{</span> <span class="s2">"code --install-extension </span><span class="nv">$_</span><span class="s2">"</span> <span class="o">}</span>
+
+<span class="c"># To re-install on a new machine</span>
+<span class="c"># just copy-paste the results and run on terminal</span>
+</code></pre></div></div>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#fpepgRvSqTkTCCHhOaZO">
+    my favorite extensios 
+  </button>
+  <div id="fpepgRvSqTkTCCHhOaZO" class="collapse multi-collapse box-content ">
+    <div>
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code <span class="nt">--install-extension</span> bierner.markdown-emoji
+code <span class="nt">--install-extension</span> bierner.markdown-preview-github-styles
+code <span class="nt">--install-extension</span> CoenraadS.bracket-pair-colorizer
+code <span class="nt">--install-extension</span> eamodio.gitlens
+code <span class="nt">--install-extension</span> formulahendry.auto-close-tag
+code <span class="nt">--install-extension</span> himanoa.Python-autopep8
+code <span class="nt">--install-extension</span> James-Yu.latex-workshop
+code <span class="nt">--install-extension</span> lextudio.restructuredtext
+code <span class="nt">--install-extension</span> mdickin.markdown-shortcuts
+code <span class="nt">--install-extension</span> mhutchie.git-graph
+code <span class="nt">--install-extension</span> mrmlnc.vscode-apache
+code <span class="nt">--install-extension</span> ms-azuretools.vscode-docker
+code <span class="nt">--install-extension</span> ms-mssql.mssql
+code <span class="nt">--install-extension</span> ms-python.python
+code <span class="nt">--install-extension</span> ms-vscode-remote.remote-containers
+code <span class="nt">--install-extension</span> ms-vscode-remote.remote-ssh
+code <span class="nt">--install-extension</span> ms-vscode-remote.remote-ssh-edit
+code <span class="nt">--install-extension</span> ms-vscode-remote.remote-wsl
+code <span class="nt">--install-extension</span> ms-vscode-remote.vscode-remote-extensionpack
+code <span class="nt">--install-extension</span> Perkovec.emoji
+code <span class="nt">--install-extension</span> ritwickdey.live-sass
+code <span class="nt">--install-extension</span> ritwickdey.LiveServer
+code <span class="nt">--install-extension</span> ronnidc.nunjucks
+code <span class="nt">--install-extension</span> SolarLiner.linux-themes
+code <span class="nt">--install-extension</span> streetsidesoftware.code-spell-checker
+code <span class="nt">--install-extension</span> yzhang.markdown-all-in-one
+code <span class="nt">--install-extension</span> zxh404.vscode-proto3
+</code></pre></div>      </div>
+    </div>
+  </div>
+</div>
+
+<h3 id="restructuredtext">reStructuredText</h3>
+
+<p><code class="language-plaintext highlighter-rouge">preview engine sphinx is not installed</code> =&gt; in Ubuntu 20.04+</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>python-is-python3
+<span class="c"># prevent Python 2 from being installed as a dependency of something</span>
+<span class="nb">sudo </span>apt-mark hold python2 python2-minimal python2.7 python2.7-minimal libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib
+</code></pre></div></div>
+
+<h2 id="add-extra-path-to-auto-complete">Add extra path to auto complete</h2>
+
+<p>Open <code class="language-plaintext highlighter-rouge">settings.json</code> and add,</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"python.autoComplete.extraPaths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">dinha</span><span class="se">\\</span><span class="s2">Documents</span><span class="se">\\</span><span class="s2">GitHub</span><span class="se">\\</span><span class="s2">dataswati</span><span class="se">\\</span><span class="s2">python-dataswati"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="fix-pylint-unable-to-import">Fix Pylint unable to import</h3>
+
+<p>Open <code class="language-plaintext highlighter-rouge">settings.json</code> and add,</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"python.linting.pylintArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"--init-hook"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"import sys; sys.path.append('C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">dinha</span><span class="se">\\</span><span class="s2">Documents</span><span class="se">\\</span><span class="s2">GitHub</span><span class="se">\\</span><span class="s2">dataswati</span><span class="se">\\</span><span class="s2">python-dataswati')"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="appearances">Appearances</h2>
+
+<h3 id="change-font-for-internal-terminal">Change font for internal terminal</h3>
+
+<p>Make a good corresponding to <a href="/terminal#zsh-linux">zsh</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Open settings JSON</span>
+<span class="s2">"terminal.integrated.cursorStyle"</span>: <span class="s2">"line"</span>,
+<span class="s2">"terminal.integrated.fontFamily"</span>: <span class="s2">"Source Code Pro Medium"</span>,
+<span class="s2">"terminal.integrated.fontSize"</span>: 15
+</code></pre></div></div>
+
+<h3 id="enable-font-ligatures">Enable font ligatures</h3>
+
+<p>👉 <a href="https://dev.to/macmacky/my-vscode-shortcuts-settings-and-extensions-for-productivity-3chd">Reference</a>.</p>
+
+<p>For example, you type <kbd>=</kbd> + <kbd>&gt;</kbd>, it becomes <code class="language-plaintext highlighter-rouge">⇒</code>.</p>
+
+<ol>
+  <li>Download <a href="https://www.fontsquirrel.com/fonts/fira-code">Fira Code Font</a>.</li>
+  <li>Extract and then install the font after that.
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="nl">"editor.fontFamily"</span><span class="p">:</span><span class="w"> </span><span class="s2">"'Fira Code', 'Consolas', 'Courier New', monospace"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"editor.fontLigatures"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Reload VSC.</li>
+</ol>
+
+<p>💡 If you only wanna apply this setting for some file format, you can click on the language at the bottom right of VSC, then click <strong>Configure ‘Markdown’ language based setting</strong>.</p>
+
+<h2 id="regular-expression">Regular Expression</h2>
+
+<ul>
+  <li>Using regular expression in Visual Studio (Code) ⇾ <a href="https://docs.microsoft.com/en-us/visualstudio/ide/using-regular-expressions-in-visual-studio?view=vs-2017">ref</a></li>
+  <li>Replace current bit.ly text with its same url:
+    <ul>
+      <li>Find: <code class="language-plaintext highlighter-rouge">(http://bit.ly.*)</code> (Enable <code class="language-plaintext highlighter-rouge">.*</code>)</li>
+      <li>Replace: <code class="language-plaintext highlighter-rouge">[$1]($1)</code></li>
+    </ul>
+  </li>
+  <li>Replace <code class="language-plaintext highlighter-rouge">**Course 1**</code> by <code class="language-plaintext highlighter-rouge">Course 1</code>:
+    <ul>
+      <li>Find: <code class="language-plaintext highlighter-rouge">\*\*Course (.*)\*\*</code></li>
+      <li>Replace: <code class="language-plaintext highlighter-rouge">Course $1</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="exlude-filesfolders-in-file-search-visual-studio-code-vsc">Exlude files/folders in file search Visual Studio Code (VSC)</h2>
+
+<p>Go to <strong>Preferences</strong> &gt; <strong>Settings</strong> &gt; search <code class="language-plaintext highlighter-rouge">exclude</code> and modify inside section <code class="language-plaintext highlighter-rouge">Search: Exclude</code>. More patterns can be found <a href="https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options">here</a>.</p>
+
+<p>Below is an example list,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>**/node_modules
+**/bower_components
+**/*.code-search
+**/_site
+**/.jekyll-cache
+**/.sass-cache
+**/*.ico
+**/*.png
+**/*.ipynb
+**/*.jpg
+**/*.jpeg
+**/*.svg
+</code></pre></div></div>
+
+<h2 id="connect-ssh-folders-in-vsc">Connect <code class="language-plaintext highlighter-rouge">ssh</code> folders in VSC</h2>
+
+<p>Read <a href="https://code.visualstudio.com/blogs/2019/07/25/remote-ssh">this tutorial</a>.</p>
+
+<ol>
+  <li>Install extension <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a></li>
+  <li><strong>View</strong> &gt; <strong>Command Palette…</strong> &gt; type “SSH” and choose “<em>Remote-SSH: Connect to Host…</em>” &gt; choose “<em>+ Add New SSH Host…</em>”</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">ssh user@host</code> &gt; <kbd>Enter</kbd> &gt; choose a file to be updated, e.g. <code class="language-plaintext highlighter-rouge">~/.ssh/config</code>.</li>
+  <li>Click <strong>Connect</strong> if there is any popup in VSC.</li>
+  <li>Choose platform on the server, usually Linux.</li>
+</ol>
+
+<h3 id="error">Error?</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Could not establish connection to "undefined". Could not resolve hostname.</span>
+<span class="c"># ref: https://github.com/microsoft/vscode-remote-release/issues/1047</span>
+
+<span class="c"># Open config ssh file</span>
+<span class="c"># Ctrl+Shift+P then "Remote-SSH: Open Configuration File"</span>
+
+<span class="c"># In stead of</span>
+Host XXX.XXX.XXX.XXX
+User bob
+Port 22
+IdentityFile ~/.ssh/id
+
+<span class="c"># use this</span>
+Host server_name <span class="c"># Do not put ip here</span>
+HostName XXX.XXX.XXX.XXX <span class="c"># But put it here</span>
+User bob
+Port 22
+IdentityFile ~/.ssh/id
+
+<span class="c"># Then Ctrl+Shift+P &gt; "Remote-SSH: Connect to host"</span>
+<span class="c"># Pick "server_name"</span>
+</code></pre></div></div>
+
+<h2 id="settings">Settings</h2>
+
+<p>👉 Check <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/VSC_settings.json">this file</a>.</p>
+
+<p>Use settings for a custom file extension,</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">extension</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">showed</span><span class="w"> </span><span class="err">when</span><span class="w"> </span><span class="err">typing</span><span class="w">
+</span><span class="nl">"[markdown]"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"editor.tabSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="nl">"[restructuredtext]"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"editor.wordWrap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="pylint">Pylint</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># _Unable to import_ some user-defined package</span>
+<span class="c"># 1. Make sure the right env running in vscode</span>
+<span class="c"># For example, popai (conda)</span>
+<span class="c"># 2. Make a symblic link</span>
+<span class="nb">ln</span> <span class="nt">-s</span> /home/thi/git/dataswati/python-dataswati/popai /home/thi/miniconda3/envs/popai/lib/python3.8/popai
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># unresolved import</span>
+<span class="c"># Ctrl + Shift + P</span>
+<span class="c"># Preferences: Open Workspace Settings (JSON)</span>
+<span class="s2">"settings"</span>: <span class="o">{</span>
+    <span class="s2">"python.pythonPath"</span>: <span class="s2">"/usr/bin/python3"</span>,
+    <span class="s2">"python.autoComplete.extraPaths"</span>: <span class="o">[</span>
+        <span class="s2">"/usr/lib/python3/dist-packages"</span>,
+        <span class="s2">"/app/src/python/"</span>
+        <span class="c"># or other paths you want!</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="hot-keys">Hot keys</h2>
+
+<p>One can change the default keyboard shortcut by going to: <strong>File</strong> &gt; <strong>Preferences</strong> &gt; <strong>Keyboard Shortcuts</strong>.</p>
+
+<ul>
+  <li>Quick search file: <kbd>Ctrl</kbd> + <kbd>P</kbd>.</li>
+  <li>Get back to previous views: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>-</kbd> (Linux), <kbd>Alt</kbd> + <kbd>&lt;</kbd> (Windows), <kbd>Ctrl</kbd> + <kbd>-</kbd> (MacOS).</li>
+  <li>Get forward: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> (Linux), <kbd>Alt</kbd> + <kbd>&gt;</kbd> (Windows), <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> (MacOS).</li>
+  <li>Open Command Palette: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.</li>
+  <li>Forat on save: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>.</li>
+  <li>Go to line: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then <em>Go to line</em>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2020-03-15-visual-studio-code.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'VSCode'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/github-html" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Github HTML file reader
+    
+  </title>
+
+  
+    <meta name="description" content="Render the html files in public Github repositories">
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Github HTML file reader" />
+  
+
+  
+    <meta property="og:description" content="Render the html files in public Github repositories">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/github-html" />
+    <link rel="canonical" href="http://localhost:4000/github-html" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #e6b3ff;">
+              <i class="fab fa-github"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Github HTML file reader
+          </h1>
+          
+          <p>
+            
+              Render the html files in public Github repositories
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <form class="text-center" id="previewform" onsubmit="location.href='http://localhost:4000/github-html?'+this.file.value;return false">
+  <div class="form-group">
+    <label for="exampleInputEmail1"><strong>HTML file's full URL</strong></label>
+    <input type="url" id="file" value="" class="form-control" placeholder="e.g. https://github.com/user/repo/blob/master/index.html" autofocus="" />
+    <small class="form-text text-muted">You have to type a full url to the html file.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">See the rendered file</button>
+</form>
+
+<script>
+  (function () {
+
+    var previewForm = document.getElementById('previewform');
+
+    var url = location.search.substring(1).replace(/\/\/github\.com/, '//raw.githubusercontent.com').replace(/\/blob\//, '/'); //Get URL of the raw file
+
+    var replaceAssets = function () {
+      var frame, a, link, links = [], script, scripts = [], i, href, src;
+      //Framesets
+      if (document.querySelectorAll('frameset').length)
+        return; //Don't replace CSS/JS if it's a frameset, because it will be erased by document.write()
+      //Frames
+      frame = document.querySelectorAll('iframe[src],frame[src]');
+      for (i = 0; i < frame.length; ++i) {
+        src = frame[i].src; //Get absolute URL
+        if (src.indexOf('//raw.githubusercontent.com') > 0 || src.indexOf('//bitbucket.org') > 0) { //Check if it's from raw.github.com or bitbucket.org
+          frame[i].src = '//' + location.hostname + location.pathname + '?' + src; //Then rewrite URL so it can be loaded using CORS proxy
+        }
+      }
+      //Links
+      a = document.querySelectorAll('a[href]');
+      for (i = 0; i < a.length; ++i) {
+        href = a[i].href; //Get absolute URL
+        if (href.indexOf('#') > 0) { //Check if it's an anchor
+          a[i].href = '//' + location.hostname + location.pathname + location.search + '#' + a[i].hash.substring(1); //Then rewrite URL with support for empty anchor
+        } else if ((href.indexOf('//raw.githubusercontent.com') > 0 || href.indexOf('//bitbucket.org') > 0) && (href.indexOf('.html') > 0 || href.indexOf('.htm') > 0)) { //Check if it's from raw.github.com or bitbucket.org and to HTML files
+          a[i].href = '//' + location.hostname + location.pathname + '?' + href; //Then rewrite URL so it can be loaded using CORS proxy
+        }
+      }
+      //Stylesheets
+      link = document.querySelectorAll('link[rel=stylesheet]');
+      for (i = 0; i < link.length; ++i) {
+        href = link[i].href; //Get absolute URL
+        if (href.indexOf('//raw.githubusercontent.com') > 0 || href.indexOf('//bitbucket.org') > 0) { //Check if it's from raw.github.com or bitbucket.org
+          links.push(fetchProxy(href, null, 0)); //Then add it to links queue and fetch using CORS proxy
+        }
+      }
+      Promise.all(links).then(function (res) {
+        for (i = 0; i < res.length; ++i) {
+          loadCSS(res[i]);
+        }
+      });
+      //Scripts
+      script = document.querySelectorAll('script[type="text/htmlpreview"]');
+      for (i = 0; i < script.length; ++i) {
+        src = script[i].src; //Get absolute URL
+        if (src.indexOf('//raw.githubusercontent.com') > 0 || src.indexOf('//bitbucket.org') > 0) { //Check if it's from raw.github.com or bitbucket.org
+          scripts.push(fetchProxy(src, null, 0)); //Then add it to scripts queue and fetch using CORS proxy
+        } else {
+          script[i].removeAttribute('type');
+          scripts.push(script[i].innerHTML); //Add inline script to queue to eval in order
+        }
+      }
+      Promise.all(scripts).then(function (res) {
+        for (i = 0; i < res.length; ++i) {
+          loadJS(res[i]);
+        }
+      });
+    };
+
+    var loadHTML = function (data) {
+      if (data) {
+        data = data.replace(/<head([^>]*)>/i, '<head$1><base href="' + url + '">').replace(/<script(\s*src=["'][^"']*["'])?(\s*type=["'](text|application)\/javascript["'])?/gi, '<script type="text/htmlpreview"$1'); //Add <base> just after <head> and replace <script type="text/javascript"> with <script type="text/htmlpreview">
+        setTimeout(function () {
+          document.open();
+          document.write(data);
+          document.close();
+          replaceAssets();
+        }, 10); //Delay updating document to have it cleared before
+      }
+    };
+
+    var loadCSS = function (data) {
+      if (data) {
+        var style = document.createElement('style');
+        style.innerHTML = data;
+        document.head.appendChild(style);
+      }
+    };
+
+    var loadJS = function (data) {
+      if (data) {
+        var script = document.createElement('script');
+        script.innerHTML = data;
+        document.body.appendChild(script);
+      }
+    };
+
+    var fetchProxy = function (url, options, i) {
+      var proxy = [
+        'https://cors.io/?',
+        'https://jsonp.afeld.me/?url=',
+        'https://cors-anywhere.herokuapp.com/'
+      ];
+      return fetch(proxy[i] + url, options).then(function (res) {
+        if (!res.ok)
+          throw new Error('Cannot load ' + url + ': ' + res.status + ' ' + res.statusText);
+        return res.text();
+      }).catch(function (error) {
+        if (i === proxy.length - 1)
+          throw error;
+        return fetchProxy(url, options, i + 1);
+      })
+    };
+
+    if (url && url.indexOf(location.hostname) < 0)
+      fetchProxy(url, null, 0).then(loadHTML).catch(function (error) {
+        console.error(error);
+        previewForm.style.display = 'block';
+        previewForm.innerText = error;
+      });
+    else
+      previewForm.style.display = 'block';
+
+  })()
+</script>
+
+<p class="ref"><em>This page uses the <a href="https://github.com/htmlpreview/htmlpreview.github.com">source code of htmlpreview</a>. You can display even any website using this tool.</em></p>
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

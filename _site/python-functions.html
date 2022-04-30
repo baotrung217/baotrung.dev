@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/python-functions" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Python Functions
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Python Functions" />
+  
+
+  
+    <meta property="og:description" content="Facts Create a normal function Unpacking a function Functions with stars (*args and **kwargs) Lambda function Check input &amp;amp; raise error Decorators Facts In python, function is the first-class object. It’s can be used as an argument. Function can be used as a return value. return func1: reference to func1....">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/python-functions" />
+    <link rel="canonical" href="http://localhost:4000/python-functions" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #a0ffa0;">
+              <i class="fab fa-python"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Python Functions
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#101">
+                    101
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python">
+                    python
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#facts" id="markdown-toc-facts">Facts</a></li>
+  <li><a href="#create-a-normal-function" id="markdown-toc-create-a-normal-function">Create a normal function</a></li>
+  <li><a href="#unpacking-a-function" id="markdown-toc-unpacking-a-function">Unpacking a function</a></li>
+  <li><a href="#functions-with-stars-args-and-kwargs" id="markdown-toc-functions-with-stars-args-and-kwargs">Functions with stars (<code class="language-plaintext highlighter-rouge">*args</code> and <code class="language-plaintext highlighter-rouge">**kwargs</code>)</a></li>
+  <li><a href="#lambda-function" id="markdown-toc-lambda-function">Lambda function</a></li>
+  <li><a href="#check-input--raise-error" id="markdown-toc-check-input--raise-error">Check input &amp; raise error</a></li>
+  <li><a href="#decorators" id="markdown-toc-decorators">Decorators</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="facts">Facts</h2>
+
+<ul>
+  <li>In python, function is the <strong>first-class object</strong>. It’s can be used as an argument.</li>
+  <li>Function can be used as a return value.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">return func1</code>: reference to <code class="language-plaintext highlighter-rouge">func1</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">return func1()</code>: results of evaluating <code class="language-plaintext highlighter-rouge">func()</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Should we check the argument/input?</strong>: <strong>No!</strong> The responsibility is on the caller! Your function should be well-documented, that’s it!<sup><a href="https://stackoverflow.com/questions/19684434/best-way-to-check-function-arguments-in-python " target="_blank">[ref]</a></sup></li>
+</ul>
+
+<h2 id="create-a-normal-function">Create a normal function</h2>
+
+<p>If a function doesn’t return any value, it returns <code class="language-plaintext highlighter-rouge">None</code>.</p>
+
+<div class="flex-auto-equal-2">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># without arguments
+</span><span class="k">def</span> <span class="nf">func_name</span><span class="p">():</span>
+  <span class="k">pass</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># with arguments
+</span><span class="k">def</span> <span class="nf">func_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">args</span><span class="o">&gt;</span><span class="p">):</span>
+  <span class="k">pass</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># return
+</span><span class="k">def</span> <span class="nf">func_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">args</span><span class="o">&gt;</span><span class="p">):</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">some_thing</span><span class="o">&gt;</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># call a function
+</span><span class="n">func_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">args</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="unpacking-a-function">Unpacking a function</h2>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum_and_div</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+  <span class="n">sum_nums</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+  <span class="n">div_nums</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span>
+  <span class="k">return</span> <span class="n">sum_nums</span><span class="p">,</span> <span class="n">div_nums</span> <span class="c1"># multiple returns
+</span>
+<span class="nb">sum</span><span class="p">,</span> <span class="n">div</span> <span class="o">=</span> <span class="n">sum_and_div</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">div</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>27 2.0
+</code></pre></div>  </div>
+</div>
+
+<h2 id="functions-with-stars-args-and-kwargs">Functions with stars (<code class="language-plaintext highlighter-rouge">*args</code> and <code class="language-plaintext highlighter-rouge">**kwargs</code>)</h2>
+
+<p><sup><a href="https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters">[ref]</a></sup>The <code class="language-plaintext highlighter-rouge">*args</code> will give you all function parameters as <strong>a tuple</strong>:</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1,)
+1
+(2, 3, 4)
+2
+3
+4
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">rarg1</span><span class="p">,</span> <span class="n">rarg2</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">rarg1</span><span class="p">,</span> <span class="n">rarg2</span><span class="p">)</span>
+
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">foo</span><span class="p">(</span><span class="o">*</span><span class="n">lst</span><span class="p">)</span>
+<span class="n">tpl</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="o">*</span><span class="n">tpl</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2
+3 4
+</code></pre></div>  </div>
+</div>
+
+<p>If you wanna use “keywords arguments”, use <code class="language-plaintext highlighter-rouge">**args</code>:</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kwfunc</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">kwfunc</span><span class="p">()</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="n">kw1</span><span class="o">=</span><span class="s">"thi"</span><span class="p">,</span> <span class="n">kw2</span><span class="o">=</span><span class="s">"dinh"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'dict'&gt;
+{}
+&lt;class 'dict'&gt;
+{'kw1': 'thi', 'kw2': 'dinh'}
+</code></pre></div>  </div>
+</div>
+
+<p>Use a dictionary as an input,</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kwfunc</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1"># must have **
+</span>  <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">'kw1'</span><span class="p">:</span> <span class="s">"thi"</span><span class="p">,</span> <span class="s">'kw2'</span><span class="p">:</span> <span class="s">"dinh"</span><span class="p">}</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># must have **
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'kw1': 'thi', 'kw2': 'dinh'}
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kwfunc</span><span class="p">(</span><span class="n">kw1</span><span class="o">=</span><span class="s">"john"</span><span class="p">,</span> <span class="n">kw2</span><span class="o">=</span><span class="s">"doe"</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">kw1</span><span class="p">,</span> <span class="n">kw2</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">'kw1'</span><span class="p">:</span> <span class="s">"thi"</span><span class="p">,</span> <span class="s">'kw2'</span><span class="p">:</span> <span class="s">"dinh"</span><span class="p">}</span>
+
+<span class="n">kwfunc</span><span class="p">()</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># goes to kw1
+</span><span class="n">kwfunc</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># goes to both kw1 &amp; kw2
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>john doe
+{'kw1': 'thi', 'kw2': 'dinh'} doe
+thi dinh
+</code></pre></div>  </div>
+</div>
+
+<p>Coupling <code class="language-plaintext highlighter-rouge">rargs</code>, <code class="language-plaintext highlighter-rouge">*args</code> and <code class="language-plaintext highlighter-rouge">**kwargs</code>:</p>
+
+<ul>
+  <li>Required positional arguments: <code class="language-plaintext highlighter-rouge">rarg1</code>, <code class="language-plaintext highlighter-rouge">rarg2</code>, …</li>
+  <li>Optional positional arguments: <code class="language-plaintext highlighter-rouge">*args</code>.</li>
+  <li>Optional key-values arguments: <code class="language-plaintext highlighter-rouge">**kwargs</code>.</li>
+</ul>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kwfunc</span><span class="p">(</span><span class="n">rarg1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rarg2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"required args: "</span><span class="p">,</span> <span class="n">rarg1</span><span class="p">,</span> <span class="n">rarg2</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"*args: "</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"**kwargs: "</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+
+<span class="n">kwfunc</span><span class="p">()</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">kwfunc</span><span class="p">(</span><span class="n">kw1</span><span class="o">=</span><span class="s">"thi"</span><span class="p">,</span> <span class="n">kw2</span><span class="o">=</span><span class="s">"dinh"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>required args:  0 0
+
+required args:  1 2
+
+required args:  3 4
+*args:  (5, 6)
+
+required args:  0 0
+**kwargs:  {'kw1': 'thi', 'kw2': 'dinh'}
+</code></pre></div>  </div>
+</div>
+
+<p>All arguments after <code class="language-plaintext highlighter-rouge">*</code> must be key-value arguments,</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">rarg1</span><span class="p">,</span> <span class="n">rarg2</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">kwarg1</span><span class="p">,</span> <span class="n">kwarg2</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"required args: "</span><span class="p">,</span> <span class="n">rarg1</span><span class="p">,</span> <span class="n">rarg2</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"kwarg*: "</span><span class="p">,</span> <span class="n">kwarg1</span><span class="p">,</span> <span class="n">kwarg2</span><span class="p">)</span>
+
+<span class="c1"># func(1, 2, 3, 4) # error!
+</span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">kwarg2</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>required args:  1 2
+kwarg*:  3 4
+</code></pre></div>  </div>
+</div>
+
+<h2 id="lambda-function">Lambda function</h2>
+
+<p>It’s convenient but don’t use it regularly, use <code class="language-plaintext highlighter-rouge">def</code> (in 1 line) instead.</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span> <span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># you can use this
+</span><span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">10</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+</code></pre></div>  </div>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># if else with lambda function
+</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s">'good'</span> <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="o">&gt;=</span><span class="mi">80</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="s">'bad'</span> <span class="k">if</span> <span class="n">row</span><span class="o">&lt;</span><span class="mi">80</span> <span class="k">else</span> <span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="check-input--raise-error">Check input &amp; raise error</h2>
+
+<p>Something like that,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">par1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+  <span class="n">msg</span> <span class="o">=</span> <span class="s">"par1 must be in type `int`"</span>
+  <span class="k">raise</span> <span class="nb">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You can check other exceptions <a href="https://docs.python.org/3/library/exceptions.html">here</a>.</p>
+
+<h2 id="decorators">Decorators</h2>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Before func called."</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"After func called."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">def</span> <span class="nf">say_whee</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Whee!"</span><span class="p">)</span>
+
+<span class="n">say_whee</span> <span class="o">=</span> <span class="n">my_decorator</span><span class="p">(</span><span class="n">say_whee</span><span class="p">)</span>
+<span class="n">say_whee</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Something is happening before the function is called.
+Whee!
+Something is happening after the function is called.
+</code></pre></div>  </div>
+</div>
+
+<p>In a class (note that, there is no <code class="language-plaintext highlighter-rouge">self</code> parameter in <code class="language-plaintext highlighter-rouge">_deco</code>),</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">test_class</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">_deco</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'before func called'</span><span class="p">)</span>
+            <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'after func called'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="o">@</span><span class="n">_deco</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Hello, '</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">test_class</span><span class="p">()</span>
+<span class="n">a</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="s">'thi'</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before func called
+Hello,  thi
+after func called
+</code></pre></div>  </div>
+</div>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/python/2019-09-03-python-functions.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Python Functions'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/google-colab" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Google Colab
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Google Colab" />
+  
+
+  
+    <meta property="og:description" content="URLs Colab &amp;amp; Github Hotkeys / Shortcuts Import libraries Upgrade/Switch TensorFlow versions Git with Colab Keep Colab awake Change to current working directory Upload a file to Colab[ref] Directly upload Using Google Drive Clone a repo from Github PyTorch with GPU Install 7zip reader, GraphViz, PyDot, cartopy Save as HTML...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/google-colab" />
+    <link rel="canonical" href="http://localhost:4000/google-colab" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/colab.png">
+            </div>
+          
+          <h1 class="post-title">
+            Google Colab
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#ide">
+                    ide
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#online-tool">
+                    online tool
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              12 Oct 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#urls" id="markdown-toc-urls">URLs</a></li>
+  <li><a href="#colab--github" id="markdown-toc-colab--github">Colab &amp; Github</a></li>
+  <li><a href="#hotkeys--shortcuts" id="markdown-toc-hotkeys--shortcuts">Hotkeys / Shortcuts</a></li>
+  <li><a href="#import-libraries" id="markdown-toc-import-libraries">Import libraries</a></li>
+  <li><a href="#upgradeswitch-tensorflow-versions" id="markdown-toc-upgradeswitch-tensorflow-versions">Upgrade/Switch TensorFlow versions</a></li>
+  <li><a href="#git-with-colab" id="markdown-toc-git-with-colab">Git with Colab</a></li>
+  <li><a href="#keep-colab-awake" id="markdown-toc-keep-colab-awake">Keep Colab awake</a></li>
+  <li><a href="#change-to-current-working-directory" id="markdown-toc-change-to-current-working-directory">Change to current working directory</a></li>
+  <li><a href="#upload-a-file-to-colabref" id="markdown-toc-upload-a-file-to-colabref">Upload a file to Colab<sup><a href="https://colab.research.google.com/notebooks/io.ipynb#scrollTo=hauvGV4hV-Mh " target="_blank">[ref]</a></sup></a>    <ul>
+      <li><a href="#directly-upload" id="markdown-toc-directly-upload">Directly upload</a></li>
+      <li><a href="#using-google-drive" id="markdown-toc-using-google-drive">Using Google Drive</a></li>
+      <li><a href="#clone-a-repo-from-github" id="markdown-toc-clone-a-repo-from-github">Clone a repo from Github</a></li>
+    </ul>
+  </li>
+  <li><a href="#pytorch-with-gpu" id="markdown-toc-pytorch-with-gpu">PyTorch with GPU</a></li>
+  <li><a href="#install-7zip-reader-graphviz-pydot-cartopy" id="markdown-toc-install-7zip-reader-graphviz-pydot-cartopy">Install 7zip reader, GraphViz, PyDot, cartopy</a></li>
+  <li><a href="#save-as-html" id="markdown-toc-save-as-html">Save as HTML</a></li>
+  <li><a href="#other-functions" id="markdown-toc-other-functions">Other functions</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="urls">URLs</h2>
+
+<ul>
+  <li><a href="https://colab.research.google.com/">Main site</a>.</li>
+  <li><a href="https://colab.research.google.com/notebooks/welcome.ipynb?authuser=1">Welcome site</a>.</li>
+  <li><a href="https://research.google.com/seedbank/">SeedBank by Google</a>: Collection of Interactive Machine Learning Examples.</li>
+</ul>
+
+<h2 id="colab--github">Colab &amp; Github</h2>
+
+<p>“<em>Open with Colab</em>” any Jupyter Notebook file (<code class="language-plaintext highlighter-rouge">.ipynb</code>) in Github. For example, the file’s URL is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/dinhanhthi/dataquest-aio/blob/master/file-name.ipynb
+</code></pre></div></div>
+
+<p>You can open with colab with the URL:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://colab.research.google.com/github/dinhanhthi/dataquest-aio/blob/master/file-name.ipynb
+</code></pre></div></div>
+
+<p>In the case you wanna import dataset (<code class="language-plaintext highlighter-rouge">.csv</code>) from Github. First, open this <code class="language-plaintext highlighter-rouge">.csv</code> file as RAW. Its URL may be</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/dinhanhthi/dataquest-aio/master/file.csv
+</code></pre></div></div>
+
+<p>and then use it as the url of the data file. Note that, you cannot use <code class="language-plaintext highlighter-rouge">open</code> to read this file,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># We can use on localhost
+</span><span class="n">opened_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dataset_url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf8"</span><span class="p">)</span>
+<span class="n">read_file</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">opened_file</span><span class="p">)</span>
+
+<span class="c1"># But we CAN'T use this `open` for the link from Github, we use:
+</span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="n">opened_file</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">dataset_url</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">read_file</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">opened_file</span><span class="p">.</span><span class="n">splitlines</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h2 id="hotkeys--shortcuts">Hotkeys / Shortcuts</h2>
+
+<p>Check the command shortcuts in <strong>Tools</strong> &gt; <strong>Keyboard shortcuts</strong> (<kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>H</kbd>), below are the most popular ones:</p>
+
+<ul>
+  <li><kbd>Ctrl</kbd> + <kbd>S</kbd>: <strong>save</strong> the notebook.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>Enter</kbd>: <strong>run</strong> a cell in place.</li>
+  <li><kbd>Shift</kbd> + <kbd>Enter</kbd>: to <strong>run</strong> the cell and move <strong>focus</strong> to the next cell (adding one if none exists).</li>
+  <li><kbd>Alt</kbd> + <kbd>Enter</kbd>: <strong>run</strong> the cell and <strong>insert</strong> a new code cell immediately below it.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>Y</kbd>: <strong>convert</strong> a cell to a <strong>code cell</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>M</kbd>: <strong>convert</strong> a cell to a <strong>text cell</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>D</kbd>: <strong>delete</strong> current cell / selected cells.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>A</kbd>: <strong>insert</strong> a code cell <strong>above</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>M</kbd> <kbd>B</kbd>: <strong>insert</strong> a code cell <strong>below</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd>: insert a <strong>comment</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>Space</kbd> or <kbd>Tab</kbd>: <strong>autocomplete</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>H</kbd>: global <strong>find/replace</strong>.</li>
+  <li><kbd>Ctrl</kbd> + <kbd>G</kbd>: global <strong>find next</strong>.</li>
+</ul>
+
+<p>We can use system commands in Colab with <code class="language-plaintext highlighter-rouge">!&lt;command&gt;</code>. For example, <code class="language-plaintext highlighter-rouge">!git clone ...</code>.</p>
+
+<h2 id="import-libraries">Import libraries</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span>pip <span class="nb">install</span> <span class="nt">-q</span> matplotlib-venn
+<span class="c"># or</span>
+<span class="o">!</span>apt-get <span class="nt">-qq</span> <span class="nb">install</span> <span class="nt">-y</span> libfluidsynth1
+</code></pre></div></div>
+
+<h2 id="upgradeswitch-tensorflow-versions">Upgrade/Switch TensorFlow versions</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># To determine which version you're using:</span>
+<span class="o">!</span>pip show tensorflow
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># For the current version: </span>
+<span class="o">!</span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> tensorflow
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># For a specific version:</span>
+<span class="o">!</span>pip <span class="nb">install </span><span class="nv">tensorflow</span><span class="o">==</span>1.2
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># For the latest nightly build:</span>
+<span class="o">!</span>pip <span class="nb">install </span>tf-nightly
+</code></pre></div></div>
+
+<h2 id="git-with-colab">Git with Colab</h2>
+
+<p>Check out <a href="/git">my note for Git</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Initialize the git repository (optional)
+</span><span class="err">!</span><span class="n">git</span> <span class="n">init</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set the global username and email</span>
+<span class="o">!</span>git config <span class="nt">--global</span> user.email <span class="s2">"youremail@domain.com"</span>
+<span class="o">!</span>git config <span class="nt">--global</span> user.name <span class="s2">"Your Name"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add all the files</span>
+<span class="o">!</span>git add <span class="nt">-A</span>
+<span class="c"># or</span>
+<span class="o">!</span>git add <span class="nb">.</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Commit</span>
+<span class="o">!</span>git commit <span class="nt">-m</span> <span class="s2">"Comment for that commit"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Pass your Github credentials</span>
+<span class="o">!</span>git remote <span class="nb">rm </span>origin <span class="c"># in the case you meet "fatal: remote origin already exists"</span>
+<span class="o">!</span>git remote add origin https://&lt;github-username&gt;:&lt;github-password&gt;@github.com/&lt;github-username&gt;/&lt;repository-name&gt;.git
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Push to origin</span>
+<span class="o">!</span>git push <span class="nt">-u</span> origin master
+</code></pre></div></div>
+
+<p>If you don’t want to use your username andd password, you can use “Personal access tokens” on Github. Create one <a href="https://github.com/settings/tokens">here</a> and then use,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">git</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">access</span><span class="o">-</span><span class="n">token</span><span class="o">&gt;@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">repo</span><span class="o">&gt;</span><span class="p">.</span><span class="n">git</span>
+</code></pre></div></div>
+
+<h2 id="keep-colab-awake">Keep Colab awake</h2>
+
+<p><kbd>F12</kbd> then <strong>Console</strong> and type,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ClickConnect</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Working</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">colab-connect-button</span><span class="dl">"</span><span class="p">).</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">connect</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">ClickConnect</span><span class="p">,</span><span class="mi">60000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="change-to-current-working-directory">Change to current working directory</h2>
+
+<p>By default, the working directory is <code class="language-plaintext highlighter-rouge">/content/</code>. One can use below command to change to another place,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">science</span><span class="o">-</span><span class="n">learning</span>
+</code></pre></div></div>
+
+<p>From that point, we are working on <code class="language-plaintext highlighter-rouge">/content/data-science-learning</code>.</p>
+
+<h2 id="upload-a-file-to-colabref">Upload a file to Colab<sup><a href="https://colab.research.google.com/notebooks/io.ipynb#scrollTo=hauvGV4hV-Mh " target="_blank">[ref]</a></sup></h2>
+
+<p>Each user has a “machine” in <code class="language-plaintext highlighter-rouge">/content/</code>.</p>
+
+<h3 id="directly-upload">Directly upload</h3>
+
+<p>Create a new cell and paste,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+
+<span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="p">.</span><span class="n">upload</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">uploaded</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">'User uploaded file "{name}" with length {length} bytes'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">fn</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="n">fn</span><span class="p">])))</span>
+</code></pre></div></div>
+
+<p>Run <mark>2 times</mark>
+ this cell, at the 2nd time, you can choose your file.</p>
+
+<h3 id="using-google-drive">Using Google Drive</h3>
+
+<p>Run a cell containing following codes,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/drive'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>and then follow the guide on the screen. In order to access to the drive,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/content/drive/My Drive/foo.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Hello Google Drive!'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="clone-a-repo-from-github">Clone a repo from Github</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">dinhanhthi</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">science</span><span class="o">-</span><span class="n">learning</span><span class="p">.</span><span class="n">git</span>
+</code></pre></div></div>
+
+<p>The cloned folder are stored in <code class="language-plaintext highlighter-rouge">/content/</code>. If you wanna <code class="language-plaintext highlighter-rouge">pull</code> requests, use,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">cd</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">data</span><span class="o">-</span><span class="n">science</span><span class="o">-</span><span class="n">learning</span>
+<span class="err">!</span><span class="n">git</span> <span class="n">pull</span>
+</code></pre></div></div>
+
+<h2 id="pytorch-with-gpu">PyTorch with GPU</h2>
+
+<p>To enable GPU backend for your notebook, go to <strong>Edit</strong> → <strong>Notebook Settings</strong> and set <strong>Hardware accelerator</strong> to <strong>GPU</strong>.<sup><a href="https://jovianlin.io/pytorch-with-gpu-in-google-colab/ " target="_blank">[ref]</a></sup></p>
+
+<h2 id="install-7zip-reader-graphviz-pydot-cartopy">Install 7zip reader, GraphViz, PyDot, cartopy</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># https://pypi.python.org/pypi/libarchive</span>
+<span class="o">!</span>apt-get <span class="nt">-qq</span> <span class="nb">install</span> <span class="nt">-y</span> libarchive-dev <span class="o">&amp;&amp;</span> pip <span class="nb">install</span> <span class="nt">-q</span> <span class="nt">-U</span> libarchive
+import libarchive
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># https://pypi.python.org/pypi/pydot</span>
+<span class="o">!</span>apt-get <span class="nt">-qq</span> <span class="nb">install</span> <span class="nt">-y</span> graphviz <span class="o">&amp;&amp;</span> pip <span class="nb">install</span> <span class="nt">-q</span> pydot
+import pydot
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span>apt-get <span class="nt">-qq</span> <span class="nb">install </span>python-cartopy python3-cartopy
+import cartopy
+</code></pre></div></div>
+
+<h2 id="save-as-html">Save as HTML</h2>
+
+<p>Jupyter Notebook has an option to ‘Download as’ HTML (or other) format. Google Colaboratory does not.</p>
+
+<ol>
+  <li><a href="https://nbconvert.readthedocs.io/en/latest/install.html">Install the nbconvert package</a>.</li>
+  <li>Save your Colab notebook.</li>
+  <li>
+    <p>In your terminal:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter nbconvert <span class="nt">--to</span> &lt;output format&gt; &lt;filename.ipynb&gt;
+<span class="c"># jupyter nbconvert --to html mynotebook.ipynb</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="other-functions">Other functions</h2>
+
+<ul>
+  <li>Interrupt a long running python process: <strong>Runtime</strong> &gt; <strong>Interrupt execution</strong> (<kbd>Alt</kbd> + <kbd>M</kbd> <kbd>I</kbd>).</li>
+  <li>Support Jupyter magic commands, check full list <a href="https://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb">here</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2019-10-12-google-colab.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Google Colab'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

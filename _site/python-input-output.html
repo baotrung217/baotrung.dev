@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/python-input-output" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Python: Input & Output
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Python: Input & Output" />
+  
+
+  
+    <meta property="og:description" content="Input Comment Print / Display Logging Input # Get input from user and display (input's type is `string`) age = input(&quot;Your age? &quot;) # python 3, raw_input for python 2 print(&quot;Your age:&quot;, age) # don't need space after &quot;age&quot; # Get the input and store to numbers list numbers =...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/python-input-output" />
+    <link rel="canonical" href="http://localhost:4000/python-input-output" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #a0ffa0;">
+              <i class="fab fa-python"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Python: Input & Output
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#101">
+                    101
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python">
+                    python
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python-data">
+                    python-data
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#input" id="markdown-toc-input">Input</a>    <ul>
+      <li><a href="#comment" id="markdown-toc-comment">Comment</a></li>
+    </ul>
+  </li>
+  <li><a href="#print--display" id="markdown-toc-print--display">Print / Display</a></li>
+  <li><a href="#logging" id="markdown-toc-logging">Logging</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="input">Input</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get input from user and display (input's type is `string`)
+</span><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Your age? "</span><span class="p">)</span> <span class="c1"># python 3, raw_input for python 2
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Your age:"</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="c1"># don't need space after "age"
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the input and store to numbers list
+</span><span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get multi inputs on 1 line
+</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="comment">Comment</h3>
+
+<p>Using <code class="language-plaintext highlighter-rouge">#</code> on each line.</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print("This is not showed.")
+</span><span class="k">print</span><span class="p">(</span><span class="s">"This is showed.)
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is showed.
+</code></pre></div>  </div>
+</div>
+
+<h2 id="print--display">Print / Display</h2>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Print normally
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">)</span> <span class="c1"># python 3
+</span><span class="k">print</span> <span class="s">"Hello!"</span> <span class="c1"># python 2
+</span>
+<span class="c1"># print with `format`
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Hello {} and {}."</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">))</span>
+
+<span class="c1"># change order
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Hello {2} and {1}."</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">))</span>
+
+<span class="c1"># Directly insert (python 3.6 or above)
+</span><span class="n">b</span> <span class="o">=</span> <span class="s">"B"</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Hello </span><span class="si">{</span><span class="s">"A"</span><span class="si">}</span><span class="s"> and </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s">.'</span><span class="p">)</span>
+
+<span class="c1"># long strings
+</span><span class="k">print</span><span class="p">(</span><span class="s">'This is a part of sentence.'</span>
+      <span class="s">'This is other part.'</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Print normally
+Hello!
+Hello!
+
+# print with `format`
+Hello A and B.
+
+# change order
+Hello B and A.
+
+# Directly insert
+Hello A and B.
+
+
+# long strings
+This is a part of sentence. This is other part.
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print decimals
+</span><span class="k">print</span><span class="p">(</span><span class="s">"{:.6f}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code># print decimals
+1.000000
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># print multiples
+</span><span class="k">print</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">"thi"</span><span class="p">)</span> <span class="c1"># there are spaces
+</span></code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code># print multiples
+1 5 thi
+</code></pre></div>  </div>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># first 20 characters, second 10 characters
+</span><span class="k">print</span><span class="p">(</span> <span class="s">'{:&lt;20s} {:&lt;10s}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">string_one</span><span class="p">,</span> <span class="n">string_two</span><span class="p">)</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<p>Display separated results (like in executing multiple code cells),</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">display</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="logging">Logging</h2>
+
+<p>Check more <a href="https://docs.python.org/3/howto/logging-cookbook.html">here</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c1"># order of increasing severity
+</span><span class="n">log</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'something'</span><span class="p">)</span>
+<span class="n">log</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'something'</span><span class="p">)</span>
+<span class="n">log</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'something'</span><span class="p">)</span>
+<span class="n">log</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'something'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'something'</span><span class="p">)</span>
+
+<span class="c1"># by default, the logging module logs the messages with a severity level of WARNING or above
+# thus: debug and info aren't show by default
+</span></code></pre></div></div>
+
+<p>If the <code class="language-plaintext highlighter-rouge">log.info()</code> doesn’t work, set below<sup><a href="https://stackoverflow.com/questions/11548674/logging-info-doesnt-show-up-on-console-but-warn-and-error-do/11548754 " target="_blank">[ref]</a></sup>
+,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">().</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span> <span class="c1"># show all except "debug"
+# or
+</span><span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span> <span class="c1"># show all
+</span></code></pre></div></div>
+
+<div class="flex-50">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># in the class
+</span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="n">log</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span>
+<span class="n">log</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"xyz"</span><span class="p">)</span>
+
+<span class="n">log</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"abc: %s"</span><span class="p">,</span> <span class="n">abc</span><span class="p">)</span>
+<span class="n">log</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"xyz: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">))</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># in the jupyter notebook
+</span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"LOGLEVEL"</span><span class="p">,</span> <span class="s">"DEBUG"</span><span class="p">))</span>
+</code></pre></div>  </div>
+</div>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/python/2019-09-03-python-input-output.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Python: Input & Output'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

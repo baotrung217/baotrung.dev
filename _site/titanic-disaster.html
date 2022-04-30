@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/titanic-disaster" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Titanic Disaster on Kaggle
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Titanic Disaster on Kaggle" />
+  
+
+  
+    <meta property="og:description" content="Introduction TL;DR; Preliminaries Overview datasets Preprocessing data Drop unnecessary features Convert to dummy Impute Missing Values Continuous to categorical Training with Random Forest Create an output file Other approaches References Introduction In this challenge, we are going to answer the question: “What sorts of people were more likely to survive?”...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/titanic-disaster" />
+    <link rel="canonical" href="http://localhost:4000/titanic-disaster" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/titanic.png">
+            </div>
+          
+          <h1 class="post-title">
+            Titanic Disaster on Kaggle
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+            </div>
+          
+          <p>
+            
+              08 Dec 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#tldr" id="markdown-toc-tldr">TL;DR;</a></li>
+  <li><a href="#preliminaries" id="markdown-toc-preliminaries">Preliminaries</a></li>
+  <li><a href="#overview-datasets" id="markdown-toc-overview-datasets">Overview datasets</a></li>
+  <li><a href="#preprocessing-data" id="markdown-toc-preprocessing-data">Preprocessing data</a>    <ul>
+      <li><a href="#drop-unnecessary-features" id="markdown-toc-drop-unnecessary-features">Drop unnecessary features</a></li>
+      <li><a href="#convert-to-dummy" id="markdown-toc-convert-to-dummy">Convert to dummy</a></li>
+      <li><a href="#impute-missing-values" id="markdown-toc-impute-missing-values">Impute Missing Values</a></li>
+      <li><a href="#continuous-to-categorical" id="markdown-toc-continuous-to-categorical">Continuous to categorical</a></li>
+    </ul>
+  </li>
+  <li><a href="#training-with-random-forest" id="markdown-toc-training-with-random-forest">Training with Random Forest</a></li>
+  <li><a href="#create-an-output-file" id="markdown-toc-create-an-output-file">Create an output file</a></li>
+  <li><a href="#other-approaches" id="markdown-toc-other-approaches">Other approaches</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In <a href="https://www.kaggle.com/c/titanic">this challenge</a>, we are going to answer the question: “<em>What sorts of people were more likely to survive?</em>” using passenger data. Datasets to be used: <code class="language-plaintext highlighter-rouge">train.csv</code> (for training and predicting), <code class="language-plaintext highlighter-rouge">test.csv</code> (for submitting).</p>
+
+<p class="text-center">
+<a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/projects/kaggle-titanic-disaster/titanic_kaggle.html" target="_blank"><img src="/img/file-html-brightgreen.svg" target="_blank" alt="Open this html file" /></a>
+ – <a href="https://dinhanhthi.com/github-colab?https://github.com/dinhanhthi/data-science-learning/blob/master/projects/kaggle-titanic-disaster/titanic_kaggle.ipynb" target="_blank"><img src="/img/colab-badge.svg" target="_blank" alt="Open In Colab" /></a>
+
+</p>
+
+<p class="img-full-100 pop"><img src="/img/post/project/titanic/df.jpg" alt="First 10 rows of dataset" />
+<em>First 10 rows of the dataset.</em></p>
+
+<table class="font-95 table-normal">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Definition</th>
+      <th>Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>survival</td>
+      <td>Survival</td>
+      <td>0 = No, 1 = Yes</td>
+    </tr>
+    <tr>
+      <td>pclass</td>
+      <td>Ticket class</td>
+      <td>1 = 1st, 2 = 2nd, 3 = 3rd</td>
+    </tr>
+    <tr>
+      <td>sex</td>
+      <td>Sex</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>Age in years</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>sibsp</td>
+      <td># of siblings / spouses aboard the Titanic</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>parch</td>
+      <td># of parents / children aboard the Titanic</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ticket</td>
+      <td>Ticket number</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>fare</td>
+      <td>Passenger fare</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>cabin</td>
+      <td>Cabin number</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>embarked</td>
+      <td>Port of Embarkation</td>
+      <td>C = Cherbourg, Q = Queenstown, S = Southampton</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tldr">TL;DR;</h2>
+
+<ul>
+  <li>Take an overview about dataset.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.describe</code> for numerical / categorical features.</li>
+      <li>Find percentage of missing data on each feature.</li>
+      <li>Survival based on some categorical features.</li>
+      <li>Visualize survival based on <code class="language-plaintext highlighter-rouge">Age</code>.</li>
+      <li>Check if the result depends on the titles indicated in the <code class="language-plaintext highlighter-rouge">Name</code>?</li>
+    </ul>
+  </li>
+  <li><strong>Preprocessing data</strong>:
+    <ul>
+      <li>Drop unnecessary features (columns) (<code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">Ticket</code>, <code class="language-plaintext highlighter-rouge">Cabin</code>) using <code class="language-plaintext highlighter-rouge">df.drop()</code>.</li>
+      <li>Convert categorical variables to dummy ones using <code class="language-plaintext highlighter-rouge">pd.get_dummies()</code>.</li>
+      <li>Impute missing continuous values using <code class="language-plaintext highlighter-rouge">sklearn.impute.SimpleImputer</code>.</li>
+      <li>Take an idea to change <code class="language-plaintext highlighter-rouge">Age</code> to a categorical feature and then also convert to dummy.</li>
+    </ul>
+  </li>
+  <li>Using <code class="language-plaintext highlighter-rouge">GridSearchCV</code> to find the optimal hyper parameters and apply some algorithms, e.g. Random Forest.</li>
+  <li>Export the result to an output file.</li>
+</ul>
+
+<h2 id="preliminaries">Preliminaries</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span> <span class="c1"># plot
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> <span class="c1"># working with dataset
+</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span> <span class="c1"># impute missing data
+</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">cross_val_score</span>
+</code></pre></div></div>
+
+<h2 id="overview-datasets">Overview datasets</h2>
+
+<p>Read data</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"train.csv"</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"test.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Take a look</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">train</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">train</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">train</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># for numerical features
+</span><span class="n">train</span><span class="p">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s">'O'</span><span class="p">])</span> <span class="c1"># for categorical features
+</span></code></pre></div></div>
+
+<p>Find the percentage of missing data on each feature,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span> <span class="o">=</span> <span class="n">train</span><span class="p">.</span><span class="n">isnull</span><span class="p">().</span><span class="nb">sum</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">train</span><span class="p">.</span><span class="n">isnull</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span><span class="o">/</span><span class="n">train</span><span class="p">.</span><span class="n">isnull</span><span class="p">().</span><span class="n">count</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">total</span><span class="p">,</span> <span class="n">percent</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">'Total'</span><span class="p">,</span> <span class="s">'% of missing'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Survival based on some categorical features,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"Sex"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"Survived"</span><span class="p">)</span>
+<span class="n">train</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"Pclass"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"Survived"</span><span class="p">)</span>
+<span class="n">train</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"SibSp"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"Survived"</span><span class="p">)</span>
+<span class="n">train</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"Parch"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"Survived"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Visualize survival based on <code class="language-plaintext highlighter-rouge">Age</code> (numerical),</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="p">[</span><span class="s">"Survived"</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s">'Age'</span><span class="p">].</span><span class="n">plot</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span> <span class="c1"># survived
+</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="p">[</span><span class="s">"Survived"</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s">'Age'</span><span class="p">].</span><span class="n">plot</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span> <span class="c1"># died
+</span></code></pre></div></div>
+
+<p>List of titles (Mr., Mrs., Dr.,…) from <code class="language-plaintext highlighter-rouge">Name</code>,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="s">' ([A-Za-z]+)\.'</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="preprocessing-data">Preprocessing data</h2>
+
+<p>In this task, you have to do the same techniques for both <code class="language-plaintext highlighter-rouge">train</code> and <code class="language-plaintext highlighter-rouge">test</code> sets!</p>
+
+<h3 id="drop-unnecessary-features">Drop unnecessary features</h3>
+
+<p>Drop some unnecessary features (columns),</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Ticket'</span><span class="p">,</span> <span class="s">'Cabin'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">test</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Ticket'</span><span class="p">,</span> <span class="s">'Cabin'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="convert-to-dummy">Convert to dummy</h3>
+
+<p>Convert categorical features to dummy variables,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column_name</span><span class="p">):</span>
+  <span class="c1"># Convert the column_name training feature into dummies using one-hot
+</span>  <span class="c1">#   and leave one first category to prevent perfect collinearity
+</span>  <span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column_name</span><span class="p">],</span> <span class="n">prefix</span><span class="o">=</span><span class="n">column_name</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">dummies</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sex
+</span><span class="n">train</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Embarked
+</span><span class="n">train</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="s">'Embarked'</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s">'Embarked'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Social Class
+</span><span class="n">train</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="s">'Pclass'</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s">'Pclass'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="impute-missing-values">Impute Missing Values</h3>
+
+<p>For continuous variables, we wanna fill missing data with the mean value.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">impute_data</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span><span class="p">,</span> <span class="n">column_name</span><span class="p">):</span>
+  <span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s">'mean'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="c1"># Fit the imputer object on the training data
+</span>  <span class="n">imputer</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="n">column_name</span><span class="p">].</span><span class="n">values</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># transform single column to 1
+</span>  <span class="c1"># Apply the imputer object to the df_train and df_test
+</span>  <span class="n">df_train</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputer</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="n">column_name</span><span class="p">].</span><span class="n">values</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">df_test</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputer</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="n">column_name</span><span class="p">].</span><span class="n">values</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Age
+</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">impute_data</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">)</span>
+<span class="c1"># Fare
+</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">impute_data</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="continuous-to-categorical">Continuous to categorical</h3>
+
+<p>In the case, for example, you wanna convert <code class="language-plaintext highlighter-rouge">Age</code> feature which is initially a numerical feature to a categorical feature (many ranges of ages, for example).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">process_age</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cut_points</span><span class="p">,</span> <span class="n">label_names</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">"Age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"Age"</span><span class="p">].</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">"Age_categories"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"Age"</span><span class="p">],</span> <span class="n">cut_points</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_names</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">cut_points</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Missing"</span><span class="p">,</span> <span class="s">'Infant'</span><span class="p">,</span> <span class="s">"Child"</span><span class="p">,</span> <span class="s">'Teenager'</span><span class="p">,</span> <span class="s">"Young_Adult"</span><span class="p">,</span> <span class="s">'Adult'</span><span class="p">,</span> <span class="s">'Senior'</span><span class="p">]</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">process_age</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">cut_points</span><span class="p">,</span> <span class="n">label_names</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">process_age</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">cut_points</span><span class="p">,</span> <span class="n">label_names</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Convert to a dummy variable,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">main</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="s">'Age_categories'</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">create_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s">'Age_categories'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="training-with-random-forest">Training with Random Forest</h2>
+
+<p>We will use <a href="/grid-search">Grid Search</a> to test with different parameters and then choose the best ones.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a dictionary containing all the candidate values of the parameters
+</span><span class="n">parameter_grid</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5001</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)),</span>
+                      <span class="n">criterion</span><span class="o">=</span><span class="p">[</span><span class="s">'gini'</span><span class="p">,</span><span class="s">'entropy'</span><span class="p">],</span>
+                      <span class="n">max_features</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">),</span> <span class="mi">2</span><span class="p">)),</span>
+                      <span class="n">max_depth</span><span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="c1"># Creata a random forest object
+</span><span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a gridsearch object with 5-fold cross validation, and uses all cores (n_jobs=-1)
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">random_forest</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameter_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Split into <code class="language-plaintext highlighter-rouge">X_train</code>, <code class="language-plaintext highlighter-rouge">y_train</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">difference</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">])]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s">'Survived'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Nest the gridsearchCV in a 3-fold CV for model evaluation
+</span><span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Print results
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Accuracy scores:'</span><span class="p">,</span> <span class="n">cv_scores</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Mean of score:'</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Variance of scores:'</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">var</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Retrain The Random Forest With The Optimum Parameters</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Retrain the model on the whole dataset
+</span><span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Predict who survived in the test dataset
+</span><span class="n">predictions</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="create-an-output-file">Create an output file</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">final_ids</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s">"PassengerId"</span><span class="p">]</span>
+<span class="n">submission_df</span> <span class="o">=</span> <span class="p">{</span><span class="s">"PassengerId"</span><span class="p">:</span> <span class="n">final_ids</span><span class="p">,</span>
+                 <span class="s">"Survived"</span><span class="p">:</span> <span class="n">predictions</span><span class="p">}</span>
+<span class="n">submission</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">submission_df</span><span class="p">)</span>
+
+<span class="n">submission</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'titanic_submission.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Another way, check the <a href="https://chrisalbon.com/machine_learning/trees_and_forests/titanic_competition_with_random_forest/#create-the-kaggle-submission">last section of this post</a>.</p>
+
+<h2 id="other-approaches">Other approaches</h2>
+
+<ul>
+  <li>Based on the number of family/sibling members: combination of <code class="language-plaintext highlighter-rouge">SibSp</code> and <code class="language-plaintext highlighter-rouge">Parch</code>.</li>
+  <li>Go alone?</li>
+  <li>Consider the title from <code class="language-plaintext highlighter-rouge">Name</code>.</li>
+  <li>Use <a href="/decision-tree-classifier">Decision Tree</a> with K-fold.</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><strong>Chris Albon</strong> – <a href="https://chrisalbon.com/machine_learning/trees_and_forests/titanic_competition_with_random_forest/">Titanic Competition With Random Forest</a>.</li>
+  <li><strong>Manav Sehgal</strong> – <a href="https://www.kaggle.com/startupsci/titanic-data-science-solutions">Titanic Data Science Solutions</a>.</li>
+  <li><strong>Dataquest</strong> – <a href="https://app.dataquest.io/course/kaggle-fundamentals">Kaggle fundamental</a> – <a href="https://github.com/dinhanhthi/dataquest-aio/tree/master/step-7-machine-learning-intermediate/course-3-kaggle-fundamentals">on my Github</a>.</li>
+  <li><strong>Abhinav Sagar</strong> – <a href="https://towardsdatascience.com/how-i-scored-in-the-top-1-of-kaggles-titanic-machine-learning-challenge-7716386ba298">How I scored in the top 1% of Kaggle’s Titanic Machine Learning Challenge</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/project/2019-12-08-titanic-disaster.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Titanic Disaster on Kaggle'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

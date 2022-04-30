@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/sphinx-restructuredtext" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Sphinx & reStructuredText & docstring
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Sphinx & reStructuredText & docstring" />
+  
+
+  
+    <meta property="og:description" content="Install Folder structure Build Format Headings Link Alert boxes Insert images Insrt code Autodoc from python library Problem of “Attributes” Problem with decorator Docstring What? Numpy Style Google Style Python Docstring Errors References Install # install python first pip install sphinx pip install sphinx-autobuild pip install sphinx_rtd_theme pip install sphinxcontrib-napoleon...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/sphinx-restructuredtext" />
+    <link rel="canonical" href="http://localhost:4000/sphinx-restructuredtext" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #a0ffa0;">
+              <i class="fab fa-python"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Sphinx & reStructuredText & docstring<sup>•</sup>
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#101">
+                    101
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python">
+                    python
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              30 Apr 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#install" id="markdown-toc-install">Install</a></li>
+  <li><a href="#folder-structure" id="markdown-toc-folder-structure">Folder structure</a></li>
+  <li><a href="#build" id="markdown-toc-build">Build</a></li>
+  <li><a href="#format" id="markdown-toc-format">Format</a>    <ul>
+      <li><a href="#headings" id="markdown-toc-headings">Headings</a></li>
+      <li><a href="#link" id="markdown-toc-link">Link</a></li>
+      <li><a href="#alert-boxes" id="markdown-toc-alert-boxes">Alert boxes</a></li>
+      <li><a href="#insert-images" id="markdown-toc-insert-images">Insert images</a></li>
+      <li><a href="#insrt-code" id="markdown-toc-insrt-code">Insrt code</a></li>
+    </ul>
+  </li>
+  <li><a href="#autodoc-from-python-library" id="markdown-toc-autodoc-from-python-library">Autodoc from python library</a>    <ul>
+      <li><a href="#problem-of-attributes" id="markdown-toc-problem-of-attributes">Problem of “Attributes”</a></li>
+      <li><a href="#problem-with-decorator" id="markdown-toc-problem-with-decorator">Problem with decorator</a></li>
+    </ul>
+  </li>
+  <li><a href="#docstring" id="markdown-toc-docstring">Docstring</a>    <ul>
+      <li><a href="#what" id="markdown-toc-what">What?</a></li>
+      <li><a href="#numpy-style" id="markdown-toc-numpy-style">Numpy Style</a></li>
+      <li><a href="#google-style-python-docstring" id="markdown-toc-google-style-python-docstring">Google Style Python Docstring</a></li>
+    </ul>
+  </li>
+  <li><a href="#errors" id="markdown-toc-errors">Errors</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="install">Install</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install python first</span>
+pip <span class="nb">install </span>sphinx
+pip <span class="nb">install </span>sphinx-autobuild
+pip <span class="nb">install </span>sphinx_rtd_theme
+pip <span class="nb">install </span>sphinxcontrib-napoleon <span class="c"># theme</span>
+</code></pre></div></div>
+
+<h2 id="folder-structure">Folder structure</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|-- project
+    |-- custom_lib <span class="c"># python package</span>
+    |-- custom_lib-doc
+        |-- <span class="nb">source</span>
+            |-- conf.py
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># conf.py
+</span><span class="kn">import</span> <span class="nn">os</span><span class="p">,</span> <span class="n">sys</span>
+<span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+<span class="kn">import</span> <span class="nn">sphinxcontrib</span>
+
+<span class="n">path_custom_lib</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">'../../'</span><span class="p">)</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_custom_lib</span><span class="p">)</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="s">'My notes'</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="s">'2020, Math2IT'</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s">'Anh-Thi DINH'</span>
+<span class="n">release</span> <span class="o">=</span> <span class="s">'0.2'</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'sphinxcontrib.napoleon'</span><span class="p">,</span>
+    <span class="s">'sphinx_rtd_theme'</span><span class="p">,</span>
+    <span class="s">'sphinx.ext.mathjax'</span>
+<span class="p">]</span>
+
+<span class="n">napoleon_include_init_with_doc</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">napoleon_google_docstring</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">napoleon_use_param</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">napoleon_use_ivar</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">'sphinx_rtd_theme'</span>
+
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'display_version'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'prev_next_buttons_location'</span><span class="p">:</span> <span class="s">'both'</span><span class="p">,</span>
+    <span class="s">'style_external_links'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'style_nav_header_background'</span><span class="p">:</span> <span class="s">'#F5A603'</span><span class="p">,</span>
+    <span class="s">'sticky_navigation'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'navigation_depth'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="build">Build</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># folder structure</span>
+|-- project
+    |-- custom_lib
+    |-- custom_lib-doc
+        |-- <span class="nb">source</span>
+            |-- conf.py
+</code></pre></div></div>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># build</span>
+sphinx-build <span class="nb">source </span>build
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># auto build + watch the change</span>
+sphinx-autobuild <span class="nb">source </span>_local <span class="nt">-p</span> 8555
+<span class="c"># http://127.0.0.1:8555/</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="format">Format</h2>
+
+<h3 id="headings">Headings</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>H1 heading
+<span class="o">==========</span>
+
+H2 heading
+<span class="nt">----------</span>
+
+H3 heading
+..........
+
+H4 heading
+~~~~~~~~~~
+</code></pre></div></div>
+
+<h3 id="link">Link</h3>
+
+<p>Cross url (in the same document)<sup><a href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#links-to-sections-in-the-same-document " target="_blank">[ref]</a></sup></p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># place to ref</span>
+:ref:<span class="sb">`</span>custum text&lt;CSVLoader&gt;<span class="sb">`</span><span class="nb">.</span>
+
+<span class="c"># Display "CSV"</span>
+:ref:<span class="sb">`</span>CSVLoader<span class="sb">`</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># somewhere</span>
+.. _CSVLoader:
+
+CSV
+<span class="o">===</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># if heading inside the same file as the caller</span>
+Call to <span class="sb">`</span>Name of heading<span class="sb">`</span>_
+
+Name of heading
+<span class="o">===============</span>
+</code></pre></div></div>
+
+<p>External urls:</p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>External hyperlinks, like Python_.
+
+.. _Python: http://www.python.org/
+
+<span class="c"># or inline</span>
+<span class="sb">`</span>Python &lt;http://www.python.org/&gt;<span class="sb">`</span>_.
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>External hyperlinks, like <span class="sb">`</span>About Python<span class="sb">`</span>_.
+
+.. _About Python: http://www.python.org/
+</code></pre></div>  </div>
+</div>
+
+<p>To a class, method,… in the python library (<a href="https://stackoverflow.com/questions/22700606/how-would-i-cross-reference-a-function-generated-by-autodoc-in-sphinx/22714510">this question</a> -&gt; <a href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#cross-referencing-python-objects">ref</a>),</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:py:meth:<span class="sb">`</span>mymodule.MyClass.mymethod<span class="sb">`</span>
+
+<span class="c"># or even shorter (if python is default)</span>
+:meth:<span class="sb">`</span>mymodule.MyClass.mymethod<span class="sb">`</span>
+
+<span class="c"># custom text</span>
+:py:meth:<span class="sb">`</span>custom text&lt;mymodule.MyClass.mymethod&gt;<span class="sb">`</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">:class:</code>: for classes.</li>
+</ul>
+
+<h3 id="alert-boxes">Alert boxes</h3>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># note</span>
+.. note:: First paragraph.
+
+    Second paragraph.
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># warning</span>
+.. warning:: Content of the warning.
+</code></pre></div>  </div>
+</div>
+
+<h3 id="insert-images">Insert images</h3>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># block</span>
+.. image:: images/ball1.gif
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># inline</span>
+The |biohazard| symbol.
+
+.. |biohazard| image:: biohazard.png
+</code></pre></div>  </div>
+</div>
+
+<h3 id="insrt-code">Insrt code</h3>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># without syntax highlight</span>
+::
+
+    def abc<span class="o">()</span>:
+        pass
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># with syntax highlight</span>
+.. code-block:: python
+
+    def abc<span class="o">()</span>:
+        pass
+</code></pre></div>  </div>
+</div>
+
+<h2 id="autodoc-from-python-library">Autodoc from python library</h2>
+
+<p>👉 <a href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">Main ref</a>.</p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># folder structure</span>
+|-- project
+    |-- custom_lib
+    |-- custom_lib-doc
+        |-- <span class="nb">source</span>
+            |-- conf.py
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># conf.py
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">path_custom_lib</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">'../../'</span><span class="p">)</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_custom_lib</span><span class="p">)</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># all classes in classes.py</span>
+.. automodule:: custom_lib.folder.classes
+   :members:
+
+<span class="c"># in case `fit`, `predict` didn't show</span>
+.. automodule:: custom_lib.folder.classes
+   :members:
+   :undoc-members:
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># a specific class in classes.py</span>
+.. autoclass:: custom_lib.folder.classes.ClassA
+   :members:
+</code></pre></div>  </div>
+</div>
+
+<h3 id="problem-of-attributes">Problem of “Attributes”</h3>
+
+<ul>
+  <li>When we use <code class="language-plaintext highlighter-rouge">"Attributes"</code> in docstring, the sphinx (<a href="https://github.com/readthedocs/sphinx_rtd_theme">sphinx_rtd_theme</a> template) will render it as <code class="language-plaintext highlighter-rouge">"Variables"</code> if we indicate <code class="language-plaintext highlighter-rouge">napoleon_use_ivar = True</code> in the config. (check <a href="https://github.com/sphinx-doc/sphinx/issues/2115#issuecomment-314703605">this issue</a>)</li>
+  <li>List of <a href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">supported section headers</a> in docstring.</li>
+  <li>Read <a href="https://michaelgoerz.net/notes/extending-sphinx-napoleon-docstring-sections.html">this blog</a> as an option. <mark>It works for Google Docstring, not numpy docstring yet!</mark></li>
+</ul>
+
+<h3 id="problem-with-decorator">Problem with decorator</h3>
+
+<p>Sphinx doesn’t render docstring for classes coming with decorator, i.e. <code class="language-plaintext highlighter-rouge">@something</code> (before <code class="language-plaintext highlighter-rouge">def</code>). We can’t use only <code class="language-plaintext highlighter-rouge">:members:</code>.</p>
+
+<div class="flex-50">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="k">def</span> <span class="nf">my_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="s">"""Doc from wrapper"""</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Calling decorated function'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">my_decorator</span>
+<span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+    <span class="s">"""Docstring"""</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Called example function'</span><span class="p">)</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-even d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">example</span><span class="p">.</span><span class="n">__doc__</span> <span class="c1"># with @wraps(f)
+</span>
+<span class="n">example</span><span class="p">.</span><span class="n">__doc__</span> <span class="c1"># without @wraps(f)
+</span></code></pre></div>  </div>
+
+  <div class="language-bash output flex-even d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'Docstring'</span>
+
+<span class="s1">'Doc from wrapper'</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="docstring">Docstring</h2>
+
+<h3 id="what">What?</h3>
+
+<p>If you wanna make a <a href="https://en.wikipedia.org/wiki/Docstring">docstring</a> (showing the information of a function when using <code class="language-plaintext highlighter-rouge">help(&lt;func&gt;)</code> or <code class="language-plaintext highlighter-rouge">func.__doc__</code>).</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="s">"""Reverse a text.
+    Input the text.
+    Return text reversed.
+    """</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">reverse</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on function reverse in module __main__:
+
+reverse(text)
+    Reverse a text.
+    Input the text.
+    Return text reversed.
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reverse</span><span class="p">.</span><span class="n">__doc__</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">reverse</span><span class="p">.</span><span class="n">__doc__</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Reverse a text.\n    Input the text.\n    Return text reversed.\n    '
+
+Reverse a text.
+    Input the text.
+    Return text reversed.
+</code></pre></div>  </div>
+</div>
+
+<h3 id="numpy-style">Numpy Style</h3>
+
+<p>👉 <a href="https://numpydoc.readthedocs.io/en/latest/">Official docs</a>. <br />
+👉 <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html">Example of numpy docstring with sphinx</a>.</p>
+
+<p>An overview example,</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ex_class</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
+    <span class="s">"""
+    Quick description.
+    Longer description with `keywords`.
+
+    Parameters
+    ----------
+    var1 : int
+        Desc for var1.
+    var2 : {0 or 'index', 1 or 'columns'}, default 0
+        Long desc for var2. It may take a long line and we can break
+        this like that.
+
+    Returns
+    -------
+    Resampler object
+
+    See Also
+    --------
+    groupby : Group by mapping, function, label, or list of labels.
+    Series.resample : Resample a Series.
+
+    Notes
+    -----
+    See the `user guide
+    &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#resampling&gt;`_
+    for more.
+
+    Examples
+    --------
+    Start by creating a series with 9 one minute timestamps.
+    &gt;&gt;&gt; index = 1 +1
+    2
+    Description for this example.
+    """</span>
+    <span class="c1"># some commands
+</span>    <span class="k">return</span> <span class="n">return_values</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Quick description.
+Longer description with `keywords`.
+
+Parameters
+----------
+var1 : int
+    Desc for var1.
+var2 : {0 or 'index', 1 or 'columns'}, default 0
+    Long desc for var2. It may take a long line and we can break
+    this like that.
+
+Returns
+-------
+Resampler object
+
+See Also
+--------
+groupby : Group by mapping, function, label, or list of labels.
+Series.resample : Resample a Series.
+
+Notes
+-----
+See the `user guide
+&lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#resampling&gt;`_
+for more.
+
+Examples
+--------
+Start by creating a series with 9 one minute timestamps.
+&gt;&gt;&gt; index = 1 +1
+2
+Description for this example.
+</code></pre></div>  </div>
+</div>
+
+<p>Math equations,</p>
+
+<div class="flex-50">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># inline equation
+</span><span class="s">"""
+.. math:: </span><span class="se">\\</span><span class="s">drac{1}{2}
+"""</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># break very long equation
+</span><span class="s">"""
+.. math::
+    x_{</span><span class="se">\\</span><span class="s">text{min}} + </span><span class="se">\\</span><span class="s">dfrac{1}
+    {2} # for a very long equation
+"""</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># aligned
+</span><span class="s">"""
+.. math::
+    x+y &amp;= z
+
+    1+2 &amp;= 3
+"""</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># cases
+</span><span class="s">"""
+.. math::
+    f(x) = \smash{
+        </span><span class="se">\\</span><span class="s">begin{cases}
+        0, &amp;</span><span class="se">\\</span><span class="s">text{ if } x &lt; 40, </span><span class="se">\\\\</span><span class="s">
+        1, &amp; </span><span class="se">\\</span><span class="s">text{ if } 40 \leq x &lt;60, </span><span class="se">\\\\</span><span class="s">
+        </span><span class="se">\\</span><span class="s">end{cases}
+    }
+"""</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Methof, url.
+</span><span class="s">"""
+Instantiate the class.
+
+Parameters
+----------
+lst_comparison_type: str, default "wasserstein"
+    Type of comparison. The supported types are in `dict_tests` which
+    contains:
+
+    - "pearsonr": `Pearson correlation coefficient
+      &lt;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html&gt;`_.
+
+    - "wasserstein": Wasserstein distance (earth mover's distance). It
+      measures the distance between 2 distributions.
+      Check :meth:`popai.distribution_wasserstein_score`.
+"""</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># long line url
+</span><span class="s">"""
+- "pearsonr": `Pearson correlation coefficient
+  &lt;https://docs.scipy.org/doc/scipy/reference/</span><span class="se">\
+</span><span class="s">generated/scipy.stats.pearsonr.html&gt;`_.
+"""</span>
+</code></pre></div></div>
+
+<div class="flex-50">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># single returns
+</span><span class="s">"""
+Returns
+-------
+tuple (float, dict)
+    Description.
+"""</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># return a tuple
+</span><span class="s">"""
+Returns
+-------
+reject : ndarray, boolean
+    Description.
+pvals_corrected : ndarray
+    p-Description.
+"""</span>
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># break lines in itemize
+</span><span class="s">"""
+Returns
+-------
+info: dict
+    Description.
+
+    - Item 1.
+    - Item 2 very long lines
+      can be broken here.
+"""</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="google-style-python-docstring">Google Style Python Docstring</h3>
+
+<p>👉 <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Example Google Style Python Docstrings — napoleon 0.7 documentation</a><br />
+👉 <a href="https://google.github.io/styleguide/pyguide.html">styleguide | Style guides for Google-originated open-source projects</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># function
+</span><span class="s">"""
+Args:
+    param1 (int): The first parameter.
+    param2 (str): The second parameter.
+
+Returns:
+    bool: The return value. True for success, False otherwise.
+"""</span>
+</code></pre></div></div>
+
+<h2 id="errors">Errors</h2>
+
+<p>Problems with <a href="/visual-studio-code">VSCode</a> which cannot run the preview:</p>
+
+<ul>
+  <li>Select and activate an environment, <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code> then choose <code class="language-plaintext highlighter-rouge">Python: Select Interpreter</code> then choose the right version of python you wanna run the docs on.</li>
+  <li>Make sure the conda is already in <code class="language-plaintext highlighter-rouge">$PATH</code> + update the bashrc or zshrc (try <code class="language-plaintext highlighter-rouge">conda --version</code>).</li>
+  <li>Make sure the right environement is activate in VSCode + all necessary libs are already istalled!</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://rest-sphinx-memo.readthedocs.io/en/latest/intro.html">Rest and Sphinx Memo</a>.</li>
+  <li><strong>docutils</strong> – <a href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">Quick ref to rst format</a>.</li>
+  <li><strong>Thomas Cokelaer</strong> – <a href="https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html">Sphinx and RST syntax guide</a></li>
+  <li><strong>Sam Nicholls</strong> – <a href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">An idiot’s guide to Python documentation with Sphinx and ReadTheDocs</a></li>
+  <li><strong>sphinx-doc</strong> – <a href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">Include documentation from docstrings</a></li>
+  <li><a href="https://www.sphinx-doc.org/en/master/usage/configuration.html">Sphinx configuration</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/python/2020-04-30-sphinx-restructuredtext.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Sphinx & reStructuredText & docstring'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+    <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 1rem;">
+      <sup style="color: #bbb">•</sup>Notes with this notation aren't good enough. They are being updated. <span style="color: white;">If you can see this, you are so smart. ;)</span>
+    </p>
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

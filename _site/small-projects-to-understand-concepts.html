@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/small-projects-to-understand-concepts" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Small projects for understanding concepts
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Small projects for understanding concepts" />
+  
+
+  
+    <meta property="og:description" content="Image compression using K-Means – Open in HTML – Open in Colab. Load and write an image from/to Google Drive. Change the image’s size from (height, weight, channels) to (height x weight, channels) Reduce the image’s quality using smaller number of clusters. Example to understand the idea of PCA –...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/small-projects-to-understand-concepts" />
+    <link rel="canonical" href="http://localhost:4000/small-projects-to-understand-concepts" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+    <script type="text/javascript">
+      window.MathJax = {
+        jax: ["input/TeX", "output/SVG"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        SVG: {
+          linebreaks: { automatic: true },
+          styles: {".MathJax_SVG_Display": {margin: "1rem 0", overflow: "auto"}},
+          scale: 90
+        }
+      };
+    </script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG">
+    </script>
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #e97c8e;">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Small projects for understanding concepts
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#classifier">
+                    classifier
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#clustering">
+                    clustering
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#image-processing">
+                    image processing
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#popular-method">
+                    popular method
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#project">
+                    project
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#regression">
+                    regression
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              31 Oct 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<ul>
+  <li><strong>Image compression using <a href="http://localhost:4000/k-means-clustering">K-Means</a></strong> – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/K_Means_image_compression.html">Open in HTML</a> – <a href="https://colab.research.google.com/github/dinhanhthi/data-science-learning/blob/master/mini-projects/K_Means_image_compression.ipynb">Open in Colab</a>.
+    <ul>
+      <li>Load and write an image from/to Google Drive.</li>
+      <li>Change the image’s size from <code class="language-plaintext highlighter-rouge">(height, weight, channels)</code> to <code class="language-plaintext highlighter-rouge">(height x weight, channels)</code></li>
+      <li>Reduce the image’s quality using smaller number of clusters.</li>
+    </ul>
+  </li>
+  <li><strong>Example to understand the idea of <a href="http://localhost:4000/principal-component-analysis">PCA</a></strong> – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/PCA_understanding_example.html">Open in HTML</a> – <a href="https://colab.research.google.com/dinhanhthi/data-science-learning/blob/master/mini-projects/PCA_understanding_example.ipynb">Open in Colab</a>.
+    <ul>
+      <li>Plot points with 2 lines which are corresponding to 2 eigenvectors.</li>
+      <li>Plot &amp; choose Principal Components.</li>
+      <li>An example of choosing <code class="language-plaintext highlighter-rouge">n_components</code> $K$.</li>
+      <li>Visualization hand-written digits (the case of all digits and the case of only 2 digits – 1 &amp; 8).</li>
+      <li>Using <a href="/support-vector-machine">SVM</a> to classifier data in the case of 1 &amp; 8 and visualize the decision boundaries.</li>
+    </ul>
+  </li>
+  <li><strong>Image compression using <a href="http://localhost:4000/principal-component-analysis">PCA</a></strong> – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/PCA-image-compression.html">Open in HTML</a> – <a href="https://colab.research.google.com/dinhanhthi/data-science-learning/blob/master/mini-projects/PCA-image-compression.ipynb">Open in Colab</a>.
+    <ul>
+      <li>When input is an image, the values of adjacent pixels are <em>highly correlated</em>.</li>
+      <li>Import images from <code class="language-plaintext highlighter-rouge">scipy</code> and Google Drive or Github (with <code class="language-plaintext highlighter-rouge">git</code>).</li>
+      <li>Compress grayscale images and colored ones.</li>
+      <li>Plot a grayscale version of a colorful images.</li>
+      <li>Save output to file (Google Drive).</li>
+      <li>Fix warning <em>Lossy conversion from float64 to uint8. Range […,…]. Convert image to uint8 prior to saving to suppress this warning.</em></li>
+      <li>Fix warning <em>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers)</em>.</li>
+      <li>Calculate a size (in <code class="language-plaintext highlighter-rouge">KB</code>) of a image file.</li>
+    </ul>
+  </li>
+  <li><strong><a href="http://localhost:4000/principal-component-analysis">PCA</a> without scikit-learn</strong> – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/PCA_without_scikit_learn.html">Open in HTML</a> – <a href="https://colab.research.google.com/dinhanhthi/data-science-learning/blob/master/mini-projects/PCA_without_scikit_learn.ipynb">Open in Colab</a>.</li>
+  <li><strong>Face Recognition using <a href="http://localhost:4000/support-vector-machine">SVM</a></strong> – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/SVM-face-recognition.html">Open in HTML</a> – <a href="https://colab.research.google.com/dinhanhthi/data-science-learning/blob/master/mini-projects/SVM-face-recognition.ipynb">Open in Colab</a>.
+    <ul>
+      <li>Using PCA to extract 150 fundamental components to feed into our SVG classifier.</li>
+      <li>Grid search cross-validation to explore combinations of parameters (<code class="language-plaintext highlighter-rouge">gamma</code> and <code class="language-plaintext highlighter-rouge">C</code>).</li>
+      <li>Classification report: precision, recall, f1-score, support.</li>
+      <li>Confusion matrix.</li>
+      <li>An example of using <code class="language-plaintext highlighter-rouge">pipeline</code>.</li>
+    </ul>
+  </li>
+  <li><strong>XOR problem using <a href="http://localhost:4000/support-vector-machine">SVM</a></strong> to see the effect of <code class="language-plaintext highlighter-rouge">gamma</code> and <code class="language-plaintext highlighter-rouge">C</code> in the case of using RBF kernel – <a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/data-science-learning/blob/master/mini-projects/notebook_in_html/SVM-XOR-RBF-kernel-parameters.html">Open in HTML</a> – <a href="https://colab.research.google.com/dinhanhthi/data-science-learning/blob/master/mini-projects/SVM-XOR-RBF-kernel-parameters.ipynb">Open in Colab</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/project/2019-10-31-small-projects-to-understand-concepts.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Small projects for understanding concepts'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Anh-Thi Dinh | I failed my way to success
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/lightbox.min.css" async />
+    
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Anh-Thi Dinh" />
+  
+
+  
+    <meta property="og:description" content="{% include header.html type=&quot;index&quot; %} {% assign mycv = '/about' %} {% include heading-title.html title=&quot;Find me on&quot; icon=&quot;fas fa-globe-asia&quot; more=&quot;my CV&quot; insite=mycv cclass=&quot;mycv&quot; %} {% include me-social.html %} {% include proud-of.html data=site.data.proudof ncards=3 %} {% include heading-title.html title=&quot;Recent projects&quot; insite=&quot;/project&quot; icon=&quot;fas fa-code-branch&quot; %} {% include list_project.html limit=5 %} {% include...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/" />
+    <link rel="canonical" href="http://localhost:4000/" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="idx-header header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-3 offset-md-1">
+          <div class="img-avatar">
+            <img alt="Thi's avatar" src="/img/avatar-icon.jpg">
+          </div>
+        </div>
+        <div class="col-md-7 text-center idx-abt">
+          <h1>Anh-Thi Dinh</h1>
+          <p>Hi there! I'm <span style='color: #fff;'><strong>Thi</strong></span>, a math lover, a coder and an autodidact from Vietnam. I love to learn something new everyday. I write about what I've learned in an accessible and intuitive way because I do agree with Einstein that "<i>If you can't explain it simply, you don't understand it well enough.</i>".</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<!-- Social -->
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        
+        <h2 class="heading-title mycv">
+  
+    <i class="fas fa-globe-asia"></i>
+  
+  Find me on
+  
+  
+    <a class="more"  href="http://localhost:4000/about">
+      
+        my CV
+      
+    </a>
+  
+</h2>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-9">
+      <div class="me-social">
+        
+          <div class="item">
+            <div class="so-img">
+              <img style="opacity: 0.75;" src="/img/social/github.svg" />
+            </div>
+            <div class="so-name">
+              <a title="Where I store what I've done and learned so far." href="https://github.com/dinhanhthi" target="_blank">
+                Github
+              </a>
+            </div>
+          </div>
+        
+          <div class="item">
+            <div class="so-img">
+              <img style="opacity: 0.75;" src="/img/social/linkedin.svg" />
+            </div>
+            <div class="so-name">
+              <a title="My showcases for careers." href="https://www.linkedin.com/in/dinhanhthi/" target="_blank">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        
+          <div class="item">
+            <div class="so-img">
+              <img style="opacity: 0.75;" src="/img/social/stackexchange.svg" />
+            </div>
+            <div class="so-name">
+              <a title="Where I asks and answer to learn something new." href="https://stackexchange.com/users/1344291/anh-thi-dinh?tab=accounts" target="_blank">
+                StackExchange
+              </a>
+            </div>
+          </div>
+        
+          <div class="item">
+            <div class="so-img">
+              <img style="opacity: 0.8;" src="/img/social/goodreads.svg" />
+            </div>
+            <div class="so-name">
+              <a title="Where I give my thought about the books I've read." href="https://www.goodreads.com/user/show/19630622-thi-dinh" target="_blank">
+                Goodreads
+              </a>
+            </div>
+          </div>
+        
+          <div class="item">
+            <div class="so-img">
+              <img style="opacity: 0.75;" src="/img/social/coursera.svg" />
+            </div>
+            <div class="so-name">
+              <a title="Where I've learned Machine Learning and Data Science." href="https://www.coursera.org/user/47f27dde0ecab9a78e2c93632d78a556" target="_blank">
+                Coursera
+              </a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- proud-of cards -->
+<section>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        
+<div class="row justify-content-center proud-of-card">
+  
+    <div class="col-12 col-md-6 col-lg-4">
+      
+      
+      <a href="
+          https://math2it.com
+        " target="_blank">
+      
+        <div class="item mb-3">
+          <img src="http://localhost:4000/img/proud-of/math2it.png">
+          <div class="content">
+            <div class="title">Most proud of</div>
+            
+            <div class="subtitle">math2it.com</div>
+            
+          </div>
+        </div>
+      
+      </a>
+      
+    </div>
+  
+    <div class="col-12 col-md-6 col-lg-4">
+      
+      
+      <a href="
+          http://localhost:4000/notes
+        " target="">
+      
+        <div class="item mb-3">
+          <img src="http://localhost:4000/img/proud-of/mynote.png">
+          <div class="content">
+            <div class="title">My notes</div>
+            
+          </div>
+        </div>
+      
+      </a>
+      
+    </div>
+  
+    <div class="col-12 col-md-6 col-lg-4">
+      
+      
+      <a href="
+          http://localhost:4000/my-learning-log
+        " target="">
+      
+        <div class="item mb-3">
+          <img src="http://localhost:4000/img/proud-of/learning-log.png">
+          <div class="content">
+            <div class="title">My learning log</div>
+            
+          </div>
+        </div>
+      
+      </a>
+      
+    </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <h2 class="heading-title ">
+  
+    <i class="fas fa-code-branch"></i>
+  
+  Recent projects
+  
+  
+    <a class="more"  href="http://localhost:4000/project">
+      
+        view all
+      
+    </a>
+  
+</h2>
+
+
+      </div>
+      <div class="col-lg-10 col-xl-9">
+        <div class="project">
+  
+    <div class="item">
+      <h3>💡 P13 Discussion Group</h3>
+      <p>Private group for sharing ideas in IT between Vietnamese friends at University Sorbonne Paris Nord</p>
+      <div class="button">
+        
+        
+          <a class="btn btn-source" target="_blank" href="https://github.com/dinhanhthi/P13-discuss-group">
+            <svg version="1.1" width="18" height="18" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>Source</span>
+          </a>
+        
+      </div>
+    </div>
+  
+    <div class="item">
+      <h3>📊 data science learning</h3>
+      <p>All of courses, assignments, exercises, mini-projects and books that I've done so far in the process of learning by myself Machine Learning and Data Science.</p>
+      <div class="button">
+        
+        
+          <a class="btn btn-source" target="_blank" href="https://github.com/dinhanhthi/data-science-learning">
+            <svg version="1.1" width="18" height="18" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>Source</span>
+          </a>
+        
+      </div>
+    </div>
+  
+    <div class="item">
+      <h3>🎯 betterexplained vn</h3>
+      <p>Vietnamese translation of Kalid Azad's articles published on BetterExplained. This is a very useful website for ones who want to understand intuitively about Math.</p>
+      <div class="button">
+        
+          <a class="btn btn-success" target="_blank" href="https://betterexplained.math2it.com/">URL</a>
+        
+        
+          <a class="btn btn-source" target="_blank" href="https://github.com/math2it/BetterExplained-vn-translation">
+            <svg version="1.1" width="18" height="18" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>Source</span>
+          </a>
+        
+      </div>
+    </div>
+  
+    <div class="item">
+      <h3>🍒 simple perso</h3>
+      <p>A simple and beautiful personal jekyll theme.</p>
+      <div class="button">
+        
+          <a class="btn btn-success" target="_blank" href="https://dinhanhthi.github.io/simple-perso/">URL</a>
+        
+        
+          <a class="btn btn-source" target="_blank" href="https://github.com/dinhanhthi/simple-perso">
+            <svg version="1.1" width="18" height="18" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>Source</span>
+          </a>
+        
+      </div>
+    </div>
+  
+    <div class="item">
+      <h3>⭐ dinhanhthi.com</h3>
+      <p>Source code of my personal website.</p>
+      <div class="button">
+        
+          <a class="btn btn-success" target="_blank" href="http://dinhanhthi.com">URL</a>
+        
+        
+          <a class="btn btn-source" target="_blank" href="https://github.com/dinhanhthi/dinhanhthi.com">
+            <svg version="1.1" width="18" height="18" viewBox="0 0 16 16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>Source</span>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reading -->
+<section id="reading" class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <h2 class="heading-title ">
+  
+    <i class="fas fa-book-reader"></i>
+  
+  Recent read books
+  
+  
+    <a class="more"  href="http://localhost:4000/reading">
+      
+        view all
+      
+    </a>
+  
+</h2>
+
+
+      </div>
+      <div class="col-lg-10 col-xl-9">
+        <ul class="books">
+  
+    <li class="item">
+      
+        <span class="tbadge badge-green">I'm reading</span>
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/40363665-hands-on-machine-learning-with-scikit-learn-keras-and-tensorflow" target="_blank">Hands-On Machine Learning with Scikit-Learn, Keras, and Tensorflow: Concepts, Tools, and Techniques to Build Intelligent Systems</a>
+        
+      </span>
+      <span class="author"> &mdash; Aurélien Géron.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+        <span class="tbadge badge-green">I'm reading</span>
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/34890015-factfulness" target="_blank">Factfulness: Ten Reasons We're Wrong About the World – and Why Things Are Better Than You Think</a>
+        
+      </span>
+      <span class="author"> &mdash; Hans Rosling, Ola Rosling, Anna Rosling Rönnlund.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/3578853694" target="_blank">The Godfather</a>
+        
+      </span>
+      <span class="author"> &mdash; Mario Puzo.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/16322.The_A_B_C_Murders" target="_blank">The ABC Murders</a>
+        
+      </span>
+      <span class="author"> &mdash; Agatha Christie.</span>
+      
+        <span class="intro">When Alice Asher is murdered in Andover, Hercule Poirot is already on to the clues. Alphabetically speaking, it's one down, twenty-five to go.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/421369.Inside_the_Minds_of_Serial_Killers" target="_blank">Inside the Minds of Serial Killers: Why They Kill</a>
+        
+      </span>
+      <span class="author"> &mdash; Katherine Ramsland.</span>
+      
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Notes -->
+<section id="mynote" class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <h2 class="heading-title ">
+  
+    <i class="fas fa-edit"></i>
+  
+  Note taking
+  
+  
+</h2>
+
+
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center mynote mb-3">
+      <div class="col-12 col-md-4">
+        <div class="description">
+          <a href="http://localhost:4000">
+            dinhanhthi.com
+          </a>
+          <div class="more">
+            This contains my well-written notes. I write intuitively about concepts I've learned. They are not just for me, everyone may see them useful.
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+       <div class="showcase">
+        <img alt="My notes" src="http://localhost:4000/img/note.jpg" />
+       </div>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center mynote">
+      <div class="col-12 col-md-4 order-md-2">
+        <div class="description">
+          <a href="https://rawnote.dinhanhthi.com">
+            <span>rawnote</span>.dinhanhthi.com
+          </a>
+          <div class="more">
+            I learn every day and I use this raw note to catch up with all of the things on the first day I meet them but in a "messy" way.
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5 order-md-1">
+       <div class="showcase">
+        <img alt="My notes" src="http://localhost:4000/img/rawnote.jpg" />
+       </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Drawing -->
+<section id="drawing" class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        
+        <h2 class="heading-title ">
+  
+    <i class="fas fa-drafting-compass"></i>
+  
+  Recent sketches
+  
+    <a class="more" target="_blank"  href="https://photos.app.goo.gl/9OVEkdTjmtRPg7vC3">
+    
+      view all
+    
+  </a>
+  
+  
+</h2>
+
+
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      
+        <div class="col-md-3 col-sm-4 col-xs-6 gal-item">
+          <div class="box">
+            <a href="http://localhost:4000/img/sketch/new1.jpg" data-lightbox="gallery-set" data-title="I draw my friend and RIP her.">
+              <img src="http://localhost:4000/img/sketch/new1_thumbnail.jpg" class="img-fluid" alt="new1.jpg">
+            </a>
+          </div>
+        </div>
+      
+        <div class="col-md-3 col-sm-4 col-xs-6 gal-item">
+          <div class="box">
+            <a href="http://localhost:4000/img/sketch/new2.png" data-lightbox="gallery-set" data-title="Spider man.">
+              <img src="http://localhost:4000/img/sketch/new2_thumbnail.png" class="img-fluid" alt="new2.png">
+            </a>
+          </div>
+        </div>
+      
+        <div class="col-md-3 col-sm-4 col-xs-6 gal-item">
+          <div class="box">
+            <a href="http://localhost:4000/img/sketch/new3.jpg" data-lightbox="gallery-set" data-title="1 am working at the lab and I need some relaxation.">
+              <img src="http://localhost:4000/img/sketch/new3_thumbnail.jpg" class="img-fluid" alt="new3.jpg">
+            </a>
+          </div>
+        </div>
+      
+        <div class="col-md-3 col-sm-4 col-xs-6 gal-item">
+          <div class="box">
+            <a href="http://localhost:4000/img/sketch/new4.png" data-lightbox="gallery-set" data-title="Iron man.">
+              <img src="http://localhost:4000/img/sketch/new4_thumbnail.png" class="img-fluid" alt="new4.png">
+            </a>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <h2 class="heading-title ">
+  
+    <i class="fas fa-at"></i>
+  
+  Contact
+  
+  
+</h2>
+
+
+      </div>
+      <div class="col-lg-10 col-xl-9">
+        <ul class="contact">
+          <li>Call for a coffee talk in <b>Paris, France</b>.</li>
+          <li>In any case, I'm always available to discuss at <a href="mailto:dinhanhthi@gmail.com?subject=Contact from Thi's site"><b>dinhanhthi@gmail.com</b></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+  
+	<script src="/js/lightbox-plus-jquery.min.js" async></script>
+  
+
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/reading" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Open your mind with books
+    
+  </title>
+
+  
+    <meta name="description" content="Read to know we are not alone.">
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Open your mind with books" />
+  
+
+  
+    <meta property="og:description" content="Read to know we are not alone.">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/reading" />
+    <link rel="canonical" href="http://localhost:4000/reading" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #d6baff;">
+              <i class="fas fa-book-reader"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Open your mind with books
+          </h1>
+          
+          <p>
+            
+              Read to know we are not alone.
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p>I like to read books in <strong>applied maths</strong>, <strong>sciences</strong>, <strong>biography</strong>, <strong>history</strong> and <strong>psychology</strong>. Check <a href="https://www.goodreads.com/user/show/19630622-thi-dinh">my activities on Goodreads</a> (to-read books, comments, ratings,…) for more information.</p>
+
+<ul class="books">
+  
+    <li class="item">
+      
+        <span class="tbadge badge-green">I'm reading</span>
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/40363665-hands-on-machine-learning-with-scikit-learn-keras-and-tensorflow" target="_blank">Hands-On Machine Learning with Scikit-Learn, Keras, and Tensorflow: Concepts, Tools, and Techniques to Build Intelligent Systems</a>
+        
+      </span>
+      <span class="author"> &mdash; Aurélien Géron.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+        <span class="tbadge badge-green">I'm reading</span>
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/34890015-factfulness" target="_blank">Factfulness: Ten Reasons We're Wrong About the World – and Why Things Are Better Than You Think</a>
+        
+      </span>
+      <span class="author"> &mdash; Hans Rosling, Ola Rosling, Anna Rosling Rönnlund.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/3578853694" target="_blank">The Godfather</a>
+        
+      </span>
+      <span class="author"> &mdash; Mario Puzo.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/16322.The_A_B_C_Murders" target="_blank">The ABC Murders</a>
+        
+      </span>
+      <span class="author"> &mdash; Agatha Christie.</span>
+      
+        <span class="intro">When Alice Asher is murdered in Andover, Hercule Poirot is already on to the clues. Alphabetically speaking, it's one down, twenty-five to go.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/421369.Inside_the_Minds_of_Serial_Killers" target="_blank">Inside the Minds of Serial Killers: Why They Kill</a>
+        
+      </span>
+      <span class="author"> &mdash; Katherine Ramsland.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/39999.The_Boy_in_the_Striped_Pajamas" target="_blank">The Boy in the Striped Pajamas</a>
+        
+      </span>
+      <span class="author"> &mdash; Jostein Gaarder.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/3027338701?book_show_action=false&amp;from_review_page=1" target="_blank">Con đường Hồi giáo</a>
+        
+      </span>
+      <span class="author"> &mdash; Nguyễn Phương Mai.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/3009102301" target="_blank">South of the Border, West of the Sun</a>
+        
+      </span>
+      <span class="author"> &mdash; Haruki Murakami.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2956625007" target="_blank">Think like a freak</a>
+        
+      </span>
+      <span class="author"> &mdash; Steven D. Levitt.</span>
+      
+        <span class="intro">The New York Times bestselling Freakonomics changed the way we see the world, exposing the hidden side of just about everything.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2643302498" target="_blank">Homo Deus: A Brief History of Tomorrow</a>
+        
+      </span>
+      <span class="author"> &mdash; Yuval Noah Harari.</span>
+      
+        <span class="intro">The next book of Harari after his Sapiens.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/11843183-oxford-th-ng-y-u" target="_blank">Oxford thương yêu</a>
+        
+      </span>
+      <span class="author"> &mdash; Dương Thụy.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029179832" target="_blank">Sapiens: A Brief History of Humankind</a>
+        
+      </span>
+      <span class="author"> &mdash; Yuval Noah Harari.</span>
+      
+        <span class="intro">Go through the history of human from the first individuals to walk the earth to the radical.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2049756022?book_show_action=false&amp;from_review_page=1" target="_blank">Tâm nguyện cuối cùng</a>
+        
+      </span>
+      <span class="author"> &mdash; Mi Lei.</span>
+      
+        <span class="intro">The newest detective novel from Mi Lei. This time, he focused heavily on the stories of each character. There are still twists but they're quite easy to guess.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2680538787?book_show_action=false&amp;from_review_page=1" target="_blank">Hiệu ứng chim mồi</a>
+        
+      </span>
+      <span class="author"> &mdash; Quốc Khánh, Hạo Nhiên.</span>
+      
+        <span class="intro">With a simple and witty writing style, the authors show us some useful psychological techniques for business.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2666678371?book_show_action=false&amp;from_review_page=1" target="_blank">Papillon</a>
+        
+      </span>
+      <span class="author"> &mdash; Henri Charrière.</span>
+      
+        <span class="intro">An awesome adventure of Charrière when he tried to escape from all prisons he is confined.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2666680825?book_show_action=false&amp;from_review_page=1" target="_blank">Hắn và thằng bạn</a>
+        
+      </span>
+      <span class="author"> &mdash; Quốc Khánh, Hạo Nhiên.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2666657989?book_show_action=false&amp;from_review_page=1" target="_blank">Edison as I know him</a>
+        
+      </span>
+      <span class="author"> &mdash; Henry Ford, Samuel Crowther.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2429856389" target="_blank">To Kill a Mockingbird</a>
+        
+      </span>
+      <span class="author"> &mdash; Harper Lee.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2049809738?book_show_action=false&amp;from_review_page=1" target="_blank">Predictably Irrational: The Hidden Forces That Shape Our Decisions</a>
+        
+      </span>
+      <span class="author"> &mdash; Dan Ariely.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2792757668" target="_blank">Blink: The Power of Thinking Without Thinking</a>
+        
+      </span>
+      <span class="author"> &mdash; Malcolm Gladwell.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2427641664?book_show_action=false&amp;from_review_page=1" target="_blank">Bức xúc không làm ta vô can</a>
+        
+      </span>
+      <span class="author"> &mdash; Đặng Hoàng Giang.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2427643959?book_show_action=false&amp;from_review_page=1" target="_blank">The Murder of Roger Ackroyd</a>
+        
+      </span>
+      <span class="author"> &mdash; Agatha Christie.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2427642128?book_show_action=false&amp;from_review_page=1" target="_blank">Le Petit Nicolas</a>
+        
+      </span>
+      <span class="author"> &mdash; Sempé - Goscinny.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2427642679?book_show_action=false&amp;from_review_page=1" target="_blank">When he comes, close your eyes</a>
+        
+      </span>
+      <span class="author"> &mdash; Ding Mo.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2049757982" target="_blank">Einstein: His Life and Universe</a>
+        
+      </span>
+      <span class="author"> &mdash; Walter Isaacson.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2120557368" target="_blank">Man's Search for Meaning</a>
+        
+      </span>
+      <span class="author"> &mdash; Viktor Emil Frankl.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2048880101" target="_blank">The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</a>
+        
+      </span>
+      <span class="author"> &mdash; Simon Singh.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2047915450?book_show_action=false&amp;from_review_page=1" target="_blank">How to stop Worrying and start living</a>
+        
+      </span>
+      <span class="author"> &mdash; Dale Carnegie.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029181991?book_show_action=false&amp;from_review_page=1" target="_blank">Lần đầu thấy trăng</a>
+        
+      </span>
+      <span class="author"> &mdash; Võ Diệu Thanh.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029182902?book_show_action=false&amp;from_review_page=1" target="_blank">The Alchemist</a>
+        
+      </span>
+      <span class="author"> &mdash; Paulo Coelho.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029183832?book_show_action=false&amp;from_review_page=1" target="_blank">Letters to a young mathematician</a>
+        
+      </span>
+      <span class="author"> &mdash; Ian Stewart.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+        <span class="tbadge badge-yellow">my choice</span>
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029184341?book_show_action=false&amp;from_review_page=1" target="_blank">The Power of Habit: Why We Do What We Do in Life and Business</a>
+        
+      </span>
+      <span class="author"> &mdash; Charles Duhigg.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2029185191?book_show_action=false&amp;from_review_page=1" target="_blank">Love and Math: The Heart of Hidden Reality</a>
+        
+      </span>
+      <span class="author"> &mdash; Edward Frenkel.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2792766531?book_show_action=false&amp;from_review_page=1" target="_blank">The call of the wild</a>
+        
+      </span>
+      <span class="author"> &mdash; Jack London.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/43035.White_Fang" target="_blank">White Fang</a>
+        
+      </span>
+      <span class="author"> &mdash; Jack London.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/review/show/2792767857" target="_blank">The housekeeper and the professor</a>
+        
+      </span>
+      <span class="author"> &mdash; Yoko Ogawa.</span>
+      
+    </li>
+  
+    <li class="item">
+      
+      
+      <span class="title">
+        
+          <a href="https://www.goodreads.com/book/show/862041.Harry_Potter_Series_Box_Set?from_search=true" target="_blank">Harry Potter (7 books)</a>
+        
+      </span>
+      <span class="author"> &mdash; J.K. Rowling.</span>
+      
+    </li>
+  
+</ul>
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

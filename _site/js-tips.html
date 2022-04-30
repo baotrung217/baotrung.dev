@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/js-tips" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | JavaScript extra
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="JavaScript extra" />
+  
+
+  
+    <meta property="og:description" content="Automatically reload page if js file changes Add MathJax to website Anchor links hidden by fixed navigation Header hover anchor links Back to top button Click to enlarge photo Automatically reload page if js file changes Install nodejs. Install live-server using nodejs: npm install -g live-server. cd to the project...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/js-tips" />
+    <link rel="canonical" href="http://localhost:4000/js-tips" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/js.png">
+            </div>
+          
+          <h1 class="post-title">
+            JavaScript extra
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#automatically-reload-page-if-js-file-changes" id="markdown-toc-automatically-reload-page-if-js-file-changes">Automatically reload page if js file changes</a></li>
+  <li><a href="#add-mathjax-to-website" id="markdown-toc-add-mathjax-to-website">Add MathJax to website</a></li>
+  <li><a href="#anchor-links-hidden-by-fixed-navigation" id="markdown-toc-anchor-links-hidden-by-fixed-navigation">Anchor links hidden by fixed navigation</a></li>
+  <li><a href="#header-hover-anchor-links" id="markdown-toc-header-hover-anchor-links">Header hover anchor links</a></li>
+  <li><a href="#back-to-top-button" id="markdown-toc-back-to-top-button">Back to top button</a></li>
+  <li><a href="#click-to-enlarge-photo" id="markdown-toc-click-to-enlarge-photo">Click to enlarge photo</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="automatically-reload-page-if-js-file-changes">Automatically reload page if js file changes</h2>
+
+<ol>
+  <li>Install <a href="https://nodejs.org/en/download/">nodejs</a>.</li>
+  <li>Install <a href="https://github.com/tapio/live-server">live-server</a> using nodejs: <code class="language-plaintext highlighter-rouge">npm install -g live-server</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cd</code> to the project folder.</li>
+  <li>run <code class="language-plaintext highlighter-rouge">live-server</code> (accept all networks notification)</li>
+  <li>Browse: <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></li>
+  <li>Enjoy!</li>
+</ol>
+
+<h2 id="add-mathjax-to-website">Add MathJax to website</h2>
+
+<p>Add below codes before <code class="language-plaintext highlighter-rouge">&lt;/head&gt;</code> tag,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="c1">// SETTINGS</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">jax</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">input/TeX</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">output/SVG</span><span class="dl">"</span><span class="p">],</span>
+    <span class="na">tex2jax</span><span class="p">:</span> <span class="p">{</span><span class="na">inlineMath</span><span class="p">:</span> <span class="p">[[</span><span class="dl">'</span><span class="s1">$</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">$</span><span class="dl">'</span><span class="p">],</span> <span class="p">[</span><span class="dl">'</span><span class="se">\\</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="se">\\</span><span class="s1">)</span><span class="dl">'</span><span class="p">]]},</span>
+    <span class="na">SVG</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">linebreaks</span><span class="p">:</span> <span class="p">{</span> <span class="na">automatic</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+      <span class="na">styles</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">.MathJax_SVG_Display</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span><span class="na">margin</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.5rem 0</span><span class="dl">"</span><span class="p">,</span> <span class="na">overflow</span><span class="p">:</span> <span class="dl">"</span><span class="s2">auto</span><span class="dl">"</span><span class="p">}},</span>
+      <span class="na">scale</span><span class="p">:</span> <span class="mi">90</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">async</span>
+  <span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="anchor-links-hidden-by-fixed-navigation">Anchor links hidden by fixed navigation</h2>
+
+<p>If you use table of content for posts in which links starting with <code class="language-plaintext highlighter-rouge">#</code> link to headings. After jumping, headings are usually hidden by the fixed navigation. Adding below script before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code> tag can solve the problem (change value <code class="language-plaintext highlighter-rouge">100</code> to change where the page jump)<sup><a href="http://stackoverflow.com/questions/17534661/make-anchor-link-go-some-pixels-above-where-its-linked-to">[ref]</a></sup>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">offsetAnchor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">scrollX</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">scrollY</span> <span class="o">-</span> <span class="mi">60</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Captures click events of all </span><span class="o">&lt;</span><span class="nx">a</span><span class="o">&gt;</span> <span class="nx">elements</span> <span class="kd">with</span> <span class="nx">href</span> <span class="nx">starting</span> <span class="kd">with</span> <span class="err">#</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a[href^="#"]</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Click events are captured before hashchanges. Timeout</span>
+    <span class="c1">// causes offsetAnchor to be called after the page jump.</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">offsetAnchor</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Set the offset when entering page with hash present in the url</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">offsetAnchor</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="header-hover-anchor-links">Header hover anchor links</h2>
+
+<p><sup><a href="https://ben.balter.com/2014/03/13/pages-anchor-links/">[ref]</a></sup>Add these scripts in <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://use.fontawesome.com/releases/v5.8.1/css/all.css"</span> <span class="na">integrity=</span><span class="s">"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Add CSS,</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.header-link</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">0.4rem</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+  <span class="nl">-webkit-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">0.1s</span> <span class="n">ease-in-out</span> <span class="m">0.1s</span><span class="p">;</span>
+  <span class="nl">-moz-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">0.1s</span> <span class="n">ease-in-out</span> <span class="m">0.1s</span><span class="p">;</span>
+  <span class="nl">-ms-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">0.1s</span> <span class="n">ease-in-out</span> <span class="m">0.1s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span><span class="nd">:hover</span> <span class="nc">.header-link</span><span class="o">,</span>
+<span class="nt">h3</span><span class="nd">:hover</span> <span class="nc">.header-link</span><span class="o">,</span>
+<span class="nt">h4</span><span class="nd">:hover</span> <span class="nc">.header-link</span><span class="o">,</span>
+<span class="nt">h5</span><span class="nd">:hover</span> <span class="nc">.header-link</span><span class="o">,</span>
+<span class="nt">h6</span><span class="nd">:hover</span> <span class="nc">.header-link</span> <span class="p">{</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Add the following in any place before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code>,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">h2, h3, h4</span><span class="dl">"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">$el</span><span class="p">,</span> <span class="nx">icon</span><span class="p">,</span> <span class="nx">id</span><span class="p">;</span>
+      <span class="nx">$el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+      <span class="nx">id</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">icon</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;i class="fa fa-link"&gt;&lt;/i&gt;</span><span class="dl">'</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;a /&gt;</span><span class="dl">"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">header-link</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">icon</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="back-to-top-button">Back to top button</h2>
+
+<p>Put below codes before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code> tag,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- jquery 1.11.0 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-1.11.0.min.js"</span> <span class="na">integrity=</span><span class="s">"sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI="</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- back-to-top script --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+    <span class="c1">// browser window scroll (in pixels) after which the "back to top" link is shown</span>
+    <span class="kd">var</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+      <span class="c1">//browser window scroll (in pixels) after which the "back to top" link opacity is reduced</span>
+      <span class="nx">offset_opacity</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+      <span class="c1">//duration of the top scrolling animation (in ms)</span>
+      <span class="nx">scroll_top_duration</span> <span class="o">=</span> <span class="mi">700</span><span class="p">,</span>
+      <span class="c1">//grab the "back to top" link</span>
+      <span class="nx">$back_to_top</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.cd-top</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="c1">//hide or show the "back to top" link</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scroll</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nx">offset</span> <span class="p">)</span> <span class="p">?</span> <span class="nx">$back_to_top</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">cd-is-visible</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="nx">$back_to_top</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">cd-is-visible cd-fade-out</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">//smooth scroll to top</span>
+    <span class="nx">$back_to_top</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">body,html</span><span class="dl">'</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+        <span class="na">scrollTop</span><span class="p">:</span> <span class="mi">0</span> <span class="p">,</span>
+        <span class="p">},</span> <span class="nx">scroll_top_duration</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- css --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+  <span class="nc">.cd-top</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">2%</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">2%</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.05</span><span class="p">);</span>
+    <span class="c">/* image replacement properties */</span>
+    <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="nl">text-indent</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#bbb</span> <span class="sx">url(/images/cd-top-arrow.svg)</span> <span class="nb">no-repeat</span> <span class="nb">center</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">visibility</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">-webkit-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">.3s</span><span class="p">;</span>
+    <span class="nl">-moz-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">.3s</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">.3s</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.cd-top.cd-is-visible</span><span class="o">,</span> <span class="nc">.cd-top.cd-fade-out</span><span class="o">,</span> <span class="nc">.no-touch</span> <span class="nc">.cd-top</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">-webkit-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">0s</span><span class="p">;</span>
+    <span class="nl">-moz-transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">0s</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">opacity</span> <span class="m">.3s</span> <span class="m">0s</span><span class="p">,</span> <span class="n">visibility</span> <span class="m">0s</span> <span class="m">0s</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.cd-top.cd-is-visible</span> <span class="p">{</span>
+    <span class="c">/* the button becomes visible */</span>
+    <span class="nl">visibility</span><span class="p">:</span> <span class="nb">visible</span><span class="p">;</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.cd-top.cd-fade-out</span> <span class="p">{</span>
+    <span class="c">/* if the user keeps scrolling down, the button is out of focus and becomes less visible */</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">.5</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.no-touch</span> <span class="nc">.cd-top</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#e86256</span><span class="p">;</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="c">&lt;!-- where back-to-top button locates --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#0"</span> <span class="na">class=</span><span class="s">"cd-top"</span><span class="nt">&gt;</span>Top<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<h2 id="click-to-enlarge-photo">Click to enlarge photo</h2>
+
+<p>If some photos on your page are too small and you wanna add a function in that users can click on the photo to enlarge it. This technique requires <a href="https://getbootstrap.com">Bootstrap 4</a>.</p>
+
+<p>Put below scripts <strong class="tbrown">in that order</strong> before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code> tag.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- jquery 1.10.1 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-1.10.1.min.js"</span> <span class="na">integrity=</span><span class="s">"sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k="</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- bootstrap scripts --&gt;</span>
+
+<span class="c">&lt;!-- enlargement script --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+
+    <span class="c1">// add more attributes to the img.pop</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.pop</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">data-toggle</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">tooltip</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.pop</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">data-placement</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">top</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.pop</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Click to see a bigger photo.</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// current view port size</span>
+    <span class="kd">var</span> <span class="nx">wW</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span><span class="o">*</span><span class="mf">0.9</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">wH</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">height</span><span class="p">()</span><span class="o">*</span><span class="mf">0.9</span><span class="p">;</span> <span class="c1">// max display</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-toggle="tooltip"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.pop</span><span class="dl">'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+      <span class="c1">// real size of the photo</span>
+      <span class="kd">var</span> <span class="nx">rW</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">naturalWidth</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">rH</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">naturalHeight</span><span class="p">;</span>
+
+      <span class="kd">var</span> <span class="nx">cW</span><span class="p">,</span> <span class="nx">cH</span><span class="p">;</span> <span class="c1">// photo's will be set to this size!</span>
+      <span class="nx">cW</span> <span class="o">=</span> <span class="nx">rW</span><span class="p">;</span> <span class="nx">cH</span> <span class="o">=</span> <span class="nx">rH</span><span class="p">;</span> <span class="c1">// initial setting</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">rH</span> <span class="o">&lt;</span> <span class="nx">wH</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">rW</span> <span class="o">&gt;</span> <span class="nx">wW</span><span class="p">){</span>
+          <span class="nx">cW</span> <span class="o">=</span> <span class="nx">wW</span><span class="p">;</span> <span class="nx">cH</span> <span class="o">=</span> <span class="nx">wW</span><span class="o">*</span><span class="nx">rH</span><span class="o">/</span><span class="nx">rW</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">rW</span> <span class="o">&lt;</span> <span class="nx">wW</span><span class="p">){</span>
+          <span class="nx">cH</span> <span class="o">=</span> <span class="nx">wH</span><span class="p">;</span> <span class="nx">cW</span> <span class="o">=</span> <span class="nx">wH</span><span class="o">*</span><span class="nx">rW</span><span class="o">/</span><span class="nx">rH</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">wW</span><span class="o">*</span><span class="nx">rH</span><span class="o">/</span><span class="nx">rW</span> <span class="o">&lt;</span> <span class="nx">wH</span><span class="p">){</span>
+          <span class="nx">cW</span> <span class="o">=</span> <span class="nx">wW</span><span class="p">;</span> <span class="nx">cH</span> <span class="o">=</span> <span class="nx">wW</span><span class="o">*</span><span class="nx">rH</span><span class="o">/</span><span class="nx">rW</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+          <span class="nx">cH</span> <span class="o">=</span> <span class="nx">wH</span><span class="p">;</span> <span class="nx">cW</span> <span class="o">=</span> <span class="nx">wH</span><span class="o">*</span><span class="nx">rW</span><span class="o">/</span><span class="nx">rH</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Show max photo's size if it's smaller than the current view port. Otherwise, it scale photo to the size of view port.</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.modal-dialog</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">cW</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.modal-dialog</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">cH</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">;</span>
+
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.imagepreview</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span>
+        <span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">);</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#imagemodal</span><span class="dl">'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Add below codes at the end of the post content,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"imagemodal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"myModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog modal-dialog-centered modal-lg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"imagepreview"</span> <span class="na">style=</span><span class="s">"width: 100%;"</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/js/2019-09-03-js-tips.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'JavaScript extra'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/python-with-sublime-text" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Sublime Text 3
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Sublime Text 3" />
+  
+
+  
+    <meta property="og:description" content="Theme Personal settings Useful packages Python Packages Custom Build Systems Markdown This instruction taken from a video of Corey Schafer. You need to install Sublime Text 3 and its Package Control to do below stuffs. Theme Install theme Predawn and Material Theme: Open Command Palette (Tool &amp;gt; Command Palette or...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/python-with-sublime-text" />
+    <link rel="canonical" href="http://localhost:4000/python-with-sublime-text" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/sublime.png">
+            </div>
+          
+          <h1 class="post-title">
+            Sublime Text 3
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#ide">
+                    ide
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#installation">
+                    installation
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#python">
+                    python
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#theme" id="markdown-toc-theme">Theme</a></li>
+  <li><a href="#personal-settings" id="markdown-toc-personal-settings">Personal settings</a></li>
+  <li><a href="#useful-packages" id="markdown-toc-useful-packages">Useful packages</a></li>
+  <li><a href="#python" id="markdown-toc-python">Python</a>    <ul>
+      <li><a href="#packages" id="markdown-toc-packages">Packages</a></li>
+      <li><a href="#custom-build-systems" id="markdown-toc-custom-build-systems">Custom Build Systems</a></li>
+    </ul>
+  </li>
+  <li><a href="#markdown" id="markdown-toc-markdown">Markdown</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>This instruction taken from <a href="https://www.youtube.com/watch?v=xFciV6Ew5r4">a video</a> of Corey Schafer. You need to install <a href="https://www.sublimetext.com/3">Sublime Text 3</a> and its <a href="https://packagecontrol.io/installation">Package Control</a> to do below stuffs.</p>
+
+<h2 id="theme">Theme</h2>
+
+<p>Install theme <strong><a href="https://packagecontrol.io/packages/Predawn">Predawn</a></strong> and <strong>Material Theme</strong>:</p>
+
+<ol>
+  <li>Open <strong>Command Palette</strong> (<em>Tool</em> &gt; <em>Command Palette</em> or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>). Type <code class="language-plaintext highlighter-rouge">install</code> to open <code class="language-plaintext highlighter-rouge">Package Control: Install Package</code>.</li>
+  <li>Search and install <code class="language-plaintext highlighter-rouge">Predawn</code> and <code class="language-plaintext highlighter-rouge">Material Theme</code>.</li>
+</ol>
+
+<h2 id="personal-settings">Personal settings</h2>
+
+<p>Open <strong>Preferences</strong> &gt; <strong>Settings</strong>, replace the content in tab <code class="language-plaintext highlighter-rouge">-User</code> by,</p>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#bOGtthnRdHisrSwMGsyM">
+    Show settings 
+  </button>
+  <div id="bOGtthnRdHisrSwMGsyM" class="collapse multi-collapse box-content ">
+    <div>
+
+      <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  	</span><span class="nl">"bold_folder_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"caret_extra_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"caret_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phase"</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"close_windows_when_empty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"color_scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Predawn/predawn.tmTheme"</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"copy_with_empty_selection"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"detect_indentation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"drag_text"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"draw_minimap_border"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"enable_tab_scrolling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"ensure_newline_at_eof_on_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"file_exclude_patterns"</span><span class="p">:</span><span class="w">
+  	</span><span class="p">[</span><span class="w">
+    		</span><span class="s2">"*.pyc"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.pyo"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.exe"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.dll"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.obj"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.o"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.a"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.lib"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.so"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.dylib"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.ncb"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.sdf"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.suo"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.pdb"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.idb"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">".DS_Store"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.class"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.psd"</span><span class="p">,</span><span class="w">
+    		</span><span class="s2">"*.sublime-workspace"</span><span class="w">
+  	</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"folder_exclude_patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">".svn"</span><span class="p">,</span><span class="w"> </span><span class="s2">".git"</span><span class="p">,</span><span class="w"> </span><span class="s2">".hg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"CVS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_site"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vendor"</span><span class="p">,</span><span class="w"> </span><span class="s2">".jekyll-cache"</span><span class="p">,</span><span class="w"> </span><span class="s2">"img"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  	</span><span class="nl">"font_face"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source Code Pro"</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"font_options"</span><span class="p">:</span><span class="w">
+  	</span><span class="p">[</span><span class="w">
+  		  </span><span class="s2">"no_round"</span><span class="w">
+  	</span><span class="p">],</span><span class="w">
+  	</span><span class="nl">"font_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"highlight_line"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"highlight_modified_tabs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"ignored_packages"</span><span class="p">:</span><span class="w">
+  	</span><span class="p">[</span><span class="w">
+  		  </span><span class="s2">"Vintage"</span><span class="w">
+  	</span><span class="p">],</span><span class="w">
+  	</span><span class="nl">"line_padding_bottom"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"line_padding_top"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"match_brackets_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"match_selection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"match_tags"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"material_theme_accent_graphite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"material_theme_compact_sidebar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"open_files_in_new_window"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"overlay_scroll_bars"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"preview_on_click"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"scroll_past_end"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"scroll_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"shift_tab_unindent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"show_definitions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"show_encoding"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"show_errors_inline"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"show_full_path"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"sidebar_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"tab_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adaptive.sublime-theme"</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"translate_tabs_to_spaces"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"trim_trailing_white_space_on_save"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"use_simple_full_screen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  	</span><span class="nl">"word_wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<h2 id="useful-packages">Useful packages</h2>
+
+<p>Install other useful packages (the same way as installing Predawn):</p>
+
+<ul>
+  <li><strong>BracketHighlighter</strong>: indicate the paired bracket.</li>
+  <li><strong>SidebarEnhancement</strong>: add more options to sidebar.</li>
+  <li><strong>TabNine</strong>: autocomplete extension using deep learning.</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<h3 id="packages">Packages</h3>
+
+<ul>
+  <li><strong>Anaconda</strong>: after installing this package, go go <strong>Preferences</strong> &gt; <strong>Package settings</strong> &gt; <strong>Anaconda</strong> &gt; <strong>Settings - Users</strong> &gt; paste following content,
+    <div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#box1ct">
+  Show settings
+  </button>
+  <div id="box1ct" class="collapse multi-collapse box-content">
+        <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"auto_formatting"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"autoformat_ignore"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"E309"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"E501"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"pep8_ignore"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"E309"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"E501"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"anaconda_linter_underlines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"anaconda_linter_mark_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_signatures"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disable_anaconda_completion"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>        </div>
+      </div>
+  </div>
+  </li>
+</ul>
+
+<h3 id="custom-build-systems">Custom Build Systems</h3>
+
+<p>If you wanna create different Build Systems w.r.t different versions of Python: <strong>Tools</strong> &gt; <strong>Build System</strong> &gt; <strong>New Build System…</strong> &gt; paste following codes (replace the directory to the directory of Python version that you want to use).</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/home/thi/anaconda3/bin/python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-u"</span><span class="p">,</span><span class="w"> </span><span class="s2">"$file"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"file_regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[ ]*File </span><span class="se">\"</span><span class="s2">(...*?)</span><span class="se">\"</span><span class="s2">, line ([0-9]*)"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quiet"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In order to run codes, you need to choose the build system first, then use <kbd>Ctrl</kbd> + <kbd>B</kbd>.</p>
+
+<h2 id="markdown">Markdown</h2>
+
+<ul>
+  <li>Install package <strong>MarkdownEditting</strong>.</li>
+  <li>Change hotkeys: <strong>Prefereces</strong> &gt; <strong>Package Settings</strong> &gt; <strong>Markdown Editing</strong> &gt; <strong>Key Bindings - User</strong>
+    <div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#box2ct">
+  Show settings
+  </button>
+  <div id="box2ct" class="collapse multi-collapse box-content">
+        <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ctrl+b"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_macro_file"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/MarkdownEditing/macros/Transform Word - Bold.sublime-macro"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ctrl+b"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert_snippet"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${MD_BOLD_MARKER}$1${MD_BOLD_MARKER}"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+       </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setting.auto_match_enabled"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"following_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^(?:</span><span class="se">\t</span><span class="s2">| |</span><span class="se">\\</span><span class="s2">)|]|</span><span class="se">\\</span><span class="s2">}|$)"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preceding_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"['a-zA-Z0-9_]$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eol_selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string.quoted.single"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ctrl+b"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert_snippet"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${MD_BOLD_MARKER}${SELECTION/(^[</span><span class="se">\\</span><span class="s2">*_]*|[</span><span class="se">\\</span><span class="s2">*_]*$)//g}${MD_BOLD_MARKER}"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setting.auto_match_enabled"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ctrl+b"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_macro_file"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preceding_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\\</span><span class="s2">b__+</span><span class="se">\\</span><span class="s2">S+__+$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">//</span><span class="w"> </span><span class="err">italics</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Alt</span><span class="w"> </span><span class="err">+</span><span class="w"> </span><span class="err">I</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_macro_file"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/MarkdownEditing/macros/Transform Word - Italic.sublime-macro"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert_snippet"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${MD_ITALIC_MARKER}$0${MD_ITALIC_MARKER}"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+       </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setting.auto_match_enabled"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"following_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^(?:</span><span class="se">\t</span><span class="s2">| |</span><span class="se">\\</span><span class="s2">)|]|</span><span class="se">\\</span><span class="s2">}|$)"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preceding_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"['a-zA-Z0-9_]$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eol_selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string.quoted.single"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert_snippet"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${MD_ITALIC_MARKER}${SELECTION/(^[</span><span class="se">\\</span><span class="s2">*_]*|[</span><span class="se">\\</span><span class="s2">*_]*$)//g}${MD_ITALIC_MARKER}"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setting.auto_match_enabled"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert_snippet"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${SELECTION/(^[</span><span class="se">\\</span><span class="s2">*_]|[</span><span class="se">\\</span><span class="s2">*_]$)//g}"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regex_match"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[*_].*[*_]$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_macro_file"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown markup.italic.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alt+i"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"run_macro_file"</span><span class="p">,</span><span class="w"> </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"</span><span class="p">},</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selection_empty"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preceding_text"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regex_contains"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\\</span><span class="s2">b_(?!_)</span><span class="se">\\</span><span class="s2">S+_$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">//</span><span class="w"> </span><span class="err">run</span><span class="w"> </span><span class="err">paste</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">link</span><span class="w"> </span><span class="err">command</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">selected</span><span class="w"> </span><span class="err">text</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ctrl+k"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference_new_inline_link"</span><span class="p">,</span><span class="w"> </span><span class="nl">"context"</span><span class="p">:</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setting.mde.keymap_disable.reference_new_inline_link"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w"> </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selector"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"equal"</span><span class="p">,</span><span class="w"> </span><span class="nl">"operand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text.html.markdown"</span><span class="p">,</span><span class="w"> </span><span class="nl">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"shift+alt+b"</span><span class="p">],</span><span class="w"> </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toggle_side_bar"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div>        </div>
+      </div>
+  </div>
+  </li>
+  <li>Make main window be on left (not center): <strong>Prefereces</strong> &gt; <strong>Package Settings</strong> &gt; <strong>Markdown Editing</strong> &gt; Markdown GFM Settings - User
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"color_scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Predawn/predawn.tmTheme"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"draw_centered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highlight_line"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2019-09-03-python-with-sublime-text.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Sublime Text 3'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

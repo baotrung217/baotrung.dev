@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/deeplearning-ai-course-3-bird-recognition-peacetopia" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Deep Learning Coursera - Bird recognition in the city of Peacetopia
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Deep Learning Coursera - Bird recognition in the city of Peacetopia" />
+  
+
+  
+    <meta property="og:description" content="Problem Statement Metric of success Structuring your data The content in this note is copied exactly from the course. It’s really helpful to be a separated note. 👉 Course 3 – Structuring Machine Learning Projects. Problem Statement This example is adapted from a real production application, but with details disguised...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/deeplearning-ai-course-3-bird-recognition-peacetopia" />
+    <link rel="canonical" href="http://localhost:4000/deeplearning-ai-course-3-bird-recognition-peacetopia" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/deeplearning-ai.png">
+            </div>
+          
+          <h1 class="post-title">
+            Deep Learning Coursera - Bird recognition in the city of Peacetopia
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#coursera">
+                    coursera
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#deeplearning-ai">
+                    deeplearning.ai
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#mooc">
+                    mooc
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#project">
+                    project
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#tensorflow">
+                    tensorflow
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              21 May 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#problem-statement" id="markdown-toc-problem-statement">Problem Statement</a></li>
+  <li><a href="#metric-of-success" id="markdown-toc-metric-of-success">Metric of success</a></li>
+  <li><a href="#structuring-your-data" id="markdown-toc-structuring-your-data">Structuring your data</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>The content in this note is copied exactly from the course. It’s really helpful to be a separated note.</p>
+
+<p>👉 <strong>Course 3</strong> – <a href="/deeplearning-ai-course-3">Structuring Machine Learning Projects</a>.</p>
+
+<h2 id="problem-statement">Problem Statement</h2>
+
+<p>This example is adapted from a real production application, but with details disguised to protect confidentiality.</p>
+
+<p>You are a famous researcher in the City of Peacetopia. The people of Peacetopia have a common characteristic: they are afraid of birds. To save them, you have <strong>to build an algorithm that will detect any bird flying over Peacetopia</strong> and alert the population.</p>
+
+<p>The City Council gives you a dataset of 10,000,000 images of the sky above Peacetopia, taken from the city’s security cameras. They are labelled:</p>
+
+<ul>
+  <li>y = 0: There is no bird on the image.</li>
+  <li>y = 1: There is a bird on the image.</li>
+</ul>
+
+<p>Your goal is to build an algorithm able to classify new images taken by security cameras from Peacetopia.</p>
+
+<p>There are a lot of decisions to make:</p>
+
+<ul>
+  <li>What is the evaluation metric?</li>
+  <li>How do you structure your data into train/dev/test sets?</li>
+</ul>
+
+<h2 id="metric-of-success">Metric of success</h2>
+
+<p>⭐ The City Council tells you that they want an algorithm that</p>
+
+<ol>
+  <li>Has high accuracy</li>
+  <li>Runs quickly and takes only a short time to classify a new image.</li>
+  <li>Can fit in a small amount of memory, so that it can run in a small processor that the city will attach to many different security cameras.</li>
+</ol>
+
+<p><strong>Note</strong>: <em>Having three evaluation metrics makes it harder for you to quickly choose between two different algorithms, and will slow down the speed with which your team can iterate.</em></p>
+
+<p>⭐ After further discussions, the city narrows down its criteria to:</p>
+
+<ul>
+  <li>“We need an algorithm that can let us know a bird is flying over Peacetopia as accurately as possible.”</li>
+  <li>“We want the trained model to take no more than 10sec to classify a new image.”</li>
+  <li>“We want the model to fit in 10MB of memory.”</li>
+</ul>
+
+<p>⭐ If you had the three following models, which one would you choose?</p>
+
+<ul>
+  <li>Test Accuracy	98%</li>
+  <li>Runtime 9 sec</li>
+  <li>Memory size 9MB</li>
+</ul>
+
+<p><em>As soon as the runtime is less than 10 seconds you’re good. So, you may simply maximize the test accuracy after you made sure the runtime is &lt;10sec.</em></p>
+
+<p>⭐ Based on the city’s requests: Accuracy is an optimizing metric; running time and memory size are a satisficing metrics.</p>
+
+<h2 id="structuring-your-data">Structuring your data</h2>
+
+<p>⭐ Before implementing your algorithm, you need to split your data into train/dev/test sets.</p>
+
+<ul>
+  <li>Train 9,500,000</li>
+  <li>Dev 250,000</li>
+  <li>Test 250,000</li>
+</ul>
+
+<p>After setting up your train/dev/test sets, the City Council comes across another 1,000,000 images, called the “citizens’ data”. Apparently the citizens of Peacetopia are so scared of birds that they volunteered to take pictures of the sky and label them, thus contributing these additional 1,000,000 images. These images are different from the distribution of images the City Council had originally given you, but you think it could help your algorithm.</p>
+
+<p><em>You should add the citizens’ data to the training set</em></p>
+
+<p>Sometimes we’ll need to train the model on the data that is available, and its distribution may not be the same as the data that will occur in production. Also, adding training data that differs from the dev set may still help the model improve performance on the dev set. <mark>What matters is that the dev and test set have the same distribution.</mark></p>
+
+<p>⭐ One member of the City Council knows a little about machine learning, and thinks you should add the 1,000,000 citizens’ data images to the test set. You object because:</p>
+
+<ul>
+  <li>The test set no longer reflects the distribution of data (security cameras) you most care about.</li>
+  <li>This would cause the dev and test set distributions to become different. This is a bad idea because you’re not aiming where you want to hit.</li>
+</ul>
+
+<p>⭐ You train a system, and its errors are as follows (error = 100%-Accuracy):</p>
+
+<ul>
+  <li>Training set error	4.0%</li>
+  <li>Dev set error	4.5%</li>
+</ul>
+
+<p>This suggests that one good avenue for improving performance is to train a bigger network so as to drive down the 4.0% training error. Do you agree?</p>
+
+<ul>
+  <li>No, because there is insufficient information to tell.</li>
+</ul>
+
+<p>⭐ You ask a few people to label the dataset so as to find out what is human-level performance. You find the following levels of accuracy:</p>
+
+<ul>
+  <li>Bird watching expert #1	0.3% error</li>
+  <li>Bird watching expert #2	0.5% error</li>
+  <li>Normal person #1 (not a bird watching expert)	1.0% error</li>
+  <li>Normal person #2 (not a bird watching expert)	1.2% error</li>
+</ul>
+
+<p>If your goal is to have “human-level performance” be a proxy (or estimate) for Bayes error, how would you define “human-level performance”?</p>
+
+<ul>
+  <li>0.3% (accuracy of expert #1)</li>
+</ul>
+
+<p>⭐ A learning algorithm’s performance can be better human-level performance but it can never be better than Bayes error.</p>
+
+<p>⭐ You find that a team of ornithologists debating and discussing an image gets an even better 0.1% performance, so you define that as “human-level performance.” After working further on your algorithm, you end up with the following:</p>
+
+<ul>
+  <li>Human-level performance	0.1%</li>
+  <li>Training set error	2.0%</li>
+  <li>Dev set error	2.1%</li>
+</ul>
+
+<p>Based on the evidence you have, which two of the following four options seem the most promising to try?</p>
+
+<ul>
+  <li>Try decreasing regularization.</li>
+  <li>Train a bigger model to try to do better on the training set.</li>
+</ul>
+
+<p>⭐ You also evaluate your model on the test set, and find the following:</p>
+
+<ul>
+  <li>Human-level performance	0.1%</li>
+  <li>Training set error	2.0%</li>
+  <li>Dev set error	2.1%</li>
+  <li>Test set error	7.0%</li>
+</ul>
+
+<p>What does this mean?</p>
+
+<ul>
+  <li>You should try to get a bigger dev set.</li>
+  <li>You have overfit to the dev set.</li>
+</ul>
+
+<p>⭐ After working on this project for a year, you finally achieve:</p>
+
+<ul>
+  <li>Human-level performance	0.10%</li>
+  <li>Training set error	0.05%</li>
+  <li>Dev set error	0.05%</li>
+</ul>
+
+<p>What can you conclude?</p>
+
+<ul>
+  <li>It is now harder to measure avoidable bias, thus progress will be slower going forward.</li>
+  <li>If the test set is big enough for the 0,05% error estimate to be accurate, this implies Bayes error is ≤0.05</li>
+</ul>
+
+<p>⭐ It turns out Peacetopia has hired one of your competitors to build a system as well. Your system and your competitor both deliver systems with about the same running time and memory size. However, your system has higher accuracy! However, when Peacetopia tries out your and your competitor’s systems, they conclude they actually like your competitor’s system better, because even though you have higher overall accuracy, you have more false negatives (failing to raise an alarm when a bird is in the air). What should you do?</p>
+
+<ul>
+  <li>Rethink the appropriate metric for this task, and ask your team to tune to the new metric.</li>
+</ul>
+
+<p>⭐ You’ve handily beaten your competitor, and your system is now deployed in Peacetopia and is protecting the citizens from birds! But over the last few months, a new species of bird has been slowly migrating into the area, so the performance of your system slowly degrades because your data is being tested on a new type of data.</p>
+
+<ul>
+  <li>Use the data you have to define a new evaluation metric (using a new dev/test set) taking into account the new species, and use that to drive further progress for your team.</li>
+</ul>
+
+<p>⭐ The City Council thinks that having more Cats in the city would help scare off birds. They are so happy with your work on the Bird detector that they also hire you to build a Cat detector. (Wow Cat detectors are just incredibly useful aren’t they.) Because of years of working on Cat detectors, you have such a huge dataset of 100,000,000 cat images that training on this data takes about two weeks. Which of the statements do you agree with?</p>
+
+<ul>
+  <li>If 100,000,000 examples is enough to build a good enough Cat detector, you might be better of training with just 10,000,000 examples to gain a ≈10x improvement in how quickly you can run experiments, even if each model performs a bit worse because it’s trained on less data.</li>
+  <li>Buying faster computers could speed up your teams’ iteration speed and thus your team’s productivity.</li>
+  <li>Needing two weeks to train will limit the speed at which you can iterate.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/mooc/2020-05-21-deeplearning-ai-course-3-bird-recognition-peacetopia.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Deep Learning Coursera - Bird recognition in the city of Peacetopia'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

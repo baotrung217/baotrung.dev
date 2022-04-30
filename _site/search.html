@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/search" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Search notes
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Search notes" />
+  
+
+  
+    <meta property="og:description" content="
+  {{re_loading}} {{re_result}} {{re_forkey}} &quot;&quot;
+
+
+
+
+
+">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/search" />
+    <link rel="canonical" href="http://localhost:4000/search" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #5eeda3;">
+              <i class="fas fa-search"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Search notes
+          </h1>
+          
+          <p>
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p class="p-intro">
+  <span id="search-process"></span>  <span id="search-query-container"
+    style="display: none;"> "<strong id="search-query"></strong>"</span>
+</p>
+<ul id="search-results"></ul>
+
+<script type="text/javascript">
+  window.data = {
+    
+  
+  
+  
+  
+  "docker-gpu": {
+    "id": "docker-gpu",
+      "title": "Docker + GPUs",
+        "categories": "deploy &amp; run",
+          "tags": "bash, ide, linux, docker, deploy &amp; run, pytorch, tensorflow, gpu",
+            "url": " /docker-gpu",
+              "keywords": " pybash tania rascia CI CD continuous integration deployment pipeline docker idea how to use airflow kubernetes k8s k apache container images dangling images vscode vsc visual studio code ssh container env environnement file variable nvidia docker runtime gpus tensorflow torch",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "tensorflow": {
+    "id": "tensorflow",
+      "title": "Tensorflow extra",
+        "categories": "deep learning",
+          "tags": "tensorflow, docker, gpu",
+            "url": " /tensorflow",
+              "keywords": " device gpu cuda nvidia graphical device torch deep learning neural network dell xps 7590 gpu install nvidia installation torch docker nvidia-docker nvidia-container-runtime packages",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "11ty-nunjucks": {
+    "id": "11ty-nunjucks",
+      "title": "11ty + Nunjucks",
+        "categories": "web development",
+          "tags": "11ty, static site, installation, 101",
+            "url": " /11ty-nunjucks",
+              "keywords": " create a website static web 11ty js Nunjucks mozilla template language liquid",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "nodejs-npm": {
+    "id": "nodejs-npm",
+      "title": "NodeJS &amp; NPM",
+        "categories": "JavaScript",
+          "tags": "react, static site, installation, 101",
+            "url": " /nodejs-npm",
+              "keywords": " js javascript package management Node Package Manager",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "docker-wsl2-windows": {
+    "id": "docker-wsl2-windows",
+      "title": "WSL 2 on Windows",
+        "categories": "skills",
+          "tags": "bash, linux, docker, deploy &amp; run",
+            "url": " /docker-wsl2-windows",
+              "keywords": " wsl wsl2 windows subsystem linux windows terminal zsh oh my szh jekyll ruby bundle vscode",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-tensorflow-course-4": {
+    "id": "deeplearning-ai-tensorflow-course-4",
+      "title": "TF 4 - Sequences, Time Series and Prediction",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow",
+            "url": " /deeplearning-ai-tensorflow-course-4",
+              "keywords": " deep learning ai coursera tensorflow google project python sequences time series sunspot activities circle NASA RNN Autocorrelation autocorrelated time series trend seasonality lambda layer sequence to vector sequence to sequence univariate multivariate learning rate LSTM callback recurrent layer moving average differencing metric train test validation set windowed dataset loss function Huber",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-tensorflow-course-3": {
+    "id": "deeplearning-ai-tensorflow-course-3",
+      "title": "TF 3 - NLP in TensorFlow",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow",
+            "url": " /deeplearning-ai-tensorflow-course-3",
+              "keywords": " deep learning ai coursera tensorflow google project python natural language processing NLP letters sequences text sentiment RNN LSTM long short term memory Recurrent neural network sarcasm tokenizer imdb movie review embedding word embeddings GRU Gated Recurrent Unit layer conv character-based prediction Shakespeare poem",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-tensorflow-course-2": {
+    "id": "deeplearning-ai-tensorflow-course-2",
+      "title": "TF 2 - CNN in TensorFlow",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow",
+            "url": " /deeplearning-ai-tensorflow-course-2",
+              "keywords": " deep learning ai coursera tensorflow google project python mnist convolutional neural networks cnn andrew ng cnn convolution neural networks image generator real world images photos minist fashion Laurence Moroney zip python gzip unzip transfer learning inception module network ImageDataGenerator RMSprop cat vs dog accuracy loss make a larger dataset dropout crop image scaling extract zip file using python image to np array plot accuracy and loss split shuffle data sequential model keras dense flatten conv2d max pooling generate data image augmentation human vs horse image generator transfer learning Inception GoogleNet network Dropout pre trained model multi class classification mnist rock paper scissors",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "r-installation": {
+    "id": "r-installation",
+      "title": "R Installation",
+        "categories": "r",
+          "tags": "101, installation, r",
+            "url": " /r-installation",
+              "keywords": " r jupyter notebook programming language install 101 windows linux ubuntu extension package lib library requirement LC_ALL utf8 UTF-8",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-tensorflow-course-1": {
+    "id": "deeplearning-ai-tensorflow-course-1",
+      "title": "TF 1 - Intro to TensorFlow for AI, ML, DL",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow",
+            "url": " /deeplearning-ai-tensorflow-course-1",
+              "keywords": " deep learning ai coursera tensorflow google project python mnist convolutional neural networks cnn andrew ng cnn convolution neural networks image generator real world images photos minist fashion Laurence Moroney fashion mnist optimizer loss metrics model sequential summary pooling convolution visualization MNIST layers flatten kernel size dense layer classification features extraction mycallback my callback on_epoch_end train test set pooling conv image filtering visualize convolutions and pooling real world images ImageGenerator ConvNet",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-ml-tools-resources": {
+    "id": "data-ml-tools-resources",
+      "title": "Resources for DS &amp; ML &amp; DL",
+        "categories": "others",
+          "tags": "online tool, collection",
+            "url": " /data-ml-tools-resources",
+              "keywords": " data science deep learing tools resources application good choice collection machine learning websites link url video dataset data frameworks",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "k-shape-clustering": {
+    "id": "k-shape-clustering",
+      "title": "K-Shape clustering",
+        "categories": "machine learning",
+          "tags": "clustering, time series",
+            "url": " /k-shape-clustering",
+              "keywords": " clustering time series",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "awesome-anomaly-detection-ts": {
+    "id": "awesome-anomaly-detection-ts",
+      "title": "Anomaly Detection for TS Resources",
+        "categories": "time series",
+          "tags": "time series, anomaly detection, collection",
+            "url": " /awesome-anomaly-detection-ts",
+              "keywords": " resources material ad awesome collection time series pyodds adtk tool kit awesome",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-structure": {
+    "id": "data-structure",
+      "title": "Data Structure",
+        "categories": "data science",
+          "tags": "",
+            "url": " /data-structure",
+              "keywords": " HDF Hierarchical Data Format hdf5 hdf t-digest",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "type-of-time-series": {
+    "id": "type-of-time-series",
+      "title": "Type of Time Series",
+        "categories": "time series",
+          "tags": "time series, collection",
+            "url": " /type-of-time-series",
+              "keywords": " univariate time series multivariate time series",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-visualization": {
+    "id": "data-visualization",
+      "title": "Data Visualization",
+        "categories": "data science",
+          "tags": "data visualization",
+            "url": " /data-visualization",
+              "keywords": " dtw dynamic time warping graph C library",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "wasserstein-earth-mover-distance": {
+    "id": "wasserstein-earth-mover-distance",
+      "title": "Earth mover’s distance",
+        "categories": "probability &amp; statistics",
+          "tags": "distribution, distance",
+            "url": " /wasserstein-earth-mover-distance",
+              "keywords": " compare distribution CDF Earth mover's distance earth mover Wasserstein Distance Kolmogorov test ks test EMD",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-course-3-bird-recognition-peacetopia": {
+    "id": "deeplearning-ai-course-3-bird-recognition-peacetopia",
+      "title": "Deep Learning Coursera - Bird recognition in the city of Peacetopia",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow, project",
+            "url": " /deeplearning-ai-course-3-bird-recognition-peacetopia",
+              "keywords": " case study andrew ng",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-course-3-autonomous-driving": {
+    "id": "deeplearning-ai-course-3-autonomous-driving",
+      "title": "Deep Learning Coursera - Bird recognition in the city of Peacetopia",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow, project",
+            "url": " /deeplearning-ai-course-3-autonomous-driving",
+              "keywords": " case study andrew ng",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-course-3": {
+    "id": "deeplearning-ai-course-3",
+      "title": "DL 3 - Structuring ML Projects",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai",
+            "url": " /deeplearning-ai-course-3",
+              "keywords": " machine learning strategy ML orthogonalization single number evaluation metric Satisficing and Optimizing metric train test dev set human level performance avoidable bias surpassing improve your model performance Andrej Karpathy carrying out error analysis cleaning up incorrectly labeled data build your first system quickly then iterate training and testng on different distributions bias variance with mismatched data distribution addressing data mismatch transfer learning multi task learning end to end deep learning Ruslan Salakhutdinov andrew ng the quick brown fox jumps over the lazy dog A-Z shortest sentence speech recognition",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "terminal": {
+    "id": "terminal",
+      "title": "Terminals",
+        "categories": "skills",
+          "tags": "bash",
+            "url": " /terminal",
+              "keywords": " bash terminal cmd cmder command line commandline powershell window terminal zsh guake terminal linux ubuntu mac os osx",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "sphinx-restructuredtext": {
+    "id": "sphinx-restructuredtext",
+      "title": "Sphinx &amp; reStructuredText &amp; docstring",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /sphinx-restructuredtext",
+              "keywords": " documentation sphinx napoleon google style numpy style ReadTheDocs rst reStructuredText autodoc class theme docstrings docstring __doc__ help sphinx numpydoc formats",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-course-2": {
+    "id": "deeplearning-ai-course-2",
+      "title": "DL 2 - Improving DNN: Hyperparameter tuning, Regularization and Optimization",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai, tensorflow",
+            "url": " /deeplearning-ai-course-2",
+              "keywords": " He initialization Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization specialization Initialization step zero initialization Random initialization break symmetry He initialization Xavier initialization Regularization L2 regularization Dropout activation Gradient checking Optimization Momentum RMSprop Adam Mini-batch gradient descent slow the training oscillated Shuffle Partition Batch Gradient Descent Stochastic Gradient Descent Exponentially weighted averages Bias correction Adaptive Moment Estimation Hyperparameter choicesLearning rate decay Problem of local optima Problem of plateau Tuning process Hyperparameter tuning Coarse to fine Panda Caviar Babysitting one model Training many models in parallel Batch Normalization Covariate shift problem test time Deep Learning Frameworks Tensorflow train test validation dev set bias variance basic recipe for ML regulaization overfitting Vanishing / Exploding gradients Weight Initialization for Deep Networks Numerical approximation of gradients Gradient checking Yoshua Bengio Yuanqing Lin Fitting Batch Norm into a neural network Batch Norm andrew ng deep learning neural networks",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "wordpress-docker": {
+    "id": "wordpress-docker",
+      "title": "Wordpress Docker",
+        "categories": "web development",
+          "tags": "wordpress, installation, docker, cms",
+            "url": " /wordpress-docker",
+              "keywords": " docker wordpress install a-z a to z automatically docker image docker container wamp lamp mamp all in one wordpress migration cli wp-cli backup migration locally docker",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "ssh": {
+    "id": "ssh",
+      "title": "SSH",
+        "categories": "skills",
+          "tags": "bash",
+            "url": " /ssh",
+              "keywords": " ssh command line remove server rsa public key private key",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "fresh-installation-ubuntu": {
+    "id": "fresh-installation-ubuntu",
+      "title": "Fresh Ubuntu / Pop!_OS Installation",
+        "categories": "others",
+          "tags": "bash, linux, collection, fresh install",
+            "url": " /fresh-installation-ubuntu",
+              "keywords": " to do list after installing ubuntu debian elementary os linux airpod bluetooth capture screen screen recorder guake xps k380 keyboard logitech pop os popos",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "fresh-install-windows": {
+    "id": "fresh-install-windows",
+      "title": "Fresh Windows 10 Installation",
+        "categories": "others",
+          "tags": "online tool, collection, fresh install",
+            "url": " /fresh-install-windows",
+              "keywords": " windows 10 reinstall install reset application softs need to do k380 keyboard logitech",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "resampling-time-series": {
+    "id": "resampling-time-series",
+      "title": "Resampling of Time Series",
+        "categories": "time series",
+          "tags": "time series",
+            "url": " /resampling-time-series",
+              "keywords": " resample frequency period timedelta index",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "p-value": {
+    "id": "p-value",
+      "title": "p-value",
+        "categories": "probability &amp; statistics",
+          "tags": "probability",
+            "url": " /p-value",
+              "keywords": " p values null hypothesis reject alternate hypothesis nullify Chi-Square Test statistical significance multiple testing multiple comparison problem correction multiple testing multiple tests multipletests",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "ks-test": {
+    "id": "ks-test",
+      "title": "Kolmogorov–Smirnov Test",
+        "categories": "probability &amp; statistics",
+          "tags": "distribution, distance",
+            "url": " /KS-test",
+              "keywords": " KS test p-value D statistic Probability Density Function Cumulative distribution function ks-test Kolmogorov Smirnov distribution of 2 two samples the same null hypothesis H0 earth mover's distance",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-tuple": {
+    "id": "python-tuple",
+      "title": "Python Tuple",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-tuple",
+              "keywords": " ",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "airflow-k8s-101": {
+    "id": "airflow-k8s-101",
+      "title": "Airflow + Kubernetes 101",
+        "categories": "deploy &amp; run",
+          "tags": "deploy &amp; run, 101, bash",
+            "url": " /airflow-k8s-101",
+              "keywords": " airflow kubernetes k8s docker apache",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-os-sys": {
+    "id": "python-os-sys",
+      "title": "Python sys &amp; os",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-os-sys",
+              "keywords": " list all files in a directory add path",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "deeplearning-ai-course-1": {
+    "id": "deeplearning-ai-course-1",
+      "title": "DL 1 - NN and DL",
+        "categories": "mooc",
+          "tags": "mooc, coursera, deeplearning.ai",
+            "url": " /deeplearning-ai-course-1",
+              "keywords": " logistic regression sigmoid derivative function python tips softmax activation function forward propagation and backward propagation simple neural network model predict an image of cat tanh relu leaky relu gradient descent L layer L-layer initialize parameters and hyperparameters shallow nn recognize a cat reshape neural networks supervised learning geoffrey hinton binary classification logistic gradient descent derivatives computation graph vetorization jupyter notebook Pieter Abbeel NN representation backprop intuition matrix dimension deep l-layer building blocks hyperparameters andrew ng",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-json": {
+    "id": "python-json",
+      "title": "Python JSON",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-json",
+              "keywords": " json JavaScript Object Notation Serialization Deserialization",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-dictionary": {
+    "id": "python-dictionary",
+      "title": "Python Dictionary",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-dictionary",
+              "keywords": " dict dictionary access elements sorted by keys",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "mean-shift": {
+    "id": "mean-shift",
+      "title": "Mean Shift clustering",
+        "categories": "machine learning",
+          "tags": "clustering, probability, distribution",
+            "url": " /mean-shift",
+              "keywords": " distance between points Mode-seeking algorithm Non-Parametric Density Estimation PDF Search Results Web results Probability density function Kernel Density Estimation",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-exception": {
+    "id": "python-exception",
+      "title": "Python Exception",
+        "categories": "python",
+          "tags": "101, error, python",
+            "url": " /python-exception",
+              "keywords": " error except try",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "wordpress-101": {
+    "id": "wordpress-101",
+      "title": "Wordpress 101",
+        "categories": "web development",
+          "tags": "wordpress, fundamental, cms",
+            "url": " /wordpress-101",
+              "keywords": " localhost template theme theme directory url website name description template author info post info",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "bash-command-line": {
+    "id": "bash-command-line",
+      "title": "Bash",
+        "categories": "skills",
+          "tags": "bash",
+            "url": " /bash-command-line",
+              "keywords": " cmder cmd terminal powershell macos mac linux ubuntu windows vim editor download wget check ip permission administrator block compress file zip rar unzip RAM CPU printenv environmental variables alias quick command quick shortcut multiple commands and script bash print print tree folder files structure windows terminal sh file",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "wordpress-installation": {
+    "id": "wordpress-installation",
+      "title": "Wordpress Installation",
+        "categories": "web development",
+          "tags": "wordpress, installation, cms",
+            "url": " /wordpress-installation",
+              "keywords": " LAMP create website wordpress wp apache2 mysql php phpmyadmin run locally database MAMP WAMP WampServer www clone a website to localhost locally theme template desgin PHP visual studio code vsc PHP IntelliSense database ftp app winscp filezilla transmit localhost",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "pytest": {
+    "id": "pytest",
+      "title": "Pytest",
+        "categories": "python",
+          "tags": "101, testing, python",
+            "url": " /pytest",
+              "keywords": " test result verify check algorithms error ImportError: No module named atomicwrites fixture not found",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "visual-studio-code": {
+    "id": "visual-studio-code",
+      "title": "VSCode",
+        "categories": "skills",
+          "tags": "ide, installation",
+            "url": " /visual-studio-code",
+              "keywords": " visual studio code vsc regex regular expression ssh remote server character combining font ligatures couple characters symbols letters new characters installation install extension plugin add extra path to auto complete reStructuredText rst markdown extension pythonremote regular expression regex vscode live server scss css compiler",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "linux-tips": {
+    "id": "linux-tips",
+      "title": "Linux notes",
+        "categories": "skills",
+          "tags": "bash, linux",
+            "url": " /linux-tips",
+              "keywords": " find with command line in linux ubuntu elementary os distro distribution move files to trash wrong owner gnome screen shot windows shrink partition resize disk drive turn off animation minimize gnome tweak tool vietnam vietnamese input method vn ime F2 kill process .bin .run install bookmark evince pdf reader PPA does not have Release file ip address ipconfig nautilus window explorer file manager shortcut hotkey thumbnail shorten directory terminal open as admin remove delete files folders folder size mount iso virtual disk extract iso file sync files mega megatools vim quit vim download upload $PATH path copy files from ubuntu to iOS check current path rename files folders surface book linux-surface errors problem bluetooth failed to load module user group ownership add user permission matlab graphic ui drive connector install silently remove matlab uninstall matlab download from google drive ssh control access another computer remote control server machine download playlist youtube youtube-dl mp3 tag mogrify wget ppa remove dconf guake free vpn vpnbook openvpn",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "time-series-tips": {
+    "id": "time-series-tips",
+      "title": "Time Series extra",
+        "categories": "time series",
+          "tags": "time series, algorithm, extra",
+            "url": " /time-series-tips",
+              "keywords": " find the common time invervals timestamps burst detection bursting burst firing term terminology gaps biggest gaps spaces algorithm starting and ending of each window average moyenne size max min problems with time series time series regression time series classification anomaly detection input read csv read_csv",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "tsfresh": {
+    "id": "tsfresh",
+      "title": "tsfresh",
+        "categories": "time series",
+          "tags": "",
+            "url": " /tsfresh",
+              "keywords": " tsfresh feature extraction feature selection video install how it works how to use reference Nils Braun",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "fast-fourier-transform-fft": {
+    "id": "fast-fourier-transform-fft",
+      "title": "Fast Fourier Transform (fft)",
+        "categories": "time series",
+          "tags": "",
+            "url": " /fast-fourier-transform-fft",
+              "keywords": " fft DFT discrete fourier transform phase frequency amplitude 3 properties of a wave fundamental",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "screen": {
+    "id": "screen",
+      "title": "Screen",
+        "categories": "skills",
+          "tags": "terminal",
+            "url": " /screen",
+              "keywords": " screen session attach reattach detach continue working shutdown computer cheatsheet quick reference cheat sheet remote host interrupt suddenly stop GNU screen terminal multiplexer virtual terminal",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "docker": {
+    "id": "docker",
+      "title": "Docker 101",
+        "categories": "deploy &amp; run",
+          "tags": "bash, ide, linux, gpu, tensorflow, pytorch, docker, deploy &amp; run",
+            "url": " /docker",
+              "keywords": " pybash tania rascia CI CD continuous integration deployment pipeline docker idea how to use airflow kubernetes k8s k apache container images dangling images vscode vsc visual studio code ssh container env environnement file variable",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "algorithm-1": {
+    "id": "algorithm-1",
+      "title": "Algorithm 1",
+        "categories": "algorithms",
+          "tags": "algorithm, probability",
+            "url": " /algorithm-1",
+              "keywords": " chunker slide slicing rolling batches windows list sequence split imshow plot true false grid squares bernoulli distribution algorithm python",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "good-applications": {
+    "id": "good-applications",
+      "title": "Useful Applications &amp; Tools",
+        "categories": "others",
+          "tags": "online tool, collection",
+            "url": " /good-applications",
+              "keywords": " useful applications softwares tools download terminal cmd commander cmder unikey vietnamese input keyboard screen to gif screen recorder lock hunter delete apps soft goldendict dictionary lingoes deepl translate qtranslate hotkeys google translate deep learning machine learning collection reminder stretch RSI download manager IDM XDM Repetitive Strain Injury iterm2 guake terminal cmder drop-down commander cmd quick open terminal commanline workrave time out screentogif lock hunter everything spotlight goldendict deepl lingoes Qtranslate tabcloud avim flash video downloader hush mate pdf printer internet tools image photo compression jpeg png remove background transparent photo luna lunapic resize images iloveimg side by side images",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-loop": {
+    "id": "python-loop",
+      "title": "Python Loop",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-loop",
+              "keywords": " python for while loop iteration skip ignore some iteration loop",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "dbscan-hdbscan-clustering": {
+    "id": "dbscan-hdbscan-clustering",
+      "title": "DBSCAN / HDBSCAN Clustering",
+        "categories": "machine learning",
+          "tags": "clustering, density based clustering",
+            "url": " /dbscan-hdbscan-clustering",
+              "keywords": " cluster clustering dbscan hdbscan density based spatial clustering of application with noise high varying shapes sort data points neighborhood min point core points border noise phase discover number of clusters automatically ignoire outliers detect outliers Scikit-learn density based clustering DTW (Dynamic Time Warping)",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "k-means-clustering": {
+    "id": "k-means-clustering",
+      "title": "K-Means Clustering",
+        "categories": "machine learning",
+          "tags": "clustering, popular method, partitioning clustering",
+            "url": " /k-means-clustering",
+              "keywords": " k means k-means clustering method sensitive to outliers partitioning clustering cluster k-medoids k medoids PAM oartitioning around medoids handwritten digits data Luis Serrano Andrew NG elbow method number of clusters k-medoids k modes k-modes k-medians k median kmean kmeans distance between points",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "date-time-tips": {
+    "id": "date-time-tips",
+      "title": "Date / Time extra",
+        "categories": "time series",
+          "tags": "time series, data processing, date overviewing",
+            "url": " /date-time-tips",
+              "keywords": " resample rule time step timedelta delta constructor format representation days hours minute second milisecond microsecond nanosecond offset string frequency resampling how DateOffsets frequencies strings offset aliases freq compare arithmetic timedelta different well sorted correctly pandas time series user guide convert timedelta timedelta64 numpy. np. TimedeltaIndex diff() difference datetimeindex Timedelta UNIX timestamp UTC +0 to_offset cannot use single T without number check info timestamp of a dataframe set index ISO 8601 format isoformat duration datetime",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "simple-autoencoder-ae": {
+    "id": "simple-autoencoder-ae",
+      "title": "Simple AutoEncoder (AE)",
+        "categories": "deep learning",
+          "tags": "",
+            "url": " /simple-autoencoder-ae",
+              "keywords": " autoencoder simple AE pytorch torch basic idea neural network NN layers activations encode encoder decode decoder relu linear sigmoid sequential anomaly detection wave data dataswati test interview",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "pytorch": {
+    "id": "pytorch",
+      "title": "PyTorch extra",
+        "categories": "deep learning",
+          "tags": "",
+            "url": " /pytorch",
+              "keywords": " pytorch device gpu cuda nvidia graphical device torch deep learning neural network",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-sample": {
+    "id": "data-sample",
+      "title": "Data Sample",
+        "categories": "data science",
+          "tags": "time series, data generation, collection",
+            "url": " /data-sample",
+              "keywords": " create data sample example dataframe fake data time series data int numbers columns list of int numbers from numpy different time steps gaps don't continue Temporary file and directory tempfile time series with windows fake data to function pyplot plt anomalies plot time series anomaly abnormal stationary time series",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "gatsby-images": {
+    "id": "gatsby-images",
+      "title": "Gatsby Images",
+        "categories": "web development",
+          "tags": "gatsby, react, front-end, static site",
+            "url": " /gatsby-images",
+              "keywords": " create a website static web react js inserting images",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "gatsby-js": {
+    "id": "gatsby-js",
+      "title": "Gatsby 101",
+        "categories": "web development",
+          "tags": "gatsby, react, static site, installation, 101",
+            "url": " /gatsby-js",
+              "keywords": " create a website static web react js",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "regular-expression": {
+    "id": "regular-expression",
+      "title": "Regular Expression in Python",
+        "categories": "python",
+          "tags": "python, 101",
+            "url": " /regular-expression",
+              "keywords": " special characters",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "grid-search": {
+    "id": "grid-search",
+      "title": "Grid Search",
+        "categories": "machine learning",
+          "tags": "",
+            "url": " /grid-search",
+              "keywords": " hyper parameter tuning Random Forest in solving the Titanic problem",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "create-dark-mode": {
+    "id": "create-dark-mode",
+      "title": "Idea to create a dark mode",
+        "categories": "web development",
+          "tags": "",
+            "url": " /create-dark-mode",
+              "keywords": " ",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "titanic-disaster": {
+    "id": "titanic-disaster",
+      "title": "Titanic Disaster on Kaggle",
+        "categories": "project-based learning",
+          "tags": "",
+            "url": " /titanic-disaster",
+              "keywords": " survive passenger drop features convert to dummy variables impute missing data gridsearchcv Continuous to categorical random forest create an output file Manav Sehgal Dataquest Abhinav Sagar",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "dataframe-overview": {
+    "id": "dataframe-overview",
+      "title": "Data Overview",
+        "categories": "data science",
+          "tags": "data processing, date overviewing",
+            "url": " /dataframe-overview",
+              "keywords": " dataframe dataset import csv pandas numpy describe shape dtype list of columns counting missing values NaNs null heatmap seaborn check duplicate show all deal handle processing KDE Kernel Density Estimation values distribution bar plot visuzlize visualization null values percentage features",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-preprocessing-cleaning": {
+    "id": "data-preprocessing-cleaning",
+      "title": "Data Processing &amp; Cleaning",
+        "categories": "data science",
+          "tags": "data processing",
+            "url": " /data-preprocessing-cleaning",
+              "keywords": " pandas numpy remove columns drop choose some column except rename column make index reset_index drop NaNs missing values null fill nans fillnan text data dropna preprocessing warning A value is trying to be set on a copy of a slice from a DataFrame Couple different columns duplicate things need to be checked steps rename index column drop NaNs multi index filled with mean of each row",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-combining": {
+    "id": "data-combining",
+      "title": "Data Combining",
+        "categories": "data science",
+          "tags": "data processing",
+            "url": " /data-combining",
+              "keywords": " coupling dataframes inner outer left right merging pandas display side by side concatenate concat",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-aggregation": {
+    "id": "data-aggregation",
+      "title": "Data Aggregation",
+        "categories": "data science",
+          "tags": "data processing",
+            "url": " /data-aggregation",
+              "keywords": " dataframe groupby group agg apply pivot table melt tables lambda group different functions pivot_table",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-pandas": {
+    "id": "python-pandas",
+      "title": "Pandas extra",
+        "categories": "python",
+          "tags": "python-data, extra, data generation, python",
+            "url": " /python-pandas",
+              "keywords": " pandaframe series df dataframe data overview data aggregation data combining data preprocessing cleaning row column select values export write csv files output input sep separate comma semicolon read csv read_csv from dictionary list numpy array np.array to_csv write to files multiindex indexing reverse values True False element wise invert integer rows and named columns index and column name selection convert true false to 1 0 add a row to current dataframe isin",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "js-101": {
+    "id": "js-101",
+      "title": "JavaScript 101",
+        "categories": "JavaScript",
+          "tags": "front-end, online tool",
+            "url": " /js-101",
+              "keywords": " practice directly on browser inspect ecmascript ES6 concise getters setters blocks variable scopes operators conditional statements if switch definition function strings special characters arrays objects destructuring assignment JSON javascript object notation iterate while for do while loops",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "github": {
+    "id": "github",
+      "title": "Github",
+        "categories": "skills",
+          "tags": "terminal, git",
+            "url": " /github",
+              "keywords": " github git ssh readme shields badge https errors",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "small-projects-to-understand-concepts": {
+    "id": "small-projects-to-understand-concepts",
+      "title": "Small projects for understanding concepts",
+        "categories": "project-based learning",
+          "tags": "project, image compression, classifier, regression, clustering, popular method",
+            "url": " /small-projects-to-understand-concepts",
+              "keywords": " Image compression K-Means PCA google drive github Lossy conversion Clipping input data to the valid range for imshow Face Recognition SVM XOR problem k means principal component analysis supoprt vector machine digit face Lossy conversion pipeline",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-numpy-tips": {
+    "id": "python-numpy-tips",
+      "title": "Numpy extra",
+        "categories": "python",
+          "tags": "python-data, extra, python",
+            "url": " /python-numpy-tips",
+              "keywords": " linspace array arange range equal spaces range arange int integer numbers list step evenly spaced create creating initialize nans values empty array random number isinstance check type numpy array compare 2 two dict dictionaries remove delete an element from an array count nans non nans not null",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-matplotlib-tips": {
+    "id": "python-matplotlib-tips",
+      "title": "Matplotlib extra",
+        "categories": "python",
+          "tags": "visualization, python-data, extra, python",
+            "url": " /python-matplotlib-tips",
+              "keywords": " plot in python axes grayscale PIL Image cmap imshow savefig gcf imageio imwrite plt.plot line style marker scatter plot dot line connect point generate list of colors automatically based on a list of input legend from list of colors imshow plot true false grid squares figsize subplot multiple plots legend independent from the plot line2d",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "jekyll-tips": {
+    "id": "jekyll-tips",
+      "title": "Jekyll",
+        "categories": "web development",
+          "tags": "static site, extra, jekyll",
+            "url": " /jekyll-tips",
+              "keywords": " lunrjs search js javascript content keywords jekyll markdown span markdown=&quot;1&quot; enlarge photo click to zoom in bigger photo bootstrap 4 run build jekyll site with draft posts --draft -I render the changes kramdown create plugin ruby hide show box nested block crossed using variables _plugins .rb badge liquid customizable liquid tags include proud of custom plugins custom domain rouge css syntax highlight pygment compress html jemoji emoji kramdown quick reference parse block html faster build jekyll-feed feed javascript benchmark liquid-c --profile profile jekyll-include-cache include cache jekyll clean cache clear list of posts alpha beta order ABC order sort posts category by name localhost list of tags list of categories github pages gems",
+          }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "markdown": {
+    "id": "markdown",
+      "title": "Markdown",
+        "categories": "skills",
+          "tags": "",
+            "url": " /markdown",
+              "keywords": " markdown shortcuts keywords type setting font quick formatting editing text editor",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "principal-component-analysis": {
+    "id": "principal-component-analysis",
+      "title": "Principal Component Analysis (PCA)",
+        "categories": "machine learning",
+          "tags": "dimensionality reduction, image compression",
+            "url": " /principal-component-analysis",
+              "keywords": " compress data dimensional reduction speed up algorithms or to visualize data feature selection Feature projection mean variance covariance eigenvalues covariance matrix eigenvectors explained_variance_ratio_ Whitening Image compression Luis Serrano Tiep Vu Jake VanderPlas UFLDL - Stanford Shankar Muthuswamy",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "pipeline": {
+    "id": "pipeline",
+      "title": "Pipeline",
+        "categories": "machine learning",
+          "tags": "",
+            "url": " /pipeline",
+              "keywords": " sticky multiple processes into single process multiple tasks at once make_pipeline scaling svm pca sequential work algorithm training parameter best parameter tuning gridsearch cross validation scaling train test sets different folds folds scikit-learn naming name why what where when",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "google-colab": {
+    "id": "google-colab",
+      "title": "Google Colab",
+        "categories": "skills",
+          "tags": "ide, online tool",
+            "url": " /google-colab",
+              "keywords": " github notebook google drive hotkey TensorFlow pytorch gpu import library git with colab upload a file to colab 7zip zip graphviz pydot cartopy save as html keep google colab open awake prevent from disconnect",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "support-vector-machine": {
+    "id": "support-vector-machine",
+      "title": "Support Vector Machine (SVM)",
+        "categories": "machine learning",
+          "tags": "",
+            "url": " /support-vector-machine",
+              "keywords": " Maximum Margin Classifier hyperplane geometry margin hard margin soft margin quadratic programming dual form Lagrange multipliers kernal trick Mercer conditions linear kernel gaussian kernel RBF Radial Basic Function Exponential kernel Polynomial kernel Hybrid kernel Sigmoidal Andrew NG Face detection Detecting spam outliers detection Text and hypertext categorization Bioinformatics Regularization parameter parameter C gamma XOR problem Face Recognition Tiep Vu Simplilearn Jeremy Kun Jake VanderPlas Chris Albon",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "dataset-collection": {
+    "id": "dataset-collection",
+      "title": "Datasets Collection",
+        "categories": "data science",
+          "tags": "dataset, collection",
+            "url": " /dataset-collection",
+              "keywords": " dataset collection google dataset google AI kaggle dataset data hub stanford large network dataset FiveThirtyEight data.world quandl r/datasets scikit-learn dataset fruit images labeled faces Wild Home Iris flower digits dataset module generator fake data",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "gambler-ruin-problem": {
+    "id": "gambler-ruin-problem",
+      "title": "Gamler Ruin Problem",
+        "categories": "probability &amp; statistics",
+          "tags": "probability, algorithm",
+            "url": " /gambler-ruin-problem",
+              "keywords": " probabilities statistics random walk",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "data-science-tips": {
+    "id": "data-science-tips",
+      "title": "Data Science extra",
+        "categories": "data science",
+          "tags": "",
+            "url": " /data-science-tips",
+              "keywords": " graphviz data science tools dataframe huge data vaex",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "web-design-tips": {
+    "id": "web-design-tips",
+      "title": "Web Design extra",
+        "categories": "web development",
+          "tags": "",
+            "url": " /web-design-tips",
+              "keywords": " autofocus separated columns page load google webfont sass Font ligatures terms",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-with-sublime-text": {
+    "id": "python-with-sublime-text",
+      "title": "Sublime Text 3",
+        "categories": "skills",
+          "tags": "ide, installation, python",
+            "url": " /python-with-sublime-text",
+              "keywords": " theme sublime text IDE tabnine build system anaconda python",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "jupyter-notebook": {
+    "id": "jupyter-notebook",
+      "title": "Jupyter Notebook",
+        "categories": "python",
+          "tags": "ide, bash, linux",
+            "url": " /jupyter-notebook",
+              "keywords": " pip conda hotkey magic function display side by side dataframes previous output hotkeys install packages multiline commands shortcuts pip conda figures markdown cell code cell check info system autoreload inline history description of a function IPython sys display_side_by_side version update upgrade jupyter notebook on remote server OSError: [Errno 99] Cannot assign requested address Running as root is not recommended localhost port ssh connection Cannot assign requested address list of variable environement toc extension table of content docker docker-compose SHA1 sha password hashed",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "git": {
+    "id": "git",
+      "title": "Git",
+        "categories": "skills",
+          "tags": "terminal, git",
+            "url": " /git",
+              "keywords": " github git gitlab branches merge remove clone github desktop gitkraken push pull commit discard changes repository staged alias git gui gitk reset checkout ssh clone to local key rename branch local remote restore commit stash pull push -m -d -b master remote checkout -- . : -s ours FETCH HEAD comparelog -1 --prep status checkout gui graphic repository repo config credential.helper store --global git cheatsheet quit vim exit vim editor upstream corresponding local remote branches repo template notetheme notetheme2 fatal: Authentication failed for two factor authentication fast-forward fast forward git submodule sub module change remote",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-tips": {
+    "id": "python-tips",
+      "title": "Python extra",
+        "categories": "python",
+          "tags": "extra, python",
+            "url": " /python-tips",
+              "keywords": " python tips swap 2 variables huyen chip clear variable __name__ __main__ __future__ reset del delete variable system reset confirmation elif else if inside lambda function",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-list": {
+    "id": "python-list",
+      "title": "Python List",
+        "categories": "python",
+          "tags": "fundamental, python",
+            "url": " /python-list",
+              "keywords": " python list Mutable Create a list copy Access elements Nested list get length add more slices remove element pop clear coupling 2 lists sort arrange reverse map a function to each element index count len repeat a list random number int intersection",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-installation": {
+    "id": "python-installation",
+      "title": "Python Installation",
+        "categories": "python",
+          "tags": "101, installation, python",
+            "url": " /python-installation",
+              "keywords": " windows linux mac anaconda pip jupyter notebook activate base ubuntu install new packages conda env environement revision ImportError ssl error ssh module _ssl TLS/SSL check version update pip upgrade pip AttributeError: 'NoneType' object UnicodeDecodeError: 'ascii' codec conda: The following packages are not available from current channels freetype (from matplotlib) dtaidistance: C-library is not available",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-input-output": {
+    "id": "python-input-output",
+      "title": "Python: Input &amp; Output",
+        "categories": "python",
+          "tags": "101, python-data, python",
+            "url": " /python-input-output",
+              "keywords": " print string display long strings long texts break the line word wrap multi lines multilines display decimal numbers display dataframes log logging warning info error alert docstring comment multiline comments documentation class definition sample structure example",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-functions": {
+    "id": "python-functions",
+      "title": "Python Functions",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-functions",
+              "keywords": " function def Unpacking a function Functions with stars kwargs args rargs lambda function check input verify raise error should we check the arguments type decorators @ notation at wrapper",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-docs-refs": {
+    "id": "python-docs-refs",
+      "title": "Python references",
+        "categories": "python",
+          "tags": "101, documentation, python",
+            "url": " /python-docs-refs",
+              "keywords": " references documentation material courses practice python newsletter platform",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "python-classes-objects": {
+    "id": "python-classes-objects",
+      "title": "Python Classes &amp; Objects",
+        "categories": "python",
+          "tags": "101, python",
+            "url": " /python-classes-objects",
+              "keywords": " classes vs objects methods instances blueprint attributes import local class empty file __init__.py ValueError: attempted relative import beyond top-level package same folder subfolder another folder from incldue get and access attributes of a class abstract class method super father child son Syntactic sugar easier to read why self Syntactic sugar",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "pep-8": {
+    "id": "pep-8",
+      "title": "Python PEP 8 : Style Guide",
+        "categories": "python",
+          "tags": "python, 101",
+            "url": " /pep-8",
+              "keywords": " pep 8 python style naming style code layout indentation tab or space whitespace recommendation pep8 PEP8 PEP 8 formatting beautifier beautiful python codes 80 characters",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "computer-and-internet-tips": {
+    "id": "computer-and-internet-tips",
+      "title": "Computer &amp; Internet tips",
+        "categories": "others",
+          "tags": "online tool, collection",
+            "url": " /computer-and-internet-tips",
+              "keywords": " download flash video browser extension video url google video download manager videoplay developer tools exclude files folders search technique skills patterns preference settings confige configure options remove apps google apps bit.ly cortana uses chrome instead of edge default browser windows 10 change default directory powershell cmder",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "decision-tree-regression": {
+    "id": "decision-tree-regression",
+      "title": "Decision Tree Regression",
+        "categories": "machine learning",
+          "tags": "decision tree, regression",
+            "url": " /decision-tree-regression",
+              "keywords": " classification regression MSE Mean Square Error MAE Mean Absolute Error stopping conditions Standard Deviation Reduction SDR Graphviz example Saed Sayad",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "decision-tree-classifier": {
+    "id": "decision-tree-classifier",
+      "title": "Decision Tree Classifier",
+        "categories": "machine learning",
+          "tags": "decision tree, classifier",
+            "url": " /decision-tree-classifier",
+              "keywords": " classification regression outlook temperature huminity windy play golf Iterative Dichotomiser (ID3) CART (Classification And Regression Tree) information gain entropy Gini impurity root node branch child node internal node splitting pruning parent node sub nodes stopping condition gini gain Highly interpretable irrelevant features Non-parametric tuning unbalanced Graphviz Saed Sayad Tiep Vu Brian Ambielli Aurélien Géron",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "random-forest": {
+    "id": "random-forest",
+      "title": "Random Forest",
+        "categories": "machine learning",
+          "tags": "decision tree, classifier, regression",
+            "url": " /random-forest",
+              "keywords": " decision tree ensemble learning votes from the trees relatively uncorrelated bagging Feature randomness entropy imbalanced classes feature importance Tony Yiu The Yhat Blog Chris Albon fast.ai",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "js-tips": {
+    "id": "js-tips",
+      "title": "JavaScript extra",
+        "categories": "JavaScript",
+          "tags": "",
+            "url": " /js-tips",
+              "keywords": " automatically reload page mathjax anchor link fixed navigation header hover links back to top button",
+          }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "confusion-matrix-and-f1-score": {
+    "id": "confusion-matrix-and-f1-score",
+      "title": "Confusion matrix &amp; f1-score",
+        "categories": "machine learning",
+          "tags": "score",
+            "url": " /confusion-matrix-and-f1-score",
+              "keywords": " true false negative positive type i type ii error precision recall f1 score email spam bank transaction is fraudulent skewed class accuracy specificity prediction support ROC curve machine learning crash course google developers Koo Ping Shung Marco Altini Salma Ghoneim Towards Data Science NLP blog",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "setting-up-a-cafe-in-hcmc": {
+    "id": "setting-up-a-cafe-in-hcmc",
+      "title": "Setting up a café in Ho Chi Minh City",
+        "categories": "project-based learning",
+          "tags": "project, mooc, coursera",
+            "url": " /setting-up-a-cafe-in-hcmc",
+              "keywords": " IBM applied data science capstone Coursera List of Ho Chi Minh City administrative units coordinates (latitude, longitude) housing price coffee json file Housing Sales Price Index hcmc OpenStreetMap geopy.geocoders.Nominatim folium district data preprocessing K-Mean clustering elbow method",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "good-repositories": {
+    "id": "good-repositories",
+      "title": "Favorite Github repositories",
+        "categories": "others",
+          "tags": "collection",
+            "url": " /good-repositories",
+              "keywords": " repository github git",
+          }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "web-dev-tips": {
+    "id": "web-dev-tips",
+      "title": "Web Dev extra",
+        "categories": "web development",
+          "tags": "",
+            "url": " /web-dev-tips",
+              "keywords": " html character terms font ligatures",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "css-tips": {
+    "id": "css-tips",
+      "title": "CSS extra",
+        "categories": "web development",
+          "tags": "",
+            "url": " /css-tips",
+              "keywords": " for loop in css scss sass tool flat ui color space gradient contrast different compass watch folder convert wordpress fontawesome font awesome css free version 5 CSS Pseudo-elements html character reference  style.css style.css wordpress auto convert watch gulp ruby compass difference px pixel em rem percentage %",
+          }
+  
+  
+  
+  
+  
+  
+  , 
+  
+  "for-me-only": {
+    "id": "for-me-only",
+      "title": "For me only",
+        "categories": "others",
+          "tags": "",
+            "url": " /for-me-only",
+              "keywords": " front matter table of content hide show box alert box insert code insert figure photo video jemoji emotion full width mathjax katex check box terminal box definition steps font texts badge reference for me only cms admin jekyll emoji emotion icon localhost",
+          }
+  
+  
+  
+  
+  };
+</script>
+<script src="/js/lunr.min.js"></script>
+<script src="/js/search.js"></script>
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/git" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Git
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Git" />
+  
+
+  
+    <meta property="og:description" content="Installation &amp;amp; Tools Rules to be more effective Settings on local machine Check the status Git ignore Repositories Git GUI Staged &amp;amp; Commits &amp;amp; Push &amp;amp; Pull Staged Commit &amp;amp; Push Pull Branches Create Two branches Comparing Delete Merge Conflict Exclude from merging Rename Others Remove from git Discard the...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/git" />
+    <link rel="canonical" href="http://localhost:4000/git" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #fda798;">
+              <i class="fas fa-code-branch"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Git
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#git">
+                    git
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#installation--tools" id="markdown-toc-installation--tools">Installation &amp; Tools</a></li>
+  <li><a href="#rules-to-be-more-effective" id="markdown-toc-rules-to-be-more-effective">Rules to be more effective</a></li>
+  <li><a href="#settings-on-local-machine" id="markdown-toc-settings-on-local-machine">Settings on local machine</a></li>
+  <li><a href="#check-the-status" id="markdown-toc-check-the-status">Check the status</a></li>
+  <li><a href="#git-ignore" id="markdown-toc-git-ignore">Git ignore</a></li>
+  <li><a href="#repositories" id="markdown-toc-repositories">Repositories</a></li>
+  <li><a href="#git-gui" id="markdown-toc-git-gui">Git GUI</a></li>
+  <li><a href="#staged--commits--push--pull" id="markdown-toc-staged--commits--push--pull">Staged &amp; Commits &amp; Push &amp; Pull</a>    <ul>
+      <li><a href="#staged" id="markdown-toc-staged">Staged</a></li>
+      <li><a href="#commit--push" id="markdown-toc-commit--push">Commit &amp; Push</a></li>
+      <li><a href="#pull" id="markdown-toc-pull">Pull</a></li>
+    </ul>
+  </li>
+  <li><a href="#branches" id="markdown-toc-branches">Branches</a>    <ul>
+      <li><a href="#create" id="markdown-toc-create">Create</a></li>
+      <li><a href="#two-branches" id="markdown-toc-two-branches">Two branches</a></li>
+      <li><a href="#comparing" id="markdown-toc-comparing">Comparing</a></li>
+      <li><a href="#delete" id="markdown-toc-delete">Delete</a></li>
+      <li><a href="#merge" id="markdown-toc-merge">Merge</a>        <ul>
+          <li><a href="#conflict" id="markdown-toc-conflict">Conflict</a></li>
+          <li><a href="#exclude-from-merging" id="markdown-toc-exclude-from-merging">Exclude from merging</a></li>
+        </ul>
+      </li>
+      <li><a href="#rename" id="markdown-toc-rename">Rename</a></li>
+      <li><a href="#others" id="markdown-toc-others">Others</a></li>
+    </ul>
+  </li>
+  <li><a href="#remove-from-git" id="markdown-toc-remove-from-git">Remove from git</a></li>
+  <li><a href="#discard-the-changes" id="markdown-toc-discard-the-changes">Discard the changes</a></li>
+  <li><a href="#restore" id="markdown-toc-restore">Restore</a></li>
+  <li><a href="#change-remote-url" id="markdown-toc-change-remote-url">Change remote url</a></li>
+  <li><a href="#alias" id="markdown-toc-alias">Alias</a></li>
+  <li><a href="#gitlab-clone-a-private-repo-to-local" id="markdown-toc-gitlab-clone-a-private-repo-to-local">Gitlab: Clone a private repo to local</a></li>
+  <li><a href="#errors" id="markdown-toc-errors">Errors</a></li>
+  <li><a href="#git-submodules" id="markdown-toc-git-submodules">Git submodules</a></li>
+  <li><a href="#others-1" id="markdown-toc-others-1">Others</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>Quick references for basic tasks with git.</p>
+
+<p>👉 <a href="/github">Note about Github</a>.</p>
+
+<h2 id="installation--tools">Installation &amp; Tools</h2>
+
+<ul>
+  <li>Download and install (to use command lines): <a href="https://git-scm.com/downloads">git’s homepage</a>.</li>
+  <li>Git client tools: <a href="https://desktop.github.com/">Github Desktop</a> (Windows and MacOS), <a href="https://www.gitkraken.com/download">GitKraken</a> (Windows, Linux, MacOS).</li>
+  <li>Read <code class="language-plaintext highlighter-rouge">html</code> files in repository on Github: use <a href="/github-html">this tool</a>.</li>
+</ul>
+
+<h2 id="rules-to-be-more-effective">Rules to be more effective</h2>
+
+<ul>
+  <li>Do commit early and often.<sup><a href="https://sethrobertson.github.io/GitBestPractices/">[ref]</a></sup></li>
+  <li>Do make useful commit messages.</li>
+  <li>Create a new branch for every new feature.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">pull</code> requests to merge code to <code class="language-plaintext highlighter-rouge">master</code>.<sup><a href="https://www.freecodecamp.org/news/follow-these-simple-rules-and-youll-become-a-git-and-github-master-e1045057468f/">[ref]</a></sup></li>
+  <li>For temporary branches, name them starting with <code class="language-plaintext highlighter-rouge">_</code>.</li>
+</ul>
+
+<h2 id="settings-on-local-machine">Settings on local machine</h2>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SET GLOBAL INFO</span>
+git config <span class="nt">--global</span> user.name <span class="s2">"Anh-Thi DINH"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"dinhanhthi@gmail.com"</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SPECIFIC REPO</span>
+git config user.name <span class="s2">"Thi"</span>
+git config user.email <span class="s2">"thi@abc.com"</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Verify your configuration</span>
+<span class="nb">cat</span> .git/config
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># IF: `Could not resolve host: github.com`</span>
+git config <span class="nt">--global</span> <span class="nt">--unset</span> http.proxy
+git config <span class="nt">--global</span> <span class="nt">--unset</span> https.proxy
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SAVE GITHUB AS DEFAULT</span>
+<span class="c"># (don't need to log in again every time we use)</span>
+git config credential.helper store
+git pull
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># FORMATTING DISPLAY</span>
+git config color.ui <span class="nb">true</span> <span class="c"># add colors to the results</span>
+git config format.pretty oneline <span class="c"># disply only one line of each commit</span>
+</code></pre></div></div>
+
+<h2 id="check-the-status">Check the status</h2>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CHECK STATUS</span>
+git status
+git status <span class="nt">-s</span> <span class="c"># modified files</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Get remote list</span>
+git remote <span class="nt">-v</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># WITH COLORS</span>
+git log <span class="nt">--oneline</span> <span class="nt">--graph</span> <span class="nt">--color</span> <span class="nt">--all</span> <span class="nt">--decorate</span>
+<span class="c"># --graph: draw text-based branches</span>
+<span class="c"># --decorate: display names and tags</span>
+</code></pre></div></div>
+
+<p>Check some commit:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--</span> &lt;file&gt; <span class="c"># check commits containing &lt;file&gt;</span>
+git log <span class="nt">--prep</span><span class="o">=</span><span class="s1">'abc'</span> <span class="c"># look for commits containing "abc" in their name</span>
+git log &lt;from&gt;..&lt;to&gt; <span class="c"># display commints from &lt;from&gt; to &lt;to&gt; (commit's id, branch's name,...)</span>
+</code></pre></div></div>
+
+<p>Check current <code class="language-plaintext highlighter-rouge">HEAD</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">-1</span>
+<span class="c"># something likes HEAD -&gt; &lt;branch-name&gt;</span>
+</code></pre></div></div>
+
+<p>Check the change of some file,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff file_name.abc
+</code></pre></div></div>
+
+<p>Check the list of files in the last commit,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get the last commit id</span>
+git log <span class="nt">--format</span><span class="o">=</span><span class="s2">"%H"</span> <span class="nt">-n</span> 1
+<span class="c"># list of files</span>
+git diff-tree <span class="nt">--no-commit-id</span> <span class="nt">--name-only</span> <span class="nt">-r</span> &lt;commit_id&gt;
+</code></pre></div></div>
+
+<h2 id="git-ignore">Git ignore</h2>
+
+<p>Create a file <code class="language-plaintext highlighter-rouge">.gitignore</code>.</p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ignore</span>
+.jekyll-cache
+.git
+__pycache__/
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>__pycache__/
+
+<span class="c"># ignore all except</span>
+/<span class="k">*</span>
+
+<span class="c"># whitelist</span>
+<span class="o">!</span>.gitignore
+<span class="o">!</span>/docker/
+</code></pre></div>  </div>
+</div>
+
+<p>Ignore local changes on some files from <code class="language-plaintext highlighter-rouge">pull</code>/<code class="language-plaintext highlighter-rouge">push</code>,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># they are assumed to be unchanged</span>
+git update-index <span class="nt">--assume-unchanged</span> file_1 file_2
+
+<span class="c"># undo</span>
+git update-index <span class="nt">--no-assume-unchanged</span> file_1 file_2
+
+<span class="c"># To get a list of dir's/files that are assume-unchanged</span>
+git ls-files <span class="nt">-v</span>|grep <span class="s1">'^h'</span>
+</code></pre></div></div>
+
+<h2 id="repositories">Repositories</h2>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CREATE REPO</span>
+git init &lt;repo-name&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CLONE REPO (using https or ssh)</span>
+git clone &lt;repo-link&gt;
+</code></pre></div>  </div>
+</div>
+
+<h2 id="git-gui">Git GUI</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git gui
+gitk
+</code></pre></div></div>
+
+<h2 id="staged--commits--push--pull">Staged &amp; Commits &amp; Push &amp; Pull</h2>
+
+<h3 id="staged">Staged</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ADD MODIFICATION (1 FILE)</span>
+git add <span class="k">*</span> <span class="c"># add all the changes</span>
+git add &lt;file-name&gt; <span class="c"># only add the &lt;file-name&gt; to the staged</span>
+</code></pre></div></div>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UNSTAGE A FILE</span>
+git reset HEAD &lt;file&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UNSTAGED EVERYTHING</span>
+git reset
+</code></pre></div>  </div>
+</div>
+
+<h3 id="commit--push">Commit &amp; Push</h3>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MAKE COMMIT (FROM STAGED)</span>
+git commit <span class="nt">-m</span> <span class="s1">'&lt;comment-for-this-commit&gt;'</span>
+git commit <span class="nt">-a</span> <span class="c"># commit any files</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UNCOMMIT (back to before commit)</span>
+git reset <span class="nt">--soft</span> HEAD~1
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># PUSH TO REMOTE</span>
+git push origin &lt;branch-name&gt; <span class="c"># push only &lt;branch-name&gt;</span>
+git push <span class="nt">--all</span> origin <span class="c"># push all branches</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CHECK &amp; TEST A COMMIT</span>
+git checkout &lt;commit-id&gt;
+<span class="c"># after testing</span>
+git checkout &lt;current-branch&gt;
+</code></pre></div></div>
+
+<h3 id="pull">Pull</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LIST ALL REMOTE REPOS</span>
+git remote <span class="nt">-v</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UPDATE REMOTE -&gt; LOCAL</span>
+git pull origin &lt;branch-on-remote&gt;
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># COPY A COPY FROM REMOTE</span>
+git fetch origin &lt;branch-on-remote&gt;
+<span class="c"># compare current branch to this copy</span>
+git diff <span class="nt">--stat</span> FETCH_HEAD
+</code></pre></div></div>
+
+<h2 id="branches">Branches</h2>
+
+<h3 id="create">Create</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CREATE A BRANCH</span>
+git branch &lt;branch-name&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CREATE AND MOVE TO NEW BRANCH</span>
+<span class="c"># This one is based on the current `HEAD` (git log -1).</span>
+git checkout <span class="nt">-b</span> &lt;new-branch&gt;
+<span class="c"># new branch based on another one</span>
+git checkout <span class="nt">-b</span> &lt;new-branch&gt; &lt;existing-branch&gt;
+</code></pre></div></div>
+
+<h3 id="two-branches">Two branches</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CHANGE TO ANOTHER BRANCH</span>
+git checkout &lt;branch-name&gt;
+
+<span class="c"># fatal: 'dev' could be both a local file and a tracking branch.</span>
+git checkout &lt;branch_name&gt; <span class="nt">--</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UPDATE ALL REMOTE BRANCHES TO LOCAL</span>
+<span class="c"># (there may be deleted branches on remote)</span>
+git remote update origin <span class="nt">--prune</span>
+</code></pre></div></div>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LIST ALL LOCAL BRANCHES</span>
+git branch
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LIST ALL LOCAL + REMOTE</span>
+git branch <span class="nt">-a</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="comparing">Comparing</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># compare current branch with other</span>
+git diff &lt;branch&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># COMPARE 2 BRANCHES</span>
+git diff &lt;source-branch&gt; &lt;compared-branch&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># a specific file</span>
+git diff mybranch master <span class="nt">--</span> myfile
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list all diff files: current vs</span>
+git diff <span class="nt">--name-status</span> master
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 2 files vs</span>
+git diff mybranch master <span class="nt">--name-status</span>
+<span class="c"># can be "--name-only"</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># save to log file</span>
+git diff <span class="nt">--output</span><span class="o">=</span>log.txt branch_1 branch_2 <span class="nt">--name-status</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LOCAL &lt;-&gt; REMOTE BRANCHES</span>
+git branch <span class="nt">-vv</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CORRESPONDING LOCAL BRANCH &lt;-&gt; REMOTE</span>
+git fetch
+git branch <span class="nt">--set-upstream-to</span><span class="o">=</span>origin/&lt;remote_branch&gt; &lt;local_branch&gt;
+</code></pre></div></div>
+
+<h3 id="delete">Delete</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DEL A LOCAL BRANCH</span>
+git branch <span class="nt">-d</span> &lt;branch-name&gt;
+git branch <span class="nt">-D</span> &lt;branch&gt; <span class="c"># force to delete</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DEL A REMOTE BRANCH</span>
+git push origin :&lt;branch-name&gt;
+</code></pre></div>  </div>
+</div>
+
+<h3 id="merge">Merge</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MERGE &lt;branch&gt; TO CURRENT</span>
+git merge &lt;branch&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MERGE &lt;sub-branch&gt; TO master + REPLACE master</span>
+git checkout &lt;sub-branch&gt;
+git merge <span class="nt">-s</span> ours master
+git checkout master
+git merge &lt;sub-branch&gt;
+<span class="c"># master can be other</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MERGE `/link/to/abc.xyz` FROM `&lt;branch-1&gt;` TO `&lt;branch-2&gt;` (can be `master`)</span>
+git checkout branch-2
+git checkout branch-1 /link/to/abc.xyz
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MERGE ONLY SOME FOLDER</span>
+git checkout &lt;branch&gt;
+git checkout &lt;from-branch&gt; folder1<span class="se">\ </span>folder2<span class="se">\</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># MERGE commit from ONE BRANCH to CURRENT</span>
+git cherry-pick &lt;commit <span class="nb">hash</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># KEEP FILES/FOLDERS FROM MERGE</span>
+<span class="c"># add line to .gitattributes</span>
+<span class="nb">echo</span> <span class="s1">'file_name.txt merge=ours'</span> <span class="o">&gt;&gt;</span> .gitattributes
+</code></pre></div></div>
+
+<h4 id="conflict">Conflict</h4>
+
+<p>If there are changes from both local and remote, there will be conflicts! Something likes that,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD
+changes on <span class="nb">local</span>
+<span class="o">======</span>
+changes from remote
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;</span> template/notetheme2
+</code></pre></div></div>
+
+<p>If you use <a href="/visual-studio-code">Visual Studio Code</a>, there is a small toolbar above each conflict and you can choose which one you prefer to keep!</p>
+
+<p>Prefer one of them?</p>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># keep remote changes</span>
+git pull <span class="nt">-X</span> theirs &lt;remote-repo&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># keep local changes</span>
+git pull <span class="nt">-X</span> ours &lt;remote-repo&gt;
+</code></pre></div>  </div>
+</div>
+
+<p>Keep both? Using <strong>Visual Studio Code</strong> or,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># add below line to .gitattributes (on branch being merged)</span>
+<span class="nb">echo</span> <span class="s2">"*.whatever merge=union"</span> .gitattributes
+<span class="c"># on windows, remove `""`</span>
+</code></pre></div></div>
+
+<p>Already in conflicted state?</p>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--theirs</span> path/to/file <span class="c"># remote</span>
+git checkout <span class="nt">--ours</span> path/to/file <span class="c"># local</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Abort the conflicts</span>
+<span class="c"># (go back to before merging)</span>
+git merge <span class="nt">--abort</span>
+</code></pre></div>  </div>
+</div>
+
+<h4 id="exclude-from-merging">Exclude from merging</h4>
+
+<p>Exclude some <strong>files</strong> from merge (keep <code class="language-plaintext highlighter-rouge">ours</code>),</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ONLY FOR FILES</span>
+<span class="c"># add below line to .gitattributes (on branch being merged)</span>
+<span class="nb">echo</span> <span class="s2">"file.ext merge=ours"</span> .gitattributes
+<span class="c"># on windows, remove `""`</span>
+</code></pre></div></div>
+
+<p>Exclude some <strong>folders</strong> (we cannot use <code class="language-plaintext highlighter-rouge">git</code> in this case):</p>
+
+<ol>
+  <li>If you delete these folders after merging, just commit and later merges will ignore them.</li>
+  <li>If you meet a conflict, add the folder’s name in a file called <code class="language-plaintext highlighter-rouge">reset_folders.sh</code>,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="nb">echo</span> <span class="s1">'Reset some only-this-branch folders after merging.'</span>
+git reset folder_1, folder_2
+git checkout <span class="nb">.</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"update from merge (keep local in some folders)"</span>
+</code></pre></div>    </div>
+    <p>Each time,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge &lt;from-branch&gt; <span class="o">&amp;&amp;</span> sh reset_folders.sh
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="rename">Rename</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CURRENT BRANCH</span>
+git branch <span class="nt">-m</span> &lt;newname&gt;
+git branch <span class="nt">-M</span> &lt;newname&gt; <span class="c"># if there are only capitalization changes</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CURRENT IS ANOTHER BRANCH</span>
+git branch <span class="nt">-m</span> &lt;oldname&gt; &lt;newname&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RENAME REMOTE BRANCH (delete old + push new)</span>
+<span class="c"># (rename local branch first)</span>
+git push origin :&lt;oldname&gt; &lt;newname&gt;
+<span class="c"># reset the upstream branch for the new-name local branch</span>
+git checkout &lt;newname&gt;
+git push origin <span class="nt">-u</span> &lt;newname&gt;
+</code></pre></div></div>
+
+<h3 id="others">Others</h3>
+
+<p>Add a description (using <a href="https://www.vim.org/">Vim</a> editor):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">--edit-description</span>
+</code></pre></div></div>
+
+<p>In the case you wanna exit Vim, press <kbd>ESC</kbd> then type <code class="language-plaintext highlighter-rouge">:q</code> to quit or <code class="language-plaintext highlighter-rouge">:wq</code> to write and quit.</p>
+
+<h2 id="remove-from-git">Remove from git</h2>
+
+<p>Remove from git, not from system,</p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># a file</span>
+git <span class="nb">rm</span> <span class="nt">--cached</span> &lt;file_name&gt;
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># a folder</span>
+git <span class="nb">rm</span> <span class="nt">-r</span> <span class="nt">--cached</span> &lt;folder&gt;
+</code></pre></div>  </div>
+</div>
+
+<h2 id="discard-the-changes">Discard the changes</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DISCARD CHANGES ON CURRENT DIR</span>
+git checkout <span class="nt">--</span> <span class="nb">.</span> <span class="c"># for all changes</span>
+git checkout <span class="nt">--</span> &lt;file-name&gt; <span class="c"># for a specific file (go back the last commit of this file)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DISCARD ALL LOCAL CHANGES</span>
+git reset <span class="nt">--hard</span>
+</code></pre></div></div>
+
+<p>In the case you want to discard the changes but <strong>want to make a save</strong> before moving to another branch to test. You can use below line.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+</code></pre></div></div>
+
+<p>If you wanna get back to the place you saved (and remove it from the stashed list), just go back to the branch you make the save and use</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash pop
+</code></pre></div></div>
+
+<h2 id="restore">Restore</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># RESTORE FROM LAST COMMIT</span>
+git checkout <span class="nt">--</span> &lt;file&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DISCARD ALL CHANGES ON LOCAL + GET FROM REMOTE</span>
+git fetch origin
+git reset <span class="nt">--hard</span> origin/master
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DISCARD ALL CHANGES + get the last update from remote</span>
+git reset <span class="nt">--hard</span> @<span class="o">{</span>u<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># EREASE ALL COMMITS + BACK TO &lt;commit-id&gt;</span>
+git reset <span class="nt">--hard</span> &lt;commit_id&gt;
+<span class="c"># (force) to push</span>
+git push <span class="nt">-f</span> origin master
+</code></pre></div></div>
+
+<h2 id="change-remote-url">Change remote url</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check the current remote url</span>
+<span class="nb">cat</span> .git/config| <span class="nb">grep</span> <span class="s2">"url"</span>
+
+<span class="c"># change to the new one</span>
+git remote set-url origin new.git.url/here
+</code></pre></div></div>
+
+<h2 id="alias">Alias</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use `git br` instead of `git branch`</span>
+git config alias.br branch
+</code></pre></div></div>
+
+<h2 id="gitlab-clone-a-private-repo-to-local">Gitlab: Clone a private repo to local</h2>
+
+<ol>
+  <li>(Windows) Generate a ssh key <code class="language-plaintext highlighter-rouge">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code> in <code class="language-plaintext highlighter-rouge">C:\Users\dinha\.ssh</code> under the name <code class="language-plaintext highlighter-rouge">id_rsa</code> (for private) and <code class="language-plaintext highlighter-rouge">id_rsa.pub</code> for public. It’s important, the name!!!!</li>
+  <li>Open and copy key in <code class="language-plaintext highlighter-rouge">C:\Users\dinha\.ssh\id_rsa.pub</code></li>
+  <li>Go to <strong>Gitlab</strong> &gt; <strong>Settings</strong> &gt; <strong>SSH Keys</strong> &gt; paste a copied key and name it.</li>
+  <li>Clone again the repo and it shoule be working!</li>
+</ol>
+
+<h2 id="errors">Errors</h2>
+
+<div class="simple-box">
+  <p><code class="language-plaintext highlighter-rouge">error: invalid object Error building trees</code></p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git hash-object <span class="nt">-w</span> &lt;error-file&gt;
+</code></pre></div>  </div>
+
+  <p>You can also go back to the previous commit (<code class="language-plaintext highlighter-rouge">git reset --hard</code>) and you LOSE all uncommit files.</p>
+</div>
+
+<div class="simple-box">
+  <p><code class="language-plaintext highlighter-rouge">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code></p>
+
+  <p>Go to <code class="language-plaintext highlighter-rouge">~/.ssh/</code> (Linux) or <code class="language-plaintext highlighter-rouge">C:\Users\dinha\.ssh</code> (Windows), remove the host from <code class="language-plaintext highlighter-rouge">known_hosts</code> and re-connect again.</p>
+</div>
+
+<h2 id="git-submodules">Git submodules</h2>
+
+<p><a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">Git submodules</a> allow you to keep a git repository as a subdirectory of another git repository.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># "git clone" &amp; "git pull" to automatically update submodules.</span>
+git config <span class="nt">--global</span> submodule.recurse <span class="nb">true</span>
+
+<span class="c"># public repo: github.com/you/blog (clone)</span>
+<span class="c"># private repo: github.com/you/posts</span>
+
+<span class="nb">cd </span>blog
+git submodule add https://github.com/you/posts <span class="c"># blog/posts</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># update submodules</span>
+git submodule update <span class="nt">--remote</span>
+<span class="c"># don't make change on the folder of submodules!!!!</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># clone a repo with submodules</span>
+git clone &lt;repo&gt; <span class="nt">--recursive</span>
+<span class="c"># or</span>
+git clone &lt;repo&gt;
+git submodule init
+git submodule update
+</code></pre></div></div>
+
+<h2 id="others-1">Others</h2>
+
+<ul>
+  <li><strong>fast-forward</strong> means that the commits can be applied directly on top of the working tree without requiring a merge. When <code class="language-plaintext highlighter-rouge">git pull</code> and get this message, we can be sure that the new update are not confict with our current modifications.</li>
+  <li><strong>Find big files / commits</strong>: Using <a href="https://github.com/dinhanhthi/scripts/blob/master/git-largest-files">this scripts</a> and <a href="https://stackoverflow.com/questions/10622179/how-to-find-identify-large-commits-in-git-history">this answer</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2019-09-03-git.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Git'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/fresh-installation-ubuntu" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Fresh Ubuntu / Pop!_OS Installation
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Fresh Ubuntu / Pop!_OS Installation" />
+  
+
+  
+    <meta property="og:description" content="The basic steps I often do every time I install a new Ubuntu system. The order of things is important. 👉 Linux note. 👉 Windows fresh start 👉 Mac fresh start 👉 Bash Most of commands are for both Ubuntu and Pop!_OS, there are some which are only for Pop!_OS....">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/fresh-installation-ubuntu" />
+    <link rel="canonical" href="http://localhost:4000/fresh-installation-ubuntu" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/ubuntu.svg">
+            </div>
+          
+          <h1 class="post-title">
+            Fresh Ubuntu / Pop!_OS Installation
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#collection">
+                    collection
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#fresh-install">
+                    fresh install
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#linux">
+                    linux
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              21 Apr 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<p>The basic steps I often do every time I install a new Ubuntu system. The order of things is important.</p>
+
+<p>👉 <a href="/linux-tips">Linux note.</a> <br />
+👉 <a href="/fresh-install-windows">Windows fresh start</a> <br />
+👉 <a href="/fresh-install-macos">Mac fresh start</a> <br />
+👉 <a href="/bash-command-line">Bash</a></p>
+
+<p class="alert alert-info">Most of commands are for both Ubuntu and Pop!_OS, there are some which are only for Pop!_OS.</p>
+
+<p class="alert alert-warning"><strong>For Pop!_OS</strong>: You don’t need to do everything in below steps.</p>
+
+<ol class="noindent">
+  <li>Download <a href="https://ubuntu.com/download/desktop">Ubuntu ISO</a>. If you like a MacOS-like version, you can choose <a href="https://elementary.io/">Elementary OS</a>.</li>
+  <li><strong>[Pop!_OS]</strong> Download <a href="https://pop.system76.com/">Pop!_OS</a> (with NVIDIA)</li>
+  <li>Using <a href="https://rufus.ie/">Rufus</a> (on Windows) or <a href="https://www.balena.io/etcher/">Etcher</a> (on any system) or <a href="https://github.com/pop-os/popsicle">popsicle</a> (usb flasher, on pop!_os) to create a bootable USB drives.</li>
+  <li>Update &amp; Upgrade
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update &amp; <span class="nb">sudo </span>apt upgrade
+</code></pre></div>    </div>
+  </li>
+  <li>Download and install <a href="https://www.google.com/chrome">Google Chrome</a>.
+    <ol>
+      <li>Sign in to Google Account + sync all extensions + settings.</li>
+      <li>Disable Tab hover information: Go to <a href="chrome://flags/">chrome://flags/</a> and search “tab hover” then choose “Disable”.</li>
+      <li>Install also these extensions:
+        <ol>
+          <li><a href="https://chrome.google.com/webstore/detail/mate-translate-%E2%80%93-translat/ihmgiclibbndffejedjimfjmfoabpcke">mate translate</a>, <a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja">google dictionary</a>, <a href="https://chrome.google.com/webstore/detail/tabcloud/npecfdijgoblfcgagoijgmgejmcpnhof">TabCloud</a>, <a href="https://chrome.google.com/webstore/detail/raindropio/ldgfbffkinooeloadekpmfoklnobpien">raindrop</a>, <a href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd">last pass</a>, <a href="https://chrome.google.com/webstore/detail/avim-vietnamese-input-met/opgbbffpdglhkpglnlkiclakjlpiedoh">AVIM</a>, <a href="https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom">adblock</a>, <a href="https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep">GNOME Shell integration</a>.</li>
+          <li>Google Aut alternative on Chrome: use <a href="https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai">this</a>.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Install <a href="/terminal#guake-terminal">Guake Terminal</a> (drop-down terminal supporting tabs). We install it first because we working mainly on terminal.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>guake
+<span class="c"># then add it to startup applications</span>
+<span class="c">#</span>
+<span class="c"># load preferences</span>
+guake <span class="nt">--restore-preferences</span> ~/Downloads/guake_prefs
+</code></pre></div>    </div>
+  </li>
+  <li>Install <a href="https://git-scm.com/download/linux">git</a>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:git-core/ppa
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>git
+</code></pre></div>    </div>
+  </li>
+  <li>[<strong>Pop!_OS</strong>] Dual boot with Windows and others Linux distro: different from Ubuntu (using <strong>groub</strong>), Pop!_OS uses <strong>systemd-boot</strong> -&gt; follow <a href="https://pop-planet.info/forums/threads/copy-the-microsoft-bootloader-into-pops-efi-beginners-guide.357/">this guide</a>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. Open Disks</span>
+<span class="c"># Click on "play" icon on the partition having "Partition type" is "EFI system"</span>
+<span class="c">#</span>
+<span class="c"># 2. Run to check the mount point of these partitions</span>
+lsblk <span class="nt">-o</span> NAME,FSTYPE,FSSIZE,MOUNTPOINT
+<span class="c"># output (s/t like that)</span>
+<span class="c"># nvme0n1</span>
+<span class="c"># ├─nvme0n1p1 vfat     176M /media/thi/ESP # &lt;- this is windows mounting point</span>
+<span class="c"># ├─...</span>
+<span class="c"># └─nvme0n1p9 vfat     511M /boot/efi</span>
+<span class="c">#</span>
+<span class="c"># 3. copy to pop!_os</span>
+<span class="nb">sudo cp</span> <span class="nt">-r</span> /media/thi/ESP/EFI/Microsoft /boot/efi/EFI
+<span class="c">#</span>
+<span class="c"># 4. Add timeout (wait for choosing)</span>
+<span class="nb">sudo </span>nano /boot/efi/loader/loader.conf
+<span class="c"># add below others</span>
+<span class="nb">timeout </span>15
+</code></pre></div>    </div>
+  </li>
+  <li>Make emojis showing up
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>fonts-noto-color-emoji
+</code></pre></div>    </div>
+    <p>After that (make browser regonize more icons), create a new file</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~/.config/fontconfig/conf.d/01-emoji.conf
+</code></pre></div>    </div>
+    <p>with <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/ubuntu/01-emoji.conf">this content</a>.</p>
+  </li>
+  <li>Clone firstly repos: <a href="https://github.com/dinhanhthi/scripts">scripts</a>, <a href="https://github.com/dinhanhthi/dinhanhthi.com">dinhanhthi.com</a>.</li>
+  <li>Change user avatar and desktop background.</li>
+  <li>[<strong>Ubuntu only</strong>] Auto install drivers
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ubuntu-drivers autoinstall
+</code></pre></div>    </div>
+    <p>In case you wanna switch between Intel (more power efficient) and NVDIA driver (more powerful)</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>prime-select intel
+<span class="nb">sudo </span>prime-select nvidia
+</code></pre></div>    </div>
+  </li>
+  <li>[<strong>Ubuntu only</strong>] Check the NVDIA driver and install the newest version: check in <strong>Additional Drivers</strong>. In case you wanna remove it and reinstall it later, use
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt purge nvidia-<span class="k">*</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Install <strong>GNOME Tweaks</strong> from App Store.</li>
+  <li>Install <a href="https://extensions.gnome.org/extension/1160/dash-to-panel/">Dash to panel</a> extension and use <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/pop!os/dash_to_panel.py">this config</a> for pop and <a href="https://github.com/dinhanhthi/scripts/blob/master/settings/ubuntu/dash_to_panel">this</a> for ubuntu.</li>
+  <li>[<strong>Ubuntu only</strong>] Install GNOME Shell extensions
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>gnome-shell-extensions
+</code></pre></div>    </div>
+  </li>
+  <li>Install also <a href="https://extensions.gnome.org/">chrome extension</a>. Go to the corresponding extension link and turn it on and install it. List of useful extensions: <a href="https://extensions.gnome.org/extension/1198/start-overlay-in-application-view/">Start Overlay in Application View</a>, <a href="https://extensions.gnome.org/extension/1122/esc-to-close-overview-from-applications-list/">ESC to close overview from applications list</a>, <a href="https://extensions.gnome.org/extension/517/caffeine/">Caffein</a>, <a href="https://extensions.gnome.org/extension/1317/alt-tab-switcher-popup-delay-removal/">Alt-Tab Switcher Popup Delay Removal</a>, <a href="https://extensions.gnome.org/extension/906/sound-output-device-chooser/">Sound Input &amp; Output Device Chooser</a>, <a href="https://extensions.gnome.org/extension/28/gtile/">gtile</a>, <a href="https://extensions.gnome.org/extension/351/icon-hider/">icon-hider</a> (on gnome taskbar), <a href="https://extensions.gnome.org/extension/1162/emoji-selector/">Emoji selector</a>.</li>
+  <li>Install video codecs,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-restricted-extras
+</code></pre></div>    </div>
+  </li>
+  <li>Log in to online accounts: Google, Ubuntu One, StackOverflow, Notion, Trello, Facebook,…</li>
+  <li>Download and install an email client, I use <a href="https://getmailspring.com/">Mailspring</a>. Log in to email accounts and let Mailspring downloads the necessary things.</li>
+  <li>Install <strong>GoldenDict</strong> (app store) and <a href="https://drive.google.com/open?id=1jna8_grA-wyhPrq8BiB7ypadvW3tTlIv">dictionaries</a>.</li>
+  <li>Python is installed on Ubuntu system with 2 versions. By default, <code class="language-plaintext highlighter-rouge">python</code> prefers version 2, if you wanna use python 3, you can use <code class="language-plaintext highlighter-rouge">python3</code> or add an alias
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">python</span><span class="o">=</span><span class="s1">'python3'</span> <span class="c"># and call python 2 as `python2`</span>
+</code></pre></div>    </div>
+    <p>Install pip</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">sudo </span>apt <span class="nb">install </span>python3-pip
+<span class="nb">alias </span><span class="nv">pip</span><span class="o">=</span>pip3
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><a href="https://code.visualstudio.com/">Visual Studio Code</a> and its basic extensions: Bracket Pair Colorizer, Docker, Linux Themes for VS Code, Markdown All in One, Markdown Shortcuts, Remote Development, Python, Auto Close Tags</p>
+
+    <p>Also add below settings to setting json file (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> and search “Preferences: Open Settings (JSON)”, it’s in <code class="language-plaintext highlighter-rouge">~/.config/Code/User</code>)</p>
+  </li>
+  <li>Install Git Client as <a href="https://www.gitkraken.com/">Gitkraken</a>. Log in with Github account and clone <a href="https://github.com/dinhanhthi?tab=repositories">all working repositories</a>.</li>
+  <li>Turn off Gnome Shell Activities Animations (click on window taskbar to toggle max/min),
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsettings <span class="nb">set </span>org.gnome.desktop.interface enable-animations <span class="nb">true</span> <span class="c"># enable</span>
+gsettings <span class="nb">set </span>org.gnome.desktop.interface enable-animations <span class="nb">false</span> <span class="c"># disable</span>
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://github.com/BambooEngine/ibus-bamboo">IBUS Bamboo</a>, Vietnamese Input Method. Need to restart Ibus and choose Bamboo in the keyboard layout. You can use also <kbd>Shift</kbd> + <kbd>~</kbd> for changing the options (remove the underline, for example). Use <kbd>Super</kbd> + <kbd>Space</kbd> to change between input methods.</li>
+  <li>Google Drive client for Ubuntu: <a href="https://www.thefanclub.co.za/overgrive">OverGrive</a> (5$ for each account). An alternative to <a href="https://github.com/bcedu/VGrive">Vgrive</a>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># startup commandline for overgrive</span>
+python3 /opt/thefanclub/overgrive/overgrive
+</code></pre></div>    </div>
+  </li>
+  <li>LaTeX
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>texlive-full <span class="c"># 5GB</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>texmaker
+</code></pre></div>    </div>
+  </li>
+  <li>If you install Matlab, you can install <code class="language-plaintext highlighter-rouge">matlab-support</code> to add matlab icon to applications. Note that, if matlab exe file is at <code class="language-plaintext highlighter-rouge">/usr/local/MATLAB/R2017b/bin/matlab</code>, we add the location of folder as <code class="language-plaintext highlighter-rouge">/usr/local/MATLAB/R2017b/</code>.</li>
+  <li>Use <kbd>super</kbd> + <kbd>E</kbd> to open File Manager: change in Keyboard shortcut.</li>
+  <li>Default text editor <code class="language-plaintext highlighter-rouge">gedit</code>, you can use this command in terminal.</li>
+  <li><strong>Gnome Calendar</strong> in app store.</li>
+  <li>Screen Recorder, use <strong>Kazam</strong> (app store). If cannot recognize mic and speaker, read <a href="https://askubuntu.com/questions/1234314/screen-recording-applications-are-not-detecting-audio-in-ubuntu-20-04">this solution</a>. An alternative is <a href="https://www.maartenbaert.be/simplescreenrecorder/">SimpleScreenRecorder</a>.</li>
+  <li>VLC (app store). If there is a problem of displaying video (there is only sound without video), check <a href="https://askubuntu.com/questions/668834/vlc-media-player-is-not-displaying-video-but-audio-works">this</a>.</li>
+  <li>Read SD card
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>exfat-utils exfat-fuse
+</code></pre></div>    </div>
+  </li>
+  <li>If you wanna make nautilus default again:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdg-mime default nautilus.desktop inode/directory application/x-gnome-saved-search
+gsettings <span class="nb">set </span>org.gnome.desktop.background show-desktop-icons <span class="nb">true</span>
+</code></pre></div>    </div>
+  </li>
+  <li>If you wanna make some web app a desktop app, use <a href="github.com/jiahaog/nativefier">nativefier</a>.</li>
+  <li>Bluetooth problem on Dell XPS 15 only: cannot turn on bluetooth ⇒ Try turn off and turn on again the bluetooth in BIOS setting.</li>
+  <li>Useful shortcuts:
+    <ul>
+      <li>Capture fullscreen: <code class="language-plaintext highlighter-rouge">Ctrl+Alt+Print</code> (photos will be saved in <strong>Pictures</strong>)</li>
+      <li>Show desktop: set in Keyboards settings, try to find “Hide all normal windows”.</li>
+    </ul>
+  </li>
+  <li>[<strong>Only Ubuntu</strong>] Connect Airpod to Ubuntu 20.04:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check bluetooth service is running</span>
+hciconfig <span class="nt">-a</span>
+<span class="c">#</span>
+<span class="c"># open a file</span>
+<span class="nb">sudo </span>nano /etc/bluetooth/main.conf
+<span class="c">#</span>
+<span class="c"># add</span>
+ControllerMode <span class="o">=</span> bredr
+<span class="c">#</span>
+<span class="c"># restart bluetooth service</span>
+<span class="nb">sudo</span> /etc/init.d/bluetooth restart
+<span class="c">#</span>
+<span class="c"># disconnect other headphone device</span>
+<span class="c"># press and hold backward button in the airpod case (flash light)</span>
+<span class="c"># connect to airpod as other device via bluetooth</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Location of <code class="language-plaintext highlighter-rouge">.desktop</code> files,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/thi/.local/share/applications/
+/usr/share/applications/
+/var/lib/snapd/desktop/applications/
+<span class="c"># or</span>
+locate <span class="k">*</span>.desktop <span class="c"># bash</span>
+locate <span class="se">\*</span>.desktop <span class="c"># zsh</span>
+</code></pre></div>    </div>
+  </li>
+  <li>[<strong>Optional</strong>]Xbox controller bluetooth connection: check <a href="https://askubuntu.com/questions/998144/how-can-i-use-my-xbox-one-s-controller-via-bluetooth">this</a>.</li>
+  <li>Remove icon from dash application
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:caldas-lopes/ppa
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>ezame
+</code></pre></div>    </div>
+  </li>
+  <li>Restore <a href="https://github.com/dinhanhthi/scripts/tree/master/settings">dconf setting</a>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dconf load / &lt; dconf-settings.ini
+<span class="c"># or</span>
+<span class="nb">cat </span>dconf-settings.ini | dconf load /
+</code></pre></div>    </div>
+  </li>
+  <li>Restore <a href="https://github.com/dinhanhthi/scripts/tree/master/settings">custom keyboard shortcuts</a>,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># load</span>
+dconf load /org/gnome/desktop/wm/keybindings/ &lt; keybindings.dconf
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ &lt; keybindings.dconf
+</code></pre></div>    </div>
+  </li>
+  <li>[<strong>Optional</strong>] Disable touchpad automatically when plugging mouse:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:atareao/atareao
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>touchpad-indicator
+<span class="c"># then open &gt; click on icon &gt; preferences &gt; action tab &gt; "Disable touchpad when mouse plugged"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Other applicatons:
+    <ol>
+      <li><a href="https://www.skype.com/en/get-skype/">Skype</a></li>
+      <li><a href="https://subhra74.github.io/xdm/">Extreme Download Manager</a> (uninstall by running as root <code class="language-plaintext highlighter-rouge">/opt/xdman/uninstall.sh</code>)</li>
+      <li><a href="https://github.com/klaussinani/ao">AO</a> (MS to do for Ubuntu): <code class="language-plaintext highlighter-rouge">snap install ao</code></li>
+      <li><strong>Shotwell</strong> or <strong>gThumb</strong> (image viewer + quick editor, install on Store)</li>
+      <li><strong>KolourPaint</strong> (photo editor supports cut and move a selection like Paint on Windows, install from AppStore)</li>
+      <li><strong>Cheese</strong> (camera app)</li>
+      <li><a href="https://maoschanz.github.io/drawing/">Drawing</a></li>
+      <li><a href="https://oguzhaninan.github.io/Stacer-Web/">Stacer</a> (optimizer system like Advanced System Care)</li>
+      <li><a href="https://www.googleplaymusicdesktopplayer.com/">Youtube Music</a></li>
+      <li><a href="https://flathub.org/apps/details/com.github.bilelmoussaoui.Authenticator">Authenticator</a></li>
+    </ol>
+  </li>
+  <li>Swap function keyboards on <a href="https://www.logitech.com/en-us/product/multi-device-keyboard-k380">Logitech K380</a>, using <a href="https://github.com/jergusg/k380-function-keys-conf">this tool</a> (try all keyboard hidraws if you are not sure!).</li>
+  <li>Force Unity Dash to index all files on Home: <code class="language-plaintext highlighter-rouge">sudo updatedb</code> (install by <code class="language-plaintext highlighter-rouge">sudo apt-get install mlocate</code>)</li>
+  <li>[<strong>Only Ubuntu</strong>] There are 2 ubuntu softwares in dash? (ref <a href="https://askubuntu.com/questions/1235835/ubuntu-software-doesnt-work-and-why-are-there-two-software-center-in-ubuntu-20">this question</a>). “Ubuntu software” is pre-installed snap store (run by <code class="language-plaintext highlighter-rouge">snap-store</code>), the other is <code class="language-plaintext highlighter-rouge">gnome-software</code>.</li>
+  <li><mark>Backup before installing a new system.</mark>
+    <ul>
+      <li>settings in <code class="language-plaintext highlighter-rouge">~/.config/</code> or <code class="language-plaintext highlighter-rouge">~/.&lt;software-name&gt;</code></li>
+      <li>all apps in <code class="language-plaintext highlighter-rouge">/home/thi/apps/</code> with their desktop files in <code class="language-plaintext highlighter-rouge">/home/thi/.local/share/applications/</code></li>
+    </ul>
+  </li>
+  <li><strong>Pop!_OS Tips</strong>:
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Super</code> + <code class="language-plaintext highlighter-rouge">Y</code>: toggle tiling mode.</li>
+      <li>Add a windows/applition exepton of tiling mode (it won’t be counted)</li>
+      <li>Make clocks + dates 2 lines -&gt; <a href="https://askubuntu.com/questions/1081793/how-to-display-date-under-time-in-gnome">tutorial</a>.
+        <ul>
+          <li>Install <a href="https://extensions.gnome.org/extension/1206/clock-override/">clock override extension</a>.</li>
+          <li>Using `     %H:%M%n%d/%m/%Y` in <em>text to display instead of the clock</em> (with the spaces so that they are center aligned).</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2020-04-21-fresh-installation-ubuntu.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Fresh Ubuntu / Pop!_OS Installation'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

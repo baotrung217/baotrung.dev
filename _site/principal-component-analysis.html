@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/principal-component-analysis" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Principal Component Analysis (PCA)
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Principal Component Analysis (PCA)" />
+  
+
+  
+    <meta property="og:description" content="What? Algorithm Code Whitening PCA in action References What? Sometimes we need to “compress” our data to speed up algorithms or to visualize data. One way is to use dimensionality reduction which is the process of reducing the number of random variables under consideration by obtaining a set of principal...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/principal-component-analysis" />
+    <link rel="canonical" href="http://localhost:4000/principal-component-analysis" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" async >
+  <script>
+    $("script[type='math/tex']").replaceWith(function() {
+        var tex = $(this).text();
+        return katex.renderToString(tex, {displayMode: false});
+    });
+
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        var tex = $(this).html();
+        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    });
+  </script>
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="http://localhost:4000/js/jsx/jsxgraph.css" async />
+    <script src="http://localhost:4000/js/jsx/jsxgraphcore.js" type="text/javascript"></script>
+    <script src="http://localhost:4000/js/jsx/gui.js" type="text/javascript"></script>
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon" style="color: #84f9ff;">
+              <i class="fas fa-robot"></i>
+            </div>
+          
+          <h1 class="post-title">
+            Principal Component Analysis (PCA)
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#dimensionality-reduction">
+                    dimensionality reduction
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#image-processing">
+                    image processing
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              14 Oct 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#what" id="markdown-toc-what">What?</a>    <ul>
+      <li><a href="#algorithm" id="markdown-toc-algorithm">Algorithm</a></li>
+    </ul>
+  </li>
+  <li><a href="#code" id="markdown-toc-code">Code</a>    <ul>
+      <li><a href="#whitening" id="markdown-toc-whitening">Whitening</a></li>
+    </ul>
+  </li>
+  <li><a href="#pca-in-action" id="markdown-toc-pca-in-action">PCA in action</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="what">What?</h2>
+
+<p>Sometimes we need to “compress” our data to speed up algorithms or to visualize data. One way is to use <strong>dimensionality reduction</strong> which is the process of reducing the number of random variables under consideration by obtaining a set of principal variables. We can think of 2 approaches:</p>
+
+<ul>
+  <li><strong>Feature selection</strong>: find a subset of the input variables.</li>
+  <li><strong>Feature projection</strong> (also <em>Feature extraction</em>): transforms the data in the high-dimensional space to a space of fewer dimensions. <strong>PCA</strong> is one of the methods following this approach.</li>
+</ul>
+
+<p class="img-full-90 pop"><img src="/img/post/ML/PCA/pca-1.jpg" alt="An idea of using PCA from 2D to 1D." />
+<em><strong>Figure 1.</strong> An idea of using PCA from 2D to 1D.</em></p>
+
+<p class="img-full-75 pop"><img src="/img/post/ML/PCA/pca-2.jpg" alt="An idea of using PCA from 5D to 2D." />
+<em><strong>Figure 2.</strong> An idea of using PCA from 5D to 2D.</em></p>
+
+<p class="alert alert-warning">❓ <strong class="tbrown">Questions</strong>: How can we choose the <strong class="tgreen">green arrows</strong> like in Figure 1 and 2 (their <strong>directions</strong> and their <strong>magnitudes</strong>)?</p>
+
+<p>From a data points, there are many ways of projections, for examples,</p>
+
+<p class="img-full-75 pop"><img src="/img/post/ML/PCA/pca-4.jpg" alt="An example of different projections." />
+<em><strong>Figure 3.</strong> We will project the points to the green line or the violet line? Which one is the best choice?</em></p>
+
+<p>Intuitively, the green line is better with more separated points. But how can we choose it “mathematically” (precisely)? We need to know about:</p>
+
+<ul>
+  <li><strong><a href="/mean-median-mode">Mean</a></strong>: find the most balanced point in the data.</li>
+  <li><strong><a href="/variance-covariance-correlation">Variance</a></strong>: measure the spread of data from the mean. However, variance is not enough. There are many different ways in that we get the same variance.</li>
+  <li><strong><a href="/variance-covariance-correlation">Covariance</a></strong>: indicate the direction in that data are spreading.</li>
+</ul>
+
+<p>An example of the same mean and variance but different covariance.</p>
+
+<p class="img-full-100 pop"><img src="/img/post/ML/PCA/pca-5.jpg" alt="Different data but the same mean and variance." />
+<em><strong>Figure 4.</strong> Different data but the same mean and variance. That’s why we need covariance!</em></p>
+
+<h3 id="algorithm">Algorithm</h3>
+
+<ol>
+  <li>Subtract the mean to move to the original axes.</li>
+  <li>From the original data (a lot of features <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>x</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">x_1, x_2, \ldots, x_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>), we construct a <strong>covariance matrix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span></strong>.</li>
+  <li>Find the <strong class="tbrown">eigenvalues</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>λ</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">\lambda_1, \lambda_2,\ldots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span></span></span></span> and correspondent <strong>eigenvectors</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>v</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">v_1, v_2, \ldots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span></span></span></span> of that matrix (we call them <strong>eigenstuffs</strong>). Choose <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>&lt;</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">K &lt; N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> couples <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> (the highest eigenvalues) and we get a reduced matrix <em><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></em>.</li>
+  <li>
+    <p>Projection original data points to the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>-dimensional plane created based on these new <em>eigenstuffs</em>. This step creates new data points on a new dimensional space (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>).</p>
+
+    <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><msubsup><mi>U</mi><mi>K</mi><mi>T</mi></msubsup><mi>X</mi></mrow><annotation encoding="application/x-tex">
+ Z = U_K^TX
+ </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.138331em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span></span></p>
+  </li>
+  <li>Now, instead of solving the original problem (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> features), we only need to solve a new problem with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> features (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>&lt;</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">K&lt;N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>).</li>
+</ol>
+
+<p class="img-full-100 pop"><img src="/img/post/ML/PCA/pca-3.jpg" alt="A big picture of the idea of PCA algorithm." />
+<em><strong>Figure 5.</strong> A big picture of the idea of PCA algorithm.<sup><a href="https://www.youtube.com/watch?v=g-Hb26agBFg">[ref]</a></sup></em></p>
+
+<h2 id="code">Code</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([...])</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># pca.fit(s)
+</span><span class="n">s1</span> <span class="o">=</span> <span class="n">pca</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">components_</span><span class="p">)</span> <span class="c1"># eigenvectors
+</span><span class="k">print</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">explained_variance_</span><span class="p">)</span> <span class="c1"># eigenvalues
+</span></code></pre></div></div>
+
+<p>Some notable components (see <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">full</a>):</p>
+
+<ul>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.fit(X)</code>: only fit <code class="language-plaintext highlighter-rouge">X</code> (and then we can use <code class="language-plaintext highlighter-rouge">pca</code> for other operations).</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.fit_transform(X)</code>: Fit the model with <code class="language-plaintext highlighter-rouge">X</code> and apply the dimensionality reduction on <code class="language-plaintext highlighter-rouge">X</code> (from <code class="language-plaintext highlighter-rouge">(n_samples, n_features)</code> to <code class="language-plaintext highlighter-rouge">(n_samples, n_components)</code>).</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.inverse_transform(s1)</code>: transform <code class="language-plaintext highlighter-rouge">s1</code> back to original data space (2D) - not back to <code class="language-plaintext highlighter-rouge">s</code>!!!</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca1.mean_</code>: mean point of the data.</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.components_</code>: eigenvectors (<code class="language-plaintext highlighter-rouge">n_components</code> vectors).</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.explained_variance_</code>: eigenvalues. It’s also the amount of retained variance which is corresponding to <strong>each</strong> components.</li>
+  <li><code class="language-plaintext tpink highlighter-rouge">pca.explained_variance_ratio_</code>: the <strong>percentage</strong> in that variance is retained if we consider on <strong>each</strong> component.</li>
+</ul>
+
+<p>Some notable parameters:</p>
+
+<ul>
+  <li><code class="language-plaintext tpink highlighter-rouge">n_components=0.80</code>: means it will return the Eigenvectors that have the 80% of the variation in the dataset.</li>
+</ul>
+
+<div class="alert alert-warning alert-custom">
+  <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+  <div class="alert-content">
+    <p>When choosing the number of principal components (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>), we choose <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> to be the smallest value so that for example, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>99</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">99\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">9</span><span class="mord">9</span><span class="mord">%</span></span></span></span> of variance, is retained.<sup><a href="https://stackoverflow.com/questions/32857029/python-scikit-learn-pca-explained-variance-ratio-cutoff " target="_blank">[ref]</a></sup></p>
+
+    <p>In <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">Scikit-learn</a>, we can use <code class="language-plaintext highlighter-rouge">pca.explained_variance_ratio_.cumsum()</code>. For example, <code class="language-plaintext highlighter-rouge">n_components = 5</code> and we have,</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mf">0.32047581</span>  <span class="mf">0.59549787</span>  <span class="mf">0.80178824</span>  <span class="mf">0.932976</span>    <span class="mf">1.</span><span class="p">]</span>
+</code></pre></div>    </div>
+
+    <p>then we know that with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">K=4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>, we would retain <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>93.3</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">93.3\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">9</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span><span class="mord">%</span></span></span></span> of the variance.</p>
+  </div>
+</div>
+
+<h3 id="whitening">Whitening</h3>
+
+<p>Whitening makes the features:</p>
+
+<ul>
+  <li>less correlated with each other,</li>
+  <li>all features have the same variance (or, unit component-wise variances).</li>
+</ul>
+
+<p class="img-full-100 pop"><img src="/img/post/ML/PCA/pca-6.jpeg" alt="An illustration of whitening." />
+<em>PCA / Whitening. <strong>Left</strong>: Original toy, 2-dimensional input data. <strong>Middle</strong>: After performing PCA. The data is centered at zero and then rotated into the eigenbasis of the data covariance matrix. This decorrelates the data (the covariance matrix becomes diagonal). <strong>Right</strong>: Each dimension is additionally scaled by the eigenvalues, transforming the data covariance matrix into the identity matrix. Geometrically, this corresponds to stretching and squeezing the data into an isotropic gaussian blob.</em></p>
+
+<p>If this section doesn’t satisfy you, read <a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/#whitening">this</a> and <a href="http://cs231n.github.io/neural-networks-2/">this</a> (section <em>PCA and Whitening</em>).</p>
+
+<h2 id="pca-in-action">PCA in action</h2>
+
+<ul>
+  <li>
+    <p><strong>Example to understand the idea of PCA</strong>: <a href="/files/ml/pca/PCA_understanding_example.html" target="_blank"><img src="/img/file-html-brightgreen.svg" target="_blank" alt="Open this html file" /></a>
+ – <a href="https://colab.research.google.com/drive/1F_A_fJOY-oiV7Ly4y_evF9sfwII-ljJK" target="_blank"><img src="/img/colab-badge.svg" target="_blank" alt="Open In Colab" /></a></p>
+
+    <ul>
+      <li>Plot points with 2 lines which are corresponding to 2 eigenvectors.</li>
+      <li>Plot &amp; choose Principal Components.</li>
+      <li>An example of choosing <code class="language-plaintext highlighter-rouge">n_components</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>.</li>
+      <li>Visualization hand-written digits (the case of all digits and the case of only 2 digits – 1 &amp; 8).</li>
+      <li>Using <a href="/support-vector-machine">SVM</a> to classifier data in the case of 1 &amp; 8 and visualize the decision boundaries.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Image compression</strong>: <a href="/files/ml/pca/PCA-image-compression.html" target="_blank"><img src="/img/file-html-brightgreen.svg" target="_blank" alt="Open this html file" /></a>
+ – <a href="https://colab.research.google.com/drive/1G_WPZMmQ020kjSmqMI_k21_zLDrPlYtg" target="_blank"><img src="/img/colab-badge.svg" target="_blank" alt="Open In Colab" /></a></p>
+
+    <ul>
+      <li>When input is an image, the values of adjacent pixels are <em>highly correlated</em>.</li>
+      <li>Import images from <code class="language-plaintext highlighter-rouge">scipy</code> and Google Drive or Github (with <code class="language-plaintext highlighter-rouge">git</code>).</li>
+      <li>Compress grayscale images and colored ones.</li>
+      <li>Plot a grayscale version of a colorful images.</li>
+      <li>Save output to file (Google Drive).</li>
+      <li>Fix warning <em>Lossy conversion from float64 to uint8. Range […,…]. Convert image to uint8 prior to saving to suppress this warning.</em></li>
+      <li>Fix warning <em>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers)</em>.</li>
+      <li>Calculate a size (in <code class="language-plaintext highlighter-rouge">KB</code>) of a image file.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>PCA without scikit-learn</strong>: <a href="/files/ml/pca/PCA_without_scikit_learn.html" target="_blank"><img src="/img/file-html-brightgreen.svg" target="_blank" alt="Open this html file" /></a>
+ – <a href="https://colab.research.google.com/drive/1IWMuon3NSpGybmnBBWxlvbS9yUjxtf_8" target="_blank"><img src="/img/colab-badge.svg" target="_blank" alt="Open In Colab" /></a></p>
+  </li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><strong>Luis Serrano</strong> – [Video] <a href="https://www.youtube.com/watch?v=g-Hb26agBFg">Principal Component Analysis (PCA)</a>. It’s very intuitive!</li>
+  <li><strong>Stats.StackExchange</strong> – <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues">Making sense of principal component analysis, eigenvectors &amp; eigenvalues</a>.</li>
+  <li><strong>Scikit-learn</strong> – <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA official doc</a>.</li>
+  <li><strong>Tiep Vu</strong> – <em>Principal Component Analysis</em>: <a href="https://machinelearningcoban.com/2017/06/15/pca/">Bài 27</a> and <a href="https://machinelearningcoban.com/2017/06/21/pca2/">Bài 28</a>.</li>
+  <li><strong>Jake VanderPlas</strong> – <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a>.</li>
+  <li><strong>Tutorial 4 Yang</strong> – <a href="/files/ml/pca/tutorial4-yang.pdf">Principal Components Analysis</a>.</li>
+  <li><strong>Andrew NG.</strong> – <a href="https://rawnote.dinhanhthi.com/machine-learning-coursera-8#principal-component-analysis-pca">My raw note</a> of the course <a href="https://www.coursera.org/learn/machine-learning/">“Machine Learning” on Coursera</a>.</li>
+  <li><strong>Shankar Muthuswamy</strong> – <a href="https://shankarmsy.github.io/posts/pca-sklearn.html">Facial Image Compression and Reconstruction with PCA</a>.</li>
+  <li><strong>UFLDL - Stanford</strong> – <a href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA Whitening</a>.</li>
+</ul>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/ml/2019-10-14-principal-component-analysis.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Principal Component Analysis (PCA)'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

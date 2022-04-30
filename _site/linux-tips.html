@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/linux-tips" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Linux notes
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Linux notes" />
+  
+
+  
+    <meta property="og:description" content="General Settings Applications Nautilus / Files management Surface User / Group / Ownership Matlab Network Free VPN Media / Photo / Music Game System Errors GPU-NVDIA problems Quick tips / references for using Linux / Ubuntu. 👉 Fresh installation Ubuntu note. 👉 Bash General 🔅 Run MacOS apps on Linux,...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/linux-tips" />
+    <link rel="canonical" href="http://localhost:4000/linux-tips" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/linux.svg">
+            </div>
+          
+          <h1 class="post-title">
+            Linux notes
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#linux">
+                    linux
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              13 Mar 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#general" id="markdown-toc-general">General</a></li>
+  <li><a href="#settings" id="markdown-toc-settings">Settings</a></li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+  <li><a href="#nautilus--files-management" id="markdown-toc-nautilus--files-management">Nautilus / Files management</a></li>
+  <li><a href="#surface" id="markdown-toc-surface">Surface</a></li>
+  <li><a href="#user--group--ownership" id="markdown-toc-user--group--ownership">User / Group / Ownership</a></li>
+  <li><a href="#matlab" id="markdown-toc-matlab">Matlab</a></li>
+  <li><a href="#network" id="markdown-toc-network">Network</a>    <ul>
+      <li><a href="#free-vpn" id="markdown-toc-free-vpn">Free VPN</a></li>
+    </ul>
+  </li>
+  <li><a href="#media--photo--music" id="markdown-toc-media--photo--music">Media / Photo / Music</a></li>
+  <li><a href="#game" id="markdown-toc-game">Game</a></li>
+  <li><a href="#system" id="markdown-toc-system">System</a></li>
+  <li><a href="#errors" id="markdown-toc-errors">Errors</a>    <ul>
+      <li><a href="#gpu-nvdia-problems" id="markdown-toc-gpu-nvdia-problems">GPU-NVDIA problems</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<p>Quick tips / references for using Linux / <strong>Ubuntu</strong>.</p>
+
+<p>👉 <a href="/fresh-installation-ubuntu">Fresh installation Ubuntu note.</a> <br />
+👉 <a href="/bash-command-line">Bash</a></p>
+
+<h2 id="general">General</h2>
+
+<p>🔅 Run MacOS apps on Linux, use <a href="https://darlinghq.org/">Darling</a>.</p>
+
+<p>🔅 Run Android apps on Linux, use <a href="https://anbox.io/">Anbox</a>.</p>
+
+<p>🔅 Find in linux with command lines ⇾ <a href="https://chrisjean.com/4-great-tools-to-find-files-quickly-in-ubuntu/">link</a></p>
+
+<p>🔅 Cannot move files to the trash/wrong owner ⇾ <a href="https://askubuntu.com/questions/288513/cant-move-files-to-the-trash">link</a></p>
+
+<p>🔅 Gnome screenshot ⇾ <a href="https://www.howtoforge.com/tutorial/taking-screenshots-in-linux-using-gnome-screenshot/">link</a></p>
+
+<p>🔅 Windows shrink drive in windows ⇾ <a href="https://somoit.net/windows/windows-cannot-shrink-volume-unmovable-files">link</a> (partition, resize disk drive, hard disk)</p>
+
+<p>🔅 Type Vietnamese in SublimeText, install <code class="language-plaintext highlighter-rouge">vn ime</code> (exactly like that). Press <kbd>F2</kbd> for using.</p>
+
+<p>🔅 Look and kill an app process:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps ax | <span class="nb">grep </span>teamviewer <span class="c"># check the id</span>
+<span class="nb">kill</span> <span class="nt">-9</span> &lt;pid&gt; <span class="c"># kill some process</span>
+</code></pre></div></div>
+
+<p>🔅 Install file <code class="language-plaintext highlighter-rouge">.bin</code>, <code class="language-plaintext highlighter-rouge">.run</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x file-name.run
+./file-name.run
+</code></pre></div></div>
+
+<p>🔅 Make a script executable: <code class="language-plaintext highlighter-rouge">chmod a+x script_file</code></p>
+
+<p>🔅 Unzip a file,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>unzip
+unzip &lt;file&gt;
+unzip &lt;file&gt; <span class="nt">-d</span> &lt;destination&gt;
+</code></pre></div></div>
+
+<p>🔅 Terminal multi windows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>terminator
+</code></pre></div></div>
+
+<p>🔅 Add bookmark for evince (default pdf reader)</p>
+
+<ul>
+  <li><kbd>F9</kbd>: hide/show sidebar</li>
+  <li>Menu on the top right &gt; Add bookmarks</li>
+  <li>Click on bookmark and rename it</li>
+  <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> to save (instead of <kbd>Ctrl</kbd> + <kbd>S</kbd>)</li>
+</ul>
+
+<p>🔅 Remove PPA from ubuntu by terminal. For example, <em>The repository ‘http://ppa.launchpad.net/b-eltzner/qpdfview/ubuntu artful Release’ does not have a Release file.</em> Remove the file <em>b-eltzner-qpdfview-ubuntu</em> from directory <em>/etc/apt/sources.list.d</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> /etc/apt/sources.list.d/&lt;file&gt;
+</code></pre></div></div>
+
+<p>Or using below command lines</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install</span>
+<span class="nb">sudo </span>add-apt-repository ppa:name
+
+<span class="c"># remove</span>
+<span class="nb">sudo </span>add-apt-repository <span class="nt">--remove</span> ppa:name
+</code></pre></div></div>
+
+<p>🔅 Get ip address: <code class="language-plaintext highlighter-rouge">ifconfig</code></p>
+
+<h2 id="settings">Settings</h2>
+
+<p>🔅 Make Monday as the start of the week:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-H</span> gedit /usr/share/i18n/locales/en_GB
+<span class="c"># change to 1</span>
+first_weekday 1
+<span class="c"># save and restart the system</span>
+</code></pre></div></div>
+
+<p>🔅 Add / Remove / Manage app icon in launcher: <code class="language-plaintext highlighter-rouge">sudo apt-get install alacarte</code>.</p>
+
+<p>🔅 Change ubuntu logo in settings: replace</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/share/icons/hicolor/256x256/apps/ubuntu-logo-icon.png
+</code></pre></div></div>
+
+<p>🔅 Turn off animation open and minimize windows on ubuntu 17.10 and later (gnome desktop): <em>Gnome Tweak Tools &gt; Apperance &gt; Animations OFF</em></p>
+
+<p>🔅 Choose between “lightdm” and “gdm3” (<a href="https://wiki.debian.org/LightDM">ref</a>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>lightdm
+dpkg-reconfigure lightdm
+<span class="c"># current config</span>
+lightdm <span class="nt">--show-config</span>
+</code></pre></div></div>
+
+<p>🔅 Save / Load dconf (<sup><a href="https://bgstack15.wordpress.com/2017/10/04/dconf-save-and-load-from-file/ " target="_blank">[ref]</a></sup>
+): <code class="language-plaintext highlighter-rouge">~/.config/dconf/user</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># save guake configs to a file</span>
+dconf dump / <span class="o">&gt;</span> dconf-settings.ini
+
+<span class="c"># load</span>
+dconf load / &lt; dconf-settings.ini
+<span class="c"># or</span>
+<span class="nb">cat </span>dconf-settings.ini | dconf load /
+</code></pre></div></div>
+
+<p>🔅 Save / load custom keyboard shortcuts (<a href="https://askubuntu.com/questions/682513/how-to-backup-restore-system-custom-keyboard-shortcuts">ref</a>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># keybindings</span>
+dconf dump /org/gnome/desktop/wm/keybindings/ <span class="o">&gt;</span> keybindings.dconf
+<span class="c"># media keys</span>
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ <span class="o">&gt;</span> media-keys.dconf
+
+<span class="c"># load</span>
+dconf load /org/gnome/desktop/wm/keybindings/ &lt; keybindings.dconf
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ &lt; keybindings.dconf
+</code></pre></div></div>
+
+<h2 id="applications">Applications</h2>
+
+<p>🔅 Completely remove LibreOffice,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># zsh uses \*</span>
+<span class="nb">sudo </span>apt-get remove <span class="nt">--purge</span> libreoffice<span class="k">*</span>
+<span class="nb">sudo </span>apt-get clean
+<span class="nb">sudo </span>apt-get autoremove
+</code></pre></div></div>
+
+<p>🔅 Remove snap store</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt autoremove <span class="nt">--purge</span> snapd
+</code></pre></div></div>
+
+<p>🔅 Uninstall snap applications</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap remove &lt;app_name&gt;
+</code></pre></div></div>
+
+<p>🔅 Convert office’s files to pdf</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install first</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>libreoffice
+<span class="c"># pptx -&gt; pdf</span>
+soffice <span class="nt">--headless</span> <span class="nt">--convert-to</span> pdf prezentacja.pptx
+</code></pre></div></div>
+
+<h2 id="nautilus--files-management">Nautilus / Files management</h2>
+
+<p>🔅 Force Unity Dash to index all files on Home</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>updatedb
+</code></pre></div></div>
+
+<p>🔅 Sync one folder to another (<a href="https://unix.stackexchange.com/questions/203846/how-to-sync-two-folders-with-command-line-tools">more info</a>)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># A -&gt; B/A</span>
+rsync <span class="nt">-avu</span> <span class="nt">--delete</span> <span class="s2">"/home/user/A"</span> <span class="s2">"/home/user/B"</span>
+
+<span class="c"># A/* -&gt; B/A</span>
+rsync <span class="nt">-avu</span> <span class="nt">--delete</span> <span class="s2">"/home/user/A/"</span> <span class="s2">"/home/user/B/A"</span>
+
+<span class="c"># A, C -&gt; B/A, B/C</span>
+rsync <span class="nt">-avu</span> <span class="nt">--delete</span> <span class="s2">"/home/user/A"</span> <span class="s2">"/home/user/C"</span> <span class="s2">"/home/user/B"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-a</code> Do the sync preserving all filesystem attributes</li>
+  <li><code class="language-plaintext highlighter-rouge">-v</code> run verbosely</li>
+  <li><code class="language-plaintext highlighter-rouge">-u</code> only copy files with a newer modification time (or size difference if the times are equal)</li>
+  <li><code class="language-plaintext highlighter-rouge">--delete</code> delete the files in target folder that do not exist in the source</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># exclude</span>
+rsync <span class="nt">-a</span> <span class="nt">--exclude</span> <span class="s1">'dir1'</span> src_directory/ dst_directory/
+rsync <span class="nt">-a</span> <span class="nt">--exclude</span><span class="o">={</span><span class="s1">'file1.txt'</span>,<span class="s1">'dir1/*'</span>,<span class="s1">'dir2'</span><span class="o">}</span> src_directory/ dst_directory/
+</code></pre></div></div>
+
+<p>🔅 Make a shortcut link to a folder/file in linux terminal ⇾ <a href="https://unix.stackexchange.com/questions/226315/how-to-use-ln-s-to-create-a-command-line-shortcut">link</a></p>
+
+<p>🔅 Shortcut to a folder in linux ⇾ <a href="https://unix.stackexchange.com/questions/226315/how-to-use-ln-s-to-create-a-command-line-shortcut">link</a></p>
+
+<p>🔅 Thumbnail nautilus: go to setting, set and apply this line</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown</span> <span class="nt">-R</span> yourusername:yourusername ~/.cache/thumbnails
+</code></pre></div></div>
+
+<p>🔅 Shorten directory in terminal</p>
+
+<ul>
+  <li>Temporarily, just enter <code class="language-plaintext highlighter-rouge">PS1='\u:\W\$ '</code> en press enter.</li>
+  <li>Permanently, open <code class="language-plaintext highlighter-rouge">sudo gedit ~/.bashrc</code> and find
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$color_prompt</span><span class="s2">"</span> <span class="o">=</span> <span class="nb">yes</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+</span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '</span>
+<span class="k">else
+</span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '</span>
+<span class="k">fi</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove <code class="language-plaintext highlighter-rouge">@\h</code> and replace <code class="language-plaintext highlighter-rouge">\w</code> by <code class="language-plaintext highlighter-rouge">\W</code> so that it becomes,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$color_prompt</span><span class="s2">"</span> <span class="o">=</span> <span class="nb">yes</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+</span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '</span>
+<span class="k">else
+</span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'${debian_chroot:+($debian_chroot)}\u:\W\$ '</span>
+<span class="k">fi</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Save, exit, close terminal and start another to see the result.</li>
+</ul>
+
+<p>🔅 Right click nautilus “Open as Administrator”:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>nautilus-admin
+nautilus <span class="nt">-q</span> <span class="c"># restart nautilus</span>
+</code></pre></div></div>
+
+<p>🔅 Mount iso file on linux</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>mount <span class="nt">-o</span> loop &lt;image&gt;.iso /mnt/&lt;folder&gt;
+</code></pre></div></div>
+
+<p>If you mount another iso file to the same <folder>, it will replace the current one.</folder></p>
+
+<p>🔅 Extract a iso file: first, mount it like in 37 to folder named <code class="language-plaintext highlighter-rouge">iso</code> then copy all the contents in <code class="language-plaintext highlighter-rouge">iso</code> to some folder you want.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> /mnt/iso &lt;directory&gt;
+</code></pre></div></div>
+
+<p>🔅 Sync files with mega right on terminal</p>
+
+<ul>
+  <li>Install megatools: <code class="language-plaintext highlighter-rouge">sudo apt-get install megatools</code></li>
+  <li>Using megatools, cf the <a href="https://megatools.megous.com">main website</a>.</li>
+  <li>Create a condig file which stores your login information (be careful, everyone can see your pass)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>vim <span class="c"># in case that you don't have vim on your system</span>
+vim .megarc <span class="c"># create a file named .megarc</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">vim</code> opens and type
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Login]
+Username <span class="o">=</span> your@email
+Password <span class="o">=</span> yourpassword
+</code></pre></div>    </div>
+    <p>If you have back slash in your password, you must escape it with another backslash</p>
+  </li>
+  <li>Quit <code class="language-plaintext highlighter-rouge">vim</code> and save the file by pressing <kbd>ESC</kbd> and then <code class="language-plaintext highlighter-rouge">:wq!</code></li>
+  <li>Upload a file: <code class="language-plaintext highlighter-rouge">megaput --path /Root/&lt;folder&gt; file</code></li>
+  <li>See the list of file on remote: <code class="language-plaintext highlighter-rouge">megals</code></li>
+  <li>Upload a folder: <code class="language-plaintext highlighter-rouge">megacopy --local &lt;folder&gt; --remote &lt;folder&gt;</code></li>
+  <li>Download from link: <code class="language-plaintext highlighter-rouge">megadl &lt;mega-link&gt;</code></li>
+  <li>Download a single file: <code class="language-plaintext highlighter-rouge">megaget &lt;file&gt;</code>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>megaget /Root/Apps/matlab17b/R2017b_glnxa64_dvd2.iso
+</code></pre></div>    </div>
+  </li>
+  <li>Download from uploaded directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>megacopy <span class="nt">--local</span> &lt;folder&gt; <span class="nt">--remote</span> &lt;folder-to-download&gt; <span class="nt">--download</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>🔅 Save a directory a <code class="language-plaintext highlighter-rouge">$PATH</code> of local profile.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gedit ~/.profile
+<span class="c"># copy and paste following line (should change the path)</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/home/thi/anaconda3/bin:<span class="nv">$PATH</span>
+<span class="c"># save and close .profile and then apply following line to get instant update</span>
+<span class="nb">source</span> ~/.profile
+</code></pre></div></div>
+
+<p>🔅 Copy files from ubuntu to iPhone iOS iPad</p>
+
+<ul>
+  <li>Don’t need to install any files if one needs to copy photos/videos from iphone to ubuntu, one can use gThumb to do this or just use file manager to copy.</li>
+  <li>If one wants to copy files to iphone. Follow <a href="https://askubuntu.com/questions/799414/how-to-move-files-from-ubuntu-to-iphone">this one</a></li>
+</ul>
+
+<p>🔅 Check the current path: <code class="language-plaintext highlighter-rouge">pwd</code></p>
+
+<h2 id="surface">Surface</h2>
+
+<p>🔅 Tweaks for ubuntu on surface book ⇾ <a href="https://medium.com/@viettrungdang/tweaks-for-ubuntu-on-surface-book-cd05cdb8f378">link</a></p>
+
+<p>🔅 App <a href="https://github.com/jakeday/linux-surface"><code class="language-plaintext highlighter-rouge">linux-surface</code></a>.</p>
+
+<h2 id="user--group--ownership">User / Group / Ownership</h2>
+
+<p>🔅 How to add existing user to an existing group<sup><a href="https://askubuntu.com/questions/79565/how-to-add-existing-user-to-an-existing-group " target="_blank">[ref]</a></sup></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-a</span> <span class="nt">-G</span> groupName userName
+</code></pre></div></div>
+
+<p>🔅 Change ownership of a folder and its children</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># folder and its children</span>
+<span class="nb">chown</span> <span class="nt">-R</span> thi:root folder
+<span class="c"># a file</span>
+<span class="nb">chown</span> &lt;user&gt;:&lt;group&gt; file
+</code></pre></div></div>
+
+<p>🔅 Check the permission of curent directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-l</span>
+<span class="nb">ls</span> <span class="nt">-l</span> &lt;file&gt;
+</code></pre></div></div>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#AinZdGoJASXcxjaNaDxj">
+    Check this photo 
+  </button>
+  <div id="AinZdGoJASXcxjaNaDxj" class="collapse multi-collapse box-content ">
+    <div>
+      <p class="img-full-80"><img src="/img/post/linux/ll-user.png" alt="check ll" /></p>
+    </div>
+  </div>
+</div>
+
+<h2 id="matlab">Matlab</h2>
+
+<p>🔅 Scale matlab: need to install matleb version &gt;= R2017b</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span> <span class="o">=</span> <span class="nb">settings</span><span class="p">;</span><span class="n">s</span><span class="o">.</span><span class="nb">matlab</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">DisplayScaleFactor</span>
+<span class="n">s</span><span class="o">.</span><span class="nb">matlab</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">DisplayScaleFactor</span><span class="o">.</span><span class="n">PersonalValue</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p>🔅 Launching matlab without graphic ui<sup><a href="https://blogs.mathworks.com/community/2010/02/22/launching-matlab-without-the-desktop/ " target="_blank">[ref]</a></sup></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>matlab <span class="nt">-nodesktop</span>
+</code></pre></div></div>
+
+<p>🔅 Cannot open matlab without sudo: change the owner permission of folder <em>/home/thi/.matlab</em> to thi*</p>
+
+<p>Another solution: suppose that matlab is installed on a user’s directory and you have already add this to the <code class="language-plaintext highlighter-rouge">$PATH</code>. IT’s only work if you use <code class="language-plaintext highlighter-rouge">matlab</code> (not <code class="language-plaintext highlighter-rouge">sudo matlab</code>). Then do</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo env</span> <span class="s2">"PATH=</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>from this, you can <code class="language-plaintext highlighter-rouge">sudo matlab</code></p>
+
+<p>🔅 Matlab drive connector: after installing, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/bin/MATLABConnector toggle
+</code></pre></div></div>
+
+<p>🔅 How to install matlab silently (only with command lines) on linux? (if below doesn’t work, you can <a href="http://installfights.blogspot.com/2016/11/how-to-install-matlab-without-gui.html">check here</a>, my method is different from this one)</p>
+
+<ol>
+  <li>Suppose that you have 2 dvd iso files which contains the installation of matlab (<code class="language-plaintext highlighter-rouge">dvd1.iso</code> and <code class="language-plaintext highlighter-rouge">dvd2.iso</code>)</li>
+  <li>For the activation, you have <code class="language-plaintext highlighter-rouge">libmwservices.so</code> and <code class="language-plaintext highlighter-rouge">license_standalone.lic</code></li>
+  <li>First, you need to extract 2 dvd iso files to a common folder named <code class="language-plaintext highlighter-rouge">install_matlab</code> in <code class="language-plaintext highlighter-rouge">/home/thi/</code></li>
+  <li>Create a new folder to install matlab called <code class="language-plaintext highlighter-rouge">matlabR</code> in <code class="language-plaintext highlighter-rouge">/home/thi/</code></li>
+  <li>Extract all files in 2 iso files to folder <code class="language-plaintext highlighter-rouge">install_matlab</code> like the instruction 38</li>
+  <li>Run below command line
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /home/thi/matlab_install/install <span class="nt">-agreeToLicense</span> <span class="nb">yes</span> <span class="nt">-mode</span> silent <span class="nt">-destinationFolder</span> /home/thi/matlabR <span class="nt">-fileInstallationKey</span> xxxxx-xxxxx-xxxxx  <span class="nt">-outputFile</span> /home/matlab_install.log
+</code></pre></div>    </div>
+  </li>
+  <li>After the installation, copy file <code class="language-plaintext highlighter-rouge">license_standalone.lic</code> to <code class="language-plaintext highlighter-rouge">/home/thi/matlabR/licenses/</code></li>
+  <li>Copy file <code class="language-plaintext highlighter-rouge">libmwservices.so</code> to <code class="language-plaintext highlighter-rouge">/home/thi/matlabR/bin/glnxa64/</code></li>
+  <li>Try running matlab: <code class="language-plaintext highlighter-rouge">/home/thi/matlabR/bin/matlab</code></li>
+  <li>If you have an error like <code class="language-plaintext highlighter-rouge">libXt.so.6: cannot open shared object file: No such file or directory</code>, try to install
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libxt6
+</code></pre></div>    </div>
+  </li>
+  <li>Make linux recognize your matlab command <code class="language-plaintext highlighter-rouge">matlab</code> like in the instruction 40.</li>
+</ol>
+
+<p>🔅 Make linux recognize matlab command</p>
+
+<ul>
+  <li>Suppose that you have installed matlab on <code class="language-plaintext highlighter-rouge">/home/thi/matlabR</code></li>
+  <li>You need to add above directory to the <code class="language-plaintext highlighter-rouge">$PATH</code> so that the system can recognize your <code class="language-plaintext highlighter-rouge">matlab</code> command
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/thi/matlabR/bin
+</code></pre></div>    </div>
+  </li>
+  <li>You can use <code class="language-plaintext highlighter-rouge">echo $PATH</code> to check if the path is located in it or not.</li>
+</ul>
+
+<p>🔅 Remove matlab on linux: simply <code class="language-plaintext highlighter-rouge">rm -rf &lt;matlab-folder&gt;</code></p>
+
+<h2 id="network">Network</h2>
+
+<p>🔅 Don’t show “<em>Turn on wifi hotspot…</em>” for clicking =&gt; try: click on “Network” and then “Wifi” in Settings.</p>
+
+<p>🔅 Share terminal for other (via SSH): using <a href="https://www.teleconsole.com/">Teleconsole</a>,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install</span>
+curl https://www.teleconsole.com/get.sh | sh
+
+<span class="c"># share current terminal</span>
+teleconsole
+
+<span class="c"># choose to connect via web browser</span>
+<span class="c"># or via terminal</span>
+teleconsole <span class="nb">join</span> &lt;<span class="nb">id</span><span class="o">&gt;</span>
+
+<span class="c"># stop broadcasting</span>
+<span class="nb">exit</span>
+
+<span class="c"># port forwarding</span>
+<span class="c"># suppose that a port is open at 3000 on your machine and you</span>
+<span class="c"># wanna share it with your friend</span>
+teleconsole <span class="nt">-f</span> localhost:3000
+</code></pre></div></div>
+
+<p>🔅 Download a direct link by terminal</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget &lt;direct-link&gt; <span class="nt">-O</span> &lt;name-of-file&gt;.&lt;file-extension&gt;
+</code></pre></div></div>
+
+<p>🔅 Download from google drive by terminal</p>
+
+<ul>
+  <li>Download as usual without terminal by a web browser</li>
+  <li>Open Downloads windows of the browser and then copy the download link.</li>
+  <li>Stop the download process</li>
+  <li>Use the command link in 33 where <code class="language-plaintext highlighter-rouge">&lt;direct-link&gt;</code> is the link copied above.</li>
+</ul>
+
+<p>🔅 Use <code class="language-plaintext highlighter-rouge">ssh</code> to get access to another computer in the same network (LAN)</p>
+
+<ol>
+  <li>Follow (a little bit) <a href="https://www.makeuseof.com/tag/remotely-manage-linux-server-ssh/">here</a>.</li>
+  <li>On the remote machine
+    <ol>
+      <li>update and upgrade install</li>
+      <li>install <code class="language-plaintext highlighter-rouge">openssh-server</code></li>
+      <li>open <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code> and uncomment on <code class="language-plaintext highlighter-rouge">Port 22</code> and lines starting with <code class="language-plaintext highlighter-rouge">Hostkey...</code></li>
+      <li>start the network: <code class="language-plaintext highlighter-rouge">sudo service ssh start</code></li>
+      <li>stop the network: <code class="language-plaintext highlighter-rouge">sudo service ssh stop</code></li>
+      <li>check if the network is running or not? <code class="language-plaintext highlighter-rouge">sudo service ssh status</code></li>
+      <li>Check the current ip: <code class="language-plaintext highlighter-rouge">ifconfig</code>: look on the <em>inet</em></li>
+    </ol>
+  </li>
+  <li>On the local machine
+    <ol>
+      <li>Install the same tool and use <code class="language-plaintext highlighter-rouge">ssh username@remote-host</code></li>
+    </ol>
+  </li>
+</ol>
+
+<p>🔅 Connect <code class="language-plaintext highlighter-rouge">ssh</code> to a virtual machine (the same network)</p>
+
+<ul>
+  <li>Install openssh for both client and server machine
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>openssh-client
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>openssh-server
+</code></pre></div>    </div>
+  </li>
+  <li>On server machine, check ssh is running or not
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps <span class="nt">-A</span> | <span class="nb">grep </span>sshd
+<span class="c"># return [number] ?  00:00:00 sshd then it works</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>🔅 Download playlist audio youtube, using <a href="https://github.com/rg3/youtube-dl/blob/master/README.md#readme"><code class="language-plaintext highlighter-rouge">youtube-dl</code></a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>curl <span class="nt">-y</span> <span class="o">(</span>cài curl nếu chưa cài<span class="o">)</span>
+<span class="nb">sudo </span>curl <span class="nt">-L</span> https://yt-dl.org/downloads/latest/youtube-dl <span class="nt">-o</span> /usr/local/bin/youtube-dl
+<span class="nb">sudo chmod </span>a+rx /usr/local/bin/youtube-dl
+
+<span class="c"># update 11/11/20: not working with playlist but single song!</span>
+youtube-dl <span class="nt">--extract-audio</span> <span class="nt">--audio-format</span> mp3 <span class="nt">-o</span> <span class="s2">"%(title)s.%(ext)s"</span> &lt;link-playlist&gt;
+</code></pre></div></div>
+
+<h3 id="free-vpn">Free VPN</h3>
+
+<p>Using <a href="https://www.vpnbook.com/">vpnbook</a> and <a href="https://www.vpnbook.com/howto/setup-openvpn-on-ubuntu">its tutorial</a>. Note that, at the last step, we need to run with <code class="language-plaintext highlighter-rouge">sudo</code>! <strong>Note</strong>: very low speed!</p>
+
+<h2 id="media--photo--music">Media / Photo / Music</h2>
+
+<p>🔅 Add shortcut keys for Rhythmbox Music Player -&gt; read <a href="https://askubuntu.com/questions/181651/how-to-assign-hot-keys-to-control-rhythmbox">this</a>.</p>
+
+<ol>
+  <li>Enable plugin “MPRIS D-Bus interface”.</li>
+  <li>Add custom shortcuts keyboards as
+    <ul>
+      <li>Play/Pause: <code class="language-plaintext highlighter-rouge">rhythmbox-client --play-pause</code></li>
+      <li>Next: <code class="language-plaintext highlighter-rouge">rhythmbox-client --next</code></li>
+      <li>Previous: <code class="language-plaintext highlighter-rouge">rhythmbox-client --previous</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>🔅 Convert <code class="language-plaintext highlighter-rouge">.ts</code> videos to <code class="language-plaintext highlighter-rouge">.mp4</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ffmpeg
+ffmpeg <span class="nt">-i</span> input.ts <span class="nt">-c</span>:v libx264 <span class="nt">-c</span>:a aac output.mp4
+</code></pre></div></div>
+
+<p>🔅 Mp3 tag editor:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>exfalso  <span class="c"># Ex Falso</span>
+</code></pre></div></div>
+
+<p>🔅 Spotify controller shortcut keyboards on Ubuntu (<a href="https://askubuntu.com/questions/1105363/spotify-keyboard-controls-not-working">ref</a>): using below commands for controlling playbacks in spotify, put them in a shortcut keys on ubuntu:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># play/puase</span>
+dbus-send <span class="nt">--print-reply</span> <span class="nt">--dest</span><span class="o">=</span>org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+<span class="c"># next track</span>
+dbus-send <span class="nt">--print-reply</span> <span class="nt">--dest</span><span class="o">=</span>org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+<span class="c"># previous track</span>
+dbus-send <span class="nt">--print-reply</span> <span class="nt">--dest</span><span class="o">=</span>org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+</code></pre></div></div>
+
+<p>🔅 Resize multiple photos (keep the ratio/scale) (<a href="https://imagemagick.org/Usage/resize/">more options</a>):</p>
+
+<p>🔅 <strong>Youtube Music Controller for Linux</strong>:</p>
+
+<ol>
+  <li>Download and install <a href="https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-">this app</a>.</li>
+  <li>Change to Youtube Music interface.</li>
+  <li>Remove all shortcut keyboards that look like the ones you wanna set in the app in Ubuntu system (<strong>Keyboard shortcuts</strong>).</li>
+  <li>On taskbar, right click on the You Tube Music app &gt; Desktop settings &gt; Hotkeys &gt; Set your keyboards (eg. <code class="language-plaintext highlighter-rouge">Ctrl+Shift+&gt;</code> for next track, <code class="language-plaintext highlighter-rouge">Ctrl+Shift+&lt;</code> for previous track, <code class="language-plaintext highlighter-rouge">Ctrl+Shift+Space</code> for play/pause track).</li>
+</ol>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>imagemagick
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># resize but keep the ratio (save to jpg)</span>
+mogrify <span class="nt">-resize</span> 50% <span class="nt">-format</span> jpg <span class="k">*</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># resize keep the extension</span>
+mogrify <span class="nt">-resize</span> 50% <span class="k">*</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># with a specific size (save to jpg)</span>
+mogrify <span class="nt">-resize</span> 800x600 <span class="nt">-format</span> jpg <span class="k">*</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># just the width (save to jpg)</span>
+mogrify <span class="nt">-resize</span> 800x <span class="nt">-format</span> jpg <span class="k">*</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># only resize images bigger than 1000px width</span>
+mogrify <span class="nt">-resize</span> 1000x<span class="se">\&gt;</span> <span class="k">*</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="game">Game</h2>
+
+<p>🔅 Game platforms: Steam, <a href="https://lutris.net/">Lutris</a>.</p>
+
+<p>🔅 Xbox Controller on Ubuntu:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># for bluetooth recognize</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>xboxdrv
+
+<span class="c"># for GUI testing app</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>jstest-gtk
+</code></pre></div></div>
+
+<h2 id="system">System</h2>
+
+<p>🔅 System monitor in terminal: <a href="https://github.com/MrRio/vtop">vtop</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nodejs
+<span class="nb">sudo </span>apt <span class="nb">install </span>npm
+<span class="nb">sudo </span>npm <span class="nb">install</span> <span class="nt">-g</span> vtop
+</code></pre></div></div>
+
+<h2 id="errors">Errors</h2>
+
+<p>🔅 Problem save file as <code class="language-plaintext highlighter-rouge">root</code> user and cannot open later ⇾ <a href="https://askubuntu.com/questions/817902/unable-to-open-any-graphical-app-with-sudo/817906#817906">link</a></p>
+
+<p>🔅 Prevent bluetooth devices disconnected after sleep ⇾ <a href="https://unix.stackexchange.com/questions/177998/bluetooth-mouse-disconnects">link</a></p>
+
+<p>🔅  <em>Failed to load module ‘canberra-gtk-module</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>libcanberra-gtk-module libcanberra-gtk3-module
+</code></pre></div></div>
+
+<p>🔅 <em>nvidia docker signatures invalid. The following signatures were invalid: EXPKEYSIG</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="nb">sudo </span>apt-key add -
+</code></pre></div></div>
+
+<p>🔅 <em>bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"LC_ALL=en_US.UTF-8"</span> <span class="o">&gt;&gt;</span> /etc/environment
+<span class="nb">echo</span> <span class="s2">"en_US.UTF-8 UTF-8"</span> <span class="o">&gt;&gt;</span> /etc/locale.gen
+<span class="nb">echo</span> <span class="s2">"LANG=en_US.UTF-8"</span> <span class="o">&gt;</span> /etc/locale.conf
+locale-gen en_US.UTF-8
+</code></pre></div></div>
+
+<p>🔅 <em>dpkg: error processing package install-info</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mv</span> /var/lib/dpkg/info/install-info.postinst /var/lib/dpkg/info/install-info.postinst.bad
+</code></pre></div></div>
+
+<p>🔅 <em>APT had planned for dpkg to do more than it reported back</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg <span class="nt">--configure</span> <span class="nt">-a</span>
+apt-get <span class="nb">install</span> <span class="nt">-f</span>
+</code></pre></div></div>
+
+<h3 id="gpu-nvdia-problems">GPU-NVDIA problems</h3>
+
+<p>🔅 Problems with pytorch versions: <a href="/pytorch#errors">check this</a>.</p>
+
+<p>🔅 <em>RuntimeError: cuda runtime error (804) : forward compatibility was attempted on non supported HW at /pytorch/aten/src/THC/THCGeneral.cpp:47</em> (after update system including nvdia-cli, maybe) =&gt; The same problem with below, need to restart the computer.</p>
+
+<p>🔅 <code class="language-plaintext highlighter-rouge">nvidia-smi</code>: <em>Failed to initialize NVML: Driver/library version mismatch</em>.</p>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/43022843/nvidia-nvml-driver-library-version-mismatch">This thread</a>: just restart the computer.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2020-03-13-linux-tips.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Linux notes'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

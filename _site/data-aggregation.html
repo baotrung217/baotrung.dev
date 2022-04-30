@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/data-aggregation" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Data Aggregation
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Data Aggregation" />
+  
+
+  
+    <meta property="og:description" content="Libraries Dataframe Group dataset using groupby() Group using pivot_table() Reorganizing df using pivot() Change shape of df with melt() References In this note, I use df as DataFrame, s as Series. Libraries import pandas as pd # import pandas package import numpy as np Dataframe dataquest_aio = 'https://raw.githubusercontent.com/dinhanhthi/dataquest-aio/master/step-2-data-analysis-and-visualization/' dataset_url =...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/data-aggregation" />
+    <link rel="canonical" href="http://localhost:4000/data-aggregation" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/aggregation.png">
+            </div>
+          
+          <h1 class="post-title">
+            Data Aggregation
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#data-processing">
+                    data processing
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              07 Dec 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#libraries" id="markdown-toc-libraries">Libraries</a></li>
+  <li><a href="#dataframe" id="markdown-toc-dataframe">Dataframe</a></li>
+  <li><a href="#group-dataset-using-groupby" id="markdown-toc-group-dataset-using-groupby">Group dataset using <code class="language-plaintext highlighter-rouge">groupby()</code></a></li>
+  <li><a href="#group-using-pivot_table" id="markdown-toc-group-using-pivot_table">Group using <code class="language-plaintext highlighter-rouge">pivot_table()</code></a></li>
+  <li><a href="#reorganizing-df-using-pivot" id="markdown-toc-reorganizing-df-using-pivot">Reorganizing df using <code class="language-plaintext highlighter-rouge">pivot()</code></a></li>
+  <li><a href="#change-shape-of-df-with-melt" id="markdown-toc-change-shape-of-df-with-melt">Change shape of df with <code class="language-plaintext highlighter-rouge">melt()</code></a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>In this note, I use <code class="language-plaintext highlighter-rouge">df</code> as <code class="language-plaintext highlighter-rouge">DataFrame</code>, <code class="language-plaintext highlighter-rouge">s</code> as <code class="language-plaintext highlighter-rouge">Series</code>.</p>
+
+<h2 id="libraries">Libraries</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> <span class="c1"># import pandas package
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<h2 id="dataframe">Dataframe</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataquest_aio</span> <span class="o">=</span> <span class="s">'https://raw.githubusercontent.com/dinhanhthi/dataquest-aio/master/step-2-data-analysis-and-visualization/'</span>
+<span class="n">dataset_url</span> <span class="o">=</span> <span class="n">dataquest_aio</span> <span class="o">+</span> <span class="s">'course-4-data-cleaning-and-analysis/data/World_Happiness_2015.csv'</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset_url</span><span class="p">)</span> <span class="c1"># read the data set
+</span><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="table-wrapper">
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Region</th>
+      <th>Happiness Rank</th>
+      <th>Happiness Score</th>
+      <th>Standard Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Switzerland</td>
+      <td>Western Europe</td>
+      <td>1</td>
+      <td>7.587</td>
+      <td>0.03411</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Iceland</td>
+      <td>Western Europe</td>
+      <td>2</td>
+      <td>7.561</td>
+      <td>0.04884</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Denmark</td>
+      <td>Western Europe</td>
+      <td>3</td>
+      <td>7.527</td>
+      <td>0.03328</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>Western Europe</td>
+      <td>4</td>
+      <td>7.522</td>
+      <td>0.03880</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Canada</td>
+      <td>North America</td>
+      <td>5</td>
+      <td>7.427</td>
+      <td>0.03553</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="group-dataset-using-groupby">Group dataset using <code class="language-plaintext highlighter-rouge">groupby()</code></h2>
+
+<p>Group <code class="language-plaintext highlighter-rouge">df</code> by column <code class="language-plaintext highlighter-rouge">Region</code> and then selct the column <code class="language-plaintext highlighter-rouge">Western Europe</code>,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Region'</span><span class="p">).</span><span class="n">get_group</span><span class="p">(</span><span class="s">'Western Europe'</span><span class="p">)</span> <span class="c1"># returns a df
+</span></code></pre></div></div>
+
+<div class="table-wrapper">
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Region</th>
+      <th>Happiness Rank</th>
+      <th>Happiness Score</th>
+      <th>Standard Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Switzerland</td>
+      <td>Western Europe</td>
+      <td>1</td>
+      <td>7.587</td>
+      <td>0.03411</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Iceland</td>
+      <td>Western Europe</td>
+      <td>2</td>
+      <td>7.561</td>
+      <td>0.04884</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Denmark</td>
+      <td>Western Europe</td>
+      <td>3</td>
+      <td>7.527</td>
+      <td>0.03328</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>Western Europe</td>
+      <td>4</td>
+      <td>7.522</td>
+      <td>0.03880</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Finland</td>
+      <td>Western Europe</td>
+      <td>6</td>
+      <td>7.406</td>
+      <td>0.03140</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Select just the <code class="language-plaintext highlighter-rouge">Happiness Score</code> column and then find the <code class="language-plaintext highlighter-rouge">mean</code>,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Region'</span><span class="p">)[</span><span class="s">'Happiness Score'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># other methods: size, max, min, count
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Region
+Australia and New Zealand          7.285000
+Central and Eastern Europe         5.332931
+Eastern Asia                       5.626167
+Latin America and Caribbean        6.144682
+Middle East and Northern Africa    5.406900
+North America                      7.273000
+Southeastern Asia                  5.317444
+Southern Asia                      4.580857
+Sub-Saharan Africa                 4.202800
+Western Europe                     6.689619
+Name: Happiness Score, dtype: float64
+</code></pre></div></div>
+
+<p>Apply multiple/custom functions,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">max_min</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">group</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">group</span><span class="p">.</span><span class="nb">min</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Country'</span><span class="p">,</span> <span class="s">'Region'</span><span class="p">]).</span><span class="n">agg</span><span class="p">([</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">,</span> <span class="n">max_min</span><span class="p">]).</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="table-wrapper">
+<table class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">Happiness Rank</th>
+      <th colspan="3" halign="left">Happiness Score</th>
+      <th colspan="3" halign="left">Standard Error</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>amax</th>
+      <th>max_min</th>
+      <th>mean</th>
+      <th>amax</th>
+      <th>max_min</th>
+      <th>mean</th>
+      <th>amax</th>
+      <th>max_min</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <th>Southern Asia</th>
+      <td>153</td>
+      <td>153</td>
+      <td>0</td>
+      <td>3.575</td>
+      <td>3.575</td>
+      <td>0.0</td>
+      <td>0.03084</td>
+      <td>0.03084</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <th>Central Europe</th>
+      <td>95</td>
+      <td>95</td>
+      <td>0</td>
+      <td>4.959</td>
+      <td>4.959</td>
+      <td>0.0</td>
+      <td>0.05013</td>
+      <td>0.05013</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <th>Middle Africa</th>
+      <td>68</td>
+      <td>68</td>
+      <td>0</td>
+      <td>5.605</td>
+      <td>5.605</td>
+      <td>0.0</td>
+      <td>0.05099</td>
+      <td>0.05099</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>If you wanna apply different functions on different columns</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Country'</span><span class="p">,</span> <span class="s">'Region'</span><span class="p">]).</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s">'Happiness Rank'</span><span class="p">:</span> <span class="n">max_min</span><span class="p">,</span>
+    <span class="s">'Happiness Score'</span><span class="p">:</span> <span class="p">[</span><span class="s">'min'</span><span class="p">,</span> <span class="s">'max'</span><span class="p">],</span>
+    <span class="s">'Standard Error'</span><span class="p">:</span> <span class="s">'count'</span>
+<span class="p">}).</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="table-wrapper">
+<table class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Happiness Rank</th>
+      <th colspan="2" halign="left">Happiness Score</th>
+      <th>Standard Error</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>max_min</th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <th>Southern Asia</th>
+      <td>0</td>
+      <td>3.575</td>
+      <td>3.575</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <th>Central Europe</th>
+      <td>0</td>
+      <td>4.959</td>
+      <td>4.959</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <th>Middle Africa</th>
+      <td>0</td>
+      <td>5.605</td>
+      <td>5.605</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Or using <code class="language-plaintext highlighter-rouge">apply</code> and <code class="language-plaintext highlighter-rouge">lambda</code> function,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">orders</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'shoes'</span><span class="p">).</span><span class="n">price</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">25</span><span class="p">)).</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="group-using-pivot_table">Group using <code class="language-plaintext highlighter-rouge">pivot_table()</code></h2>
+
+<p class="img-90"><img src="/img/post/data/data-aggregation/pivoting_table_simple1.png" alt="An example of pivotting by a single column" />
+<em>An example of pivotting by a single column (<a href="https://nikgrozev.com/2015/07/01/reshaping-in-pandas-pivot-pivot-table-stack-and-unstack-explained-with-pictures/">ref</a>)</em></p>
+
+<p>Group by <code class="language-plaintext highlighter-rouge">Region</code> (as an index) and choosing <code class="language-plaintext highlighter-rouge">GDP</code> and <code class="language-plaintext highlighter-rouge">City</code> columns,<sup><a href="https://github.com/dinhanhthi/data-science-learning/blob/master/codecademy-data-science/course-10%20Data%20Analysis%20with%20Pandas/Aggregates%20in%20Pandas.ipynb " target="_blank">[ref]</a></sup></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">'GDP'</span><span class="p">,</span> <span class="s">'City'</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="s">'Region'</span><span class="p">)</span> <span class="c1"># returns df
+</span></code></pre></div></div>
+
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Happiness Rank</th>
+      <th>Standard Error</th>
+    </tr>
+    <tr>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Australia and New Zealand</th>
+      <td>9.5</td>
+      <td>0.037270</td>
+    </tr>
+    <tr>
+      <th>Central and Eastern Europe</th>
+      <td>79.0</td>
+      <td>0.045208</td>
+    </tr>
+    <tr>
+      <th>Eastern Asia</th>
+      <td>64.5</td>
+      <td>0.037225</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Apply some functions,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">pivot_table</span><span class="p">([</span><span class="s">'GDP'</span><span class="p">,</span> <span class="s">'City'</span><span class="p">],</span> <span class="s">'Region'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># margins shows the "All" row
+</span></code></pre></div></div>
+
+<table class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">mean</th>
+      <th colspan="2" halign="left">amax</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Happiness Rank</th>
+      <th>Standard Error</th>
+      <th>Happiness Rank</th>
+      <th>Standard Error</th>
+    </tr>
+    <tr>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Australia and New Zealand</th>
+      <td>9.5</td>
+      <td>0.037270</td>
+      <td>10</td>
+      <td>0.04083</td>
+    </tr>
+    <tr>
+      <th>Central and Eastern Europe</th>
+      <td>79.0</td>
+      <td>0.045208</td>
+      <td>134</td>
+      <td>0.06913</td>
+    </tr>
+    <tr>
+      <th>Eastern Asia</th>
+      <td>64.5</td>
+      <td>0.037225</td>
+      <td>100</td>
+      <td>0.05051</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reorganizing-df-using-pivot">Reorganizing df using <code class="language-plaintext highlighter-rouge">pivot()</code></h2>
+
+<p class="img-90"><img src="/img/post/data/data-aggregation/pivoting_simple_multicolumn.png" alt="An example of multi-column pivoting" />
+<em>An example of multi-column pivoting (<a href="https://nikgrozev.com/2015/07/01/reshaping-in-pandas-pivot-pivot-table-stack-and-unstack-explained-with-pictures/">ref</a>)</em></p>
+
+<p>Make values in one columns be columns in a new “pivot” table,<sup><a href="https://github.com/dinhanhthi/data-science-learning/blob/master/codecademy-data-science/course-10%20Data%20Analysis%20with%20Pandas/Aggregates%20in%20Pandas.ipynb " target="_blank">[ref]</a></sup></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'foo'</span><span class="p">:</span> <span class="p">[</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'one'</span><span class="p">,</span> <span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span>
+                           <span class="s">'two'</span><span class="p">],</span>
+                   <span class="s">'bar'</span><span class="p">:</span> <span class="p">[</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">],</span>
+                   <span class="s">'baz'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                   <span class="s">'zoo'</span><span class="p">:</span> <span class="p">[</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">,</span> <span class="s">'q'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">,</span> <span class="s">'t'</span><span class="p">]})</span>
+
+<span class="n">pivot_1</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">'foo'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'bar'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">'baz'</span><span class="p">)</span>
+<span class="n">pivot_2</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">'foo'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'bar'</span><span class="p">)[</span><span class="s">'baz'</span><span class="p">]</span>
+<span class="n">pivot_3</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">'foo'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s">'bar'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">'baz'</span><span class="p">,</span> <span class="s">'zoo'</span><span class="p">])</span>
+
+<span class="n">display_side_by_side</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pivot_1</span><span class="p">,</span> <span class="n">pivot_2</span><span class="p">,</span> <span class="n">pivot_3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_subarea output_html rendered_html"><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>foo</th>
+      <th>bar</th>
+      <th>baz</th>
+      <th>zoo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>A</td>
+      <td>1</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>one</td>
+      <td>B</td>
+      <td>2</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>one</td>
+      <td>C</td>
+      <td>3</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>A</td>
+      <td>4</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>two</td>
+      <td>B</td>
+      <td>5</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>two</td>
+      <td>C</td>
+      <td>6</td>
+      <td>t</td>
+    </tr>
+  </tbody>
+</table><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>bar</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>bar</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">baz</th>
+      <th colspan="3" halign="left">zoo</th>
+    </tr>
+    <tr>
+      <th>bar</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>x</td>
+      <td>y</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>q</td>
+      <td>w</td>
+      <td>t</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>For one who wanna know <code class="language-plaintext highlighter-rouge">display_side_by_side</code>: ref <a href="/jupyter-notebook#display-dataframes-side-by-side">this note</a>.</p>
+
+<h2 id="change-shape-of-df-with-melt">Change shape of df with <code class="language-plaintext highlighter-rouge">melt()</code></h2>
+
+<p>Contrary to <code class="language-plaintext highlighter-rouge">pivot</code>, we now want to transform several columns into values of a single column,<sup><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html " target="_blank">[ref]</a></sup></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'A'</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'a'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'c'</span><span class="p">},</span>
+                   <span class="s">'B'</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+                   <span class="s">'C'</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">6</span><span class="p">}})</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s">'A'</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s">'B'</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s">'A'</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">])</span>
+
+<span class="n">display_side_by_side</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_subarea output_html rendered_html"><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>B</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>B</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table><table style="display:inline; margin-right: 5px;" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>B</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>B</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>a</td>
+      <td>C</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>C</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>c</td>
+      <td>C</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://github.com/dinhanhthi/dataquest-aio/tree/master/step-2-data-analysis-and-visualization/course-4-data-cleaning-and-analysis">Data Cleaning and Analysis</a> on Dataquest.</li>
+  <li><a href="https://dinhanhthi.com/github-html?https://github.com/dinhanhthi/dataquest-aio/blob/master/step-2-data-analysis-and-visualization/course-4-data-cleaning-and-analysis/notebooks_in_html/task-3-transforming-data-with-pandas.html">Transforming data with pandas</a> on Dataquest.</li>
+  <li><strong>pandas official</strong> – <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html">Group By: split-apply-combine</a></li>
+</ul>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/data-science/2019-12-07-data-aggregation.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Data Aggregation'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

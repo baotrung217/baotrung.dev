@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/js-101" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | JavaScript 101
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="JavaScript 101" />
+  
+
+  
+    <meta property="og:description" content="Miscellaneous Practice directly on the browser ES6 Concise things Getters and setters Export/Import to share code blocks Declare variables &amp;amp; Scopes Output Basic operators Conditional statements if / switch Functions Strings Arrays Objects Destructuring Assignment (ES6) JSON Iterate with while / for / do..while loops References Quick references for fundamental...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/js-101" />
+    <link rel="canonical" href="http://localhost:4000/js-101" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/js.png">
+            </div>
+          
+          <h1 class="post-title">
+            JavaScript 101
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#online-tool">
+                    online tool
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              12 Nov 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#miscellaneous" id="markdown-toc-miscellaneous">Miscellaneous</a></li>
+  <li><a href="#practice-directly-on-the-browser" id="markdown-toc-practice-directly-on-the-browser">Practice directly on the browser</a></li>
+  <li><a href="#es6" id="markdown-toc-es6">ES6</a>    <ul>
+      <li><a href="#concise-things" id="markdown-toc-concise-things">Concise things</a></li>
+      <li><a href="#getters-and-setters" id="markdown-toc-getters-and-setters">Getters and setters</a></li>
+      <li><a href="#exportimport-to-share-code-blocks" id="markdown-toc-exportimport-to-share-code-blocks">Export/Import to share code blocks</a></li>
+    </ul>
+  </li>
+  <li><a href="#declare-variables--scopes" id="markdown-toc-declare-variables--scopes">Declare variables &amp; Scopes</a></li>
+  <li><a href="#output" id="markdown-toc-output">Output</a></li>
+  <li><a href="#basic-operators" id="markdown-toc-basic-operators">Basic operators</a></li>
+  <li><a href="#conditional-statements-if--switch" id="markdown-toc-conditional-statements-if--switch">Conditional statements <code class="language-plaintext highlighter-rouge">if</code> / <code class="language-plaintext highlighter-rouge">switch</code></a></li>
+  <li><a href="#functions" id="markdown-toc-functions">Functions</a></li>
+  <li><a href="#strings" id="markdown-toc-strings">Strings</a></li>
+  <li><a href="#arrays" id="markdown-toc-arrays">Arrays</a></li>
+  <li><a href="#objects" id="markdown-toc-objects">Objects</a></li>
+  <li><a href="#destructuring-assignment-es6" id="markdown-toc-destructuring-assignment-es6">Destructuring Assignment (ES6)</a></li>
+  <li><a href="#json" id="markdown-toc-json">JSON</a></li>
+  <li><a href="#iterate-with-while--for--dowhile-loops" id="markdown-toc-iterate-with-while--for--dowhile-loops">Iterate with <code class="language-plaintext highlighter-rouge">while</code> / <code class="language-plaintext highlighter-rouge">for</code> / <code class="language-plaintext highlighter-rouge">do..while</code> loops</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>Quick references for fundamental things in JavaScript.</p>
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+<ul>
+  <li>Using <code class="language-plaintext highlighter-rouge">//</code> for 1 line comment, <code class="language-plaintext highlighter-rouge">/* */</code> for multi-line comment.</li>
+  <li>End of each command by <code class="language-plaintext highlighter-rouge">;</code>.</li>
+  <li>Variables and function name are case sensitive.</li>
+  <li>Variables / functions should be named in the form of <code class="language-plaintext highlighter-rouge">nameOfVariable</code>.
+    <ul>
+      <li>Naming a constant: <code class="language-plaintext highlighter-rouge">const FAV_PET = 'Cat';</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">UpperCamelCase</code> should be used by convention for ES6 class names.</li>
+    </ul>
+  </li>
+  <li>Using <code class="language-plaintext highlighter-rouge">\</code> for special characters, for example, <code class="language-plaintext highlighter-rouge">\"</code> for a <code class="language-plaintext highlighter-rouge">"</code> inside a <code class="language-plaintext highlighter-rouge">""</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">''</code> can be used inside a <code class="language-plaintext highlighter-rouge">""</code> and vice versa.</li>
+</ul>
+
+<h2 id="practice-directly-on-the-browser">Practice directly on the browser</h2>
+
+<p>Open the browser (I use <a href="https://www.google.com/chrome/">Chrome</a>), press <kbd>F12</kbd> to open the <strong><em>Inspect</em></strong> window, then choose tab <strong><em>Console</em></strong>. Now, you can practice on this console window, for example, try with <code class="language-plaintext highlighter-rouge">1+1</code> and press <kbd>Enter</kbd>.</p>
+
+<h2 id="es6">ES6</h2>
+
+<ul>
+  <li>“ES” = “ECMAScript” ~ “Javascript”.</li>
+  <li>Most of browsers use ES6 but not all.</li>
+  <li>ES6 = ES2015</li>
+  <li><a href="/img/post/js/js_timeline.svg" target="_blank">JS timeline</a>.</li>
+  <li><strong>New features</strong>: <a href="https://www.w3schools.com/js/js_arrow_function.asp">Arrow functions</a>, Classes, Modules, Promises, Generators, <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">const</code>.</li>
+  <li>Read <a href="https://www.w3schools.com/js/js_es6.asp">more about ES6 on w3schools</a>.</li>
+</ul>
+
+<h3 id="concise-things">Concise things</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Concise Object Literal Declarations</span>
+<span class="kd">const</span> <span class="nx">getMousePosition</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Concise Declarative Functions</span>
+<span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Taylor</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`Hello! My name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">.`</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="getters-and-setters">Getters and setters</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">author</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_author</span> <span class="o">=</span> <span class="nx">author</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// getter</span>
+  <span class="kd">get</span> <span class="nx">writer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_author</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// setter</span>
+  <span class="kd">set</span> <span class="nx">writer</span><span class="p">(</span><span class="nx">updatedAuthor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_author</span> <span class="o">=</span> <span class="nx">updatedAuthor</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">lol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="dl">'</span><span class="s1">anonymous</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lol</span><span class="p">.</span><span class="nx">writer</span><span class="p">);</span>  <span class="c1">// anonymous</span>
+<span class="nx">lol</span><span class="p">.</span><span class="nx">writer</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">wut</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">lol</span><span class="p">.</span><span class="nx">writer</span><span class="p">);</span>  <span class="c1">// wut</span>
+</code></pre></div></div>
+
+<h3 id="exportimport-to-share-code-blocks">Export/Import to share code blocks</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// file ./math_funcs.js</span>
+<span class="kd">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">};</span>
+<span class="kd">const</span> <span class="nx">subtract</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">y</span><span class="p">};</span>
+<span class="k">export</span> <span class="p">{</span> <span class="nx">add</span><span class="p">,</span> <span class="nx">subtract</span> <span class="p">};</span> <span class="c1">// can be imported in other scripts</span>
+
+<span class="c1">// file ./math_default.js only has 1 export</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// without name</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">add</span><span class="p">,</span> <span class="nx">subtract</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./math_funcs.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">myMathModule</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./math_functions.js</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// everything</span>
+
+<span class="k">import</span> <span class="nx">anything</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./math_default.js</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// from export default</span>
+</code></pre></div></div>
+
+<h2 id="declare-variables--scopes">Declare variables &amp; Scopes</h2>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">varName</span><span class="p">;</span> <span class="c1">// global scope</span>
+<span class="kd">let</span> <span class="nx">varName</span><span class="p">;</span> <span class="c1">// ES6, block scope (inside {} or function,...)</span>
+<span class="kd">const</span> <span class="nx">varName</span><span class="p">;</span> <span class="c1">// ES6, can't be changed</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">funcName</span><span class="p">(){</span>
+  <span class="nx">oopsGlobal</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// without `var`, it's a global variable</span>
+<span class="p">}</span>
+<span class="nx">oppsGlobal</span><span class="p">;</span> <span class="c1">// returns 5</span>
+</code></pre></div>  </div>
+</div>
+
+<p>Difference between <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">const</code>,</p>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// ok, a=2 now</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// a=5 now</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// error</span>
+<span class="nx">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// c=3 now</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto pl-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// error</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// error</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span> <span class="c1">// error</span>
+<span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// OK</span>
+</code></pre></div></div>
+
+<h2 id="output">Output</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Thi</span><span class="dl">"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">I'm </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">myName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`I'm </span><span class="p">${</span><span class="nx">myName</span><span class="p">}</span><span class="s2">.`</span><span class="p">);</span> <span class="c1">// ES6</span>
+</code></pre></div></div>
+
+<h2 id="basic-operators">Basic operators</h2>
+
+<p>Check <a href="https://www.w3schools.com/jsref/jsref_operators.asp">more operators</a> &amp; <a href="https://www.w3schools.com/jsref/jsref_obj_math.asp">more operators with <code class="language-plaintext highlighter-rouge">Math</code></a>.</p>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// i++; // i += 1;</span>
+<span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// i--; // i -= 1;</span>
+<span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// i *= 3;</span>
+<span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// i /= 2;</span>
+
+<span class="mi">11</span> <span class="o">%</span> <span class="mi">3</span> <span class="c1">// = 2, remainder</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span> <span class="c1">// give a random number between 0 and 1</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">();</span> <span class="c1">// round to its nearest whole number</span>
+
+<span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">007a</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// give number 7</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">11</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// give number 3, "2" is radix</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="conditional-statements-if--switch">Conditional statements <code class="language-plaintext highlighter-rouge">if</code> / <code class="language-plaintext highlighter-rouge">switch</code></h2>
+
+<ul>
+  <li><strong>Comparison Operators</strong>: <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">===</code> (strict equality), <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>, <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">!=</code>, <code class="language-plaintext highlighter-rouge">!==</code> (strict inequality).
+    <ul>
+      <li>Difference between <code class="language-plaintext highlighter-rouge">==</code> and <code class="language-plaintext highlighter-rouge">===</code>: <code class="language-plaintext highlighter-rouge">3=='3'</code> (true), <code class="language-plaintext highlighter-rouge">3==='3'</code> (false).</li>
+      <li>Difference between <code class="language-plaintext highlighter-rouge">!=</code> and <code class="language-plaintext highlighter-rouge">!==</code>: <code class="language-plaintext highlighter-rouge">3!='3'</code> (false), <code class="language-plaintext highlighter-rouge">3!=='3'</code> (true).</li>
+    </ul>
+  </li>
+  <li><strong>Logical operators</strong>: <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, <code class="language-plaintext highlighter-rouge">!</code>.</li>
+  <li><strong>Short-circuit evaluation</strong>: <code class="language-plaintext highlighter-rouge">let a = b || 'Thi';</code> (if <code class="language-plaintext highlighter-rouge">b</code> isn’t defined yet, <code class="language-plaintext highlighter-rouge">a</code> takes value <code class="language-plaintext highlighter-rouge">'Thi'</code>)</li>
+  <li><strong>Ternary Operator</strong>: <code class="language-plaintext highlighter-rouge">isNightTime ? console.log('Yes!') : console.log('No!');</code>. We can use multiple nested ternary.</li>
+</ul>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="kd">var</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">papaya</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="kd">var</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">val1</span><span class="dl">'</span><span class="p">:</span>
+    <span class="c1">// commands</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="dl">'</span><span class="s1">val2</span><span class="dl">'</span><span class="p">:</span>
+    <span class="c1">// commands</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span>
+    <span class="c1">// commands</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+</div>
+
+<p>You can remove <code class="language-plaintext highlighter-rouge">break;</code> to apply the same result for multiple cases.</p>
+
+<h2 id="functions">Functions</h2>
+
+<div class="flex-auto-equal-2">
+  <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ES6 way</span>
+<span class="kd">const</span> <span class="nx">rectangleArea</span> <span class="o">=</span> <span class="p">(</span><span class="nx">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nx">height</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">area</span> <span class="o">=</span> <span class="nx">width</span> <span class="o">*</span> <span class="nx">height</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">area</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>  </div>
+
+  <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// if there is no parameter</span>
+<span class="kd">const</span> <span class="o">&lt;</span><span class="nx">func</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// if there is only one parameter</span>
+<span class="kd">const</span> <span class="o">&lt;</span><span class="nx">func</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">para</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+
+<span class="c1">// single line: no need "{}"</span>
+<span class="kd">const</span> <span class="nx">sumNumbers</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">=&gt;</span> <span class="nx">number</span> <span class="o">+</span> <span class="nx">number</span><span class="p">;</span>
+</code></pre></div>  </div>
+</div>
+
+<p>Older ways (ES5),</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="o">&lt;</span><span class="nx">funcName</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">para</span><span class="o">&gt;</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="d-md-flex">
+  <div class="flex-even overflow-auto pr-md-1">
+    <p>Rest parameter (ES6)</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">last_element</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nx">last_element</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="flex-even overflow-auto pl-md-1">
+    <p>Spread Operator (ES6)</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">45</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">maximus</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// 89</span>
+</code></pre></div>    </div>
+  </div>
+</div>
+
+<h2 id="strings">Strings</h2>
+
+<p>Check <a href="https://www.w3schools.com/jsref/jsref_obj_string.asp">more methods</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Anh-Thi</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">Dinh</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// plus the strings</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// length of the string</span>
+<span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// first letter of the string</span>
+<span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="c1">// 4th letter</span>
+<span class="nx">a</span><span class="p">[</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// last letter</span>
+
+<span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// !!! CAN'T change an individual word</span>
+</code></pre></div></div>
+
+<p><strong>Special characters</strong>: <code class="language-plaintext highlighter-rouge">\'</code> (single quote), <code class="language-plaintext highlighter-rouge">\"</code> (double quote), <code class="language-plaintext highlighter-rouge">\\</code>(backslash), <code class="language-plaintext highlighter-rouge">\n</code> (newline), <code class="language-plaintext highlighter-rouge">\r</code> (carriage return), <code class="language-plaintext highlighter-rouge">\t</code> (tab), <code class="language-plaintext highlighter-rouge">\b</code> (word boundary), <code class="language-plaintext highlighter-rouge">\f</code> (form feed).</p>
+
+<h2 id="arrays">Arrays</h2>
+
+<p>Check <a href="https://www.w3schools.com/jsref/jsref_obj_array.asp">more methods</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arrName</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">nestedArr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]];</span>
+
+<span class="nx">arrName</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 1st element is changed (different from string!)</span>
+<span class="nx">nestedArr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// gives [3, 4]</span>
+
+<span class="nx">arrName</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// add 5 at the END of an array</span>
+<span class="nx">arrName</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="c1">// add 6 at the BEGINNING of an array</span>
+
+<span class="nx">popedElement</span> <span class="o">=</span> <span class="nx">arrName</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span> <span class="c1">// remove the LAST element of an array</span>
+<span class="nx">shiftedElement</span> <span class="o">=</span> <span class="nx">arrName</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span> <span class="c1">// remove the FIRST element of an array</span>
+</code></pre></div></div>
+
+<h2 id="objects">Objects</h2>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">top</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hat</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">bottom</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pants</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="c1">// CHECK PROPERTIES</span>
+<span class="nx">myObj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">"</span><span class="s2">top</span><span class="dl">"</span><span class="p">);</span>    <span class="c1">// true</span>
+<span class="nx">myObj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">"</span><span class="s2">middle</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Accessing Object Properties</span>
+<span class="nx">myObj</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span> <span class="c1">// dot</span>
+<span class="nx">myObj</span><span class="p">[</span><span class="dl">"</span><span class="s2">bottom</span><span class="dl">"</span><span class="p">];</span> <span class="c1">// bracket</span>
+
+<span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">top</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">myObj</span><span class="p">[</span><span class="nx">pos</span><span class="p">];</span> <span class="c1">// via a variable</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myObj</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">T-shirt</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Update object properties</span>
+<span class="nx">myObj</span><span class="p">.</span><span class="nx">middle</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">New shoe</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Add new properties</span>
+<span class="k">delete</span> <span class="nx">myObj</span><span class="p">.</span><span class="nx">middle</span><span class="p">;</span> <span class="c1">// Delete a property</span>
+</code></pre></div></div>
+
+<p>We can use object for lookups instead of using <code class="language-plaintext highlighter-rouge">if..else</code> or <code class="language-plaintext highlighter-rouge">switch</code>,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">alpha</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">};</span>
+<span class="nx">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">alpha</span><span class="p">[</span><span class="nx">value</span><span class="p">];</span> <span class="c1">// instead of using if value==2 or switch value...</span>
+</code></pre></div></div>
+
+<p>We can create a <strong>nested object</strong> inside an object.</p>
+
+<p>Prevent object mutation,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span><span class="dl">"</span><span class="s2">FreeCodeCamp</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">review</span><span class="p">:</span><span class="dl">"</span><span class="s2">Awesome</span><span class="dl">"</span>
+<span class="p">};</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span> <span class="c1">// obj can't be changed</span>
+</code></pre></div></div>
+
+<h2 id="destructuring-assignment-es6">Destructuring Assignment (ES6)</h2>
+
+<p>Extract values from object,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Thi</span><span class="dl">"</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">};</span>
+<span class="kd">const</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span> <span class="c1">// name="Thi", age=30</span>
+</code></pre></div></div>
+
+<p>Assign variable from object,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="nx">uName</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">uAge</span><span class="p">}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span> <span class="c1">// uName="Thi", uAge=30</span>
+</code></pre></div></div>
+
+<p>Assign Variables from Nested Objects,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">anhThi</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="na">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dinhanhthi@gmail.com</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="p">{</span><span class="na">anhThi</span><span class="p">:</span> <span class="p">{</span><span class="nx">age</span><span class="p">,</span> <span class="nx">email</span><span class="p">}}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+<span class="kd">const</span> <span class="p">{</span><span class="na">anhThi</span><span class="p">:</span> <span class="p">{</span><span class="na">age</span><span class="p">:</span> <span class="nx">userAge</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="nx">userEmail</span><span class="p">}}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Assign Variables from Arrays,</p>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// 1, 2</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto pl-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,,,</span> <span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span> <span class="c1">// 1, 2, 5</span>
+</code></pre></div>  </div>
+</div>
+
+<p>Assignment with the Rest Parameter to Reassign Array Elements,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// 1, 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [3, 4, 5, 7]</span>
+</code></pre></div></div>
+
+<p>Pass an Object as a Function’s Parameters,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">profileUpdate</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">nationality</span><span class="p">,</span> <span class="nx">location</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// do something with these fields</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="json">JSON</h2>
+
+<p><strong>JavaScript Object Notation</strong> or JSON is a related data interchange format used to store data,</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ourMusic</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">artist</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Daft Punk</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Homework</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">release_year</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1997</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">formats</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> 
+      <span class="dl">"</span><span class="s2">CD</span><span class="dl">"</span><span class="p">,</span> 
+      <span class="dl">"</span><span class="s2">Cassette</span><span class="dl">"</span><span class="p">,</span> 
+      <span class="dl">"</span><span class="s2">LP</span><span class="dl">"</span>
+    <span class="p">],</span>
+    <span class="dl">"</span><span class="s2">gold</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span> <span class="c1">// first artist</span>
+  <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="p">}</span> <span class="c1">// second artist</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>To access <code class="language-plaintext highlighter-rouge">"CD"</code>: <code class="language-plaintext highlighter-rouge">ourMusic[0].formats[0]</code>.</p>
+
+<h2 id="iterate-with-while--for--dowhile-loops">Iterate with <code class="language-plaintext highlighter-rouge">while</code> / <code class="language-plaintext highlighter-rouge">for</code> / <code class="language-plaintext highlighter-rouge">do..while</code> loops</h2>
+
+<p>Check <a href="https://www.w3schools.com/jsref/jsref_statements.asp">more statements</a>.</p>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;</span><span class="nx">conditions</span><span class="o">&gt;</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">{</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="o">&lt;</span><span class="nx">conditions</span><span class="o">&gt;</span><span class="p">);</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="d-md-flex">
+  <div class="language-js flex-even overflow-auto pr-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Iterate odd numbers</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">+=</span><span class="mi">2</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+
+  <div class="language-js flex-even overflow-auto px-md-1 highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Count backwards</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="p">?</span><span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">-=</span><span class="mi">2</span><span class="p">){</span>
+  <span class="c1">// commands</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><strong>freeCodeCamp</strong> – <a href="https://www.freecodecamp.org/learn">JavaScript Algorithms and Data Structures Certification</a> (300 hours).</li>
+  <li><strong>w3schools</strong> – <a href="https://www.w3schools.com/js/default.asp">JavaScript Tutorial</a>.</li>
+</ul>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/js/2019-11-12-js-101.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'JavaScript 101'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/jupyter-notebook" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Jupyter Notebook
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Jupyter Notebook" />
+  
+
+  
+    <meta property="og:description" content="Installation Jupyter notebook Setting up a password R with jupyter notebook Other tips Check the info Multiline commands Hotkeys / Shortcuts Jupyter notebook on remote server Install new python package inside Jupyter Notebook Display dataframes side-by-side Get previous outputs Display 2 figures side-by-side markdown cell Magic Functions Extensions Table of...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/jupyter-notebook" />
+    <link rel="canonical" href="http://localhost:4000/jupyter-notebook" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/jupyter.png">
+            </div>
+          
+          <h1 class="post-title">
+            Jupyter Notebook
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#ide">
+                    ide
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#linux">
+                    linux
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              03 Sep 2019
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#installation" id="markdown-toc-installation">Installation</a>    <ul>
+      <li><a href="#jupyter-notebook" id="markdown-toc-jupyter-notebook">Jupyter notebook</a></li>
+      <li><a href="#setting-up-a-password" id="markdown-toc-setting-up-a-password">Setting up a password</a></li>
+      <li><a href="#r-with-jupyter-notebook" id="markdown-toc-r-with-jupyter-notebook">R with jupyter notebook</a></li>
+    </ul>
+  </li>
+  <li><a href="#other-tips" id="markdown-toc-other-tips">Other tips</a></li>
+  <li><a href="#check-the-info" id="markdown-toc-check-the-info">Check the info</a></li>
+  <li><a href="#multiline-commands" id="markdown-toc-multiline-commands">Multiline commands</a></li>
+  <li><a href="#hotkeys--shortcuts" id="markdown-toc-hotkeys--shortcuts">Hotkeys / Shortcuts</a></li>
+  <li><a href="#jupyter-notebook-on-remote-server" id="markdown-toc-jupyter-notebook-on-remote-server">Jupyter notebook on remote server</a></li>
+  <li><a href="#install-new-python-package-inside-jupyter-notebook" id="markdown-toc-install-new-python-package-inside-jupyter-notebook">Install new python package inside Jupyter Notebook</a></li>
+  <li><a href="#display-dataframes-side-by-side" id="markdown-toc-display-dataframes-side-by-side">Display dataframes side-by-side</a></li>
+  <li><a href="#get-previous-outputs" id="markdown-toc-get-previous-outputs">Get previous outputs</a></li>
+  <li><a href="#display-2-figures-side-by-side-markdown-cell" id="markdown-toc-display-2-figures-side-by-side-markdown-cell">Display 2 figures side-by-side markdown cell</a></li>
+  <li><a href="#magic-functions" id="markdown-toc-magic-functions">Magic Functions</a></li>
+  <li><a href="#extensions" id="markdown-toc-extensions">Extensions</a>    <ul>
+      <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of contents</a></li>
+      <li><a href="#debugger" id="markdown-toc-debugger">Debugger</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="jupyter-notebook">Jupyter notebook</h3>
+
+<div class="flex-auto-equal-2">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># BY PIP</span>
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> ipython jupyter
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># BY CONDA</span>
+conda <span class="nb">install </span>ipython jupyter
+</code></pre></div>  </div>
+</div>
+
+<p>Or read more in <a href="/python-installation#jupyer-notebook">this note</a>.</p>
+
+<p>If you meet error <code class="language-plaintext highlighter-rouge">OSError: [Errno 99] Cannot assign requested address</code>, try</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook <span class="nt">--ip</span><span class="o">=</span>127.0.0.1 <span class="nt">--port</span><span class="o">=</span>8080
+<span class="c"># or</span>
+jupyter notebook <span class="nt">--ip</span><span class="o">=</span>127.0.0.1 <span class="nt">--port</span><span class="o">=</span>8080 <span class="nt">--allow-root</span>
+</code></pre></div></div>
+
+<h3 id="setting-up-a-password">Setting up a password</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a juputer notebook config file</span>
+<span class="c"># it can be used for other settings</span>
+<span class="c"># https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#prerequisite-a-notebook-configuration-file</span>
+jupyter notebook <span class="nt">--generate-config</span>
+
+<span class="c"># create a new password</span>
+<span class="c"># note: sha1 cannot be reverted!!</span>
+jupyter notebook password
+</code></pre></div></div>
+
+<p>Inside notebook:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">notebook.auth</span> <span class="kn">import</span> <span class="n">passwd</span>
+<span class="n">passwd</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>With docker</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a sha1 password</span>
+<span class="c"># download file create_sha1.py from https://github.com/dinhanhthi/scripts</span>
+<span class="c"># run ./create_sha1.py</span>
+
+<span class="c"># docker-compose.yml</span>
+environment:
+  - <span class="nv">PASSWD</span><span class="o">=</span><span class="s1">'sha1:d03968479249:319e92302e68d601392918f011d6c9334493023f'</span>
+
+<span class="c"># Dockerfile</span>
+CMD /bin/bash <span class="nt">-c</span> <span class="s1">'jupyter lab --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.password="$PASSWD" "$@"'</span>
+</code></pre></div></div>
+
+<h3 id="r-with-jupyter-notebook">R with jupyter notebook</h3>
+
+<p>Read more <a href="https://irkernel.github.io/installation/#linux-panel">here</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install jupyter</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libzmq3-dev libcurl4-openssl-dev libssl-dev jupyter-core jupyter-client
+
+<span class="c"># install R on linux</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>r-base
+
+<span class="c"># R kernel for Jupyter Notebook</span>
+R <span class="c"># enter R environnement</span>
+<span class="c"># install R kernel</span>
+install.packages<span class="o">(</span>c<span class="o">(</span><span class="s1">'repr'</span>, <span class="s1">'IRdisplay'</span>, <span class="s1">'IRkernel'</span><span class="o">)</span>, <span class="nb">type</span> <span class="o">=</span> <span class="s1">'source'</span><span class="o">)</span>
+<span class="c"># or</span>
+install.packages<span class="o">(</span>c<span class="o">(</span><span class="s1">'repr'</span>, <span class="s1">'IRkernel'</span><span class="o">)</span>, <span class="nb">type</span> <span class="o">=</span> <span class="s1">'source'</span><span class="o">)</span>
+<span class="c"># make jupyter see r kernel</span>
+IRkernel::installspec<span class="o">()</span> <span class="c"># current user</span>
+IRkernel::installspec<span class="o">(</span>user <span class="o">=</span> FALSE<span class="o">)</span> <span class="c"># global</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># embedded R</span>
+<span class="c"># use by cell magic %%R</span>
+pip <span class="nb">install </span>rpy2
+
+<span class="c"># in a notebook</span>
+%load_ext rpy2.ipython
+
+<span class="c"># then use</span>
+%%R
+<span class="c"># R's codes</span>
+</code></pre></div></div>
+
+<h2 id="other-tips">Other tips</h2>
+
+<ul>
+  <li>Running 2 tasks in the same cell TAKE LONGER TIME than running each on different cells.</li>
+  <li>Download a folder in jupyter notebook:
+    <ul>
+      <li>
+        <p>Inside notebook, use:</p>
+
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="n">bash</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">czf</span> <span class="n">archive</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span> <span class="n">foldername</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Or using <a href="https://github.com/data-8/nbzip">nbzip</a> (only working on current server).</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="check-the-info">Check the info</h2>
+
+<div class="flex-50">
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># function's info
+</span><span class="err">?</span><span class="o">&lt;</span><span class="n">func</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># function's shortcode</span>
+??&lt;func-name&gt;
+</code></pre></div>  </div>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get the list of current variables
+</span><span class="n">whos</span>
+</code></pre></div>  </div>
+</div>
+
+<p>Check where command executed from (in your <code class="language-plaintext highlighter-rouge">$path</code>)?</p>
+
+<div class="d-md-flex">
+  <div class="language-python flex-fill d-flex overflow-auto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="nb">type</span> <span class="n">python</span>
+</code></pre></div>  </div>
+
+  <div class="language-plaintext output flex-fill d-flex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python is /Users/thi/anaconda/envs/python3.6/bin/python
+</code></pre></div>  </div>
+</div>
+
+<h2 id="multiline-commands">Multiline commands</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Using '\'
+</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'.'</span><span class="p">,</span> <span class="s">' '</span><span class="p">)</span>\
+                       <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'\s+'</span><span class="p">,</span> <span class="s">' '</span><span class="p">)</span>\
+                       <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">().</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You CANNOT put <code class="language-plaintext highlighter-rouge"># comments</code> at the end of each line break!</p>
+
+<h2 id="hotkeys--shortcuts">Hotkeys / Shortcuts</h2>
+
+<p>There are 2 modes: <strong>command mode</strong> (pres <kbd>ESC</kbd> to activate) and <strong>edit mode</strong> (<kbd>Enter</kbd> to activate). Below are the most useful ones (for me).</p>
+
+<p>You can edit / add more shortcuts in <strong>Help</strong> &gt; <strong>Edit Keyboard Shortcuts</strong>.</p>
+
+<div class="hide-show-box">
+<button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#box1ct">
+Click to see the full list
+</button>
+<div id="box1ct" class="collapse multi-collapse box-content">
+
+    <p>For both modes,</p>
+
+    <ul>
+      <li><kbd>Shift</kbd> + <kbd>Enter</kbd> run the current cell, select below.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>Enter</kbd> run selected cells.</li>
+      <li><kbd>Alt</kbd> + <kbd>Enter</kbd> run the current cell, insert below.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>S</kbd> save and checkpoint.</li>
+    </ul>
+
+    <p>Command modes,</p>
+
+    <ul>
+      <li><kbd>Enter</kbd> take you into edit mode.</li>
+      <li><kbd>H</kbd> show all shortcuts.</li>
+      <li><kbd>Up</kbd> / <kbd>Down</kbd> select cell above / below.</li>
+      <li><kbd>Shift</kbd> + <kbd>Up</kbd> / <kbd>Down</kbd> extend selected cells above / below.</li>
+      <li><kbd>A</kbd> / <kbd>B</kbd> insert cell above / below.</li>
+      <li><kbd>X</kbd> cut selected cells.</li>
+      <li><kbd>C</kbd> copy selected cells.</li>
+      <li><kbd>V</kbd> / <kbd>Shift</kbd> + <kbd>V</kbd> paste cells below / above.</li>
+      <li><kbd>D</kbd>, <kbd>D</kbd> (press the key twice) delete selected cells.</li>
+      <li><kbd>Z</kbd> undo cell deletion.</li>
+      <li><kbd>S</kbd> Save and Checkpoint.</li>
+      <li><kbd>Y</kbd> change the cell type to Code.</li>
+      <li><kbd>M</kbd> change the cell type to Markdown.</li>
+    </ul>
+
+    <p>Edit mode,</p>
+
+    <ul>
+      <li><kbd>Esc</kbd> take you into command mode.</li>
+      <li><kbd>Tab</kbd> code completion or indent.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>]</kbd> indent.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>[</kbd> dedent.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>A</kbd> select all.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>Z</kbd> undo.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd> or <kbd>Ctrl</kbd> + <kbd>Y</kbd> redo.</li>
+    </ul>
+
+  </div>
+</div>
+
+<h2 id="jupyter-notebook-on-remote-server">Jupyter notebook on remote server</h2>
+
+<p>Open jupyter notebook in local browser but the backend-server is on remote.</p>
+
+<ul>
+  <li>If jupyter server <strong>is already</strong> running on remote at <code class="language-plaintext highlighter-rouge">http://192.168.0.155:9889</code>,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-N</span> <span class="nt">-L</span> localhost:9888:192.168.0.155:9899 &lt;username-remote&gt;@&lt;remote-host&gt; <span class="nt">-p</span> &lt;port&gt;
+<span class="c"># if there is no port, remove `-p &lt;port&gt;`</span>
+</code></pre></div>    </div>
+
+    <p>Open browser: <code class="language-plaintext highlighter-rouge">http://localhost:9888</code> (type password if needed).</p>
+  </li>
+  <li>If jupyter server <strong>is not</strong> running on remote yet,
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># connect to remote</span>
+ssh &lt;username-remote&gt;@&lt;remote-host&gt; <span class="nt">-p</span> &lt;port&gt;
+<span class="c"># if there is no port, remove `-p &lt;port&gt;`</span>
+</code></pre></div>    </div>
+
+    <p>On remote,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run juputer with custom port</span>
+jupyter notebook <span class="nt">--no-browser</span> <span class="nt">--port</span><span class="o">=</span>9899
+
+<span class="c"># if there is error `OSError: [Errno 99] Cannot assign requested address`</span>
+jupyter notebook <span class="nt">--ip</span><span class="o">=</span>0.0.0.0 <span class="nt">--no-browser</span> <span class="nt">--port</span><span class="o">=</span>9899
+
+<span class="c"># if there is error `Running as root is not recommended`</span>
+jupyter notebook <span class="nt">--ip</span><span class="o">=</span>0.0.0.0 <span class="nt">--no-browser</span> <span class="nt">--port</span><span class="o">=</span>9899 <span class="nt">--alow-root</span>
+</code></pre></div>    </div>
+
+    <p>It’s running and there are somethings like that,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://127.0.0.1:9889/?token<span class="o">=</span>717d9d276f0537a9...831793df6319ad389accd
+</code></pre></div>    </div>
+
+    <p>Open another terminal window and type,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-N</span> <span class="nt">-L</span> localhost:9888:localhost:9889 &lt;username-remote&gt;@&lt;remote-host&gt; <span class="nt">-p</span> &lt;port&gt;
+<span class="c"># if there is no port, remove `-p &lt;port&gt;`</span>
+<span class="c"># there is nothing but it's running</span>
+</code></pre></div>    </div>
+
+    <p>Open browser: <code class="language-plaintext highlighter-rouge">http://localhost:9888/?token=717d9d276f0537a9...831793df6319ad389accd</code>.</p>
+  </li>
+</ul>
+
+<p>You can choose any port number you wanna instead of <code class="language-plaintext highlighter-rouge">9888</code> and <code class="language-plaintext highlighter-rouge">9889</code> (they can be the same), note that, you need to use a port number GREATER THAN <code class="language-plaintext highlighter-rouge">8000</code>!</p>
+
+<h2 id="install-new-python-package-inside-jupyter-notebook">Install new python package inside Jupyter Notebook</h2>
+
+<p>Using <code class="language-plaintext highlighter-rouge">conda</code><sup><a href="https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/">[ref]</a></sup>,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install a conda package in the current Jupyter kernel
+</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="o">--</span><span class="n">prefix</span> <span class="p">{</span><span class="n">sys</span><span class="p">.</span><span class="n">prefix</span><span class="p">}</span> <span class="n">numpy</span>
+
+<span class="c1"># DON'T DO THIS
+</span><span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="n">numpy</span>
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">pip</code>,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install a pip package in the current Jupyter kernel
+</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="p">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+
+<span class="c1"># DON'T DO THIS
+</span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+</code></pre></div></div>
+
+<p>Check version and update/upgrade,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">show</span> <span class="n">pandas</span>
+</code></pre></div></div>
+
+<h2 id="display-dataframes-side-by-side">Display dataframes side-by-side</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_html</span>
+<span class="k">def</span> <span class="nf">display_side_by_side</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">html_str</span><span class="o">=</span><span class="s">''</span>
+    <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">html_str</span><span class="o">+=</span><span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span>
+    <span class="n">display_html</span><span class="p">(</span><span class="n">html_str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'table'</span><span class="p">,</span><span class="s">'table style="display:inline; margin-right: 5px;"'</span><span class="p">),</span><span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">display_side_by_side</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">df1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="get-previous-outputs">Get previous outputs</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span> <span class="c1"># previous output
+</span><span class="n">__</span> <span class="c1"># second-to-last output
+</span><span class="n">___</span> <span class="c1"># third-to-last output
+</span></code></pre></div></div>
+
+<h2 id="display-2-figures-side-by-side-markdown-cell">Display 2 figures side-by-side markdown cell</h2>
+
+<p>Put below codes in the markdown cell of Jupyter Notebook.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr&gt;</span>
+  <span class="nt">&lt;td&gt;</span> <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"Nordic_trails.jpg"</span> <span class="na">alt=</span><span class="s">"Drawing"</span> <span class="na">style=</span><span class="s">"width: 250px;"</span><span class="nt">/&gt;</span> <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span> <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"Nordic_trails.jpg"</span> <span class="na">alt=</span><span class="s">"Drawing"</span> <span class="na">style=</span><span class="s">"width: 250px;"</span><span class="nt">/&gt;</span> <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</code></pre></div></div>
+
+<h2 id="magic-functions">Magic Functions</h2>
+
+<ul>
+  <li>Check the full list (in examples) <a href="https://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb">here</a> or their docs <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">here</a>.</li>
+  <li>You can define your custom magic functions <a href="https://ipython.readthedocs.io/en/stable/config/custommagics.html">here</a>.</li>
+</ul>
+
+<p>Auto update the new updated modules (put at the beginning of the notebook)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%load_ext autoreload
+%autoreload 2 <span class="c"># Reload all modules every time before executing</span>
+
+%autoreload 0 <span class="c"># disable autoreloader</span>
+</code></pre></div></div>
+
+<p>Check more settings of <code class="language-plaintext highlighter-rouge">%autoreload</code> <a href="https://ipython.org/ipython-doc/3/config/extensions/autoreload.html">here</a>.</p>
+
+<p>Show the plots inside the notebook:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%matplotlib inline
+</code></pre></div></div>
+
+<p>Get the commands from 1 to 4:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">history</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="c1"># get commands 1 to 4
+</span></code></pre></div></div>
+
+<h2 id="extensions">Extensions</h2>
+
+<h3 id="table-of-contents">Table of contents</h3>
+
+<ol>
+  <li>Install <a href="https://github.com/nodesource/distributions/blob/master/README.md#debinstall">npm and nodejs</a>.</li>
+  <li>Install <a href="https://github.com/jupyterlab/jupyterlab-toc">this extension</a>.</li>
+  <li>Enable in jupyter lab view.</li>
+  <li>Refresh the page.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># errors</span>
+<span class="c"># UnicodeDecodeError: 'ascii' codec can't decode byte 0xf0 in position 23: ordinal not in range(128)</span>
+npm config <span class="nb">set </span>unicode <span class="nb">false</span>
+</code></pre></div></div>
+
+<h3 id="debugger">Debugger</h3>
+
+<ol>
+  <li>
+    <p>Install <code class="language-plaintext highlighter-rouge">xeus-python</code>, <code class="language-plaintext highlighter-rouge">jupyterlab</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pip <span class="nb">install </span>xeus-python
+ pip <span class="nb">install </span>jupyterlab
+</code></pre></div>    </div>
+  </li>
+  <li>Install <a href="https://github.com/jupyterlab/debugger">this extension</a>.</li>
+  <li>Refresh the page, you have to choose kernel <em>xpython</em> (instead of <em>Python 3</em>) to use the debugger.</li>
+</ol>
+
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/skills/2019-09-03-jupyter-notebook.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Jupyter Notebook'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

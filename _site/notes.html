@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/notes" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | My notes
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="My notes" />
+  
+
+  
+    <meta property="og:description" content="{% include header.html %} {% for category in site.data.categories %} {% if site.categories[category.name].size &gt; 0 %} {{ category.name }} {% endif %} {% endfor %} Last modified on {{ site.time | date: '%d %b %Y' }}. Notes by subjects {% for category in site.data.categories %} {% if site.categories[category.name].size &gt; 0...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/notes" />
+    <link rel="canonical" href="http://localhost:4000/notes" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/notes.png">
+            </div>
+          
+          <h1 class="post-title">
+            My notes
+          </h1>
+          
+          <p>
+            
+              I use this note firstly for me when I learn something new in <i>Machine Learning</i>, <i>Artificial Intelligence</i>, <i>Data Science</i> & <i>Web Development</i>. For me, the best way to learn something is to teach it to someone.
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10" <main role="main">
+
+      <div id="toc" class="toc-note">
+        <div class="toc-content">
+          <ul id="markdown-toc">
+            
+            
+            <li>
+              <a href="#project-based_learning"><i class="fas fa-project-diagram mr-2"></i>
+                project-based learning</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#mooc"><i class="fas fa-laptop-code mr-2"></i>
+                mooc</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#machine_learning"><i class="fas fa-robot mr-2"></i>
+                machine learning</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#data_science"><i class="fas fa-database mr-2"></i>
+                data science</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#deep_learning"><i class="fas fa-brain mr-2"></i>
+                deep learning</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#time_series"><i class="fas fa-hourglass-end mr-2"></i>
+                time series</a>
+            </li>
+            
+            
+            
+            
+            
+            <li>
+              <a href="#deploy_&_run"><i class="fas fa-rocket mr-2"></i>
+                deploy & run</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#python"><i class="fab fa-python mr-2"></i>
+                python</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#r"><i class="fab fa-r-project mr-2"></i>
+                r</a>
+            </li>
+            
+            
+            
+            
+            
+            <li>
+              <a href="#probability_&_statistics"><i class="far fa-chart-bar mr-2"></i>
+                probability & statistics</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#JavaScript"><i class="fab fa-js-square mr-2"></i>
+                JavaScript</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#web_development"><i class="fab fa-html5 mr-2"></i>
+                web development</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#algorithms"><i class="fas fa-puzzle-piece mr-2"></i>
+                algorithms</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#skills"><i class="fas fa-code-branch mr-2"></i>
+                skills</a>
+            </li>
+            
+            
+            
+            <li>
+              <a href="#others"><i class="fas fa-ghost mr-2"></i>
+                others</a>
+            </li>
+            
+            
+          </ul>
+          <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 1rem; border-top: 1px solid #eee; padding-top: 5px;">
+            Last modified on 30 Apr 2022.
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-custom card-subject">
+        <h2 class="card-header">
+          Notes by subjects
+        </h2>
+        <div class="card-body">
+          <div class="tag-list">
+            
+            
+            <a class="category" href="#project-based_learning">
+              project-based learning
+            </a>
+            
+            
+            
+            <a class="category" href="#mooc">
+              mooc
+            </a>
+            
+            
+            
+            <a class="category" href="#machine_learning">
+              machine learning
+            </a>
+            
+            
+            
+            <a class="category" href="#data_science">
+              data science
+            </a>
+            
+            
+            
+            <a class="category" href="#deep_learning">
+              deep learning
+            </a>
+            
+            
+            
+            <a class="category" href="#time_series">
+              time series
+            </a>
+            
+            
+            
+            
+            
+            <a class="category" href="#deploy_&_run">
+              deploy & run
+            </a>
+            
+            
+            
+            <a class="category" href="#python">
+              python
+            </a>
+            
+            
+            
+            <a class="category" href="#r">
+              r
+            </a>
+            
+            
+            
+            
+            
+            <a class="category" href="#probability_&_statistics">
+              probability & statistics
+            </a>
+            
+            
+            
+            <a class="category" href="#JavaScript">
+              JavaScript
+            </a>
+            
+            
+            
+            <a class="category" href="#web_development">
+              web development
+            </a>
+            
+            
+            
+            <a class="category" href="#algorithms">
+              algorithms
+            </a>
+            
+            
+            
+            <a class="category" href="#skills">
+              skills
+            </a>
+            
+            
+            
+            <a class="category" href="#others">
+              others
+            </a>
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+<div class="row justify-content-center proud-of-card">
+  
+    <div class="col-12 col-md-6">
+      
+      
+      <a href="
+          https://github.com/dinhanhthi/data-science-learning
+        " target="_blank">
+      
+        <div class="item mb-3">
+          <img src="http://localhost:4000/img/proud-of/data-science-learning.png">
+          <div class="content">
+            <div class="title">data-science-learning</div>
+            
+            <div class="subtitle">my learning path in data science</div>
+            
+          </div>
+        </div>
+      
+      </a>
+      
+    </div>
+  
+    <div class="col-12 col-md-6">
+      
+      
+      <a href="
+          https://github.com/dinhanhthi/deeplearning.ai-notes
+        " target="_blank">
+      
+        <div class="item mb-3">
+          <img src="http://localhost:4000/img/proud-of/deeplearning-ai.png">
+          <div class="content">
+            <div class="title">deeplearning.ai-notes</div>
+            
+            <div class="subtitle">handwriting-notes for deeplearning.ai</div>
+            
+          </div>
+        </div>
+      
+      </a>
+      
+    </div>
+  
+</div> -->
+
+      <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+        <sup style="color: #bbb">•</sup>Notes with this notation aren't good enough. They are being updated. <span style="color: white;">If you can see this, you are so smart. ;)</span>
+      </p>
+
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="project-based_learning">
+          <i class="fas fa-project-diagram"></i>
+          project-based learning
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/setting-up-a-cafe-in-hcmc" class="post-title">
+                Setting up a café in Ho Chi Minh City
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/small-projects-to-understand-concepts" class="post-title">
+                Small projects for understanding concepts
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/titanic-disaster" class="post-title">
+                Titanic Disaster on Kaggle
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="mooc">
+          <i class="fas fa-laptop-code"></i>
+          mooc
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-course-1" class="post-title">
+                DL 1 - NN and DL
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-course-2" class="post-title">
+                DL 2 - Improving DNN: Hyperparameter tuning, Regularization and Optimization
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-course-3" class="post-title">
+                DL 3 - Structuring ML Projects
+              </a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-tensorflow-course-1" class="post-title">
+                TF 1 - Intro to TensorFlow for AI, ML, DL
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-tensorflow-course-2" class="post-title">
+                TF 2 - CNN in TensorFlow
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-tensorflow-course-3" class="post-title">
+                TF 3 - NLP in TensorFlow
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/deeplearning-ai-tensorflow-course-4" class="post-title">
+                TF 4 - Sequences, Time Series and Prediction
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="machine_learning">
+          <i class="fas fa-robot"></i>
+          machine learning
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/confusion-matrix-and-f1-score" class="post-title">
+                Confusion matrix & f1-score
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/dbscan-hdbscan-clustering" class="post-title">
+                DBSCAN / HDBSCAN Clustering
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/decision-tree-classifier" class="post-title">
+                Decision Tree Classifier
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/decision-tree-regression" class="post-title">
+                Decision Tree Regression
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/grid-search" class="post-title">
+                Grid Search<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/k-means-clustering" class="post-title">
+                K-Means Clustering
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/k-shape-clustering" class="post-title">
+                K-Shape clustering<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/mean-shift" class="post-title">
+                Mean Shift clustering
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/pipeline" class="post-title">
+                Pipeline<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/principal-component-analysis" class="post-title">
+                Principal Component Analysis (PCA)
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/random-forest" class="post-title">
+                Random Forest
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/support-vector-machine" class="post-title">
+                Support Vector Machine (SVM)
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="data_science">
+          <i class="fas fa-database"></i>
+          data science
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/data-aggregation" class="post-title">
+                Data Aggregation
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-combining" class="post-title">
+                Data Combining
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/dataframe-overview" class="post-title">
+                Data Overview
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-preprocessing-cleaning" class="post-title">
+                Data Processing & Cleaning
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-sample" class="post-title">
+                Data Sample
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-science-tips" class="post-title">
+                Data Science extra<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-structure" class="post-title">
+                Data Structure<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-visualization" class="post-title">
+                Data Visualization<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/dataset-collection" class="post-title">
+                Datasets Collection
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="deep_learning">
+          <i class="fas fa-brain"></i>
+          deep learning
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/pytorch" class="post-title">
+                PyTorch extra<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/simple-autoencoder-ae" class="post-title">
+                Simple AutoEncoder (AE)
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/tensorflow" class="post-title">
+                Tensorflow extra<sup>•</sup>
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="time_series">
+          <i class="fas fa-hourglass-end"></i>
+          time series
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/awesome-anomaly-detection-ts" class="post-title">
+                Anomaly Detection for TS Resources<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/date-time-tips" class="post-title">
+                Date / Time extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/fast-fourier-transform-fft" class="post-title">
+                Fast Fourier Transform (fft)<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/resampling-time-series" class="post-title">
+                Resampling of Time Series<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/time-series-tips" class="post-title">
+                Time Series extra<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/type-of-time-series" class="post-title">
+                Type of Time Series<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/tsfresh" class="post-title">
+                tsfresh<sup>•</sup>
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="deploy_&_run">
+          <i class="fas fa-rocket"></i>
+          deploy & run
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/airflow-k8s-101" class="post-title">
+                Airflow + Kubernetes 101<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/docker-gpu" class="post-title">
+                Docker + GPUs
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/docker" class="post-title">
+                Docker 101
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="python">
+          <i class="fab fa-python"></i>
+          python
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/jupyter-notebook" class="post-title">
+                Jupyter Notebook
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-matplotlib-tips" class="post-title">
+                Matplotlib extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-numpy-tips" class="post-title">
+                Numpy extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-pandas" class="post-title">
+                Pandas extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/pytest" class="post-title">
+                Pytest<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-classes-objects" class="post-title">
+                Python Classes & Objects
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-dictionary" class="post-title">
+                Python Dictionary<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-exception" class="post-title">
+                Python Exception<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-functions" class="post-title">
+                Python Functions
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-installation" class="post-title">
+                Python Installation
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-json" class="post-title">
+                Python JSON<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-list" class="post-title">
+                Python List
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-loop" class="post-title">
+                Python Loop
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/pep-8" class="post-title">
+                Python PEP 8 : Style Guide
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-tuple" class="post-title">
+                Python Tuple<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-tips" class="post-title">
+                Python extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-docs-refs" class="post-title">
+                Python references
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-os-sys" class="post-title">
+                Python sys & os<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-input-output" class="post-title">
+                Python: Input & Output
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/regular-expression" class="post-title">
+                Regular Expression in Python<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/sphinx-restructuredtext" class="post-title">
+                Sphinx & reStructuredText & docstring<sup>•</sup>
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="r">
+          <i class="fab fa-r-project"></i>
+          r
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/r-installation" class="post-title">
+                R Installation<sup>•</sup>
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="probability_&_statistics">
+          <i class="far fa-chart-bar"></i>
+          probability & statistics
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/wasserstein-earth-mover-distance" class="post-title">
+                Earth mover’s distance<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/gambler-ruin-problem" class="post-title">
+                Gamler Ruin Problem
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/KS-test" class="post-title">
+                Kolmogorov–Smirnov Test<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/p-value" class="post-title">
+                p-value
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="JavaScript">
+          <i class="fab fa-js-square"></i>
+          JavaScript
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/js-101" class="post-title">
+                JavaScript 101
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/js-tips" class="post-title">
+                JavaScript extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/nodejs-npm" class="post-title">
+                NodeJS & NPM
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="web_development">
+          <i class="fab fa-html5"></i>
+          web development
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/11ty-nunjucks" class="post-title">
+                11ty + Nunjucks<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/css-tips" class="post-title">
+                CSS extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/gatsby-js" class="post-title">
+                Gatsby 101
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/gatsby-images" class="post-title">
+                Gatsby Images
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/gitbook" class="post-title">
+                Gitbook
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/create-dark-mode" class="post-title">
+                Idea to create a dark mode
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/jekyll-tips" class="post-title">
+                Jekyll
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/web-design-tips" class="post-title">
+                Web Design extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/web-dev-tips" class="post-title">
+                Web Dev extra
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/wordpress-101" class="post-title">
+                Wordpress 101<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/wordpress-docker" class="post-title">
+                Wordpress Docker<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/wordpress-installation" class="post-title">
+                Wordpress Installation
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="algorithms">
+          <i class="fas fa-puzzle-piece"></i>
+          algorithms
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/algorithm-1" class="post-title">
+                Algorithm 1
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="skills">
+          <i class="fas fa-code-branch"></i>
+          skills
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/bash-command-line" class="post-title">
+                Bash
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/git" class="post-title">
+                Git
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/github" class="post-title">
+                Github
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/google-colab" class="post-title">
+                Google Colab
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/linux-tips" class="post-title">
+                Linux notes
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/markdown" class="post-title">
+                Markdown
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/ssh" class="post-title">
+                SSH
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/screen" class="post-title">
+                Screen
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/python-with-sublime-text" class="post-title">
+                Sublime Text 3
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/terminal" class="post-title">
+                Terminals
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/visual-studio-code" class="post-title">
+                VSCode
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/docker-wsl2-windows" class="post-title">
+                WSL 2 on Windows
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <div class="card card-custom">
+        <h2 class="card-header" id="others">
+          <i class="fas fa-ghost"></i>
+          others
+        </h2>
+        <div class="card-body">
+          <ul>
+            
+            
+            
+            <li class="item">
+              <a href="/computer-and-internet-tips" class="post-title">
+                Computer & Internet tips<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/good-repositories" class="post-title">
+                Favorite Github repositories<sup>•</sup>
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/for-me-only" class="post-title">
+                For me only
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/fresh-installation-ubuntu" class="post-title">
+                Fresh Ubuntu / Pop!_OS Installation
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/fresh-install-windows" class="post-title">
+                Fresh Windows 10 Installation
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/data-ml-tools-resources" class="post-title">
+                Resources for DS & ML & DL
+              </a>
+            </li>
+            
+            
+            
+            <li class="item">
+              <a href="/good-applications" class="post-title">
+                Useful Applications & Tools
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      
+      
+
+      <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+        <sup style="color: #bbb">•</sup>Notes with this notation aren't good enough. They are being updated. <span style="color: white;">If you can see this, you are so smart. ;)</span>
+      </p>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

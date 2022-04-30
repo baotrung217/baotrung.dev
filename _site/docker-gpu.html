@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/docker-gpu" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | Docker + GPUs
+    
+  </title>
+
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="Docker + GPUs" />
+  
+
+  
+    <meta property="og:description" content="WSL + Windows With Tensorflow or PyTorch Basic installation Check info Install nvidia-docker2 Difference: nvidia-container-toolkit vs nvidia-container-runtime Using docker-compose? Make NVIDIA work in docker (Linux) References 👉 Docker note. WSL + Windows Make WSL2 recognize GPU on Windows 10 👉 Check this tut. If you meet error “Your insider preview...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/docker-gpu" />
+    <link rel="canonical" href="http://localhost:4000/docker-gpu" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/docker.svg">
+            </div>
+          
+          <h1 class="post-title">
+            Docker + GPUs
+          </h1>
+          
+            <div class="tag-in-post">
+              
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#bash">
+                    bash
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#deploy-run">
+                    deploy & run
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#docker">
+                    docker
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#gpu">
+                    gpu
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#ide">
+                    ide
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#linux">
+                    linux
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#pytorch">
+                    pytorch
+                  </a>
+                
+
+              
+                
+                
+                
+                
+                
+                  <a href="/tags#tensorflow">
+                    tensorflow
+                  </a>
+                
+
+              
+            </div>
+          
+          <p>
+            
+              22 Oct 2020
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content ">
+            <p style="font-style: italic; color: #777; font-size: 0.95rem; margin-bottom: 2rem;">
+  Last modified on 01 Oct 2021.
+</p>
+
+
+
+
+<div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#wsl--windows" id="markdown-toc-wsl--windows">WSL + Windows</a></li>
+  <li><a href="#with-tensorflow-or-pytorch" id="markdown-toc-with-tensorflow-or-pytorch">With Tensorflow or PyTorch</a></li>
+  <li><a href="#basic-installation" id="markdown-toc-basic-installation">Basic installation</a></li>
+  <li><a href="#check-info" id="markdown-toc-check-info">Check info</a></li>
+  <li><a href="#install-nvidia-docker2" id="markdown-toc-install-nvidia-docker2">Install <code class="language-plaintext highlighter-rouge">nvidia-docker2</code></a></li>
+  <li><a href="#difference-nvidia-container-toolkit-vs-nvidia-container-runtime" id="markdown-toc-difference-nvidia-container-toolkit-vs-nvidia-container-runtime">Difference: <code class="language-plaintext highlighter-rouge">nvidia-container-toolkit</code> vs <code class="language-plaintext highlighter-rouge">nvidia-container-runtime</code></a></li>
+  <li><a href="#using-docker-compose" id="markdown-toc-using-docker-compose">Using docker-compose?</a></li>
+  <li><a href="#make-nvidia-work-in-docker-linux" id="markdown-toc-make-nvidia-work-in-docker-linux">Make NVIDIA work in docker (Linux)</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>👉 <a href="/docker">Docker note</a>.</p>
+
+<h2 id="wsl--windows">WSL + Windows</h2>
+
+<p>Make WSL2 recognize GPU on Windows 10 👉 Check <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">this tut</a>.</p>
+
+<p>If you meet error “Your insider preview build settings need attention”, restart many times don’t solve the problem. 👉 Go to Account setting, then choose “Verify”.</p>
+
+<h2 id="with-tensorflow-or-pytorch">With Tensorflow or PyTorch</h2>
+
+<p>👉 <a href="https://www.tensorflow.org/install/docker">Official doc for TF + docker</a> <br />
+👉 My <a href="/tensorflow#installation-with-docker">note for docker + TF</a>. <br />
+👉 <a href="https://github.com/dinhanhthi/git_dataswati/tree/master/docker-thi">An example of docker pytorch with gpu support</a>.</p>
+
+<h2 id="basic-installation">Basic installation</h2>
+
+<p>It works perfectly on Pop!_OS 20.04,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nvidia-container-runtime
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nvidia-container-toolkit
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nvidia-cuda-toolkit
+<span class="c"># restard required</span>
+</code></pre></div></div>
+
+<h2 id="check-info">Check info</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># verify that your computer has a graphic card</span>
+lspci <span class="nt">-nn</span> | <span class="nb">grep</span> <span class="s1">'\[03'</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First, install drivers and check</span>
+nvidia-smi
+<span class="c"># output: NVIDIA-SMI 450.80.02 Driver Version: 450.80.02    CUDA Version: 11.0</span>
+<span class="c"># it's maximum CUDA version that your driver supports</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check current version of cuda</span>
+nvcc <span class="nt">--version</span>
+<span class="c"># If there is not nvcc, it may be in /usr/local/cuda/bin/</span>
+<span class="c"># Add this location to PATH</span>
+<span class="c"># modify ~/.zshrc or ~/.bashrc</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
+
+<span class="c"># You may need to install</span>
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nvidia-cuda-toolkit
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install and check nvidia-docker</span>
+dpkg <span class="nt">-l</span> | <span class="nb">grep </span>nvidia-docker
+<span class="c"># or</span>
+nvidia-docker version
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Verifying –gpus option under docker run</span>
+docker run <span class="nt">--help</span> | <span class="nb">grep</span> <span class="nt">-i</span> gpus
+<span class="c"># output: --gpus gpu-request GPU devices to add to the container ('all' to pass all GPUs)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Listing out GPU devices</span>
+docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">--gpus</span> all ubuntu nvidia-smi <span class="nt">-L</span>
+<span class="c"># output: GPU 0: GeForce GTX 1650 (...)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Verifying again with nvidia-smi</span>
+docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">--gpus</span> all ubuntu nvidia-smi
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># test a working setup container-toolkit</span>
+docker run <span class="nt">--rm</span> <span class="nt">--gpus</span> all nvidia/cuda nvidia-smi
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># test a working setup container-runtime</span>
+docker run <span class="nt">--runtime</span><span class="o">=</span>nvidia <span class="nt">--rm</span> nvidia/cuda nvidia-smi
+
+<span class="c"># Error response from daemon: Unknown runtime specified nvidia.</span>
+<span class="c"># Search below for "/etc/docker/daemon.json"</span>
+<span class="c"># Maybe it helps.</span>
+</code></pre></div></div>
+
+<h2 id="install-nvidia-docker2">Install <code class="language-plaintext highlighter-rouge">nvidia-docker2</code></h2>
+
+<div class="hide-show-box">
+  <button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#IdUkbqMnytnSXocTAuSH">
+    More information (<a href="https://github.com/NVIDIA/nvidia-docker/issues/1268">ref</a>) 
+  </button>
+  <div id="IdUkbqMnytnSXocTAuSH" class="collapse multi-collapse box-content ">
+    <div>
+      <blockquote>
+        <p>This package is the only docker-specific package of any of them. It takes the script associated with the <code class="language-plaintext highlighter-rouge">nvidia-container-runtime</code> and installs it into docker’s <code class="language-plaintext highlighter-rouge">/etc/docker/daemon.json</code> file for you. This then allows you to run (for example) <code class="language-plaintext highlighter-rouge">docker run --runtime=nvidia ...</code> to automatically add GPU support to your containers. It also installs a wrapper script around the native docker CLI called <code class="language-plaintext highlighter-rouge">nvidia-docker</code> which lets you invoke docker without needing to specify <code class="language-plaintext highlighter-rouge">--runtime=nvidia</code> every single time. It also lets you set an environment variable on the host (NV_GPU) to specify which GPUs should be injected into a container.</p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<p>👉 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">Officicial guide to install</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
+curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="nb">sudo </span>apt-key add -
+curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/<span class="nv">$distribution</span>/nvidia-docker.list | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-docker.list
+
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nvidia-docker2
+
+<span class="c"># restart docker</span>
+<span class="nb">sudo </span>systemctl restart docker
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check version</span>
+nvidia-docker version
+</code></pre></div></div>
+
+<h2 id="difference-nvidia-container-toolkit-vs-nvidia-container-runtime">Difference: <code class="language-plaintext highlighter-rouge">nvidia-container-toolkit</code> vs <code class="language-plaintext highlighter-rouge">nvidia-container-runtime</code></h2>
+
+<p>👉 <a href="https://github.com/NVIDIA/nvidia-docker/issues/1268">What’s the difference between the lastest nvidia-docker and nvidia container runtime？</a></p>
+
+<blockquote>
+  <p>In this note, with Docker 19.03+ (<code class="language-plaintext highlighter-rouge">docker --version</code>), he says that <code class="language-plaintext highlighter-rouge">nvidia-container-toolkit</code> is used for <code class="language-plaintext highlighter-rouge">--gpus</code> (in <code class="language-plaintext highlighter-rouge">docker run ...</code>), <code class="language-plaintext highlighter-rouge">nvidia-container-runtime</code> is used for <code class="language-plaintext highlighter-rouge">--runtime=nvidia</code> (can also be used in <code class="language-plaintext highlighter-rouge">docker-compose</code> file).</p>
+</blockquote>
+
+<blockquote>
+  <p>However, <mark>if you want to use Kubernetes with Docker 19.03, you actually <strong>need to continue using nvidia-docker2</strong></mark> because Kubernetes doesn’t support passing GPU information down to docker through the <code class="language-plaintext highlighter-rouge">--gpus</code> flag yet. It still relies on the nvidia-container-runtime to pass GPU information down the stack via a set of environment variables.</p>
+</blockquote>
+
+<p>👉 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">Installation Guide — NVIDIA Cloud Native Technologies documentation</a></p>
+
+<h2 id="using-docker-compose">Using docker-compose?</h2>
+
+<p>Purpose?</p>
+
+<div class="flex-50">
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># instead of using</span>
+docker run <span class="se">\</span>
+    <span class="nt">--gpus</span> all<span class="se">\</span>
+    <span class="nt">--name</span> docker_thi_test<span class="se">\</span>
+    <span class="nt">--rm</span><span class="se">\</span>
+    <span class="nt">-v</span> abc:abc<span class="se">\</span>
+    <span class="nt">-p</span> 8888:8888
+</code></pre></div>  </div>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># we use this with docker-compose.yml</span>
+docker-compose up
+</code></pre></div>  </div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># check version of docker-compose</span>
+docker-compose <span class="nt">--version</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If "version" in docker-compose.yml &lt; 2.3</span>
+<span class="c"># Modify: /etc/docker/daemon.json</span>
+<span class="o">{</span>
+    <span class="s2">"default-runtime"</span>: <span class="s2">"nvidia"</span>,
+    <span class="s2">"runtimes"</span>: <span class="o">{</span>
+        <span class="s2">"nvidia"</span>: <span class="o">{</span>
+            <span class="s2">"path"</span>: <span class="s2">"nvidia-container-runtime"</span>,
+            <span class="s2">"runtimeArgs"</span>: <span class="o">[]</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># restart our docker daemon</span>
+<span class="nb">sudo </span>pkill <span class="nt">-SIGHUP</span> dockerd
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If "version" in docker-compose.yml &gt;=2.3</span>
+<span class="c"># docker-compose.yml =&gt; able to use "runtime"</span>
+version: <span class="s1">'2.3'</span> <span class="c"># MUST BE &gt;=2.3 AND &lt;3</span>
+services:
+  testing:
+    ports:
+      - <span class="s2">"8000:8000"</span>
+    runtime: nvidia
+    volumes:
+      - ./object_detection:/object_detection
+</code></pre></div></div>
+
+<p>👉 Check more in my repo <a href="https://github.com/dinhanhthi/my-dockerfiles">my-dockerfiles</a> on Github.</p>
+
+<p>Run the test,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull tensorflow/tensorflow:latest-gpu-jupyter
+<span class="nb">mkdir</span> ~/Downloads/test/notebooks
+</code></pre></div></div>
+
+<p>Without using <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> (tensorflow) (cf. <a href="/tensorflow#without-docker-compose">this note</a> for more)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span> docker_thi_test <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> <span class="si">$(</span><span class="nb">realpath</span> ~/Downloads/test/notebooks<span class="si">)</span>:/tf/notebooks <span class="nt">-p</span> 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter
+</code></pre></div></div>
+
+<p>With <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>?</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ~/Download/test/Dockerfile</span>
+FROM tensorflow/tensorflow:latest-gpu-jupyter
+</code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ~/Download/test/docker-compose.yml</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">jupyter</span><span class="pi">:</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">docker_thi_test'</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">./notebooks:/tf/notebooks</span> <span class="c1"># notebook directory</span>
+    <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">8888:8888</span> <span class="c1"># exposed port for jupyter</span>
+    <span class="na">environment</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">NVIDIA_VISIBLE_DEVICES=0</span> <span class="c1"># which gpu do you want to use for this container</span>
+        <span class="pi">-</span> <span class="s">PASSWORD=12345</span>
+</code></pre></div></div>
+
+<p>Then run,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose run <span class="nt">--rm</span> jupyter
+</code></pre></div></div>
+
+<h2 id="make-nvidia-work-in-docker-linux">Make NVIDIA work in docker (Linux)</h2>
+
+<p class="alert alert-danger">This section is still working (on 26-Oct-2020) but it’s old for newer methods.</p>
+
+<p><strong>Idea</strong>: Using NVIDIA driver of the base machine, don’t install anything in docker!</p>
+
+<div class="hide-show-box">
+<button type="button" class="btn collapsed box-button" data-toggle="collapse" data-target="#box1ct">
+Detail of steps
+</button>
+<div id="box1ct" class="collapse multi-collapse box-content">
+
+    <ol class="noindent">
+      <li>
+        <p>First, <a href="/pytorch#installation">maker sure</a> your base machine has an NVIDIA driver.</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># list all gpus</span>
+ lspci <span class="nt">-nn</span> | <span class="nb">grep</span> <span class="s1">'\[03'</span>
+
+ <span class="c"># check nvidia &amp; cuda versions</span>
+ nvidia-smi
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Install <a href="https://github.com/NVIDIA/nvidia-container-runtime"><code class="language-plaintext highlighter-rouge">nvidia-container-runtime</code></a></p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-container-runtime/gpgkey | <span class="nb">sudo </span>apt-key add -
+ <span class="nv">distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
+
+ curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-container-runtime/<span class="nv">$distribution</span>/nvidia-container-runtime.list | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-container-runtime.list
+
+ <span class="nb">sudo </span>apt-get update
+
+ <span class="nb">sudo </span>apt-get <span class="nb">install </span>nvidia-container-runtime
+</code></pre></div>        </div>
+      </li>
+      <li>Note that, <mark>we cannot use <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> in this case!!!</mark></li>
+      <li>
+        <p>Create an image <code class="language-plaintext highlighter-rouge">img_datas</code> with <code class="language-plaintext highlighter-rouge">Dockerfile</code> is</p>
+
+        <div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code> FROM nvidia/cuda:10.2-base
+
+ RUN apt-get update &amp;&amp; \
+     apt-get -y upgrade &amp;&amp; \
+     apt-get install -y python3-pip python3-dev locales git
+
+ <span class="c"># install dependencies</span>
+ COPY requirements.txt requirements.txt
+ RUN python3 -m pip install --upgrade pip &amp;&amp; \
+     python3 -m pip install -r requirements.txt
+ COPY . .
+
+ # default command
+ CMD [ "jupyter", "lab", "--no-browser", "--allow-root", "--ip=0.0.0.0"  ]
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Create a container,</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run <span class="nt">--name</span> docker_thi <span class="nt">--gpus</span> all <span class="nt">-v</span> /home/thi/folder_1/:/srv/folder_1/ <span class="nt">-v</span> /home/thi/folder_1/git/:/srv/folder_2 <span class="nt">-dp</span> 8888:8888 <span class="nt">-w</span><span class="o">=</span><span class="s2">"/srv"</span> <span class="nt">-it</span> img_datas
+
+ <span class="c"># -v: volumes</span>
+ <span class="c"># -w: working dir</span>
+ <span class="c"># --gpus all: using all gpus on base machine</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+    <p><a href="https://towardsdatascience.com/how-to-properly-use-the-gpu-within-a-docker-container-4c699c78c6d1">This article</a> is also very interesting and helpful in some cases.</p>
+
+  </div>
+</div>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA">Difference between <code class="language-plaintext highlighter-rouge">base</code>, <code class="language-plaintext highlighter-rouge">runtime</code> and <code class="language-plaintext highlighter-rouge">devel</code> in <code class="language-plaintext highlighter-rouge">Dockerfile</code> of CUDA</a>.</li>
+  <li><a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles/dockerfiles">Dockerfile on Github</a> of Tensorflow.</li>
+</ol>
+
+
+<!-- <div class="box-error">
+<h4>Notice an error?</h4>
+Everything on this site is <a href="https://github.com/dinhanhthi/dinhanhthi.com" target="_blank">published</a> on Github. If you find something wrong, <a href="https://github.com/dinhanhthi/dinhanhthi.com/edit/master/_posts/deploy-run/2020-10-22-docker-gpu.md" target="_blank">just edit it</a> or <a href="mailto:dinhanhthi@gmail.com?subject=Suggest to edit post 'Docker + GPUs'">tell me</a> about it.
+</div> -->
+
+<div class="sec-comment">
+
+  
+
+  <button class="btn btn-info w-100" id="show-comments" onclick="load_comment();return false;">
+    If you find something wrong or need a comment, click here.
+  </button>
+
+  <div id='comment-box' style="display: none;">
+    <script src="https://utteranc.es/client.js"
+            repo="dinhanhthi/dinhanhthi.com"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <script>
+    var comment_loaded = false;
+    function load_comment() {
+        if (!comment_loaded)  {
+            comment_loaded = true;
+            document.getElementById("show-comments").style.display = "none";
+            document.getElementById("comment-box").style.display = "block";
+        }
+    }
+  </script>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>

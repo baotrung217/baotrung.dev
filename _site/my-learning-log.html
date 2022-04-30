@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- block search indexing -->
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" async>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" async>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin async >
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Livvic:400,400i,500,500i,600&display=swap&subset=vietnamese" rel="stylesheet" crossorigin async>
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" crossorigin async>
+
+  <link rel="alternate" hreflang="en" href="/my-learning-log" async />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/avatar-icon.ico" async>
+  <meta name="author" content="Anh-Thi Dinh" />
+
+  <title>
+    
+      Thi | My learning log
+    
+  </title>
+
+  
+    <meta name="description" content="Never stop learning!">
+  
+
+  <!-- feed -->
+  <link rel="alternate" type="application/rss+xml" title="Anh-Thi Dinh - I failed my way to success" href="/feed.xml" async />
+
+  <!-- page (internal) -->
+  
+
+  <!-- layout (internal) -->
+  
+    
+      <link rel="stylesheet" href="/css/main.css" async />
+    
+      <link rel="stylesheet" href="/css/rouge-thi.css" async />
+    
+  
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+    <meta property="fb:app_id" content="1150663561751902" />
+  
+
+  
+    <meta property="fb:admins" content="mrdinhanhthi"/>
+  
+
+  
+    <meta property="og:title" content="My learning log" />
+  
+
+  
+    <meta property="og:description" content="Never stop learning!">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+    <meta property="og:url" content="http://localhost:4000/my-learning-log" />
+    <link rel="canonical" href="http://localhost:4000/my-learning-log" async />
+  
+
+  <meta property="og:image" content="http://localhost:4000/img/background.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1234">
+  <meta property="og:image:height" content="592">
+
+  
+
+  
+
+  
+
+  
+
+</head>
+
+
+<body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1150663561751902',
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <header>
+    <nav class="navbar navbar-dark nav-bg navbar-custom fixed-top">
+  <div class="container">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="nav-container">
+        <a class="nav-item" href="http://localhost:4000/">
+          <i style="color: #ffeead;" class="fas fa-home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/about">
+          <i style="color: #e97c8e;" class="fas fa-fire" aria-hidden="true"></i>
+          <span>Me</span>
+        </a>
+        <a class="nav-item" href="http://localhost:4000/notes">
+          <i style="color: #93ceff;" class="fas fa-edit" aria-hidden="true"></i>
+          <span>Notes</span>
+        </a>
+        <div class="nav-search">
+          <form action="http://localhost:4000/search" method="get">
+            <button class="nav-search-submit" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input name="q" class="nav-search-input" type="search" placeholder="search notes..." aria-label="search notes...">
+          </form>
+        </div>
+        <a class="nav-item nav-github" href="https://github.com/dinhanhthi" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8 header-content">
+          
+          
+            <div class="icon-photo">
+              <img src="http://localhost:4000/img/header/learning-log.png">
+            </div>
+          
+          <h1 class="post-title">
+            My learning log
+          </h1>
+          
+          <p>
+            
+              Never stop learning!
+                        
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main role="main">
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <article  class="page-content learning-log">
+            <div id="toc">
+  <div class="toc-content">
+<ul id="markdown-toc">
+  <li><a href="#2020" id="markdown-toc-2020">2020</a></li>
+  <li><a href="#2019" id="markdown-toc-2019">2019</a></li>
+  <li><a href="#2018" id="markdown-toc-2018">2018</a></li>
+</ul>
+
+  </div>
+</div>
+
+<p>I want to be an expert in <strong>Data Science</strong> and <strong>Artificial Intelligence</strong> and below are what I’ve learned/done so far to achieve it.</p>
+
+<p class="text-left">
+  <span class="task finish d-inline-block mr-3">Finished tasks!</span>
+  <span class="task ongoing d-inline-block mr-3">Ongoing tasks!</span>
+  <span class="task delay d-inline-block mr-3">Come back later!</span>
+  <span class="task fail d-inline-block">Interrupted tasks!</span>
+</p>
+
+<h2 id="2020">2020</h2>
+
+<ul>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ Wowrking with <a href="/notes#time_series"><strong>Time Series</strong></a>: DTW, using TensorFlow and Pytorch, clustering, anomaly detection, prediction,…</li>
+  <li class="finish"><span class="tbadge badge-green">Tech</span>
+ <strong>Infrastructure</strong>: <a href="/tags#docker">Docker</a>, <a href="/docker-gpu">Docker with GPU + Tensorflow + PyTorch</a>, <a href="/airflow-k8s-101">Airflow</a>, gRPC, k8s,…</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong>Clustering methods</strong>: <a href="/dbscan-hdbscan-clustering">HDBSCAN/DBSCAN</a>, <a href="/mean-shift">Mean Shift</a>, …</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong>Metrics</strong>: Silhouette Score, Calinski and Harabasz, Rand Index, Adjusted Rand Index,…</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong>Dimention reduction</strong>: UMAP, t-SNE,…</li>
+  <li class="finish"><span class="tbadge badge-gray">Workflow</span>
+ <strong>Tools</strong>: <a href="http://aha.io/">Aha!</a>, Trello, Miro.</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong>Processing raw data</strong>: 4 projects at <a href="https://www.dataswati.com/">Dataswati</a>.</li>
+  <li class="finish"><span class="tbadge badge-green">Tech</span>
+ Created &amp; Discussing on <strong>P13 Discussion Group</strong>, a group of Vietnamese students from University Sorbonne Paris Nord. We share knowledge and discuss mainly on Information Technology – <a href="https://github.com/dinhanhthi/P13-discuss-group">Group’s Github Repository</a> (private).</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong>Courses</strong> – <a href="https://github.com/dinhanhthi/my-certificates">my certificates</a>.
+    <ul>
+      <li><a href="https://www.linkedin.com/learning/leveraging-cloud-based-machine-learning-on-google-cloud-platform-real-world-applications/intro-to-artificial-intelligence-ai-on-google">Leveraging Cloud-Based Machine Learning on Google Cloud Platform: Real World Applications</a> on LinkedIn Learning.</li>
+      <li>Specialization <a href="https://www.coursera.org/specializations/deep-learning">Deep Learning</a> (5 courses) taught by Andrew NG on Coursera.</li>
+      <li>Specialization <a href="https://www.coursera.org/specializations/tensorflow-in-practice">DeepLearning.AI TensorFlow Developer</a> (4 courses) taught by Laurence Moroney on Coursera.</li>
+      <li><a href="https://www.coursera.org/learn/anomaly-detection-time-series-keras/home/welcome">Anomaly Detection in Time Series Data with Keras</a> on Coursera.</li>
+    </ul>
+  </li>
+  <li class="finish"><span class="tbadge badge-orange">Python</span>
+ <strong>Python Coding</strong>: <a href="https://www.sphinx-doc.org/en/master/">Sphinx Documentation Generator</a>, <a href="/pytest">Pytest</a>, build AI services (Dataswati’s tasks), Data Controller using gRPC + Airflow + MongoDB + SQL + InfluxDB, Abstract model,…</li>
+</ul>
+
+<h2 id="2019">2019</h2>
+
+<ul>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <strong class="tbold">Get a job</strong> at <a href="https://www.dataswati.com/">Dataswati</a> as a Data Scientist. – <a href="https://github.com/dinhanhthi/data-science-learning/tree/master/interview/dataswati">interview tests</a>.</li>
+  <li class="ongoing"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ <a href="https://www.codecademy.com/learn/paths/data-science" target="_blank">Data Science path</a> on Codecademy (<em>They have just updated their courses</em>).</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ Finish <a href="https://www.codecademy.com/learn/learn-sql" target="_blank">Learn SQL path</a> on Codecademy.</li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ Finish <a href="https://www.coursera.org/specializations/ibm-data-science-professional-certificate" target="_blank">IBM Data Professional Certificate</a> on Coursera (<em>9 courses</em>).</li>
+  <li class="finish"><span class="tbadge badge-orange">Python</span>
+ Finish the course <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Learn Python 3</a> on Codecademy. <a href="https://www.codecademy.com/dinhanhthi" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Finish the course <a href="https://www.codecademy.com/learn/learn-html" target="_blank">Introduction to HTML</a> on Codecademy. <a href="https://www.codecademy.com/dinhanhthi" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Design <a href="https://github.com/dinhanhthi/math2itwp" target="_blank">a new theme</a> for <a href="https://math2it.com" target="_blank">Math2IT</a> (a Wordpress theme). <a href="https://math2it.com" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Self-studying to build a Wordpress theme from scratch. <a href="https://github.com/dinhanhthi/math2itwp" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Learn to create website with <a href="https://www.gatsbyjs.org/">GatsbyJS</a> – <a href="/gatsby-js">my gatsby notes</a>.</li>
+  <li class="ongoing"><span class="tbadge badge-blue">Web</span>
+ <a href="https://www.codecademy.com/learn/paths/create-a-back-end-app-with-javascript" target="_blank">Create a Back-End App with JavaScript</a> on Codecademy.</li>
+  <li class="finish"><span class="tbadge badge-green">French</span> Follow a summer French course at <a href="https://cma.paris.fr/" target="_blank">CMA, Mairie de Paris</a> (60 hours in 3 weeks).</li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Change my personal website <a href="https://note.dinhanhthi.com">dinhanhthi.com</a> which contains better notes about Data Science, Machine Learng and Web-Dev. Along with these “raw” notes <a href="https://rawnote.dinhanhthi.com/">rawnote.dinhanhthi.com</a>, I use this site for more well-organized technical ones.</li>
+  <li class="finish"><span class="tbadge badge-green">French</span> <a href="https://www.lingoda.com/en/language-marathon">French Marathon Challenge</a> on Lingoda.</li>
+  <li class="finish"><span class="tbadge badge-green">French</span> French courses (<a href="https://cma.paris.fr/#displayElement(7490)">Oral Expression level B1</a>, <a href="https://cma.paris.fr/#displayElement(7492)">French Phonetic level B1</a>) at <a href="https://cma.paris.fr/">CMA, Mairie de Paris</a>.</li>
+</ul>
+
+<h2 id="2018">2018</h2>
+
+<ul>
+  <li class="ongoing"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ Finish <strong>20%</strong> of <a href="https://www.dataquest.io/path/data-scientist" target="_blank">Data Scientist path</a> on Dataquest (<em>31 courses</em>). <a href="https://app.dataquest.io/profile/dinhanhthimail" target="_blank">My progress.</a></li>
+  <li class="finish"><span class="tbadge badge-yellow">Data &amp; ML</span>
+ Finish the <a href="https://www.coursera.org/learn/machine-learning" target="_blank">Machine Learning course</a> taught by Andrew Ng on Coursera. <a href="https://www.coursera.org/account/accomplishments/verify/WJ9DNBMRQDJ8" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Design / Modify a thesis LaTeX template. <a href="https://github.com/dinhanhthi/ThiThesisTemp" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-blue">Web</span>
+ Design a beautiful theme for note-taking purpose. <a href="https://github.com/dinhanhthi/NoteTheme" target="_blank">My achievement.</a></li>
+  <li class="finish"><span class="tbadge badge-gray">PhD</span> Finish my PhD project. <a href="https://github.com/dinhanhthi/MyCertificates/blob/master/Certificate%20of%20completion%20of%20the%20Doctor's%20degree.pdf" target="_blank">My achievement.</a></li>
+</ul>
+
+          </article >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 text-center p-3">
+      <div class="footer-info">
+        <a href="https://dinhanhthi.com" target="_blank">Thi</a>
+        &nbsp;&copy;&nbsp;
+        2022
+        &nbsp;&bull;&nbsp;
+        <a href="http://localhost:4000/about-the-notes">
+          About the notes
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="https://pobo.dinhanhthi.com" target="_blank">
+          Po Bo
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a href="/for-me-only">
+          For me only
+        </a>
+        &nbsp;&bull;&nbsp;
+        <a class="donate" href="http://localhost:4000/donate">
+          Support Thi
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+  
+
+
+
+
+
+  
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-58921685-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous" async></script>
+
+  <!-- scrolling-toc -->
+  <script src="http://localhost:4000/js/scrolling-toc.js" type="text/javascript" async></script>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+
+  <script src="http://localhost:4000/js/click_to_zoom.js" async></script>
+
+  <script src="http://localhost:4000/js/anchor.js" async></script>
+
+</body>
+</html>
