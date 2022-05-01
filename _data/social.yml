@@ -1,11 +1,11 @@
 - name: Github
   icon: github.svg
-  url: https://github.com/dinhanhthi
+  url: https://github.com/baotrung217
   opacity: 0.75
   title: Where I store what I've done and learned so far.
 - name: LinkedIn
   icon: linkedin.svg
-  url: https://www.linkedin.com/in/dinhanhthi/
+  url: https://www.linkedin.com/in/baotrung217/
   opacity: 0.75
   title: My showcases for careers.
 # - name: HackerRank
@@ -23,11 +23,11 @@
 #   url: https://www.duolingo.com/mr.Thi
 #   opacity: 0.75
 #   title: Where I've learned French.
-- name: StackExchange
-  icon: stackexchange.svg
-  url: https://stackexchange.com/users/1344291/anh-thi-dinh?tab=accounts
-  opacity: 0.75
-  title: Where I asks and answer to learn something new.
+# - name: StackExchange
+#   icon: stackexchange.svg
+#   url: https://stackexchange.com/users/1344291/anh-thi-dinh?tab=accounts
+#   opacity: 0.75
+#   title: Where I asks and answer to learn something new.
 - name: Goodreads
   icon: goodreads.svg
   url: https://www.goodreads.com/user/show/19630622-thi-dinh

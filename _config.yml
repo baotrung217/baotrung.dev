@@ -1,14 +1,11 @@
-title: Anh-Thi Dinh
-description: I failed my way to success
+title: Nguyễn Bảo Trung
+description: ""
 baseurl: ""
 url: ""
 
 title-separator: "-"
 
-google_analytics: UA-58921685-1
-fb_app_id: "1150663561751902"
-
-timezone: "Europe/Paris"
+timezone: "Asia/Bangkok"
 markdown: kramdown
 mathjax: true
 kramdown:
